@@ -1,0 +1,45 @@
+name: Release CI
+
+on: [push, pull_request]
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  release:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create release
+        run: |
+          # Create tag: nightly
+          git tag --force nightly
+          git push --force origin nightly
+
+          # Create release: nightly
+          gh release delete nightly --yes || true
+          gh release create nightly --title 'Nightly builds' --notes-file CHANGELOG.md --prerelease
+
+  # On Ubuntu, due to snaps,
+  # GitHub Actions fails with “mkdir: cannot create directory ‘/run/user/1001’: Permission denied” for Inkscape.
+  # runs-on: ubuntu-latest
+  # run: sudo snap install inkscape
+  build:
+    name: Build release
+    needs: release
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: brew install --cask inkscape
+
+      - name: Build release
+        run: make release version=nightly
+
+      - name: Upload release
+        run: gh release upload nightly releases/chrome-shortcuts-nightly.zip

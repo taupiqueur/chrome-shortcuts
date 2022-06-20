@@ -1,0 +1,88 @@
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffffff;
+    --foreground-color: #202020;
+    --selection-color: #eaeaea;
+    --dim-foreground-color: gray;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #202020;
+    --foreground-color: #eaeaea;
+    --selection-color: #444444;
+    --dim-foreground-color: gray;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 300px;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+}
+
+/* Reset list style for menu items */
+custom-menu::part(menu) {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+custom-menu::part(menu) {
+  margin-block: 0.4rem;
+}
+
+custom-menu:focus {
+  outline: none;
+}
+
+/* Separator for menu items */
+hr {
+  margin: auto;
+  width: 90%;
+  border: none;
+  border-top: 1px solid var(--selection-color);
+  margin-block: 0.2rem;
+}
+
+/* Reset button style */
+menu-item::part(button) {
+  width: 100%;
+  border: none;
+  background-color: unset;
+  color: unset;
+  text-align: start;
+}
+
+menu-item::part(button):hover {
+  background-color: var(--selection-color);
+}
+
+/* Buttons with shortcuts
+/* Reference: https://flexbox.ninja/demos/buttons-with-icons/ */
+menu-item::part(button) {
+  display: flex;
+  padding-block: 0.5rem;
+}
+
+menu-item::part(description) {
+  flex: 1;
+}
+
+menu-item::part(shortcuts) {
+  color: var(--dim-foreground-color);
+}
+
+keyboard-shortcut + keyboard-shortcut::before {
+  content: ",";
+  color: var(--foreground-color);
+}

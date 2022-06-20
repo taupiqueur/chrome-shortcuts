@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shortcuts Popup</title>
+    <link href="popup.css" rel="stylesheet">
+  </head>
+  <body>
+    <custom-menu autofocus>
+      <!-- Navigation -->
+      <menu-item data-command="goBack">Back</menu-item>
+      <menu-item data-command="goForward">Forward</menu-item>
+      <menu-item data-command="reloadTab">Reload Tab</menu-item>
+      <menu-item data-command="reloadTabWithoutCache">Hard Reload Tab</menu-item>
+      <menu-item data-command="goToNextPage">Next Page</menu-item>
+      <menu-item data-command="goToPreviousPage">Previous Page</menu-item>
+      <menu-item data-command="removeURLParams">Remove URL Params</menu-item>
+      <menu-item data-command="goUp">Go Up</menu-item>
+      <menu-item data-command="goToRoot">Go To Root</menu-item>
+      <hr>
+      <!-- Accessibility -->
+      <menu-item data-command="focusInput">Focus Input</menu-item>
+      <menu-item data-command="focusTextArea">Focus Text Area</menu-item>
+      <menu-item data-command="focusVideo">Focus Video</menu-item>
+      <hr>
+      <!-- Clipboard -->
+      <menu-item data-command="copyURL">Copy URL</menu-item>
+      <menu-item data-command="copyTitle">Copy Title</menu-item>
+      <menu-item data-command="copyTitleAndURL">Copy Title and URL</menu-item>
+      <hr>
+      <!-- Scroll -->
+      <menu-item data-command="scrollDown">Scroll Down</menu-item>
+      <menu-item data-command="scrollUp">Scroll Up</menu-item>
+      <menu-item data-command="scrollLeft">Scroll Left</menu-item>
+      <menu-item data-command="scrollRight">Scroll Right</menu-item>
+      <menu-item data-command="scrollPageDown">Scroll Page Down</menu-item>
+      <menu-item data-command="scrollPageUp">Scroll Page Up</menu-item>
+      <menu-item data-command="scrollHalfPageDown">Scroll Half Page Down</menu-item>
+      <menu-item data-command="scrollHalfPageUp">Scroll Half Page Up</menu-item>
+      <menu-item data-command="scrollToTop">Scroll To Top</menu-item>
+      <menu-item data-command="scrollToBottom">Scroll To Bottom</menu-item>
+      <hr>
+      <!-- Zoom -->
+      <menu-item data-command="zoomIn">Zoom In</menu-item>
+      <menu-item data-command="zoomOut">Zoom Out</menu-item>
+      <menu-item data-command="zoomReset">Zoom Reset</menu-item>
+      <menu-item data-command="toggleFullScreen">Toggle Full Screen</menu-item>
+      <hr>
+      <!-- Create tabs -->
+      <menu-item data-command="openNewTab">New Tab</menu-item>
+      <menu-item data-command="openNewTabRight">New Tab to the Right</menu-item>
+      <menu-item data-command="openNewWindow">New Window</menu-item>
+      <menu-item data-command="openNewIncognitoWindow">New Incognito Window</menu-item>
+      <hr>
+      <!-- Close tabs -->
+      <menu-item data-command="closeTab">Close Tab</menu-item>
+      <menu-item data-command="closeWindow">Close Window</menu-item>
+      <menu-item data-command="restoreTab">Restore Tab</menu-item>
+      <hr>
+      <!-- Tab state -->
+      <menu-item data-command="duplicateTab">Duplicate Tab</menu-item>
+      <menu-item data-command="togglePinTab">Pin/Unpin Tab</menu-item>
+      <menu-item data-command="toggleGroupTab">Group/Ungroup Tab</menu-item>
+      <menu-item data-command="toggleCollapseTabGroups">Collapse/Uncollapse Tab Groups</menu-item>
+      <menu-item data-command="toggleMuteTab">Mute/Unmute Tab</menu-item>
+      <menu-item data-command="discardTab">Discard Tab</menu-item>
+      <hr>
+      <!-- Switch tabs -->
+      <menu-item data-command="focusAudibleTab">Focus Audible Tab</menu-item>
+      <menu-item data-command="focusNextTab">Next Tab</menu-item>
+      <menu-item data-command="focusPreviousTab">Previous Tab</menu-item>
+      <menu-item data-command="focusFirstTab">First Tab</menu-item>
+      <menu-item data-command="focusSecondTab">Second Tab</menu-item>
+      <menu-item data-command="focusThirdTab">Third Tab</menu-item>
+      <menu-item data-command="focusFourthTab">Fourth Tab</menu-item>
+      <menu-item data-command="focusFifthTab">Fifth Tab</menu-item>
+      <menu-item data-command="focusSixthTab">Sixth Tab</menu-item>
+      <menu-item data-command="focusSeventhTab">Seventh Tab</menu-item>
+      <menu-item data-command="focusEighthTab">Eighth Tab</menu-item>
+      <menu-item data-command="focusLastTab">Last Tab</menu-item>
+      <menu-item data-command="focusNextWindow">Next Window</menu-item>
+      <menu-item data-command="focusPreviousWindow">Previous Window</menu-item>
+      <hr>
+      <!-- Move tabs -->
+      <menu-item data-command="moveTabLeft">Move Tab Left</menu-item>
+      <menu-item data-command="moveTabRight">Move Tab Right</menu-item>
+      <menu-item data-command="moveTabFirst">Move Tab First</menu-item>
+      <menu-item data-command="moveTabLast">Move Tab Last</menu-item>
+      <menu-item data-command="moveTabNewWindow">Move Tab New Window</menu-item>
+      <menu-item data-command="moveTabPreviousWindow">Move Tab Previous Window</menu-item>
+      <menu-item data-command="moveTabGroupLeft">Move Tab Group Left</menu-item>
+      <menu-item data-command="moveTabGroupRight">Move Tab Group Right</menu-item>
+      <menu-item data-command="moveTabGroupFirst">Move Tab Group First</menu-item>
+      <menu-item data-command="moveTabGroupLast">Move Tab Group Last</menu-item>
+      <menu-item data-command="moveTabGroupNewWindow">Move Tab Group New Window</menu-item>
+      <menu-item data-command="moveTabGroupPreviousWindow">Move Tab Group Previous Window</menu-item>
+      <hr>
+      <!-- Select tabs -->
+      <menu-item data-command="selectTab">Select Tab</menu-item>
+      <menu-item data-command="selectTabsInGroup">Select Tabs In Group</menu-item>
+      <menu-item data-command="selectAllTabs">Select All Tabs</menu-item>
+      <menu-item data-command="selectRightTabs">Select Tabs to the Right</menu-item>
+      <hr>
+      <!-- Folders -->
+      <menu-item data-command="openDownloadsFolder">Open Downloads Folder</menu-item>
+      <hr>
+      <!-- Chrome URLs -->
+      <menu-item data-command="openHistoryPage">History</menu-item>
+      <menu-item data-command="openDownloadsPage">Downloads</menu-item>
+      <menu-item data-command="openBookmarksPage">Bookmarks</menu-item>
+      <menu-item data-command="openSettingsPage">Settings</menu-item>
+      <menu-item data-command="openPasswordsPage">Passwords</menu-item>
+      <menu-item data-command="openExtensionsPage">Extensions</menu-item>
+      <menu-item data-command="openShortcutsPage">Shortcuts</menu-item>
+      <hr>
+      <!-- Popup -->
+      <menu-item data-command="closePopup">Close Popup</menu-item>
+    </custom-menu>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

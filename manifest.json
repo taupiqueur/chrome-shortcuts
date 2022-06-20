@@ -1,0 +1,273 @@
+{
+  "name": "Shortcuts",
+  "version": "0.1.0",
+  "description": "Perform common tasks with your keyboard.",
+  "homepage_url": "https://github.com/taupiqueur/chrome-shortcuts",
+  "manifest_version": 3,
+  "background": {
+    "type": "module",
+    "service_worker": "src/background.js"
+  },
+  "permissions": ["activeTab", "downloads", "notifications", "scripting", "sessions", "storage", "tabGroups", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "src/popup/popup.html"
+  },
+  "options_ui": {
+    "page": "src/options/options.html"
+  },
+  "icons": {
+    "16": "assets/chrome-logo@16px.png",
+    "32": "assets/chrome-logo@32px.png",
+    "48": "assets/chrome-logo@48px.png",
+    "128": "assets/chrome-logo@128px.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Space",
+        "windows": "Ctrl+Space"
+      }
+    },
+    "01.goBack": {
+      "description": "Navigation · Go back to the previous page in tab’s history"
+    },
+    "02.goForward": {
+      "description": "Navigation · Go forward to the next page in tab’s history"
+    },
+    "03.reloadTab": {
+      "description": "Navigation · Reload selected tabs"
+    },
+    "04.reloadTabWithoutCache": {
+      "description": "Navigation · Reload selected tabs, ignoring cached content"
+    },
+    "05.goToNextPage": {
+      "description": "Navigation · Go to the next page in the series"
+    },
+    "06.goToPreviousPage": {
+      "description": "Navigation · Go to the previous page in the series"
+    },
+    "07.removeURLParams": {
+      "description": "Navigation · Remove any URL parameters"
+    },
+    "08.goUp": {
+      "description": "Navigation · Go up in the URL hierarchy"
+    },
+    "09.goToRoot": {
+      "description": "Navigation · Go to the root URL"
+    },
+    "10.focusInput": {
+      "description": "Accessibility · Focus the first input"
+    },
+    "11.focusTextArea": {
+      "description": "Accessibility · Focus the first text area"
+    },
+    "12.focusVideo": {
+      "description": "Accessibility · Focus the first video"
+    },
+    "13.copyURL": {
+      "description": "Clipboard · Copy URL of selected tabs"
+    },
+    "14.copyTitle": {
+      "description": "Clipboard · Copy title of selected tabs"
+    },
+    "15.copyTitleAndURL": {
+      "description": "Clipboard · Copy title and URL of selected tabs"
+    },
+    "16.scrollDown": {
+      "description": "Scroll · Scroll down"
+    },
+    "17.scrollUp": {
+      "description": "Scroll · Scroll up"
+    },
+    "18.scrollLeft": {
+      "description": "Scroll · Scroll left"
+    },
+    "19.scrollRight": {
+      "description": "Scroll · Scroll right"
+    },
+    "20.scrollPageDown": {
+      "description": "Scroll · Scroll one page down"
+    },
+    "21.scrollPageUp": {
+      "description": "Scroll · Scroll one page up"
+    },
+    "22.scrollHalfPageDown": {
+      "description": "Scroll · Scroll half page down"
+    },
+    "23.scrollHalfPageUp": {
+      "description": "Scroll · Scroll half page up"
+    },
+    "24.scrollToTop": {
+      "description": "Scroll · Scroll to the top of the page"
+    },
+    "25.scrollToBottom": {
+      "description": "Scroll · Scroll to the bottom of the page"
+    },
+    "26.zoomIn": {
+      "description": "Zoom · Zoom in"
+    },
+    "27.zoomOut": {
+      "description": "Zoom · Zoom out"
+    },
+    "28.zoomReset": {
+      "description": "Zoom · Reset the zoom factor"
+    },
+    "29.toggleFullScreen": {
+      "description": "Zoom · Turn full-screen mode on or off"
+    },
+    "30.openNewTab": {
+      "description": "Create tabs · Open and activate a new tab"
+    },
+    "31.openNewTabRight": {
+      "description": "Create tabs · Open and activate a new tab to the right"
+    },
+    "32.openNewWindow": {
+      "description": "Create tabs · Open a new window"
+    },
+    "33.openNewIncognitoWindow": {
+      "description": "Create tabs · Open a new window in Incognito mode"
+    },
+    "34.closeTab": {
+      "description": "Close tabs · Close selected tabs"
+    },
+    "35.closeWindow": {
+      "description": "Close tabs · Close the window that contains the tab"
+    },
+    "36.restoreTab": {
+      "description": "Close tabs · Reopen previously closed tabs"
+    },
+    "37.duplicateTab": {
+      "description": "Tab state · Duplicate selected tabs"
+    },
+    "38.togglePinTab": {
+      "description": "Tab state · Pin or unpin selected tabs"
+    },
+    "39.toggleGroupTab": {
+      "description": "Tab state · Group or ungroup selected tabs"
+    },
+    "40.toggleCollapseTabGroups": {
+      "description": "Tab state · Collapse or uncollapse tab groups"
+    },
+    "41.toggleMuteTab": {
+      "description": "Tab state · Mute or unmute selected tabs"
+    },
+    "42.discardTab": {
+      "description": "Tab state · Discard selected tabs"
+    },
+    "43.focusAudibleTab": {
+      "description": "Switch tabs · Activate the first audible tab"
+    },
+    "44.focusNextTab": {
+      "description": "Switch tabs · Activate the next open tab"
+    },
+    "45.focusPreviousTab": {
+      "description": "Switch tabs · Activate the previous open tab"
+    },
+    "46.focusFirstTab": {
+      "description": "Switch tabs · Activate the leftmost open tab"
+    },
+    "47.focusSecondTab": {
+      "description": "Switch tabs · Activate the second leftmost open tab"
+    },
+    "48.focusThirdTab": {
+      "description": "Switch tabs · Activate the third leftmost open tab"
+    },
+    "49.focusFourthTab": {
+      "description": "Switch tabs · Activate the fourth leftmost open tab"
+    },
+    "50.focusFifthTab": {
+      "description": "Switch tabs · Activate the fifth leftmost open tab"
+    },
+    "51.focusSixthTab": {
+      "description": "Switch tabs · Activate the sixth leftmost open tab"
+    },
+    "52.focusSeventhTab": {
+      "description": "Switch tabs · Activate the seventh leftmost open tab"
+    },
+    "53.focusEighthTab": {
+      "description": "Switch tabs · Activate the eighth leftmost open tab"
+    },
+    "54.focusLastTab": {
+      "description": "Switch tabs · Activate the rightmost open tab"
+    },
+    "55.focusNextWindow": {
+      "description": "Switch tabs · Activate the next window"
+    },
+    "56.focusPreviousWindow": {
+      "description": "Switch tabs · Activate the previous window"
+    },
+    "57.moveTabLeft": {
+      "description": "Move tabs · Move tab left"
+    },
+    "58.moveTabRight": {
+      "description": "Move tabs · Move tab right"
+    },
+    "59.moveTabFirst": {
+      "description": "Move tabs · Move tab to the far left"
+    },
+    "60.moveTabLast": {
+      "description": "Move tabs · Move tab to the far right"
+    },
+    "61.moveTabNewWindow": {
+      "description": "Move tabs · Move selected tabs to a new window"
+    },
+    "62.moveTabPreviousWindow": {
+      "description": "Move tabs · Move selected tabs to the previous window"
+    },
+    "63.moveTabGroupLeft": {
+      "description": "Move tabs · Move tab group left"
+    },
+    "64.moveTabGroupRight": {
+      "description": "Move tabs · Move tab group right"
+    },
+    "65.moveTabGroupFirst": {
+      "description": "Move tabs · Move tab group to the far left"
+    },
+    "66.moveTabGroupLast": {
+      "description": "Move tabs · Move tab group to the far right"
+    },
+    "67.moveTabGroupNewWindow": {
+      "description": "Move tabs · Move tab group to a new window"
+    },
+    "68.moveTabGroupPreviousWindow": {
+      "description": "Move tabs · Move tab group to the previous window"
+    },
+    "69.selectTab": {
+      "description": "Select tabs · Deselect all other tabs"
+    },
+    "70.selectTabsInGroup": {
+      "description": "Select tabs · Select tabs in group"
+    },
+    "71.selectAllTabs": {
+      "description": "Select tabs · Select all tabs"
+    },
+    "72.selectRightTabs": {
+      "description": "Select tabs · Select tabs to the right"
+    },
+    "73.openDownloadsFolder": {
+      "description": "Folders · Open the Downloads folder"
+    },
+    "74.openHistoryPage": {
+      "description": "Chrome URLs · Open the History page"
+    },
+    "75.openDownloadsPage": {
+      "description": "Chrome URLs · Open the Downloads page"
+    },
+    "76.openBookmarksPage": {
+      "description": "Chrome URLs · Open the Bookmarks page"
+    },
+    "77.openSettingsPage": {
+      "description": "Chrome URLs · Open the Settings page"
+    },
+    "78.openPasswordsPage": {
+      "description": "Chrome URLs · Open the Passwords page"
+    },
+    "79.openExtensionsPage": {
+      "description": "Chrome URLs · Open the Extensions page"
+    },
+    "80.openShortcutsPage": {
+      "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
+    }
+  }
+}
