@@ -1,5 +1,6 @@
 :root {
   color-scheme: light dark;
+  --font-family: system-ui;
 }
 
 @media (prefers-color-scheme: light) {
@@ -29,6 +30,12 @@ body {
   min-width: 300px;
   background-color: var(--background-color);
   color: var(--foreground-color);
+  font-family: var(--font-family);
+}
+
+/* Use the system font */
+menu-item::part(button), keyboard-shortcut::part(key), button, kbd {
+  font-family: inherit;
 }
 
 /* Reset list style for menu items */

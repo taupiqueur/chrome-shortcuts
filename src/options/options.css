@@ -1,5 +1,6 @@
 :root {
   color-scheme: light dark;
+  --font-family: system-ui;
 }
 
 @media (prefers-color-scheme: light) {
@@ -19,4 +20,10 @@
 body {
   background-color: var(--background-color);
   color: var(--foreground-color);
+  font-family: var(--font-family);
+}
+
+/* Use the system font */
+button {
+  font-family: inherit;
 }
