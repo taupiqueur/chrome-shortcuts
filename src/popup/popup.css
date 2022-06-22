@@ -86,6 +86,7 @@ menu-item::part(description) {
 }
 
 menu-item::part(shortcuts) {
+  display: flex;
   color: var(--dim-foreground-color);
 }
 
