@@ -91,5 +91,4 @@ menu-item::part(shortcuts) {
 
 keyboard-shortcut + keyboard-shortcut::before {
   content: ",";
-  color: var(--foreground-color);
 }
