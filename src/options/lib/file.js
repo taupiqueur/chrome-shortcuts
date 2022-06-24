@@ -12,7 +12,7 @@ export async function saveFile(content, fileName, contentType) {
   URL.revokeObjectURL(url)
 }
 
-// Saves file.
+// Selects file.
 export async function selectFile(accept) {
   return new Promise((resolve) => {
     const inputElement = document.createElement('input')
