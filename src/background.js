@@ -14,6 +14,9 @@ chrome.runtime.onInstalled.addListener((details) => {
     case 'install':
       popupWorker.handleSetup()
       break
+    case 'update':
+      popupWorker.handleUpdate(details.previousVersion)
+      break
   }
 })
 

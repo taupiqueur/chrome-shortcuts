@@ -20,6 +20,15 @@ async function handleSetup() {
   await chrome.storage.sync.set({ popupConfig })
 }
 
+// Handles update.
+async function handleUpdate(previousVersion) {
+  const popupConfig = await popupConfigPromise
+  // Merge config to handle added commands.
+  const { popupConfig: { commandBindings } } = await chrome.storage.sync.get('popupConfig')
+  Object.assign(popupConfig.commandBindings, commandBindings)
+  await chrome.storage.sync.set({ popupConfig })
+}
+
 // Handles a new connection when the popup shows up.
 async function handleConnection(port) {
   popupIsOpen = true
@@ -63,4 +72,4 @@ async function handleCommand(message, port) {
   }
 }
 
-export { handleSetup, handleConnection }
+export { handleSetup, handleUpdate, handleConnection }
