@@ -176,7 +176,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openBookmarksPage` | Open the **Bookmarks** page | `⌃ ⇧ O` | `⌥ ⌘ B` | `⌃ KeyO`
 `openSettingsPage` | Open the **Settings** page | | `⌘ ,` | `Comma`
 `openPasswordsPage` | Open the **Passwords** page | | | `⌃ KeyY`
-`openSearchEnginesPage` | Open the **Search Engines** page | | | `⌃ Slash`
+`openSearchEnginesPage` | Open the **Search engines** page | | | `⌃ Slash`
 `openExtensionsPage` | Open the **Extensions** page | | | `⌃ KeyA`
 `openShortcutsPage` | Open the **Extensions > Keyboard shortcuts** page | | | `⇧ Equal`
 

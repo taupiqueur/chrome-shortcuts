@@ -755,7 +755,7 @@ export async function openPasswordsPage(context) {
   await openChromePage(context, 'chrome://settings/passwords')
 }
 
-// Opens the Search Engines page.
+// Opens the Search engines page.
 export async function openSearchEnginesPage(context) {
   await openChromePage(context, 'chrome://settings/searchEngines')
 }
