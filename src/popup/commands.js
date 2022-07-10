@@ -132,6 +132,7 @@ export const openDownloadsPage = message('openDownloadsPage')
 export const openBookmarksPage = message('openBookmarksPage')
 export const openSettingsPage = message('openSettingsPage')
 export const openPasswordsPage = message('openPasswordsPage')
+export const openSearchEnginesPage = message('openSearchEnginesPage')
 export const openExtensionsPage = message('openExtensionsPage')
 export const openShortcutsPage = message('openShortcutsPage')
 

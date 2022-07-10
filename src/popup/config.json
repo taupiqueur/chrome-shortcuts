@@ -78,6 +78,7 @@
     "openBookmarksPage": [{ "ctrlKey": true, "code": "KeyO" }],
     "openSettingsPage": [{ "code": "Comma" }],
     "openPasswordsPage": [{ "ctrlKey": true, "code": "KeyY" }],
+    "openSearchEnginesPage": [{ "ctrlKey": true, "code": "Slash" }],
     "openExtensionsPage": [{ "ctrlKey": true, "code": "KeyA" }],
     "openShortcutsPage": [{ "shiftKey": true, "code": "Equal" }],
     "closePopup": [{ "code": "Escape" }, { "code": "KeyQ" }]

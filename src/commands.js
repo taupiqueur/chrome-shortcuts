@@ -755,6 +755,11 @@ export async function openPasswordsPage(context) {
   await openChromePage(context, 'chrome://settings/passwords')
 }
 
+// Opens the Search Engines page.
+export async function openSearchEnginesPage(context) {
+  await openChromePage(context, 'chrome://settings/searchEngines')
+}
+
 // Opens the Extensions page.
 export async function openExtensionsPage(context) {
   await openChromePage(context, 'chrome://extensions/')

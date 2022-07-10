@@ -263,10 +263,13 @@
     "78.openPasswordsPage": {
       "description": "Chrome URLs · Open the Passwords page"
     },
-    "79.openExtensionsPage": {
+    "79.openSearchEnginesPage": {
+      "description": "Chrome URLs · Open the Search Engines page"
+    },
+    "80.openExtensionsPage": {
       "description": "Chrome URLs · Open the Extensions page"
     },
-    "80.openShortcutsPage": {
+    "81.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
     }
   }
