@@ -12,6 +12,7 @@
     "focusInput": [{ "code": "KeyI" }],
     "focusTextArea": [{ "shiftKey": true, "code": "KeyI" }],
     "focusVideo": [{ "code": "KeyV" }],
+    "blurElement": [{ "shiftKey": true, "code": "Escape" }],
     "copyURL": [{ "code": "KeyY" }],
     "copyTitle": [{ "altKey": true, "code": "KeyY" }],
     "copyTitleAndURL": [{ "shiftKey": true, "code": "KeyY" }],

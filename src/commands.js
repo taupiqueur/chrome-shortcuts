@@ -8,7 +8,7 @@
 // Manifest: https://developer.chrome.com/docs/extensions/mv3/manifest/
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
-import { clickPageElement, focusPageElement, writeTextToClipboard, scrollBy, scrollByPages, scrollTo, scrollToMax } from './script.js'
+import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, scrollBy, scrollByPages, scrollTo, scrollToMax } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
 
@@ -95,6 +95,12 @@ export async function focusTextArea(context) {
 // Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 export async function focusVideo(context) {
   await executeScript(context.tab, focusPageElement, 'video')
+}
+
+// Blurs the active element.
+// Reference: https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement
+export async function blurElement(context) {
+  await executeScript(context.tab, blurActiveElement)
 }
 
 // Clipboard -------------------------------------------------------------------

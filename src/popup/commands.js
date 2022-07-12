@@ -33,6 +33,7 @@ export const goToRoot = message('goToRoot')
 export const focusInput = message('focusInput', true)
 export const focusTextArea = message('focusTextArea', true)
 export const focusVideo = message('focusVideo', true)
+export const blurElement = message('blurElement', true)
 
 // Clipboard -------------------------------------------------------------------
 

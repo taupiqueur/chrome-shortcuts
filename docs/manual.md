@@ -53,6 +53,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `focusInput` | Focus the first input | | | `KeyI`
 `focusTextArea` | Focus the first text area | | | `⇧ KeyI`
 `focusVideo` | Focus the first video | | | `KeyV`
+`blurElement` | Blur the active element | | | `⇧ Escape`
 
 ### Clipboard
 

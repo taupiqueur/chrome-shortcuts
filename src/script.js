@@ -13,6 +13,12 @@ export function focusPageElement(selectors) {
   return document.querySelector(selectors).focus()
 }
 
+// Blurs the active element.
+// Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur
+export function blurActiveElement() {
+  return document.activeElement.blur()
+}
+
 // Writes the specified text to the system clipboard.
 // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
 export async function writeTextToClipboard(text) {
