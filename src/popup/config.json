@@ -43,6 +43,8 @@
     "toggleCollapseTabGroups": [{ "code": "KeyC" }],
     "toggleMuteTab": [{ "code": "KeyM" }],
     "discardTab": [{ "code": "KeyD" }],
+    "sortTabsByURL": [{ "shiftKey": true, "code": "Digit1" }],
+    "groupTabsByDomain": [{ "shiftKey": true, "code": "Digit2" }],
     "focusAudibleTab": [{ "shiftKey": true, "code": "Digit3" }],
     "focusNextTab": [{ "code": "Tab" }, { "altKey": true, "code": "KeyK" }],
     "focusPreviousTab": [{ "shiftKey": true, "code": "Tab" }, { "altKey": true, "code": "KeyJ" }],

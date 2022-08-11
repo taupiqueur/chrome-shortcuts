@@ -24,7 +24,7 @@ Here are some features that Shortcuts won’t implement.
 
 ## Installation
 
-**Experimental**: Requires [Chrome Dev] or [Chrome Canary] for sticky popup.
+**Experimental**: Requires [Chrome Dev] or [Chrome Canary] with **Experimental JavaScript** features enabled—tweakable at `chrome://flags/#enable-javascript-harmony`—for sticky popup and grouping tabs.
 
 [Chrome Dev]: https://google.com/chrome/dev/
 [Chrome Canary]: https://google.com/chrome/canary/

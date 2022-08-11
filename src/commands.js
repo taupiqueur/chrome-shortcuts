@@ -8,9 +8,14 @@
 // Manifest: https://developer.chrome.com/docs/extensions/mv3/manifest/
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
+import { chunk } from './lib/array.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, scrollBy, scrollByPages, scrollTo, scrollToMax } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
+
+// Language-sensitive string comparison
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
+const { compare: localeCompare } = new Intl.Collator
 
 // Enums -----------------------------------------------------------------------
 
@@ -295,6 +300,50 @@ export async function toggleMuteTab(context) {
 export async function discardTab(context) {
   const tabs = await getSelectedTabs(context)
   await discardTabs(tabs)
+}
+
+// Organize tabs ---------------------------------------------------------------
+
+// Sorts tabs by URL.
+export async function sortTabsByURL(context) {
+  const tabs = await getSelectedTabs(context)
+  const tabChunks = chunk(tabs, (tab) => tab.pinned || tab.groupId)
+
+  // Sort chunked tabs by URL.
+  await Promise.all(
+    tabChunks.map(([key, tabs]) => {
+      // Sort tabs and keep a reference to the original tab indices.
+      const tabIndices = tabs.map(tab => tab.index)
+      const sortedTabs = tabs.sort((tab, otherTab) => localeCompare(tab.url, otherTab.url))
+
+      // Move tabs to their post-sort locations.
+      return Promise.all(
+        sortedTabs.map((tab, index) => chrome.tabs.move(tab.id, { index: tabIndices[index] }))
+      )
+    })
+  )
+}
+
+// Groups tabs by domain.
+export async function groupTabsByDomain(context) {
+  const tabs = await getSelectedTabs(context)
+  const tabsByDomain = tabs.groupToMap(tab => new URL(tab.url).hostname)
+
+  // Get all tab groups and group them by title.
+  const tabGroups = await getAllTabGroups(context)
+  const tabGroupsByTitle = tabGroups.group(tabGroup => tabGroup.title)
+
+  // Group tabs by domain.
+  await Promise.all(
+    Array.from(tabsByDomain, ([hostname, tabs]) => {
+      const tabGroups = tabGroupsByTitle[hostname]
+
+      // Add tabs to an existing group if possible.
+      return tabGroups
+        ? groupTabs(tabs, tabGroups[0])
+        : groupTabs(tabs).then(groupId => chrome.tabGroups.update(groupId, { title: hostname }))
+    })
+  )
 }
 
 // Switch tabs -----------------------------------------------------------------

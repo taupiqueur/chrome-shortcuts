@@ -115,6 +115,13 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `toggleMuteTab` | Mute or unmute selected tabs | | | `KeyM`
 `discardTab` | Discard selected tabs | | | `KeyD`
 
+### Organize tabs
+
+Command | Description | Windows and Linux key | macOS key | Popup key
+--- | --- | --- | --- | ---
+`sortTabsByURL` | Sort tabs by URL | | | `⇧ Digit1`
+`groupTabsByDomain` | Group tabs by domain | | | `⇧ Digit2`
+
 ### Switch tabs
 
 Command | Description | Windows and Linux key | macOS key | Popup key

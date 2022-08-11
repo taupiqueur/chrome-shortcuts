@@ -83,6 +83,11 @@ export const toggleCollapseTabGroups = message('toggleCollapseTabGroups')
 export const toggleMuteTab = message('toggleMuteTab')
 export const discardTab = message('discardTab')
 
+// Organize tabs ---------------------------------------------------------------
+
+export const sortTabsByURL = message('sortTabsByURL')
+export const groupTabsByDomain = message('groupTabsByDomain')
+
 // Switch tabs -----------------------------------------------------------------
 
 export const focusAudibleTab = message('focusAudibleTab')

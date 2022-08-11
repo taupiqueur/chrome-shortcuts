@@ -158,121 +158,127 @@
     "43.discardTab": {
       "description": "Tab state · Discard selected tabs"
     },
-    "44.focusAudibleTab": {
+    "44.sortTabsByURL": {
+      "description": "Organize tabs · Sort tabs by URL"
+    },
+    "45.groupTabsByDomain": {
+      "description": "Organize tabs · Group tabs by domain"
+    },
+    "46.focusAudibleTab": {
       "description": "Switch tabs · Activate the first audible tab"
     },
-    "45.focusNextTab": {
+    "47.focusNextTab": {
       "description": "Switch tabs · Activate the next open tab"
     },
-    "46.focusPreviousTab": {
+    "48.focusPreviousTab": {
       "description": "Switch tabs · Activate the previous open tab"
     },
-    "47.focusFirstTab": {
+    "49.focusFirstTab": {
       "description": "Switch tabs · Activate the leftmost open tab"
     },
-    "48.focusSecondTab": {
+    "50.focusSecondTab": {
       "description": "Switch tabs · Activate the second leftmost open tab"
     },
-    "49.focusThirdTab": {
+    "51.focusThirdTab": {
       "description": "Switch tabs · Activate the third leftmost open tab"
     },
-    "50.focusFourthTab": {
+    "52.focusFourthTab": {
       "description": "Switch tabs · Activate the fourth leftmost open tab"
     },
-    "51.focusFifthTab": {
+    "53.focusFifthTab": {
       "description": "Switch tabs · Activate the fifth leftmost open tab"
     },
-    "52.focusSixthTab": {
+    "54.focusSixthTab": {
       "description": "Switch tabs · Activate the sixth leftmost open tab"
     },
-    "53.focusSeventhTab": {
+    "55.focusSeventhTab": {
       "description": "Switch tabs · Activate the seventh leftmost open tab"
     },
-    "54.focusEighthTab": {
+    "56.focusEighthTab": {
       "description": "Switch tabs · Activate the eighth leftmost open tab"
     },
-    "55.focusLastTab": {
+    "57.focusLastTab": {
       "description": "Switch tabs · Activate the rightmost open tab"
     },
-    "56.focusNextWindow": {
+    "58.focusNextWindow": {
       "description": "Switch tabs · Activate the next window"
     },
-    "57.focusPreviousWindow": {
+    "59.focusPreviousWindow": {
       "description": "Switch tabs · Activate the previous window"
     },
-    "58.moveTabLeft": {
+    "60.moveTabLeft": {
       "description": "Move tabs · Move tab left"
     },
-    "59.moveTabRight": {
+    "61.moveTabRight": {
       "description": "Move tabs · Move tab right"
     },
-    "60.moveTabFirst": {
+    "62.moveTabFirst": {
       "description": "Move tabs · Move tab to the far left"
     },
-    "61.moveTabLast": {
+    "63.moveTabLast": {
       "description": "Move tabs · Move tab to the far right"
     },
-    "62.moveTabNewWindow": {
+    "64.moveTabNewWindow": {
       "description": "Move tabs · Move selected tabs to a new window"
     },
-    "63.moveTabPreviousWindow": {
+    "65.moveTabPreviousWindow": {
       "description": "Move tabs · Move selected tabs to the previous window"
     },
-    "64.moveTabGroupLeft": {
+    "66.moveTabGroupLeft": {
       "description": "Move tabs · Move tab group left"
     },
-    "65.moveTabGroupRight": {
+    "67.moveTabGroupRight": {
       "description": "Move tabs · Move tab group right"
     },
-    "66.moveTabGroupFirst": {
+    "68.moveTabGroupFirst": {
       "description": "Move tabs · Move tab group to the far left"
     },
-    "67.moveTabGroupLast": {
+    "69.moveTabGroupLast": {
       "description": "Move tabs · Move tab group to the far right"
     },
-    "68.moveTabGroupNewWindow": {
+    "70.moveTabGroupNewWindow": {
       "description": "Move tabs · Move tab group to a new window"
     },
-    "69.moveTabGroupPreviousWindow": {
+    "71.moveTabGroupPreviousWindow": {
       "description": "Move tabs · Move tab group to the previous window"
     },
-    "70.selectTab": {
+    "72.selectTab": {
       "description": "Select tabs · Deselect all other tabs"
     },
-    "71.selectTabsInGroup": {
+    "73.selectTabsInGroup": {
       "description": "Select tabs · Select tabs in group"
     },
-    "72.selectAllTabs": {
+    "74.selectAllTabs": {
       "description": "Select tabs · Select all tabs"
     },
-    "73.selectRightTabs": {
+    "75.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "74.openDownloadsFolder": {
+    "76.openDownloadsFolder": {
       "description": "Folders · Open the Downloads folder"
     },
-    "75.openHistoryPage": {
+    "77.openHistoryPage": {
       "description": "Chrome URLs · Open the History page"
     },
-    "76.openDownloadsPage": {
+    "78.openDownloadsPage": {
       "description": "Chrome URLs · Open the Downloads page"
     },
-    "77.openBookmarksPage": {
+    "79.openBookmarksPage": {
       "description": "Chrome URLs · Open the Bookmarks page"
     },
-    "78.openSettingsPage": {
+    "80.openSettingsPage": {
       "description": "Chrome URLs · Open the Settings page"
     },
-    "79.openPasswordsPage": {
+    "81.openPasswordsPage": {
       "description": "Chrome URLs · Open the Passwords page"
     },
-    "80.openSearchEnginesPage": {
+    "82.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the Search engines page"
     },
-    "81.openExtensionsPage": {
+    "83.openExtensionsPage": {
       "description": "Chrome URLs · Open the Extensions page"
     },
-    "82.openShortcutsPage": {
+    "84.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
     }
   }
