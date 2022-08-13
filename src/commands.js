@@ -824,3 +824,8 @@ export async function openExtensionsPage(context) {
 export async function openShortcutsPage(context) {
   await openChromePage(context, 'chrome://extensions/shortcuts')
 }
+
+// Opens the Experiments page.
+export async function openExperimentsPage(context) {
+  await openChromePage(context, 'chrome://flags/')
+}

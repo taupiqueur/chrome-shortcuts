@@ -141,6 +141,7 @@ export const openPasswordsPage = message('openPasswordsPage')
 export const openSearchEnginesPage = message('openSearchEnginesPage')
 export const openExtensionsPage = message('openExtensionsPage')
 export const openShortcutsPage = message('openShortcutsPage')
+export const openExperimentsPage = message('openExperimentsPage')
 
 // Popup -----------------------------------------------------------------------
 

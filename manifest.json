@@ -280,6 +280,9 @@
     },
     "84.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
+    },
+    "85.openExperimentsPage": {
+      "description": "Chrome URLs · Open the Experiments page"
     }
   }
 }

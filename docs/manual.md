@@ -187,6 +187,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openSearchEnginesPage` | Open the **Search engines** page | | | `⌃ Slash`
 `openExtensionsPage` | Open the **Extensions** page | | | `⌃ KeyA`
 `openShortcutsPage` | Open the **Extensions > Keyboard shortcuts** page | | | `⇧ Equal`
+`openExperimentsPage` | Open the **Experiments** page | | | `⌃ Comma`
 
 ### Popup
 

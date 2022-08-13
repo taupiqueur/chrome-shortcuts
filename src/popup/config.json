@@ -84,6 +84,7 @@
     "openSearchEnginesPage": [{ "ctrlKey": true, "code": "Slash" }],
     "openExtensionsPage": [{ "ctrlKey": true, "code": "KeyA" }],
     "openShortcutsPage": [{ "shiftKey": true, "code": "Equal" }],
+    "openExperimentsPage": [{ "ctrlKey": true, "code": "Comma" }],
     "closePopup": [{ "code": "Escape" }, { "code": "KeyQ" }]
   }
 }
