@@ -63,6 +63,12 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `copyTitle` | Copy title of selected tabs | | | `⌥ KeyY`
 `copyTitleAndURL` | Copy title and URL of selected tabs | | | `⇧ KeyY`
 
+### Web search
+
+Command | Description | Windows and Linux key | macOS key | Popup key
+--- | --- | --- | --- | ---
+`openWebSearchForSelectedText` | Perform a web search for selected text | | | `⌥ KeyW`
+
 ### Scroll
 
 Command | Description | Windows and Linux key | macOS key | Popup key

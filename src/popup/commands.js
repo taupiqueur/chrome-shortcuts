@@ -41,6 +41,10 @@ export const copyURL = message('copyURL', true)
 export const copyTitle = message('copyTitle', true)
 export const copyTitleAndURL = message('copyTitleAndURL', true)
 
+// Web search ------------------------------------------------------------------
+
+export const openWebSearchForSelectedText = message('openWebSearchForSelectedText')
+
 // Scroll ----------------------------------------------------------------------
 
 export const scrollDown = message('scrollDown')

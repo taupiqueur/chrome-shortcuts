@@ -9,7 +9,7 @@
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
 import { chunk } from './lib/array.js'
-import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, scrollBy, scrollByPages, scrollTo, scrollToMax } from './script.js'
+import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
 
@@ -130,6 +130,32 @@ export async function copyTitle(context) {
 // Copies title and URL of selected tabs.
 export async function copyTitleAndURL(context) {
   await copy_impl(context, ({title, url}) => `[${title}](${url})`, 'Title and URL copied to clipboard')
+}
+
+// Web search ------------------------------------------------------------------
+
+// Performs a search for selected text using the default search engine.
+// The results will be displayed in a new tab.
+export async function openWebSearchForSelectedText(context) {
+  const [{ result: selectedText }] = await executeScript(context.tab, getSelectedText)
+
+  // Bail out if there is nothing to search.
+  if (!selectedText) {
+    return
+  }
+
+  // Perform a search using the default search engine.
+  // The results will be displayed in a new tab.
+  await chrome.search.query({ text: selectedText, disposition: 'NEW_TAB' })
+
+  // Post-fix the created tab state.
+  const openerTab = context.tab
+  const createdTab = await chrome.tabs.update({ openerTabId: openerTab.id }).then(tab => chrome.tabs.move(tab.id, { index: openerTab.index + 1 }))
+
+  // Add the new tab to the opener tab’s group, if it has one.
+  if (isTabInGroup(openerTab)) {
+    await chrome.tabs.group({ tabIds: [createdTab.id], groupId: openerTab.groupId })
+  }
 }
 
 // Scroll ----------------------------------------------------------------------

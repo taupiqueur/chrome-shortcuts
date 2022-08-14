@@ -16,6 +16,7 @@
     "copyURL": [{ "code": "KeyY" }],
     "copyTitle": [{ "altKey": true, "code": "KeyY" }],
     "copyTitleAndURL": [{ "shiftKey": true, "code": "KeyY" }],
+    "openWebSearchForSelectedText": [{ "altKey": true, "code": "KeyW" }],
     "scrollDown": [{ "code": "KeyJ" }],
     "scrollUp": [{ "code": "KeyK" }],
     "scrollLeft": [{ "code": "KeyH" }],

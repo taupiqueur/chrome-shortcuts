@@ -25,6 +25,12 @@ export async function writeTextToClipboard(text) {
   return navigator.clipboard.writeText(text)
 }
 
+// Returns selected text.
+// Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
+export async function getSelectedText() {
+  return window.getSelection().toString()
+}
+
 // Scrolls the document by the given amount.
 // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy
 export function scrollBy(...params) {
