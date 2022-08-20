@@ -1,8 +1,6 @@
 // This module contains Chrome API functions.
 // Reference: https://developer.chrome.com/docs/extensions/reference/
 
-import { modulo } from './math.js'
-
 // Returns the currently focused tab.
 // Reference: https://developer.chrome.com/docs/extensions/reference/tabs/#get-the-current-tab
 export async function getCurrentTab() {
