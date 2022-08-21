@@ -92,6 +92,12 @@ export const discardTab = message('discardTab')
 export const sortTabsByURL = message('sortTabsByURL')
 export const groupTabsByDomain = message('groupTabsByDomain')
 
+// Manage tab groups -----------------------------------------------------------
+
+export const renameTabGroupPrompt = message('renameTabGroupPrompt')
+export const cycleTabGroupColorForward = message('cycleTabGroupColorForward')
+export const cycleTabGroupColorBackward = message('cycleTabGroupColorBackward')
+
 // Switch tabs -----------------------------------------------------------------
 
 export const focusAudibleTab = message('focusAudibleTab')

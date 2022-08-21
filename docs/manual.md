@@ -128,6 +128,14 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `sortTabsByURL` | Sort tabs by URL | | | `⇧ Digit1`
 `groupTabsByDomain` | Group tabs by domain | | | `⇧ Digit2`
 
+### Manage tab groups
+
+Command | Description | Windows and Linux key | macOS key | Popup key
+--- | --- | --- | --- | ---
+`renameTabGroupPrompt` | Rename tab group | | | `⌥ ⇧ KeyP`
+`cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `⌥ KeyA`
+`cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `⌥ ⇧ KeyA`
+
 ### Switch tabs
 
 Command | Description | Windows and Linux key | macOS key | Popup key

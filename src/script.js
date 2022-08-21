@@ -55,3 +55,9 @@ export function scrollTo(...params) {
 export function scrollToMax({ top = document.scrollingElement.scrollHeight, left = document.scrollingElement.scrollWidth, behavior }) {
   return document.scrollingElement.scrollTo({ top, left, behavior })
 }
+
+// Returns the value that the user entered in a prompt, if any.
+// Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+export function prompt(message, defaultValue) {
+  return window.prompt(message, defaultValue)
+}

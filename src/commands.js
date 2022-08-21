@@ -9,13 +9,18 @@
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
 import { chunk } from './lib/array.js'
-import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax } from './script.js'
+import { modulo } from './lib/math.js'
+import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
 
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
 const { compare: localeCompare } = new Intl.Collator
+
+// List of tab group colors
+// Reference: https://developer.chrome.com/docs/extensions/reference/tabGroups/#type-Color
+const tabGroupColors = Object.values(chrome.tabGroups.Color)
 
 // Enums -----------------------------------------------------------------------
 
@@ -370,6 +375,54 @@ export async function groupTabsByDomain(context) {
         : groupTabs(tabs).then(groupId => chrome.tabGroups.update(groupId, { title: hostname }))
     })
   )
+}
+
+// Manage tab groups -----------------------------------------------------------
+
+// Renames tab group (prompts for a new name).
+export async function renameTabGroupPrompt(context) {
+  const tabGroup = await getTabGroup(context.tab)
+
+  // Fail-fast if there is no tab group.
+  if (!tabGroup) {
+    return
+  }
+
+  // Prompt for a new name.
+  const [{ result: tabGroupTitle }] = await executeScript(context.tab, prompt, 'Name this group', tabGroup.title)
+
+  // Bail out if there is no new name.
+  if (tabGroupTitle === null || tabGroupTitle === tabGroup.title) {
+    return
+  }
+
+  // Update tab group title.
+  await chrome.tabGroups.update(tabGroup.id, { title: tabGroupTitle })
+}
+
+// Cycles forward through tab group colors.
+// Tags: args
+export async function cycleTabGroupColorForward(context, count = 1) {
+  const tabGroup = await getTabGroup(context.tab)
+
+  // Fail-fast if there is no tab group.
+  if (!tabGroup) {
+    return
+  }
+
+  // Get the next color.
+  const colorIndex = tabGroupColors.indexOf(tabGroup.color)
+  const nextColorIndex = modulo(colorIndex + count, tabGroupColors.length)
+  const nextColor = tabGroupColors[nextColorIndex]
+
+  // Cycle through tab group colors.
+  await chrome.tabGroups.update(tabGroup.id, { color: nextColor })
+}
+
+// Cycles backward through tab group colors.
+// Tags: args
+export async function cycleTabGroupColorBackward(context, count = 1) {
+  await cycleTabGroupColorForward(context, -count)
 }
 
 // Switch tabs -----------------------------------------------------------------
