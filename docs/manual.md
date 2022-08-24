@@ -159,8 +159,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`moveTabLeft` | Move tab left | `⌃ ⇧ ⇞` | | `ArrowLeft`
-`moveTabRight` | Move tab right | `⌃ ⇧ ⇟` | | `ArrowRight`
+`moveTabLeft` | Move tab left | `⌃ ⇧ ⇞` | `⌃ ⇧ ⇞` | `ArrowLeft`
+`moveTabRight` | Move tab right | `⌃ ⇧ ⇟` | `⌃ ⇧ ⇟` | `ArrowRight`
 `moveTabFirst` | Move tab to the far left | | | `Home`
 `moveTabLast` | Move tab to the far right | | | `End`
 `moveTabNewWindow` | Move selected tabs to a new window | | | `ArrowUp`
