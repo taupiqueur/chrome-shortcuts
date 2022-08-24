@@ -380,6 +380,7 @@ export async function groupTabsByDomain(context) {
 // Manage tab groups -----------------------------------------------------------
 
 // Renames tab group (prompts for a new name).
+// Tags: args
 export async function renameTabGroupPrompt(context) {
   const tabGroup = await getTabGroup(context.tab)
 
