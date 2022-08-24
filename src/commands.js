@@ -12,7 +12,7 @@ import { chunk } from './lib/array.js'
 import { modulo } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
-import { getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
+import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
 
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
@@ -531,6 +531,37 @@ export async function focusPreviousWindow(context, count = 1) {
 }
 
 // Move tabs -------------------------------------------------------------------
+
+// Grabs selected tabs.
+// Moves selected tabs to the current tab.
+export async function grabTab(context) {
+  const tabs = await getSelectedTabs(context)
+
+  const currentTab = context.tab
+  const currentTabIndex = findTabIndex(context, tabs)
+
+  const leftTabs = tabs.slice(0, currentTabIndex)
+  const rightTabs = tabs.slice(currentTabIndex + 1)
+
+  // Move selected tabs to the current tab.
+  const currentTabPromise = Promise.resolve(currentTab)
+  await Promise.all([
+    leftTabs.reduceRight((previousTabPromise, currentTab) =>
+      previousTabPromise.then((previousTab) =>
+        chrome.tabs.move(currentTab.id, { index: previousTab.index - 1 })), currentTabPromise
+    ),
+    rightTabs.reduce((previousTabPromise, currentTab) =>
+      previousTabPromise.then((previousTab) =>
+        chrome.tabs.move(currentTab.id, { index: previousTab.index + 1 })), currentTabPromise
+    )
+  ])
+
+  // Add selected tabs—except pinned tabs—to the current tab’s group, if it has one.
+  if (isTabInGroup(currentTab)) {
+    const tabIds = tabs.flatMap(tab => tab.pinned ? [] : tab.id)
+    await chrome.tabs.group({ tabIds, groupId: currentTab.groupId })
+  }
+}
 
 async function moveTabDirection(context, direction) {
   const currentTab = context.tab

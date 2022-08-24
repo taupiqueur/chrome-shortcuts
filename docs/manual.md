@@ -159,6 +159,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
+`grabTab` | Grab selected tabs | | | `⌥ KeyG`
 `moveTabLeft` | Move tab left | `⌃ ⇧ ⇞` | `⌃ ⇧ ⇞` | `ArrowLeft`
 `moveTabRight` | Move tab right | `⌃ ⇧ ⇟` | `⌃ ⇧ ⇟` | `ArrowRight`
 `moveTabFirst` | Move tab to the far left | | | `Home`

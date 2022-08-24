@@ -117,6 +117,7 @@ export const focusPreviousWindow = message('focusPreviousWindow', false, true)
 
 // Move tabs -------------------------------------------------------------------
 
+export const grabTab = message('grabTab')
 export const moveTabLeft = message('moveTabLeft')
 export const moveTabRight = message('moveTabRight')
 export const moveTabFirst = message('moveTabFirst')

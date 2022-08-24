@@ -63,6 +63,7 @@
     "focusLastTab": [{ "code": "Digit9" }],
     "focusNextWindow": [{ "code": "KeyW" }],
     "focusPreviousWindow": [{ "shiftKey": true, "code": "KeyW" }],
+    "grabTab": [{ "altKey": true, "code": "KeyG" }],
     "moveTabLeft": [{ "code": "ArrowLeft" }],
     "moveTabRight": [{ "code": "ArrowRight" }],
     "moveTabFirst": [{ "code": "Home" }],

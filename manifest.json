@@ -218,82 +218,85 @@
     "63.focusPreviousWindow": {
       "description": "Switch tabs · Activate the previous window"
     },
-    "64.moveTabLeft": {
+    "64.grabTab": {
+      "description": "Move tabs · Grab selected tabs"
+    },
+    "65.moveTabLeft": {
       "description": "Move tabs · Move tab left"
     },
-    "65.moveTabRight": {
+    "66.moveTabRight": {
       "description": "Move tabs · Move tab right"
     },
-    "66.moveTabFirst": {
+    "67.moveTabFirst": {
       "description": "Move tabs · Move tab to the far left"
     },
-    "67.moveTabLast": {
+    "68.moveTabLast": {
       "description": "Move tabs · Move tab to the far right"
     },
-    "68.moveTabNewWindow": {
+    "69.moveTabNewWindow": {
       "description": "Move tabs · Move selected tabs to a new window"
     },
-    "69.moveTabPreviousWindow": {
+    "70.moveTabPreviousWindow": {
       "description": "Move tabs · Move selected tabs to the previous window"
     },
-    "70.moveTabGroupLeft": {
+    "71.moveTabGroupLeft": {
       "description": "Move tabs · Move tab group left"
     },
-    "71.moveTabGroupRight": {
+    "72.moveTabGroupRight": {
       "description": "Move tabs · Move tab group right"
     },
-    "72.moveTabGroupFirst": {
+    "73.moveTabGroupFirst": {
       "description": "Move tabs · Move tab group to the far left"
     },
-    "73.moveTabGroupLast": {
+    "74.moveTabGroupLast": {
       "description": "Move tabs · Move tab group to the far right"
     },
-    "74.moveTabGroupNewWindow": {
+    "75.moveTabGroupNewWindow": {
       "description": "Move tabs · Move tab group to a new window"
     },
-    "75.moveTabGroupPreviousWindow": {
+    "76.moveTabGroupPreviousWindow": {
       "description": "Move tabs · Move tab group to the previous window"
     },
-    "76.selectTab": {
+    "77.selectTab": {
       "description": "Select tabs · Deselect all other tabs"
     },
-    "77.selectTabsInGroup": {
+    "78.selectTabsInGroup": {
       "description": "Select tabs · Select tabs in group"
     },
-    "78.selectAllTabs": {
+    "79.selectAllTabs": {
       "description": "Select tabs · Select all tabs"
     },
-    "79.selectRightTabs": {
+    "80.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "80.openDownloadsFolder": {
+    "81.openDownloadsFolder": {
       "description": "Folders · Open the Downloads folder"
     },
-    "81.openHistoryPage": {
+    "82.openHistoryPage": {
       "description": "Chrome URLs · Open the History page"
     },
-    "82.openDownloadsPage": {
+    "83.openDownloadsPage": {
       "description": "Chrome URLs · Open the Downloads page"
     },
-    "83.openBookmarksPage": {
+    "84.openBookmarksPage": {
       "description": "Chrome URLs · Open the Bookmarks page"
     },
-    "84.openSettingsPage": {
+    "85.openSettingsPage": {
       "description": "Chrome URLs · Open the Settings page"
     },
-    "85.openPasswordsPage": {
+    "86.openPasswordsPage": {
       "description": "Chrome URLs · Open the Passwords page"
     },
-    "86.openSearchEnginesPage": {
+    "87.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the Search engines page"
     },
-    "87.openExtensionsPage": {
+    "88.openExtensionsPage": {
       "description": "Chrome URLs · Open the Extensions page"
     },
-    "88.openShortcutsPage": {
+    "89.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
     },
-    "89.openExperimentsPage": {
+    "90.openExperimentsPage": {
       "description": "Chrome URLs · Open the Experiments page"
     }
   }
