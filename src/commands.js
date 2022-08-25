@@ -556,11 +556,11 @@ export async function grabTab(context) {
     )
   ])
 
-  // Add selected tabs—except pinned tabs—to the current tab’s group, if it has one.
-  if (isTabInGroup(currentTab)) {
-    const tabIds = tabs.flatMap(tab => tab.pinned ? [] : tab.id)
-    await chrome.tabs.group({ tabIds, groupId: currentTab.groupId })
-  }
+  // Add selected tabs—except pinned tabs—to the current tab’s group.
+  const tabIds = tabs.flatMap(tab => tab.pinned ? [] : tab.id)
+  await isTabInGroup(currentTab)
+    ? chrome.tabs.group({ tabIds, groupId: currentTab.groupId })
+    : chrome.tabs.ungroup(tabIds)
 }
 
 async function moveTabDirection(context, direction) {
