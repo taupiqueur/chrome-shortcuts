@@ -8,6 +8,15 @@ You can for example bind `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to du
 or change the default shortcut—to open the popup—to `Alt+J`.
 You can also configure the popup keys by importing and exporting settings in the **Options** page.
 
+### In practice?
+
+`Alt+J` / `Alt+K` are the main keyboard shortcuts I use for navigating to open Shortcuts and click using [Link Hints].
+
+[Link Hints]: https://lydell.github.io/LinkHints/
+
+Finally, to complement the built-in keyboard shortcuts,
+I’ve configured `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate the current tab, `Alt+W` to web search selected text, `Alt+Y` to copy URLs, and `Alt+I` to focus text fields.
+
 ## Commands
 
 [Commands] are actions that can be performed with keyboard shortcuts or mouse clicks in the extension’s popup.
