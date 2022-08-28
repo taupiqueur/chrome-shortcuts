@@ -87,8 +87,21 @@ export async function reloadTabs(tabs, reloadProperties) {
 // Moves specified tabs.
 // Returns a `Promise` with details about the moved tabs.
 // Reference: https://developer.chrome.com/docs/extensions/reference/tabs/#method-move
+//
+// Notes:
+// > chrome.tabs.move([], { index: 0 })
+// Error: No tabs given.
+// > chrome.tabs.move([42], { index: 0 })
+// Returns a `Promise` with `Tab` instead of `Array` of `Tab`.
 export async function moveTabs(tabs, moveProperties) {
-  return chrome.tabs.move(getTabIds(tabs), moveProperties)
+  switch (tabs.length) {
+    case 0:
+      return []
+    case 1:
+      return chrome.tabs.move(tabs[0].id, moveProperties).then(tab => [tab])
+    default:
+      return chrome.tabs.move(getTabIds(tabs), moveProperties)
+  }
 }
 
 // Closes specified tabs.
