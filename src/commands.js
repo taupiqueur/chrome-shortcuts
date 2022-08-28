@@ -24,6 +24,7 @@ const tabGroupColors = Object.values(chrome.tabGroups.Color)
 
 // Constants -------------------------------------------------------------------
 
+const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
 
 // Enums -----------------------------------------------------------------------
@@ -683,27 +684,59 @@ export async function moveTabLast(context) {
   await moveTabEdgeDirection(context, Direction.Forward)
 }
 
+// Moves selected tabs to the specified window.
+async function moveTabsToWindow(context, windowId) {
+  // Prevent moving tabs to the same window.
+  if (context.tab.windowId === windowId) {
+    return
+  }
+
+  const tabs = await getAllTabs(context)
+  const startIndex = tabs.findIndex(tab => !tab.pinned)
+  const [pinnedTabs, otherTabs] = startIndex === -1
+    ? [tabs, []]
+    : [tabs.slice(0, startIndex), tabs.slice(startIndex)]
+
+  // Move chunked tabs.
+  const isSelected = tab => tab.highlighted
+  const byGroup = tab => tab.groupId
+  const moveProperties = { windowId, index: -1 }
+  const movedTabChunks = await Promise.all([
+    // Move pinned tabs.
+    moveTabs(pinnedTabs.filter(isSelected), moveProperties).then(tabs => updateTabs(tabs, { pinned: true })),
+
+    // Move other tabs.
+    ...chunk(otherTabs, byGroup).map(([groupId, tabs]) => {
+      const selectedTabs = tabs.filter(isSelected)
+      // Only move tab group if fully selected.
+      return groupId !== TAB_GROUP_ID_NONE && selectedTabs.length === tabs.length
+        ? chrome.tabGroups.move(groupId, moveProperties).then(tabGroup => chrome.tabs.query({ groupId }))
+        : moveTabs(selectedTabs, moveProperties)
+    })
+  ])
+
+  // Focus window and select tabs.
+  const activeTab = await chrome.tabs.get(context.tab.id)
+  await chrome.windows.update(windowId, { focused: true })
+  await highlightTabs([activeTab].concat(...movedTabChunks))
+}
+
 // Moves selected tabs to a new window.
 export async function moveTabNewWindow(context) {
-  const tabs = await getSelectedTabs(context)
-  const createdWindow = await chrome.windows.create({ tabId: context.tab.id })
-  const movedTabs = await moveTabs(tabs, { windowId: createdWindow.id, index: -1 })
-  await highlightTabs(createdWindow.tabs.concat(movedTabs))
+  // Create a new window
+  // and keep a reference to the created tab (the New Tab page) in order to delete it later.
+  const createdWindow = await chrome.windows.create()
+  const createdTab = createdWindow.tabs[0]
+
+  // Move selected tabs to the created window.
+  await moveTabsToWindow(context, createdWindow.id)
+  await chrome.tabs.remove(createdTab.id)
 }
 
 // Moves selected tabs to the previous window, if any.
 export async function moveTabPreviousWindow(context) {
-  const tabs = await getSelectedTabs(context)
   const previousWindow = await getPreviousWindow(context)
-
-  // Prevent moving tabs to the same window.
-  if (previousWindow.id === context.tab.windowId) {
-    return
-  }
-
-  const movedTabs = await moveTabs(tabs, { windowId: previousWindow.id, index: -1 })
-  await focusTabById(context.tab.id)
-  await highlightTabs(movedTabs)
+  await moveTabsToWindow(context, previousWindow.id)
 }
 
 // Moves tab group left.
