@@ -63,6 +63,11 @@ export async function getPreviousOpenTab(context, count = 1) {
   return getNextOpenTab(context, -count)
 }
 
+// Returns the current window.
+export async function getCurrentWindow(context) {
+  return chrome.windows.get(context.tab.windowId)
+}
+
 // Returns the next window.
 export async function getNextWindow(context, count = 1) {
   const windows = await chrome.windows.getAll()

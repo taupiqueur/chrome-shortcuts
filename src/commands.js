@@ -12,7 +12,7 @@ import { chunk } from './lib/array.js'
 import { modulo } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
-import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getNextWindow, getPreviousWindow } from './context.js'
+import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getCurrentWindow, getNextWindow, getPreviousWindow } from './context.js'
 
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
@@ -238,7 +238,7 @@ export async function zoomReset(context) {
 
 // Turns full-screen mode on or off.
 export async function toggleFullScreen(context) {
-  const currentWindow = await chrome.windows.get(context.tab.windowId)
+  const currentWindow = await getCurrentWindow(context)
   const nextWindowState = currentWindow.state === 'fullscreen' ? 'normal' : 'fullscreen'
   await chrome.windows.update(currentWindow.id, { state: nextWindowState })
 }
