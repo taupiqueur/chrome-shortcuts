@@ -22,6 +22,10 @@ const { compare: localeCompare } = new Intl.Collator
 // Reference: https://developer.chrome.com/docs/extensions/reference/tabGroups/#type-Color
 const tabGroupColors = Object.values(chrome.tabGroups.Color)
 
+// Constants -------------------------------------------------------------------
+
+const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
+
 // Enums -----------------------------------------------------------------------
 
 // Enum representing a direction.
@@ -151,7 +155,7 @@ export async function openWebSearchForSelectedText(context) {
 
   // Perform a search using the default search engine.
   // The results will be displayed in a new tab.
-  await chrome.search.query({ text: selectedText, disposition: 'NEW_TAB' })
+  await chrome.search.query({ text: selectedText, disposition: NEW_TAB_DISPOSITION })
 
   // Post-fix the created tab state.
   const openerTab = context.tab
