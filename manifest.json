@@ -222,7 +222,7 @@
       "description": "Move tabs · Grab selected tabs"
     },
     "65.moveTabLeft": {
-      "description": "Move tabs · Move tab left"
+      "description": "Move tabs · Move selected tabs left"
     },
     "66.moveTabRight": {
       "description": "Move tabs · Move tab right"
