@@ -171,7 +171,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `grabTab` | Grab selected tabs | | | `⌥ KeyG`
 `moveTabLeft` | Move selected tabs left | `⌃ ⇧ ⇞` | `⌃ ⇧ ⇞` | `ArrowLeft`
 `moveTabRight` | Move selected tabs right | `⌃ ⇧ ⇟` | `⌃ ⇧ ⇟` | `ArrowRight`
-`moveTabFirst` | Move tab to the far left | | | `Home`
+`moveTabFirst` | Move selected tabs to the far left | | | `Home`
 `moveTabLast` | Move tab to the far right | | | `End`
 `moveTabNewWindow` | Move selected tabs to a new window | | | `ArrowUp`
 `moveTabPreviousWindow` | Move selected tabs to the previous window | | | `ArrowDown`
