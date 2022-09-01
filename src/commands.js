@@ -982,9 +982,33 @@ export async function moveTabFirst(context) {
   ])
 }
 
-// Moves tab to the far right.
+// Moves selected tabs to the far right.
 export async function moveTabLast(context) {
-  await moveTabEdgeDirection(context, Direction.Forward)
+  const tabs = await getAllTabs(context)
+  const startIndex = tabs.findIndex(tab => !tab.pinned)
+  const [pinnedTabs, otherTabs] = startIndex === -1
+    ? [tabs, []]
+    : [tabs.slice(0, startIndex), tabs.slice(startIndex)]
+
+  // Move chunked tabs.
+  const isSelected = tab => tab.highlighted
+  const byGroup = tab => tab.groupId
+  const moveProperties = { index: -1 }
+  await Promise.all([
+    // Move pinned tabs.
+    moveTabs(pinnedTabs.filter(isSelected), moveProperties),
+
+    // Move other tabs.
+    chunk(otherTabs, byGroup).reduce((previousPromise, [groupId, tabs]) => previousPromise.then((value) => {
+      const selectedTabs = tabs.filter(isSelected)
+      // Only move tab group if fully selected.
+      return selectedTabs.length && groupId !== TAB_GROUP_ID_NONE
+        ? selectedTabs.length === tabs.length
+        ? chrome.tabGroups.move(groupId, moveProperties)
+        : moveTabs(selectedTabs, moveProperties).then(tabs => groupTabs(tabs, { id: groupId }))
+        : moveTabs(selectedTabs, moveProperties)
+    }), Promise.resolve())
+  ])
 }
 
 // Moves selected tabs to the specified window.

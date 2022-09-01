@@ -231,7 +231,7 @@
       "description": "Move tabs · Move selected tabs to the far left"
     },
     "68.moveTabLast": {
-      "description": "Move tabs · Move tab to the far right"
+      "description": "Move tabs · Move selected tabs to the far right"
     },
     "69.moveTabNewWindow": {
       "description": "Move tabs · Move selected tabs to a new window"
