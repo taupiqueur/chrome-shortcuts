@@ -568,390 +568,228 @@ export async function grabTab(context) {
     : chrome.tabs.ungroup(tabIds)
 }
 
+// Moves selected tabs left/right.
+// Skips hidden tabs—the ones whose are in collapsed tab groups.
 async function moveTabDirection(context, direction) {
-  const currentTab = context.tab
-  const currentTabIsInGroup = isTabInGroup(currentTab)
-
-  let offsetIndex, tabGroupIndex
+  let focusIndex, anchorIndex, focusOffset, anchorOffset, reduceMethod, moveGroupToTab, ungroupTabs
   switch (direction) {
     case Direction.Backward:
-      offsetIndex = -1
-      tabGroupIndex = 0
+      focusIndex = 0
+      anchorIndex = -1
+      focusOffset = -1
+      anchorOffset = 1
+      reduceMethod = 'reduce'
+      // Note: Chrome does not behave correctly when moving multiple tabs to the right,
+      // hence moving the group at the end of the window beforehand.
+      moveGroupToTab = async (sourceTab, destinationTab) => {
+        await chrome.tabGroups.move(sourceTab.groupId, { index: -1 })
+        destinationTab = await chrome.tabs.get(destinationTab.id)
+        return chrome.tabGroups.move(sourceTab.groupId, { index: destinationTab.index + anchorOffset })
+      }
+      ungroupTabs = (tabs) => {
+        const tabIds = tabs.map(tab => tab.id)
+        return chrome.tabs.ungroup(tabIds)
+      }
       break
     case Direction.Forward:
-      offsetIndex = 1
-      tabGroupIndex = -1
+      focusIndex = -1
+      anchorIndex = 0
+      focusOffset = 1
+      anchorOffset = 0
+      reduceMethod = 'reduceRight'
+      moveGroupToTab = (sourceTab, destinationTab) => {
+        return chrome.tabGroups.move(sourceTab.groupId, { index: destinationTab.index })
+      }
+      // Note: Chrome ungroups tabs sequentially,
+      // hence reversing tab IDs to preserve order.
+      ungroupTabs = (tabs) => {
+        const tabIds = tabs.map((_, index) => tabs.at(-index - 1).id)
+        return chrome.tabs.ungroup(tabIds)
+      }
       break
   }
 
-  // Get the next tab, if any.
-  const nextTab = await getNextTab(context, offsetIndex)
+  const isSelected = tab => tab.highlighted
+  const byGroup = tab => tab.groupId
 
-  // Tab strip—before/after:
-  // [[...] [A]] => [[...]] [A]
-  if (currentTabIsInGroup && !nextTab) {
-    await chrome.tabs.ungroup(currentTab.id)
-  }
+  // Partition pinned tabs and group tabs by group.
+  const allTabs = await getAllTabs(context)
+  const allTabsByGroup = allTabs.group(byGroup)
+  const startIndex = allTabs.findIndex(tab => !tab.pinned)
+  const [pinnedTabs, otherTabs] = startIndex === -1
+    ? [allTabs, []]
+    : [allTabs.slice(0, startIndex), allTabs.slice(startIndex)]
 
-  // Fail-fast if there is no next tab.
-  if (!nextTab) {
-    return
-  }
-
-  // Get some info about the next tab.
-  const nextTabIsInGroup = isTabInGroup(nextTab)
-  let nextTabIsHidden = false
-
-  // Determine whether the next tab is hidden.
+  // Determine whose tabs are hidden.
   // A tab in a collapsed group is considered hidden.
-  if (nextTabIsInGroup) {
-    const tabGroup = await getTabGroup(nextTab)
-    nextTabIsHidden = tabGroup.collapsed
-  }
+  const tabGroups = await getAllTabGroups(context)
+  const collapsedInfo = Object.fromEntries(tabGroups.map((tabGroup) => [tabGroup.id, tabGroup.collapsed]))
 
-  // Tab strip—before/after:
-  // [A] [B] => [B] [A]
-  if (!currentTabIsInGroup && !nextTabIsInGroup) {
-    await chrome.tabs.move(currentTab.id, { index: nextTab.index })
+  // Move chunked tabs.
+  const pinnedChunks = chunk(pinnedTabs, isSelected)
+  const otherChunks = chunk(otherTabs, isSelected)
+  // Handle the left/right boundary.
+  // Do nothing if the first chunk to proceed is selected.
+  // This also ensures that selected tabs are always preceded/followed by another tab.
+  for (const tabChunks of [pinnedChunks, otherChunks]) {
+    if (tabChunks.length > 0 && tabChunks.at(focusIndex)[0]) {
+      tabChunks.splice(focusIndex, 1)
+    }
   }
-  // [[A] [B]] => [[B] [A]]
-  else if (currentTab.groupId === nextTab.groupId) {
-    await chrome.tabs.move(currentTab.id, { index: nextTab.index })
-  }
-  // [A] [[B]] => [[A] [B]]
-  else if (!currentTabIsInGroup && nextTabIsInGroup && !nextTabIsHidden) {
-    await chrome.tabs.group({ tabIds: [currentTab.id], groupId: nextTab.groupId })
-  }
-  // [[A]] [B] => [A] [B]
-  else if (currentTabIsInGroup && !nextTabIsInGroup) {
-    await chrome.tabs.ungroup(currentTab.id)
-  }
-  // [[A]] [[B]] => [A] [[B]]
-  else if (currentTabIsInGroup && nextTabIsInGroup && currentTab.groupId !== nextTab.groupId) {
-    await chrome.tabs.ungroup(currentTab.id)
-  }
-  // [A] [[...]] [C] => [[...]] [A] [C]
-  else if (!currentTabIsInGroup && nextTabIsHidden) {
-    // Find the tab right after the rightmost tab in group.
-    const tabsInGroup = await chrome.tabs.query({ groupId: nextTab.groupId })
-    const targetTab = tabsInGroup.at(tabGroupIndex)
-    await chrome.tabs.move(currentTab.id, { index: targetTab.index })
-  }
+  await Promise.all([
+    // Move pinned tabs.
+    pinnedChunks[reduceMethod]((previousPromise, [highlighted, tabs]) => previousPromise.then((value) => {
+      if (!highlighted) {
+        return previousPromise
+      }
+      const focusTab = tabs.at(focusIndex)
+      const anchorTab = tabs.at(anchorIndex)
+      const targetTab = allTabs[focusTab.index + focusOffset]
+      return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+    }), Promise.resolve()),
+
+    // Move other tabs.
+    otherChunks[reduceMethod](async (previousPromise, [highlighted, tabs]) => {
+      await previousPromise
+
+      if (!highlighted) {
+        return previousPromise
+      }
+
+      // Get some info about the tab selection,
+      // whether it spawns multiple groups, entirely selected.
+      const groupChunks = chunk(tabs, byGroup)
+      const groupCount = groupChunks.length
+      const singleGroup = groupCount === 1
+      const manyGroups = groupCount > 1
+      const [groupId, anchorGroup] = groupChunks.at(anchorIndex)
+      const fullySelected = groupId !== TAB_GROUP_ID_NONE && anchorGroup.length === allTabsByGroup[groupId].length
+
+      // Get some info about the range of selected tabs.
+      const focusTab = tabs.at(focusIndex)
+      const anchorTab = tabs.at(anchorIndex)
+      const anchorTabIsInGroup = isTabInGroup(anchorTab)
+
+      // Get some info about the target tab.
+      // Determine whether the target tab is hidden.
+      // A tab in a collapsed group is considered hidden.
+      const targetTab = allTabs[focusTab.index + focusOffset]
+      const targetTabIsInGroup = isTabInGroup(targetTab)
+      const targetTabIsHidden = collapsedInfo[targetTab.groupId]
+
+      // Move selected tabs, tabs in group or tab group left/right.
+      // Only move tab group if fully selected.
+      // Skips hidden tabs—the ones whose are in collapsed tab groups.
+      //
+      // Tab strip—before/after:
+      // Backward: [A] [B] [B] [B] => [B] [B] [B] [A]
+      // Forward: [A] [A] [A] [B] => [B] [A] [A] [A]
+      if (!targetTabIsInGroup && singleGroup && !anchorTabIsInGroup) {
+        return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+      }
+      // Backward: [A] [[B] [B] [...]] => [A] [B] [B] [[...]]
+      // Forward: [[...] [A] [A]] [B] => [[...]] [A] [A] [B]
+      else if (!targetTabIsInGroup && singleGroup && !fullySelected) {
+        return ungroupTabs(tabs)
+      }
+      // Backward: [A] [[B] [B] [B]] => [[B] [B] [B]] [A]
+      // Forward: [[A] [A] [A]] [B] => [B] [[A] [A] [A]]
+      else if (!targetTabIsInGroup && singleGroup && fullySelected) {
+        return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+      }
+      // Backward: [A] [[B] [B] [B]] [C] [C] [C] => [[B] [B] [B]] [C] [C] [C] [A]
+      // Forward: [A] [A] [A] [[B] [B] [B]] [C] => [C] [A] [A] [A] [[B] [B] [B]]
+      else if (!targetTabIsInGroup && manyGroups && !anchorTabIsInGroup) {
+        return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+      }
+      // Backward: [A] [B] [B] [B] [[C] [C] [...]] => [B] [B] [B] [C] [C] [A] [[...]]
+      // Forward: [[...] [A] [A]] [B] [B] [B] [C] => [[...]] [C] [A] [A] [B] [B] [B]
+      else if (!targetTabIsInGroup && manyGroups && !fullySelected) {
+        await ungroupTabs(anchorGroup)
+        return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+      }
+      // Backward: [A] [B] [B] [B] [[C] [C] [C]] => [B] [B] [B] [[C] [C] [C]] [A]
+      // Forward: [[A] [A] [A]] [B] [B] [B] [C] => [C] [[A] [A] [A]] [B] [B] [B]
+      else if (!targetTabIsInGroup && manyGroups && fullySelected) {
+        return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+      }
+      // Backward: [[A] [B]] [C] [C] => [[A] [B] [C] [C]]
+      // Forward: [A] [A] [[B] [C]] => [[A] [A] [B] [C]]
+      else if (targetTab.groupId === focusTab.groupId && targetTab.groupId !== anchorTab.groupId) {
+        return groupTabs(tabs, { id: targetTab.groupId })
+      }
+      // Backward: [[A] [B] [B] [B]] => [[B] [B] [B] [A]]
+      // Forward: [[B] [B] [B] [A]] => [[A] [B] [B] [B]]
+      else if (targetTab.groupId === focusTab.groupId && targetTab.groupId === anchorTab.groupId) {
+        return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
+      }
+      // Backward: [[A]] [B] [B] [B] => [[A] [B] [B] [B]]
+      // Forward: [A] [A] [A] [[B]] => [[A] [A] [A] [B]]
+      else if (!targetTabIsHidden && singleGroup && !anchorTabIsInGroup) {
+        return groupTabs(tabs, { id: targetTab.groupId })
+      }
+      // Backward: [[...]] [B] [B] [B] => [B] [B] [B] [[...]]
+      // Forward: [A] [A] [A] [[...]] => [[...]] [A] [A] [A]
+      else if (targetTabIsHidden && singleGroup && !anchorTabIsInGroup) {
+        await moveGroupToTab(targetTab, anchorTab)
+      }
+      // Backward: [[A]] [[B] [B] [...]] => [[A]] [B] [B] [[...]]
+      // Forward: [[...] [A] [A]] [[B]] => [[...]] [A] [A] [[B]]
+      else if (targetTabIsInGroup && singleGroup && !fullySelected) {
+        return ungroupTabs(tabs)
+      }
+      // Backward: [[A]] [[B] [B] [B]] => [[B] [B] [B]] [[A]]
+      // Forward: [[A] [A] [A]] [[B]] => [[B]] [[A] [A] [A]]
+      else if (targetTabIsInGroup && singleGroup && fullySelected) {
+        await moveGroupToTab(targetTab, anchorTab)
+      }
+      // Backward: [[A]] [[B] [B] [B]] [C] [C] [C] => [[B] [B] [B]] [C] [C] [C] [[A]]
+      // Forward: [A] [A] [A] [[B] [B] [B]] [[C]] => [[C]] [A] [A] [A] [[B] [B] [B]]
+      else if (targetTabIsInGroup && manyGroups && !anchorTabIsInGroup) {
+        await moveGroupToTab(targetTab, anchorTab)
+      }
+      // Backward: [[A]] [B] [B] [B] [[C] [C] [...]] => [B] [B] [B] [C] [C] [[A]] [[...]]
+      // Forward: [[...] [A] [A]] [B] [B] [B] [[C]] => [[...]] [[C]] [A] [A] [B] [B] [B]
+      else if (targetTabIsInGroup && manyGroups && !fullySelected) {
+        await ungroupTabs(anchorGroup)
+        await moveGroupToTab(targetTab, anchorTab)
+      }
+      // Backward: [[A]] [B] [B] [B] [[C] [C] [C]] => [B] [B] [B] [[C] [C] [C]] [[A]]
+      // Forward: [[A] [A] [A]] [B] [B] [B] [[C]] => [[C]] [[A] [A] [A]] [B] [B] [B]
+      else if (targetTabIsInGroup && manyGroups && fullySelected) {
+        await moveGroupToTab(targetTab, anchorTab)
+      }
+    }, Promise.resolve())
+  ])
 }
 
 // Moves selected tabs left.
 // Skips hidden tabs—the ones whose are in collapsed tab groups.
 export async function moveTabLeft(context) {
-  const isSelected = tab => tab.highlighted
-  const byGroup = tab => tab.groupId
-
-  const allTabs = await getAllTabs(context)
-  const allTabsByGroup = allTabs.group(byGroup)
-  const startIndex = allTabs.findIndex(tab => !tab.pinned)
-  const [pinnedTabs, otherTabs] = startIndex === -1
-    ? [allTabs, []]
-    : [allTabs.slice(0, startIndex), allTabs.slice(startIndex)]
-
-  // Determine whose tabs are hidden.
-  // A tab in a collapsed group is considered hidden.
-  const tabGroups = await getAllTabGroups(context)
-  const collapsedInfo = Object.fromEntries(tabGroups.map((tabGroup) => [tabGroup.id, tabGroup.collapsed]))
-
-  // Move chunked tabs.
-  let tabChunks
-
-  // Move pinned tabs.
-  tabChunks = chunk(pinnedTabs, isSelected)
-  // Handle the left boundary.
-  // This also ensures a tab selection is always preceded by another tab.
-  if (tabChunks.length > 0 && tabChunks[0][0]) {
-    tabChunks.shift()
-  }
-  for (const [highlighted, tabs] of tabChunks) {
-    if (!highlighted) {
-      continue
-    }
-    const firstTab = tabs.at(0)
-    const lastTab = tabs.at(-1)
-    const previousTab = allTabs[firstTab.index - 1]
-    await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-  }
-
-  // Move other tabs.
-  tabChunks = chunk(otherTabs, isSelected)
-  // Handle the left boundary.
-  // This also ensures a tab selection is always preceded by another tab.
-  if (tabChunks.length > 0 && tabChunks[0][0]) {
-    tabChunks.shift()
-  }
-  for (const [highlighted, tabs] of tabChunks) {
-    if (!highlighted) {
-      continue
-    }
-
-    // Get some info about the tab selection,
-    // whether it spawns multiple groups, entirely selected.
-    const tabChunks = chunk(tabs, byGroup)
-    const groupCount = tabChunks.length
-    const singleGroup = groupCount === 1
-    const manyGroups = groupCount > 1
-    const [groupId, lastGroup] = tabChunks.at(-1)
-    const fullySelected = groupId !== TAB_GROUP_ID_NONE && lastGroup.length === allTabsByGroup[groupId].length
-
-    // Get some info about the head and tail.
-    const firstTab = tabs.at(0)
-    const lastTab = tabs.at(-1)
-    const lastTabIsInGroup = isTabInGroup(lastTab)
-
-    // Get some info about the previous tab.
-    // Determine whether the previous tab is hidden.
-    // A tab in a collapsed group is considered hidden.
-    const previousTab = allTabs[firstTab.index - 1]
-    const previousTabIsInGroup = isTabInGroup(previousTab)
-    const previousTabIsHidden = collapsedInfo[previousTab.groupId]
-
-    // Tab strip—before/after:
-    // [A] [B] [B] [B] => [B] [B] [B] [A]
-    if (!previousTabIsInGroup && singleGroup && !lastTabIsInGroup) {
-      await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-    }
-    // [A] [[B] [B] [...]] => [A] [B] [B] [[...]]
-    else if (!previousTabIsInGroup && singleGroup && !fullySelected) {
-      await ungroupTabs(tabs)
-    }
-    // [A] [[B] [B] [B]] => [[B] [B] [B]] [A]
-    else if (!previousTabIsInGroup && singleGroup && fullySelected) {
-      await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-    }
-    // [A] [[B] [B] [B]] [C] [C] [C] => [[B] [B] [B]] [C] [C] [C] [A]
-    else if (!previousTabIsInGroup && manyGroups && !lastTabIsInGroup) {
-      await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-    }
-    // [A] [B] [B] [B] [[C] [C] [...]] => [B] [B] [B] [C] [C] [A] [[...]]
-    else if (!previousTabIsInGroup && manyGroups && !fullySelected) {
-      await ungroupTabs(lastGroup)
-      await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-    }
-    // [A] [B] [B] [B] [[C] [C] [C]] => [B] [B] [B] [[C] [C] [C]] [A]
-    else if (!previousTabIsInGroup && manyGroups && fullySelected) {
-      await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-    }
-    // [[A] [B]] [C] [C] => [[A] [B] [C] [C]]
-    else if (previousTab.groupId === firstTab.groupId && previousTab.groupId !== lastTab.groupId) {
-      await groupTabs(tabs, { id: previousTab.groupId })
-    }
-    // [[A] [B] [B] [B]] => [[B] [B] [B] [A]]
-    else if (previousTab.groupId === firstTab.groupId && previousTab.groupId === lastTab.groupId) {
-      await chrome.tabs.move(previousTab.id, { index: lastTab.index })
-    }
-    // [[A]] [B] [B] [B] => [[A] [B] [B] [B]]
-    else if (!previousTabIsHidden && singleGroup && !lastTabIsInGroup) {
-      await groupTabs(tabs, { id: previousTab.groupId })
-    }
-    // [[...]] [B] [B] [B] => [B] [B] [B] [[...]]
-    else if (previousTabIsHidden && singleGroup && !lastTabIsInGroup) {
-      await chrome.tabGroups.move(previousTab.groupId, { index: -1 })
-      const targetTab = await chrome.tabs.get(lastTab.id)
-      await chrome.tabGroups.move(previousTab.groupId, { index: targetTab.index + 1 })
-    }
-    // [[A]] [[B] [B] [...]] => [[A]] [B] [B] [[...]]
-    else if (previousTabIsInGroup && singleGroup && !fullySelected) {
-      await ungroupTabs(tabs)
-    }
-    // [[A]] [[B] [B] [B]] => [[B] [B] [B]] [[A]]
-    else if (previousTabIsInGroup && singleGroup && fullySelected) {
-      await chrome.tabGroups.move(previousTab.groupId, { index: -1 })
-      const targetTab = await chrome.tabs.get(lastTab.id)
-      await chrome.tabGroups.move(previousTab.groupId, { index: targetTab.index + 1 })
-    }
-    // [[A]] [[B] [B] [B]] [C] [C] [C] => [[B] [B] [B]] [C] [C] [C] [[A]]
-    else if (previousTabIsInGroup && manyGroups && !lastTabIsInGroup) {
-      await chrome.tabGroups.move(previousTab.groupId, { index: -1 })
-      const targetTab = await chrome.tabs.get(lastTab.id)
-      await chrome.tabGroups.move(previousTab.groupId, { index: targetTab.index + 1 })
-    }
-    // [[A]] [B] [B] [B] [[C] [C] [...]] => [B] [B] [B] [C] [C] [[A]] [[...]]
-    else if (previousTabIsInGroup && manyGroups && !fullySelected) {
-      await ungroupTabs(lastGroup)
-      await chrome.tabGroups.move(previousTab.groupId, { index: -1 })
-      const targetTab = await chrome.tabs.get(lastTab.id)
-      await chrome.tabGroups.move(previousTab.groupId, { index: targetTab.index + 1 })
-    }
-    // [[A]] [B] [B] [B] [[C] [C] [C]] => [B] [B] [B] [[C] [C] [C]] [[A]]
-    else if (previousTabIsInGroup && manyGroups && fullySelected) {
-      await chrome.tabGroups.move(previousTab.groupId, { index: -1 })
-      const targetTab = await chrome.tabs.get(lastTab.id)
-      await chrome.tabGroups.move(previousTab.groupId, { index: targetTab.index + 1 })
-    }
-  }
+  await moveTabDirection(context, Direction.Backward)
 }
 
 // Moves selected tabs right.
 // Skips hidden tabs—the ones whose are in collapsed tab groups.
 export async function moveTabRight(context) {
-  const isSelected = tab => tab.highlighted
-  const byGroup = tab => tab.groupId
-
-  const allTabs = await getAllTabs(context)
-  const allTabsByGroup = allTabs.group(byGroup)
-  const startIndex = allTabs.findIndex(tab => !tab.pinned)
-  const [pinnedTabs, otherTabs] = startIndex === -1
-    ? [allTabs, []]
-    : [allTabs.slice(0, startIndex), allTabs.slice(startIndex)]
-
-  // Determine whose tabs are hidden.
-  // A tab in a collapsed group is considered hidden.
-  const tabGroups = await getAllTabGroups(context)
-  const collapsedInfo = Object.fromEntries(tabGroups.map((tabGroup) => [tabGroup.id, tabGroup.collapsed]))
-
-  // Move chunked tabs.
-  let tabChunks
-
-  // Move pinned tabs.
-  tabChunks = chunk(pinnedTabs, isSelected)
-  // Handle the right boundary.
-  // This also ensures a tab selection is always followed by another tab.
-  if (tabChunks.length > 0 && tabChunks.at(-1)[0]) {
-    tabChunks.pop()
-  }
-  for (let index = tabChunks.length - 1; index >= 0; index--) {
-    const [highlighted, tabs] = tabChunks[index]
-
-    if (!highlighted) {
-      continue
-    }
-    const firstTab = tabs.at(0)
-    const lastTab = tabs.at(-1)
-    const nextTab = allTabs[lastTab.index + 1]
-    await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-  }
-
-  // Move other tabs.
-  tabChunks = chunk(otherTabs, isSelected)
-  // Handle the right boundary.
-  // This also ensures a tab selection is always followed by another tab.
-  if (tabChunks.length > 0 && tabChunks.at(-1)[0]) {
-    tabChunks.pop()
-  }
-  for (let index = tabChunks.length - 1; index >= 0; index--) {
-    const [highlighted, tabs] = tabChunks[index]
-
-    if (!highlighted) {
-      continue
-    }
-
-    // Get some info about the tab selection,
-    // whether it spawns multiple groups, entirely selected.
-    const groupChunks = chunk(tabs, byGroup)
-    const groupCount = groupChunks.length
-    const singleGroup = groupCount === 1
-    const manyGroups = groupCount > 1
-    const [groupId, firstGroup] = groupChunks[0]
-    const fullySelected = groupId !== TAB_GROUP_ID_NONE && firstGroup.length === allTabsByGroup[groupId].length
-
-    // Get some info about the head and tail.
-    const firstTab = tabs.at(0)
-    const lastTab = tabs.at(-1)
-    const firstTabIsInGroup = isTabInGroup(firstTab)
-
-    // Get some info about the next tab.
-    // Determine whether the next tab is hidden.
-    // A tab in a collapsed group is considered hidden.
-    const nextTab = allTabs[lastTab.index + 1]
-    const nextTabIsInGroup = isTabInGroup(nextTab)
-    const nextTabIsHidden = collapsedInfo[nextTab.groupId]
-
-    // Tab strip—before/after:
-    // [A] [A] [A] [B] => [B] [A] [A] [A]
-    if (!nextTabIsInGroup && singleGroup && !firstTabIsInGroup) {
-      await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-    }
-    // [[...] [A] [A]] [B] => [[...]] [A] [A] [B]
-    else if (!nextTabIsInGroup && singleGroup && !fullySelected) {
-      await ungroupTabs(tabs.reverse())
-    }
-    // [[A] [A] [A]] [B] => [B] [[A] [A] [A]]
-    else if (!nextTabIsInGroup && singleGroup && fullySelected) {
-      await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-    }
-    // [A] [A] [A] [[B] [B] [B]] [C] => [C] [A] [A] [A] [[B] [B] [B]]
-    else if (!nextTabIsInGroup && manyGroups && !firstTabIsInGroup) {
-      await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-    }
-    // [[...] [A] [A]] [B] [B] [B] [C] => [[...]] [C] [A] [A] [B] [B] [B]
-    else if (!nextTabIsInGroup && manyGroups && !fullySelected) {
-      await ungroupTabs(firstGroup.reverse())
-      await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-    }
-    // [[A] [A] [A]] [B] [B] [B] [C] => [C] [[A] [A] [A]] [B] [B] [B]
-    else if (!nextTabIsInGroup && manyGroups && fullySelected) {
-      await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-    }
-    // [A] [A] [[B] [C]] => [[A] [A] [B] [C]]
-    else if (nextTab.groupId === lastTab.groupId && nextTab.groupId !== firstTab.groupId) {
-      await groupTabs(tabs, { id: nextTab.groupId })
-    }
-    // [[B] [B] [B] [A]] => [[A] [B] [B] [B]]
-    else if (nextTab.groupId === lastTab.groupId && nextTab.groupId === firstTab.groupId) {
-      await chrome.tabs.move(nextTab.id, { index: firstTab.index })
-    }
-    // [A] [A] [A] [[B]] => [[A] [A] [A] [B]]
-    else if (!nextTabIsHidden && singleGroup && !firstTabIsInGroup) {
-      await groupTabs(tabs, { id: nextTab.groupId })
-    }
-    // [A] [A] [A] [[...]] => [[...]] [A] [A] [A]
-    else if (nextTabIsHidden && singleGroup && !firstTabIsInGroup) {
-      await chrome.tabGroups.move(nextTab.groupId, { index: firstTab.index })
-    }
-    // [[...] [A] [A]] [[B]] => [[...]] [A] [A] [[B]]
-    else if (nextTabIsInGroup && singleGroup && !fullySelected) {
-      await ungroupTabs(tabs.reverse())
-    }
-    // [[A] [A] [A]] [[B]] => [[B]] [[A] [A] [A]]
-    else if (nextTabIsInGroup && singleGroup && fullySelected) {
-      await chrome.tabGroups.move(nextTab.groupId, { index: firstTab.index })
-    }
-    // [A] [A] [A] [[B] [B] [B]] [[C]] => [[C]] [A] [A] [A] [[B] [B] [B]]
-    else if (nextTabIsInGroup && manyGroups && !firstTabIsInGroup) {
-      await chrome.tabGroups.move(nextTab.groupId, { index: firstTab.index })
-    }
-    // [[...] [A] [A]] [B] [B] [B] [[C]] => [[...]] [[C]] [A] [A] [B] [B] [B]
-    else if (nextTabIsInGroup && manyGroups && !fullySelected) {
-      await ungroupTabs(firstGroup.reverse())
-      await chrome.tabGroups.move(nextTab.groupId, { index: firstTab.index })
-    }
-    // [[A] [A] [A]] [B] [B] [B] [[C]] => [[C]] [[A] [A] [A]] [B] [B] [B]
-    else if (nextTabIsInGroup && manyGroups && fullySelected) {
-      await chrome.tabGroups.move(nextTab.groupId, { index: firstTab.index })
-    }
-  }
+  await moveTabDirection(context, Direction.Forward)
 }
 
+// Moves selected tabs to the far left/right.
 async function moveTabEdgeDirection(context, direction) {
-  const currentTab = context.tab
-
-  let tabIndex
+  let tabIndex, reduceMethod
   switch (direction) {
     case Direction.Backward:
       tabIndex = 0
+      reduceMethod = 'reduce'
       break
     case Direction.Forward:
       tabIndex = -1
+      reduceMethod = 'reduceRight'
       break
   }
 
-  // Adjust the edge, if in a group.
-  if (isTabInGroup(currentTab)) {
-    const tabsInGroup = await getTabsInGroup(context)
-    tabIndex = tabsInGroup.at(tabIndex).index
-  }
-
-  // Move the current tab to the edge.
-  await chrome.tabs.move(currentTab.id, { index: tabIndex })
-}
-
-// Moves selected tabs to the far left.
-export async function moveTabFirst(context) {
+  // Partition pinned tabs.
   const tabs = await getAllTabs(context)
   const startIndex = tabs.findIndex(tab => !tab.pinned)
   const [pinnedTabs, otherTabs] = startIndex === -1
@@ -961,54 +799,35 @@ export async function moveTabFirst(context) {
   // Move chunked tabs.
   const isSelected = tab => tab.highlighted
   const byGroup = tab => tab.groupId
-  await Promise.all([
-    // Move pinned tabs.
-    moveTabs(pinnedTabs.filter(isSelected), { index: 0 }),
-
-    // Move other tabs.
-    chunk(otherTabs, byGroup).reduceRight((previousPromise, [groupId, tabs]) => previousPromise.then((value) => {
-      const selectedTabs = tabs.filter(isSelected)
-      // Only move tab group if fully selected.
-      return groupId !== TAB_GROUP_ID_NONE
-        ? selectedTabs.length === tabs.length
-        ? chrome.tabGroups.move(groupId, { index: pinnedTabs.length })
-
-        // Refresh the first tab in group.
-        : chrome.tabs.get(tabs[0].id).then((targetTab) =>
-          moveTabs(selectedTabs, { index: targetTab.index })
-        )
-        : moveTabs(selectedTabs, { index: 0 })
-    }), Promise.resolve())
-  ])
-}
-
-// Moves selected tabs to the far right.
-export async function moveTabLast(context) {
-  const tabs = await getAllTabs(context)
-  const startIndex = tabs.findIndex(tab => !tab.pinned)
-  const [pinnedTabs, otherTabs] = startIndex === -1
-    ? [tabs, []]
-    : [tabs.slice(0, startIndex), tabs.slice(startIndex)]
-
-  // Move chunked tabs.
-  const isSelected = tab => tab.highlighted
-  const byGroup = tab => tab.groupId
-  const moveProperties = { index: -1 }
+  const moveProperties = { index: tabIndex }
   await Promise.all([
     // Move pinned tabs.
     moveTabs(pinnedTabs.filter(isSelected), moveProperties),
 
     // Move other tabs.
-    chunk(otherTabs, byGroup).reduce((previousPromise, [groupId, tabs]) => previousPromise.then((value) => {
+    chunk(otherTabs, byGroup)[reduceMethod]((previousPromise, [groupId, tabs]) => previousPromise.then((value) => {
       const selectedTabs = tabs.filter(isSelected)
+      // Move selected tabs, tabs in group or tab group to the far left/right.
       // Only move tab group if fully selected.
       return selectedTabs.length && groupId !== TAB_GROUP_ID_NONE
         ? selectedTabs.length === tabs.length
-        ? chrome.tabGroups.move(groupId, moveProperties)
+        // Handle pinned tabs.
+        // Error: Cannot move the group to an index that is in the middle of pinned tabs.
+        ? chrome.tabGroups.move(groupId, { index: tabIndex || pinnedTabs.length })
         : moveTabs(selectedTabs, moveProperties).then(tabs => groupTabs(tabs, { id: groupId }))
         : moveTabs(selectedTabs, moveProperties)
     }), Promise.resolve())
   ])
+}
+
+// Moves selected tabs to the far left.
+export async function moveTabFirst(context) {
+  await moveTabEdgeDirection(context, Direction.Backward)
+}
+
+// Moves selected tabs to the far right.
+export async function moveTabLast(context) {
+  await moveTabEdgeDirection(context, Direction.Forward)
 }
 
 // Moves selected tabs to the specified window.
