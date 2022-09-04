@@ -682,80 +682,80 @@ async function moveTabDirection(context, direction) {
       // Skips hidden tabs—the ones whose are in collapsed tab groups.
       //
       // Tab strip—before/after:
-      // Backward: [A] [B] [B] [B] => [B] [B] [B] [A]
-      // Forward: [A] [A] [A] [B] => [B] [A] [A] [A]
+      // Backward: [A] __[B] [B] [B]__ => __[B] [B] [B]__ [A]
+      // Forward: __[A] [A] [A]__ [B] => [B] __[A] [A] [A]__
       if (!targetTabIsInGroup && singleGroup && !anchorTabIsInGroup) {
         return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
       }
-      // Backward: [A] [[B] [B] [...]] => [A] [B] [B] [[...]]
-      // Forward: [[...] [A] [A]] [B] => [[...]] [A] [A] [B]
+      // Backward: [A] [__[B] [B]__ [...]] => [A] __[B] [B]__ [[...]]
+      // Forward: [[...] __[A] [A]__] [B] => [[...]] __[A] [A]__ [B]
       else if (!targetTabIsInGroup && singleGroup && !fullySelected) {
         return ungroupTabs(tabs)
       }
-      // Backward: [A] [[B] [B] [B]] => [[B] [B] [B]] [A]
-      // Forward: [[A] [A] [A]] [B] => [B] [[A] [A] [A]]
+      // Backward: [A] __[[B] [B] [B]]__ => __[[B] [B] [B]]__ [A]
+      // Forward: __[[A] [A] [A]]__ [B] => [B] __[[A] [A] [A]]__
       else if (!targetTabIsInGroup && singleGroup && fullySelected) {
         return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
       }
-      // Backward: [A] [[B] [B] [B]] [C] [C] [C] => [[B] [B] [B]] [C] [C] [C] [A]
-      // Forward: [A] [A] [A] [[B] [B] [B]] [C] => [C] [A] [A] [A] [[B] [B] [B]]
+      // Backward: [A] __[[B] [B] [B]] [C] [C] [C]__ => __[[B] [B] [B]] [C] [C] [C]__ [A]
+      // Forward: __[A] [A] [A] [[B] [B] [B]]__ [C] => [C] __[A] [A] [A] [[B] [B] [B]]__
       else if (!targetTabIsInGroup && manyGroups && !anchorTabIsInGroup) {
         return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
       }
-      // Backward: [A] [B] [B] [B] [[C] [C] [...]] => [B] [B] [B] [C] [C] [A] [[...]]
-      // Forward: [[...] [A] [A]] [B] [B] [B] [C] => [[...]] [C] [A] [A] [B] [B] [B]
+      // Backward: [A] __[B] [B] [B] [[C] [C]__ [...]] => __[B] [B] [B] [C] [C]__ [A] [[...]]
+      // Forward: [[...] __[A] [A]] [B] [B] [B]__ [C] => [[...]] [C] __[A] [A] [B] [B] [B]__
       else if (!targetTabIsInGroup && manyGroups && !fullySelected) {
         await ungroupTabs(anchorGroup)
         return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
       }
-      // Backward: [A] [B] [B] [B] [[C] [C] [C]] => [B] [B] [B] [[C] [C] [C]] [A]
-      // Forward: [[A] [A] [A]] [B] [B] [B] [C] => [C] [[A] [A] [A]] [B] [B] [B]
+      // Backward: [A] __[B] [B] [B] [[C] [C] [C]]__ => __[B] [B] [B] [[C] [C] [C]]__ [A]
+      // Forward: __[[A] [A] [A]] [B] [B] [B]__ [C] => [C] __[[A] [A] [A]] [B] [B] [B]__
       else if (!targetTabIsInGroup && manyGroups && fullySelected) {
         return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
       }
-      // Backward: [[A] [B]] [C] [C] => [[A] [B] [C] [C]]
-      // Forward: [A] [A] [[B] [C]] => [[A] [A] [B] [C]]
+      // Backward: [[A] __[B]] [C] [C]__ => [[A] __[B] [C] [C]__]
+      // Forward: __[A] [A] [[B]__ [C]] => [__[A] [A] [B]__ [C]]
       else if (targetTab.groupId === focusTab.groupId && targetTab.groupId !== anchorTab.groupId) {
         return groupTabs(tabs, { id: targetTab.groupId })
       }
-      // Backward: [[A] [B] [B] [B]] => [[B] [B] [B] [A]]
-      // Forward: [[B] [B] [B] [A]] => [[A] [B] [B] [B]]
+      // Backward: [[A] __[B] [B] [B]__] => [__[B] [B] [B]__ [A]]
+      // Forward: [__[A] [A] [A]__ [B]] => [[B] __[A] [A] [A]__]
       else if (targetTab.groupId === focusTab.groupId && targetTab.groupId === anchorTab.groupId) {
         return chrome.tabs.move(targetTab.id, { index: anchorTab.index })
       }
-      // Backward: [[A]] [B] [B] [B] => [[A] [B] [B] [B]]
-      // Forward: [A] [A] [A] [[B]] => [[A] [A] [A] [B]]
+      // Backward: [[A]] __[B] [B] [B]__ => [[A] __[B] [B] [B]__]
+      // Forward: __[A] [A] [A]__ [[B]] => [__[A] [A] [A]__ [B]]
       else if (!targetTabIsHidden && singleGroup && !anchorTabIsInGroup) {
         return groupTabs(tabs, { id: targetTab.groupId })
       }
-      // Backward: [[...]] [B] [B] [B] => [B] [B] [B] [[...]]
-      // Forward: [A] [A] [A] [[...]] => [[...]] [A] [A] [A]
+      // Backward: [[...]] __[B] [B] [B]__ => __[B] [B] [B]__ [[...]]
+      // Forward: __[A] [A] [A]__ [[...]] => [[...]] __[A] [A] [A]__
       else if (targetTabIsHidden && singleGroup && !anchorTabIsInGroup) {
         await moveGroupToTab(targetTab, anchorTab)
       }
-      // Backward: [[A]] [[B] [B] [...]] => [[A]] [B] [B] [[...]]
-      // Forward: [[...] [A] [A]] [[B]] => [[...]] [A] [A] [[B]]
+      // Backward: [[A]] [__[B] [B]__ [...]] => [[A]] __[B] [B]__ [[...]]
+      // Forward: [[...] __[A] [A]__] [[B]] => [[...]] __[A] [A]__ [[B]]
       else if (targetTabIsInGroup && singleGroup && !fullySelected) {
         return ungroupTabs(tabs)
       }
-      // Backward: [[A]] [[B] [B] [B]] => [[B] [B] [B]] [[A]]
-      // Forward: [[A] [A] [A]] [[B]] => [[B]] [[A] [A] [A]]
+      // Backward: [[A]] __[[B] [B] [B]]__ => __[[B] [B] [B]]__ [[A]]
+      // Forward: __[[A] [A] [A]]__ [[B]] => [[B]] __[[A] [A] [A]]__
       else if (targetTabIsInGroup && singleGroup && fullySelected) {
         await moveGroupToTab(targetTab, anchorTab)
       }
-      // Backward: [[A]] [[B] [B] [B]] [C] [C] [C] => [[B] [B] [B]] [C] [C] [C] [[A]]
-      // Forward: [A] [A] [A] [[B] [B] [B]] [[C]] => [[C]] [A] [A] [A] [[B] [B] [B]]
+      // Backward: [[A]] __[[B] [B] [B]] [C] [C] [C]__ => __[[B] [B] [B]] [C] [C] [C]__ [[A]]
+      // Forward: __[A] [A] [A] [[B] [B] [B]]__ [[C]] => [[C]] __[A] [A] [A] [[B] [B] [B]]__
       else if (targetTabIsInGroup && manyGroups && !anchorTabIsInGroup) {
         await moveGroupToTab(targetTab, anchorTab)
       }
-      // Backward: [[A]] [B] [B] [B] [[C] [C] [...]] => [B] [B] [B] [C] [C] [[A]] [[...]]
-      // Forward: [[...] [A] [A]] [B] [B] [B] [[C]] => [[...]] [[C]] [A] [A] [B] [B] [B]
+      // Backward: [[A]] __[B] [B] [B] [[C] [C]__ [...]] => __[B] [B] [B] [C] [C]__ [[A]] [[...]]
+      // Forward: [[...] __[A] [A]] [B] [B] [B]__ [[C]] => [[...]] [[C]] __[A] [A] [B] [B] [B]__
       else if (targetTabIsInGroup && manyGroups && !fullySelected) {
         await ungroupTabs(anchorGroup)
         await moveGroupToTab(targetTab, anchorTab)
       }
-      // Backward: [[A]] [B] [B] [B] [[C] [C] [C]] => [B] [B] [B] [[C] [C] [C]] [[A]]
-      // Forward: [[A] [A] [A]] [B] [B] [B] [[C]] => [[C]] [[A] [A] [A]] [B] [B] [B]
+      // Backward: [[A]] __[B] [B] [B] [[C] [C] [C]]__ => __[B] [B] [B] [[C] [C] [C]]__ [[A]]
+      // Forward: __[[A] [A] [A]] [B] [B] [B]__ [[C]] => [[C]] __[[A] [A] [A]] [B] [B] [B]__
       else if (targetTabIsInGroup && manyGroups && fullySelected) {
         await moveGroupToTab(targetTab, anchorTab)
       }
