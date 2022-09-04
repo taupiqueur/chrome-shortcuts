@@ -239,64 +239,46 @@
     "70.moveTabPreviousWindow": {
       "description": "Move tabs · Move selected tabs to the previous window"
     },
-    "71.moveTabGroupLeft": {
-      "description": "Move tabs · Move tab group left"
-    },
-    "72.moveTabGroupRight": {
-      "description": "Move tabs · Move tab group right"
-    },
-    "73.moveTabGroupFirst": {
-      "description": "Move tabs · Move tab group to the far left"
-    },
-    "74.moveTabGroupLast": {
-      "description": "Move tabs · Move tab group to the far right"
-    },
-    "75.moveTabGroupNewWindow": {
-      "description": "Move tabs · Move tab group to a new window"
-    },
-    "76.moveTabGroupPreviousWindow": {
-      "description": "Move tabs · Move tab group to the previous window"
-    },
-    "77.selectTab": {
+    "71.selectTab": {
       "description": "Select tabs · Deselect all other tabs"
     },
-    "78.selectTabsInGroup": {
+    "72.selectTabsInGroup": {
       "description": "Select tabs · Select tabs in group"
     },
-    "79.selectAllTabs": {
+    "73.selectAllTabs": {
       "description": "Select tabs · Select all tabs"
     },
-    "80.selectRightTabs": {
+    "74.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "81.openDownloadsFolder": {
+    "75.openDownloadsFolder": {
       "description": "Folders · Open the Downloads folder"
     },
-    "82.openHistoryPage": {
+    "76.openHistoryPage": {
       "description": "Chrome URLs · Open the History page"
     },
-    "83.openDownloadsPage": {
+    "77.openDownloadsPage": {
       "description": "Chrome URLs · Open the Downloads page"
     },
-    "84.openBookmarksPage": {
+    "78.openBookmarksPage": {
       "description": "Chrome URLs · Open the Bookmarks page"
     },
-    "85.openSettingsPage": {
+    "79.openSettingsPage": {
       "description": "Chrome URLs · Open the Settings page"
     },
-    "86.openPasswordsPage": {
+    "80.openPasswordsPage": {
       "description": "Chrome URLs · Open the Passwords page"
     },
-    "87.openSearchEnginesPage": {
+    "81.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the Search engines page"
     },
-    "88.openExtensionsPage": {
+    "82.openExtensionsPage": {
       "description": "Chrome URLs · Open the Extensions page"
     },
-    "89.openShortcutsPage": {
+    "83.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
     },
-    "90.openExperimentsPage": {
+    "84.openExperimentsPage": {
       "description": "Chrome URLs · Open the Experiments page"
     }
   }

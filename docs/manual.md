@@ -175,12 +175,6 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `moveTabLast` | Move selected tabs to the far right | | | `End`
 `moveTabNewWindow` | Move selected tabs to a new window | | | `ArrowUp`
 `moveTabPreviousWindow` | Move selected tabs to the previous window | | | `ArrowDown`
-`moveTabGroupLeft` | Move tab group left | | | `⇧ ArrowLeft`
-`moveTabGroupRight` | Move tab group right | | | `⇧ ArrowRight`
-`moveTabGroupFirst` | Move tab group to the far left | | | `⇧ Home`
-`moveTabGroupLast` | Move tab group to the far right | | | `⇧ End`
-`moveTabGroupNewWindow` | Move tab group to a new window | | | `⇧ ArrowUp`
-`moveTabGroupPreviousWindow` | Move tab group to the previous window | | | `⇧ ArrowDown`
 
 ### Select tabs
 
