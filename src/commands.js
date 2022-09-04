@@ -631,9 +631,18 @@ async function moveTabDirection(context, direction) {
   // Handle the left/right boundary.
   // Do nothing if the first chunk to proceed is selected.
   // This also ensures that selected tabs are always preceded/followed by another tab.
-  for (const tabChunks of [pinnedChunks, otherChunks]) {
-    if (tabChunks.length > 0 && tabChunks.at(focusIndex)[0]) {
-      tabChunks.splice(focusIndex, 1)
+  if (pinnedChunks.length > 0 && pinnedChunks.at(focusIndex)[0]) {
+    pinnedChunks.splice(focusIndex, 1)
+  }
+  if (otherChunks.length > 0 && otherChunks.at(focusIndex)[0]) {
+    const [[_, selectedTabs]] = otherChunks.splice(focusIndex, 1)
+    const [[groupId, tabs], ...otherGroups] = selectedTabs.groupToMap(byGroup)
+    const singleGroup = otherGroups.length === 0
+    const fullySelected = groupId !== TAB_GROUP_ID_NONE && tabs.length === allTabsByGroup[groupId].length
+    // Only ungroup tabs if the selection
+    // spawns a single group and is not fully selected.
+    if (singleGroup && !fullySelected) {
+      await ungroupTabs(tabs)
     }
   }
   await Promise.all([
