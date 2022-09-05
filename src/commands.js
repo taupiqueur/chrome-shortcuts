@@ -904,8 +904,18 @@ export async function selectTab(context) {
 // Selects tabs in group.
 // Note: Can be used for ungrouped tabs.
 export async function selectTabsInGroup(context) {
-  const tabsInGroup = await getTabsInGroup(context)
-  await highlightTabs([context.tab, ...tabsInGroup])
+  const isSelected = tab => tab.highlighted
+  const byGroup = tab => tab.pinned || tab.groupId
+
+  // Partition tabs and extend each selection to the whole group.
+  const allTabs = await getAllTabs(context)
+  const tabsToHighlight = [context.tab]
+  for (const [_, tabs] of chunk(allTabs, byGroup)) {
+    if (tabs.some(isSelected)) {
+      tabsToHighlight.push(...tabs)
+    }
+  }
+  await highlightTabs(tabsToHighlight)
 }
 
 // Selects all tabs.
