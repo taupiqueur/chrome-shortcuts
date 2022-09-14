@@ -112,8 +112,8 @@ export const focusSixthTab = message('focusSixthTab', false, true)
 export const focusSeventhTab = message('focusSeventhTab', false, true)
 export const focusEighthTab = message('focusEighthTab', false, true)
 export const focusLastTab = message('focusLastTab', false, true)
-export const focusNextWindow = message('focusNextWindow', false, true)
-export const focusPreviousWindow = message('focusPreviousWindow', false, true)
+export const focusNextWindow = message('focusNextWindow', true, true)
+export const focusPreviousWindow = message('focusPreviousWindow', true, true)
 
 // Move tabs -------------------------------------------------------------------
 
