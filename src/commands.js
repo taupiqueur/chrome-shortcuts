@@ -9,7 +9,7 @@
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
 import { chunk } from './lib/array.js'
-import { modulo } from './lib/math.js'
+import { modulo, clamp } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getCurrentWindow, getNextWindow, getPreviousWindow } from './context.js'
@@ -899,6 +899,79 @@ export async function moveTabPreviousWindow(context) {
 // Deselects all other tabs.
 export async function selectTab(context) {
   await highlightTabs([context.tab])
+}
+
+// Selects the next/previous tab.
+async function selectTabDirection(context, direction) {
+  const currentTab = context.tab
+  const allTabs = await getAllTabs(context)
+
+  // Shrink or expand selection, depending on the direction.
+  let anchorIndex, focusIndex, focusOffset
+  switch (direction) {
+    case Direction.Backward:
+      [anchorIndex, focusIndex] = currentTab.index < allTabs.length - 1 && allTabs[currentTab.index + 1].highlighted
+        ? [0, -1]
+        : [-1, 0]
+      focusOffset = -1
+      break
+    case Direction.Forward:
+      [anchorIndex, focusIndex] = currentTab.index > 0 && allTabs[currentTab.index - 1].highlighted
+        ? [-1, 0]
+        : [0, -1]
+      focusOffset = 1
+      break
+  }
+
+  // Only iterate selected tabs.
+  const tabsToHighlight = [currentTab]
+  const tabSelection = chunk(allTabs, (tab) => tab.highlighted)
+  for (let index = tabSelection[0][0] ? 0 : 1; index < tabSelection.length; index += 2) {
+    const selectedTabs = tabSelection[index][1]
+    const anchorTabIndex = selectedTabs.at(anchorIndex).index
+    const focusTabIndex = clamp(selectedTabs.at(focusIndex).index + focusOffset, 0, allTabs.length - 1)
+
+    // Make Array.slice() work regardless of the selection direction.
+    // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Selection
+    const [startIndex, endIndex] = anchorTabIndex < focusTabIndex
+      ? [anchorTabIndex, focusTabIndex]
+      : [focusTabIndex, anchorTabIndex]
+
+    // Create a new slice which represents the range of selected tabs.
+    const tabs = allTabs.slice(startIndex, endIndex + 1)
+    tabsToHighlight.push(...tabs)
+  }
+  // Update selection ranges.
+  await highlightTabs(tabsToHighlight)
+}
+
+// Selects the previous tab.
+export async function selectPreviousTab(context) {
+  await selectTabDirection(context, Direction.Backward)
+}
+
+// Selects the next tab.
+export async function selectNextTab(context) {
+  await selectTabDirection(context, Direction.Forward)
+}
+
+// Selects related tabs.
+export async function selectRelatedTabs(context) {
+  const isSelected = tab => tab.highlighted
+  const byGroup = tab => tab.pinned || tab.groupId
+  const byDomain = tab => new URL(tab.url).hostname
+
+  // Partition tabs and select related tabs for each group.
+  const allTabs = await getAllTabs(context)
+  const tabsToHighlight = [context.tab]
+  for (const [_, tabPartition] of chunk(allTabs, byGroup)) {
+    for (const [_, tabs] of tabPartition.groupToMap(byDomain)) {
+      if (tabs.some(isSelected)) {
+        tabsToHighlight.push(...tabs)
+      }
+    }
+  }
+  await highlightTabs(tabsToHighlight)
 }
 
 // Selects tabs in group.

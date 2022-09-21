@@ -181,6 +181,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `selectTab` | Deselect all other tabs | | | `KeyS`
+`selectPreviousTab` | Select the previous tab | | | `BracketLeft`
+`selectNextTab` | Select the next tab | | | `BracketRight`
+`selectRelatedTabs` | Select related tabs | | | `Backquote`
 `selectTabsInGroup` | Select tabs in group | | | `KeyA`
 `selectAllTabs` | Select all tabs | | | `⇧ KeyA`
 `selectRightTabs` | Select tabs to the right | | | `⇧ KeyS`

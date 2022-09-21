@@ -134,6 +134,9 @@ export const moveTabGroupPreviousWindow = message('moveTabGroupPreviousWindow', 
 // Select tabs -----------------------------------------------------------------
 
 export const selectTab = message('selectTab')
+export const selectPreviousTab = message('selectPreviousTab')
+export const selectNextTab = message('selectNextTab')
+export const selectRelatedTabs = message('selectRelatedTabs')
 export const selectTabsInGroup = message('selectTabsInGroup')
 export const selectAllTabs = message('selectAllTabs')
 export const selectRightTabs = message('selectRightTabs')

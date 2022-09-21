@@ -242,43 +242,52 @@
     "71.selectTab": {
       "description": "Select tabs · Deselect all other tabs"
     },
-    "72.selectTabsInGroup": {
+    "72.selectPreviousTab": {
+      "description": "Select tabs · Select the previous tab"
+    },
+    "73.selectNextTab": {
+      "description": "Select tabs · Select the next tab"
+    },
+    "74.selectRelatedTabs": {
+      "description": "Select tabs · Select related tabs"
+    },
+    "75.selectTabsInGroup": {
       "description": "Select tabs · Select tabs in group"
     },
-    "73.selectAllTabs": {
+    "76.selectAllTabs": {
       "description": "Select tabs · Select all tabs"
     },
-    "74.selectRightTabs": {
+    "77.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "75.openDownloadsFolder": {
+    "78.openDownloadsFolder": {
       "description": "Folders · Open the Downloads folder"
     },
-    "76.openHistoryPage": {
+    "79.openHistoryPage": {
       "description": "Chrome URLs · Open the History page"
     },
-    "77.openDownloadsPage": {
+    "80.openDownloadsPage": {
       "description": "Chrome URLs · Open the Downloads page"
     },
-    "78.openBookmarksPage": {
+    "81.openBookmarksPage": {
       "description": "Chrome URLs · Open the Bookmarks page"
     },
-    "79.openSettingsPage": {
+    "82.openSettingsPage": {
       "description": "Chrome URLs · Open the Settings page"
     },
-    "80.openPasswordsPage": {
+    "83.openPasswordsPage": {
       "description": "Chrome URLs · Open the Passwords page"
     },
-    "81.openSearchEnginesPage": {
+    "84.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the Search engines page"
     },
-    "82.openExtensionsPage": {
+    "85.openExtensionsPage": {
       "description": "Chrome URLs · Open the Extensions page"
     },
-    "83.openShortcutsPage": {
+    "86.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
     },
-    "84.openExperimentsPage": {
+    "87.openExperimentsPage": {
       "description": "Chrome URLs · Open the Experiments page"
     }
   }
