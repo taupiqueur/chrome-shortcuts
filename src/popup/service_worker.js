@@ -70,6 +70,9 @@ async function handleCommand(message, port) {
   if (stickyWindow) {
     await chrome.action.openPopup()
   }
+
+  // Save command to session.
+  await chrome.storage.session.set({ lastCommand: commandName })
 }
 
 export { handleSetup, handleUpdate, handleConnection }

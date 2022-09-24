@@ -9,6 +9,9 @@ const menuItemElements = document.querySelectorAll('menu-item')
 // Options
 const { popupConfig: { commandBindings } } = await chrome.storage.sync.get('popupConfig')
 
+// Session
+const { lastCommand } = await chrome.storage.session.get('lastCommand')
+
 // Open a channel to communicate with the service worker.
 const port = chrome.runtime.connect({ name: 'popup' })
 
@@ -30,15 +33,21 @@ async function handleCommand(commandName, port) {
 }
 
 // Add menu commands and keyboard shortcuts.
+// Restore selected command from session.
 for (const menuItemElement of menuItemElements) {
   const commandName = menuItemElement.dataset.command
   menuItemElement.addEventListener('click', handleCommand.bind(null, commandName, port))
   for (const keybinding of commandBindings[commandName]) {
     menuItemElement.addKeyboardShortcut(keybinding)
   }
+  if (commandName === lastCommand) {
+    menuItemElement.focus()
+  }
 }
 
 // Listen keyboard shortcuts.
 // Note: <custom-menu autofocus> does not work reliably,
 // hence the use of JavaScript.
-menuElement.focus()
+if (!menuElement.matches(':focus-within')) {
+  menuElement.focus()
+}
