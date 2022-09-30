@@ -299,8 +299,11 @@ export async function restoreTab(context) {
 // Duplicates selected tabs.
 export async function duplicateTab(context) {
   const tabs = await getSelectedTabs(context)
+  const tabIndex = findTabIndex(context, tabs)
   const duplicatedTabs = await duplicateTabs(tabs)
-  await highlightTabs(duplicatedTabs)
+  // Preserve tab selection.
+  const tabToActivate = duplicatedTabs[tabIndex]
+  await highlightTabs([tabToActivate, ...duplicatedTabs])
 }
 
 // Pins or unpins selected tabs.
@@ -310,11 +313,19 @@ export async function togglePinTab(context) {
   await updateTabs(tabs, { pinned: someTabsNotPinned })
 }
 
+// Groups specified tabs and preserves selection.
+async function groupTabsAndPreserveSelection(context, tabs) {
+  const groupId = await groupTabs(tabs)
+  const groupedTabs = await chrome.tabs.query({ groupId })
+  const tabToActivate = groupedTabs.find((tab) => tab.id === context.tab.id)
+  return highlightTabs([tabToActivate, ...groupedTabs])
+}
+
 // Groups or ungroups selected tabs.
 export async function toggleGroupTab(context) {
   const tabs = await getSelectedTabs(context)
   const someTabsNotInGroup = tabs.some((tab) => !isTabInGroup(tab))
-  const groupAction = someTabsNotInGroup ? groupTabs : ungroupTabs
+  const groupAction = someTabsNotInGroup ? groupTabsAndPreserveSelection.bind(null, context) : ungroupTabs
   await groupAction(tabs)
 }
 
