@@ -140,6 +140,7 @@ export const selectRelatedTabs = message('selectRelatedTabs')
 export const selectTabsInGroup = message('selectTabsInGroup')
 export const selectAllTabs = message('selectAllTabs')
 export const selectRightTabs = message('selectRightTabs')
+export const flipTabSelection = message('flipTabSelection', false, true)
 
 // Folders ---------------------------------------------------------------------
 

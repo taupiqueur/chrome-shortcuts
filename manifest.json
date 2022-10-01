@@ -260,34 +260,37 @@
     "77.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "78.openDownloadsFolder": {
+    "78.flipTabSelection": {
+      "description": "Select tabs · Flip tab selection"
+    },
+    "79.openDownloadsFolder": {
       "description": "Folders · Open the Downloads folder"
     },
-    "79.openHistoryPage": {
+    "80.openHistoryPage": {
       "description": "Chrome URLs · Open the History page"
     },
-    "80.openDownloadsPage": {
+    "81.openDownloadsPage": {
       "description": "Chrome URLs · Open the Downloads page"
     },
-    "81.openBookmarksPage": {
+    "82.openBookmarksPage": {
       "description": "Chrome URLs · Open the Bookmarks page"
     },
-    "82.openSettingsPage": {
+    "83.openSettingsPage": {
       "description": "Chrome URLs · Open the Settings page"
     },
-    "83.openPasswordsPage": {
+    "84.openPasswordsPage": {
       "description": "Chrome URLs · Open the Passwords page"
     },
-    "84.openSearchEnginesPage": {
+    "85.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the Search engines page"
     },
-    "85.openExtensionsPage": {
+    "86.openExtensionsPage": {
       "description": "Chrome URLs · Open the Extensions page"
     },
-    "86.openShortcutsPage": {
+    "87.openShortcutsPage": {
       "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
     },
-    "87.openExperimentsPage": {
+    "88.openExperimentsPage": {
       "description": "Chrome URLs · Open the Experiments page"
     }
   }

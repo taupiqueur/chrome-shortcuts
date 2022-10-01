@@ -1015,6 +1015,28 @@ export async function selectRightTabs(context) {
   await highlightTabs(rightTabs)
 }
 
+// Flips tab selection.
+export async function flipTabSelection(context) {
+  const allTabs = await getAllTabs(context)
+  const selectedTabs = await getSelectedTabs(context)
+
+  // Determine the direction to flip selections.
+  let tabIndex = context.tab.index
+  let focusIndex = tabIndex
+  while (focusIndex < allTabs.length - 1 && allTabs[focusIndex + 1].highlighted) {
+    focusIndex++
+  }
+  if (tabIndex === focusIndex) {
+    while (focusIndex > 0 && allTabs[focusIndex - 1].highlighted) {
+      focusIndex--
+    }
+  }
+  tabIndex = focusIndex
+
+  const tabToActivate = allTabs[tabIndex]
+  await highlightTabs([tabToActivate, ...selectedTabs])
+}
+
 // Folders ---------------------------------------------------------------------
 
 // Opens the Downloads folder.

@@ -187,6 +187,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `selectTabsInGroup` | Select tabs in group | | | `KeyA`
 `selectAllTabs` | Select all tabs | | | `⇧ KeyA`
 `selectRightTabs` | Select tabs to the right | | | `⇧ KeyS`
+`flipTabSelection` | Flip tab selection | | | `⌥ Tab`
 
 **Tip**: Selecting tabs in group can be used for ungrouped tabs.
 

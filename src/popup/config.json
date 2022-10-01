@@ -77,6 +77,7 @@
     "selectTabsInGroup": [{ "code": "KeyA" }],
     "selectAllTabs": [{ "shiftKey": true, "code": "KeyA" }],
     "selectRightTabs": [{ "shiftKey": true, "code": "KeyS" }],
+    "flipTabSelection": [{ "altKey": true, "code": "Tab" }],
     "openDownloadsFolder": [{ "ctrlKey": true, "code": "KeyK" }],
     "openHistoryPage": [{ "ctrlKey": true, "code": "KeyH" }],
     "openDownloadsPage": [{ "ctrlKey": true, "code": "KeyJ" }],
