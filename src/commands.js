@@ -1009,10 +1009,12 @@ export async function selectAllTabs(context) {
 }
 
 // Selects tabs to the right.
+// Starts from the leftmost selected tab.
 export async function selectRightTabs(context) {
   const tabs = await getAllTabs(context)
-  const rightTabs = tabs.slice(context.tab.index)
-  await highlightTabs(rightTabs)
+  const startIndex = tabs.findIndex(tab => tab.highlighted)
+  const rightTabs = tabs.slice(startIndex)
+  await highlightTabs([context.tab, ...rightTabs])
 }
 
 // Flips tab selection.
