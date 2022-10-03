@@ -2,11 +2,21 @@
 
 ## Usage
 
-- Press `Alt+Space` (`Ctrl+Space` on Windows) to open the extension’s popup.
-- Navigate to `chrome://extensions/shortcuts` to configure keyboard shortcuts.
+`Alt+Space` (`Ctrl+Space` on Windows) is the main keyboard shortcut.
+
+Use it to open the extension’s popup—aka “Vim” mode.
+
+Press `Escape` to cancel.
+
+### Configure keyboard shortcuts
+
+Navigate to `chrome://extensions/shortcuts` to configure keyboard shortcuts.
+
 You can for example bind `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate the current tab,
 or change the default shortcut—to open the popup—to `Alt+J`.
-You can also configure the popup keys by importing and exporting settings in the **Options** page.
+
+You can also configure the popup keys by importing and exporting settings
+in the **Options** page—Right-click the Shortcuts toolbar button and select **Options**.
 
 ### In practice?
 
@@ -40,6 +50,9 @@ See [Keyboard Event `code` Value Tables] for a complete reference.
 You will find the list of code values and informative symbols.
 
 [Keyboard Event `code` Value Tables]: https://w3c.github.io/uievents-code/#code-value-tables
+
+**Tip**: You can hover over the menu commands to show the keys to press
+(e.g., hovering over `KeyJ` will show `j` on a US keyboard).
 
 ### Navigation
 
@@ -222,3 +235,14 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboard shortcuts].
 
 [Chrome keyboard shortcuts]: https://support.google.com/chrome/answer/157179
+
+## Tips and tricks
+
+- **To close right tabs**—Select tabs to the right with `Tab`, `⇧ KeyS`, then close selection with `KeyX`.
+- **To close other tabs**—Move the tab you want to keep to the far left with the `Home` key, then close tabs to the right.
+- **To move tab groups**—Select all tabs in group with `KeyA`, then use a move action, such as `ArrowLeft` / `ArrowRight` for horizontal movements.
+- **To merge windows**—Select all tabs with `⇧ KeyA`, then press the `Down` key to move selected tabs to the previous window.
+
+For more tips, see the [Google Chrome documentation][Chrome tips].
+
+[Chrome tips]: https://google.com/chrome/tips/
