@@ -12,7 +12,7 @@ import { chunk } from './lib/array.js'
 import { modulo, clamp } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
-import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getCurrentWindow, getNextWindow, getPreviousWindow } from './context.js'
+import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getCurrentWindow, getNextOpenWindow, getPreviousOpenWindow } from './context.js'
 
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
@@ -533,14 +533,14 @@ export async function focusLastTab(context) {
   await focusTabByIndex(context, -1)
 }
 
-// Activates the next window.
+// Activates the next open window.
 // Tags: args
 export async function focusNextWindow(context, count = 1) {
-  const nextWindow = await getNextWindow(context, count)
+  const nextWindow = await getNextOpenWindow(context, count)
   await chrome.windows.update(nextWindow.id, { focused: true })
 }
 
-// Activates the previous window.
+// Activates the previous open window.
 // Tags: args
 export async function focusPreviousWindow(context, count = 1) {
   await focusNextWindow(context, -count)
@@ -899,9 +899,9 @@ export async function moveTabNewWindow(context) {
   await chrome.tabs.remove(createdTab.id)
 }
 
-// Moves selected tabs to the previous window, if any.
+// Moves selected tabs to the previous open window, if any.
 export async function moveTabPreviousWindow(context) {
-  const previousWindow = await getPreviousWindow(context)
+  const previousWindow = await getPreviousOpenWindow(context)
   await moveTabsToWindow(context, previousWindow.id)
 }
 

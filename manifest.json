@@ -213,10 +213,10 @@
       "description": "Switch tabs · Activate the rightmost open tab"
     },
     "62.focusNextWindow": {
-      "description": "Switch tabs · Activate the next window"
+      "description": "Switch tabs · Activate the next open window"
     },
     "63.focusPreviousWindow": {
-      "description": "Switch tabs · Activate the previous window"
+      "description": "Switch tabs · Activate the previous open window"
     },
     "64.grabTab": {
       "description": "Move tabs · Grab selected tabs"
@@ -237,7 +237,7 @@
       "description": "Move tabs · Move selected tabs to a new window"
     },
     "70.moveTabPreviousWindow": {
-      "description": "Move tabs · Move selected tabs to the previous window"
+      "description": "Move tabs · Move selected tabs to the previous open window"
     },
     "71.selectTab": {
       "description": "Select tabs · Deselect all other tabs"

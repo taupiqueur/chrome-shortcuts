@@ -68,9 +68,11 @@ export async function getCurrentWindow(context) {
   return chrome.windows.get(context.tab.windowId)
 }
 
-// Returns the next window.
-export async function getNextWindow(context, count = 1) {
-  const windows = await chrome.windows.getAll()
+// Returns the next open window.
+// Skips minimized windows.
+export async function getNextOpenWindow(context, count = 1) {
+  const allWindows = await chrome.windows.getAll()
+  const windows = allWindows.filter((window) => window.state !== 'minimized')
   const currentWindowIndex = windows.findIndex((window) => window.id === context.tab.windowId)
   const nextWindowIndex = modulo(currentWindowIndex + count, windows.length)
   const nextWindow = windows[nextWindowIndex]
@@ -78,7 +80,8 @@ export async function getNextWindow(context, count = 1) {
   return nextWindow
 }
 
-// Returns the previous window.
-export async function getPreviousWindow(context, count = 1) {
-  return getNextWindow(context, -count)
+// Returns the previous open window.
+// Skips minimized windows.
+export async function getPreviousOpenWindow(context, count = 1) {
+  return getNextOpenWindow(context, -count)
 }

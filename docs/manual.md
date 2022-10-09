@@ -174,8 +174,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `focusSeventhTab` | Activate the seventh leftmost open tab | `⌃ 7` | `⌘ 7` | `Digit7`
 `focusEighthTab` | Activate the eighth leftmost open tab | `⌃ 8` | `⌘ 8` | `Digit8`
 `focusLastTab` | Activate the rightmost open tab | `⌃ 9` | `⌘ 9` | `Digit9`
-`focusNextWindow` | Activate the next window | | | `KeyW`
-`focusPreviousWindow` | Activate the previous window | | | `⇧ KeyW`
+`focusNextWindow` | Activate the next open window | | | `KeyW`
+`focusPreviousWindow` | Activate the previous open window | | | `⇧ KeyW`
 
 ### Move tabs
 
@@ -187,7 +187,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `moveTabFirst` | Move selected tabs to the far left | | | `Home`
 `moveTabLast` | Move selected tabs to the far right | | | `End`
 `moveTabNewWindow` | Move selected tabs to a new window | | | `ArrowUp`
-`moveTabPreviousWindow` | Move selected tabs to the previous window | | | `ArrowDown`
+`moveTabPreviousWindow` | Move selected tabs to the previous open window | | | `ArrowDown`
 
 ### Select tabs
 
