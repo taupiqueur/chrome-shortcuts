@@ -453,7 +453,8 @@ export async function focusAudibleTab(context) {
 }
 
 // Activates the next open tab.
-// Skips hidden tabs—the ones whose are in collapsed tab groups.
+// Skips hidden tabs—the ones whose are in collapsed tab groups—
+// and wraps around.
 // Tags: args
 export async function focusNextTab(context, count = 1) {
   const nextTab = await getNextOpenTab(context, count)
@@ -461,7 +462,8 @@ export async function focusNextTab(context, count = 1) {
 }
 
 // Activates the previous open tab.
-// Skips hidden tabs—the ones whose are in collapsed tab groups.
+// Skips hidden tabs—the ones whose are in collapsed tab groups—
+// and wraps around.
 // Tags: args
 export async function focusPreviousTab(context, count = 1) {
   await focusNextTab(context, -count)
@@ -534,6 +536,7 @@ export async function focusLastTab(context) {
 }
 
 // Activates the next open window.
+// Skips minimized windows and wraps around.
 // Tags: args
 export async function focusNextWindow(context, count = 1) {
   const nextWindow = await getNextOpenWindow(context, count)
@@ -541,6 +544,7 @@ export async function focusNextWindow(context, count = 1) {
 }
 
 // Activates the previous open window.
+// Skips minimized windows and wraps around.
 // Tags: args
 export async function focusPreviousWindow(context, count = 1) {
   await focusNextWindow(context, -count)
@@ -1018,6 +1022,8 @@ export async function selectRightTabs(context) {
 }
 
 // Flips tab selection.
+// Note: The current tab might be placed between the anchor and focus tabs.
+// Ensures that the selection faces forward in this case.
 export async function flipTabSelection(context) {
   const allTabs = await getAllTabs(context)
   const selectedTabs = await getSelectedTabs(context)
@@ -1025,9 +1031,11 @@ export async function flipTabSelection(context) {
   // Determine the direction to flip selections.
   let tabIndex = context.tab.index
   let focusIndex = tabIndex
+  // Ensure that the selection faces forward.
   while (focusIndex < allTabs.length - 1 && allTabs[focusIndex + 1].highlighted) {
     focusIndex++
   }
+  // If the focus index hasn’t changed, flip backward.
   if (tabIndex === focusIndex) {
     while (focusIndex > 0 && allTabs[focusIndex - 1].highlighted) {
       focusIndex--
