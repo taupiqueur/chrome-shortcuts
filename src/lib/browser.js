@@ -13,31 +13,11 @@ function getTabIds(tabs) {
   return tabs.map(tab => tab.id)
 }
 
-// Focuses a tab by its ID.
-export async function focusTabById(tabId) {
-  const tab = await chrome.tabs.get(tabId)
-  return focusTab(tab)
-}
-
 // Focuses the specified tab.
 export async function focusTab(tab) {
   // Focus window and activate tab.
   await chrome.windows.update(tab.windowId, { focused: true })
   return chrome.tabs.update(tab.id, { active: true })
-}
-
-// Returns visible tabs in the tab strip of the given window.
-// Skips hidden tabs—the ones whose are in collapsed tab groups.
-export async function getVisibleTabs(windowId) {
-  // Determine whose tabs are hidden.
-  // A tab in a collapsed group is considered hidden.
-  const tabGroups = await chrome.tabGroups.query({ windowId })
-  const collapsedInfo = Object.fromEntries(tabGroups.map((tabGroup) => [tabGroup.id, tabGroup.collapsed]))
-
-  const tabs = await chrome.tabs.query({ windowId })
-  const visibleTabs = tabs.filter((tab) => !collapsedInfo[tab.groupId])
-
-  return visibleTabs
 }
 
 // Returns `true` if the specified tab is in a group.

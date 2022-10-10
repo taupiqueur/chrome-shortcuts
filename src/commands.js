@@ -11,8 +11,8 @@
 import { chunk } from './lib/array.js'
 import { modulo, clamp } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
-import { focusTabById, focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
-import { findTabIndex, getSelectedTabs, getTabsInGroup, getAllTabs, getAllTabGroups, getVisibleTabs, getNextTab, getNextOpenTab, getCurrentWindow, getNextOpenWindow, getPreviousOpenWindow } from './context.js'
+import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
+import { findTabIndex, getSelectedTabs, getAllTabs, getAllTabGroups, getVisibleTabs, getOpenTabRelative, getCurrentWindow, getOpenWindowRelative } from './context.js'
 
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
@@ -417,9 +417,8 @@ export async function renameTabGroupPrompt(context) {
   await chrome.tabGroups.update(tabGroup.id, { title: tabGroupTitle })
 }
 
-// Cycles forward through tab group colors.
-// Tags: args
-export async function cycleTabGroupColorForward(context, count = 1) {
+// Cycles through tab group colors.
+async function cycleTabGroupColor(context, delta) {
   const tabGroup = await getTabGroup(context.tab)
 
   // Fail-fast if there is no tab group.
@@ -429,17 +428,21 @@ export async function cycleTabGroupColorForward(context, count = 1) {
 
   // Get the next color.
   const colorIndex = tabGroupColors.indexOf(tabGroup.color)
-  const nextColorIndex = modulo(colorIndex + count, tabGroupColors.length)
+  const nextColorIndex = modulo(colorIndex + delta, tabGroupColors.length)
   const nextColor = tabGroupColors[nextColorIndex]
 
   // Cycle through tab group colors.
   await chrome.tabGroups.update(tabGroup.id, { color: nextColor })
 }
 
+// Cycles forward through tab group colors.
+export async function cycleTabGroupColorForward(context) {
+  await cycleTabGroupColor(context, 1)
+}
+
 // Cycles backward through tab group colors.
-// Tags: args
-export async function cycleTabGroupColorBackward(context, count = 1) {
-  await cycleTabGroupColorForward(context, -count)
+export async function cycleTabGroupColorBackward(context) {
+  await cycleTabGroupColor(context, -1)
 }
 
 // Switch tabs -----------------------------------------------------------------
@@ -452,27 +455,31 @@ export async function focusAudibleTab(context) {
   }
 }
 
+// Activates an open tab relative to the current tab.
+// Skips hidden tabs—the ones whose are in collapsed tab groups—
+// and wraps around.
+async function focusTabRelative(context, delta) {
+  const tab = await getOpenTabRelative(context, delta)
+  await focusTab(tab)
+}
+
 // Activates the next open tab.
 // Skips hidden tabs—the ones whose are in collapsed tab groups—
 // and wraps around.
-// Tags: args
-export async function focusNextTab(context, count = 1) {
-  const nextTab = await getNextOpenTab(context, count)
-  await focusTab(nextTab)
+export async function focusNextTab(context) {
+  await focusTabRelative(context, 1)
 }
 
 // Activates the previous open tab.
 // Skips hidden tabs—the ones whose are in collapsed tab groups—
 // and wraps around.
-// Tags: args
-export async function focusPreviousTab(context, count = 1) {
-  await focusNextTab(context, -count)
+export async function focusPreviousTab(context) {
+  await focusTabRelative(context, -1)
 }
 
 // Activates a tab by its index.
 // Skips hidden tabs—the ones whose are in collapsed tab groups.
-// Tags: args, hidden
-export async function focusTabByIndex(context, index) {
+async function focusTabByIndex(context, index) {
   const tabs = await getVisibleTabs(context)
   const targetTab = tabs.at(index)
 
@@ -535,19 +542,23 @@ export async function focusLastTab(context) {
   await focusTabByIndex(context, -1)
 }
 
+// Activates an open window relative to the current window.
+// Skips minimized windows and wraps around.
+async function focusWindowRelative(context, delta) {
+  const window = await getOpenWindowRelative(context, delta)
+  await chrome.windows.update(window.id, { focused: true })
+}
+
 // Activates the next open window.
 // Skips minimized windows and wraps around.
-// Tags: args
-export async function focusNextWindow(context, count = 1) {
-  const nextWindow = await getNextOpenWindow(context, count)
-  await chrome.windows.update(nextWindow.id, { focused: true })
+export async function focusNextWindow(context) {
+  await focusWindowRelative(context, 1)
 }
 
 // Activates the previous open window.
 // Skips minimized windows and wraps around.
-// Tags: args
-export async function focusPreviousWindow(context, count = 1) {
-  await focusNextWindow(context, -count)
+export async function focusPreviousWindow(context) {
+  await focusWindowRelative(context, -1)
 }
 
 // Move tabs -------------------------------------------------------------------
@@ -578,9 +589,11 @@ export async function grabTab(context) {
 
   // Add selected tabs—except pinned tabs—to the current tab’s group.
   const tabIds = tabs.flatMap(tab => tab.pinned ? [] : tab.id)
-  await isTabInGroup(currentTab)
-    ? chrome.tabs.group({ tabIds, groupId: currentTab.groupId })
-    : chrome.tabs.ungroup(tabIds)
+  if (isTabInGroup(currentTab)) {
+    await chrome.tabs.group({ tabIds, groupId: currentTab.groupId })
+  } else {
+    await chrome.tabs.ungroup(tabIds)
+  }
 }
 
 // Moves selected tabs left/right.
@@ -905,7 +918,7 @@ export async function moveTabNewWindow(context) {
 
 // Moves selected tabs to the previous open window, if any.
 export async function moveTabPreviousWindow(context) {
-  const previousWindow = await getPreviousOpenWindow(context)
+  const previousWindow = await getOpenWindowRelative(context, -1)
   await moveTabsToWindow(context, previousWindow.id)
 }
 

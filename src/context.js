@@ -1,7 +1,6 @@
 // This module contains tab context related functions.
 
 import { modulo } from './lib/math.js'
-import { getVisibleTabs as _getVisibleTabs } from './lib/browser.js'
 
 // Returns the index of the current tab in tabs.
 export function findTabIndex(context, tabs) {
@@ -11,12 +10,6 @@ export function findTabIndex(context, tabs) {
 // Returns highlighted tabs.
 export async function getSelectedTabs(context) {
   return chrome.tabs.query({ highlighted: true, windowId: context.tab.windowId })
-}
-
-// Returns tabs in the same group than the one in the specified context.
-// Note: Can be used for ungrouped tabs.
-export async function getTabsInGroup(context) {
-  return chrome.tabs.query({ pinned: false, groupId: context.tab.groupId, windowId: context.tab.windowId })
 }
 
 // Returns all tabs.
@@ -32,37 +25,27 @@ export async function getAllTabGroups(context) {
 // Returns visible tabs in the tab strip.
 // Skips hidden tabs—the ones whose are in collapsed tab groups.
 export async function getVisibleTabs(context) {
-  return _getVisibleTabs(context.tab.windowId)
+  // Determine whose tabs are hidden.
+  // A tab in a collapsed group is considered hidden.
+  const tabGroups = await getAllTabGroups(context)
+  const collapsedInfo = Object.fromEntries(tabGroups.map((tabGroup) => [tabGroup.id, tabGroup.collapsed]))
+
+  const tabs = await getAllTabs(context)
+  const visibleTabs = tabs.filter((tab) => !collapsedInfo[tab.groupId])
+
+  return visibleTabs
 }
 
-// Returns the next tab, if any.
-export async function getNextTab(context, count = 1) {
-  const [nextTab] = await chrome.tabs.query({ index: context.tab.index + count, windowId: context.tab.windowId })
-  return nextTab
-}
-
-// Returns the previous tab, if any.
-export async function getPreviousTab(context, count = 1) {
-  return getNextTab(context, -count)
-}
-
-// Returns the next open tab.
+// Returns an open tab relative to the current tab.
 // Skips hidden tabs—the ones whose are in collapsed tab groups—
 // and wraps around.
-export async function getNextOpenTab(context, count = 1) {
+export async function getOpenTabRelative(context, delta) {
   const tabs = await getVisibleTabs(context)
   const tabIndex = findTabIndex(context, tabs)
-  const nextTabIndex = modulo(tabIndex + count, tabs.length)
-  const nextTab = tabs[nextTabIndex]
+  const index = modulo(tabIndex + delta, tabs.length)
+  const tab = tabs[index]
 
-  return nextTab
-}
-
-// Returns the previous open tab.
-// Skips hidden tabs—the ones whose are in collapsed tab groups—
-// and wraps around.
-export async function getPreviousOpenTab(context, count = 1) {
-  return getNextOpenTab(context, -count)
+  return tab
 }
 
 // Returns the current window.
@@ -70,20 +53,14 @@ export async function getCurrentWindow(context) {
   return chrome.windows.get(context.tab.windowId)
 }
 
-// Returns the next open window.
+// Returns an open window relative to the current window.
 // Skips minimized windows and wraps around.
-export async function getNextOpenWindow(context, count = 1) {
+export async function getOpenWindowRelative(context, delta) {
   const allWindows = await chrome.windows.getAll()
   const windows = allWindows.filter((window) => window.state !== 'minimized')
-  const currentWindowIndex = windows.findIndex((window) => window.id === context.tab.windowId)
-  const nextWindowIndex = modulo(currentWindowIndex + count, windows.length)
-  const nextWindow = windows[nextWindowIndex]
+  const windowIndex = windows.findIndex((window) => window.id === context.tab.windowId)
+  const index = modulo(windowIndex + delta, windows.length)
+  const window = windows[index]
 
-  return nextWindow
-}
-
-// Returns the previous open window.
-// Skips minimized windows and wraps around.
-export async function getPreviousOpenWindow(context, count = 1) {
-  return getNextOpenWindow(context, -count)
+  return window
 }
