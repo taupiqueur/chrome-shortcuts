@@ -33,27 +33,108 @@ export async function getSelectedText() {
 
 // Scrolls the document by the given amount.
 // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy
-export function scrollBy(...params) {
-  return document.scrollingElement.scrollBy(...params)
+export function scrollBy(deltaX, deltaY) {
+  // Import constants.
+  const SCROLLABLE_OVERFLOW_VALUES = new Set(['auto', 'scroll'])
+  // Find the first scrollable element.
+  let scrollingElement = document.activeElement
+  // Start from the point the user has clicked, if any.
+  const selection = window.getSelection()
+  if (selection.type !== 'None') {
+    scrollingElement = selection.focusNode.parentElement
+  }
+  while (scrollingElement) {
+    const computedStyle = getComputedStyle(scrollingElement)
+    if (scrollingElement.scrollWidth > scrollingElement.clientWidth && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowX)) {
+      break
+    }
+    if (scrollingElement.scrollHeight > scrollingElement.clientHeight && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowY)) {
+      break
+    }
+    scrollingElement = scrollingElement.parentElement
+  }
+  scrollingElement ||= document.scrollingElement
+
+  return scrollingElement.scrollBy(deltaX, deltaY)
 }
 
 // Scrolls the document by the specified number of pages.
 // Reference—Non-standard: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollByPages
-export function scrollByPages({ top: pageFactor, behavior }) {
-  return document.scrollingElement.scrollBy({ top: window.innerHeight * pageFactor, behavior })
+export function scrollByPages(pageFactor) {
+  // Import constants.
+  const SCROLLABLE_OVERFLOW_VALUES = new Set(['auto', 'scroll'])
+  // Find the first scrollable element.
+  let scrollingElement = document.activeElement
+  // Start from the point the user has clicked, if any.
+  const selection = window.getSelection()
+  if (selection.type !== 'None') {
+    scrollingElement = selection.focusNode.parentElement
+  }
+  while (scrollingElement) {
+    const computedStyle = getComputedStyle(scrollingElement)
+    if (scrollingElement.scrollHeight > scrollingElement.clientHeight && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowY)) {
+      break
+    }
+    scrollingElement = scrollingElement.parentElement
+  }
+  scrollingElement ||= document.scrollingElement
+
+  return scrollingElement.scrollBy(0, window.innerHeight * pageFactor)
 }
 
 // Scrolls the document to the specified coordinates.
 // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
-export function scrollTo(...params) {
-  return document.scrollingElement.scrollTo(...params)
+export function scrollTo(scrollLeft, scrollTop) {
+  // Import constants.
+  const SCROLLABLE_OVERFLOW_VALUES = new Set(['auto', 'scroll'])
+  // Find the first scrollable element.
+  let scrollingElement = document.activeElement
+  // Start from the point the user has clicked, if any.
+  const selection = window.getSelection()
+  if (selection.type !== 'None') {
+    scrollingElement = selection.focusNode.parentElement
+  }
+  while (scrollingElement) {
+    const computedStyle = getComputedStyle(scrollingElement)
+    if (scrollingElement.scrollWidth > scrollingElement.clientWidth && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowX)) {
+      break
+    }
+    if (scrollingElement.scrollHeight > scrollingElement.clientHeight && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowY)) {
+      break
+    }
+    scrollingElement = scrollingElement.parentElement
+  }
+  scrollingElement ||= document.scrollingElement
+
+  return scrollingElement.scrollTo(scrollLeft, scrollTop)
 }
 
 // Scrolls the document to the maximum top and left scroll offset possible.
 // Reference—Non-standard: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTopMax
 // Reference—Non-standard: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeftMax
-export function scrollToMax({ top = document.scrollingElement.scrollHeight, left = document.scrollingElement.scrollWidth, behavior }) {
-  return document.scrollingElement.scrollTo({ top, left, behavior })
+export function scrollToMax(scrollLeft, scrollTop) {
+  // Import constants.
+  const SCROLLABLE_OVERFLOW_VALUES = new Set(['auto', 'scroll'])
+  // Find the first scrollable element.
+  let scrollingElement = document.activeElement
+  // Start from the point the user has clicked, if any.
+  const selection = window.getSelection()
+  if (selection.type !== 'None') {
+    scrollingElement = selection.focusNode.parentElement
+  }
+  while (scrollingElement) {
+    const computedStyle = getComputedStyle(scrollingElement)
+    if (scrollingElement.scrollWidth > scrollingElement.clientWidth && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowX)) {
+      break
+    }
+    if (scrollingElement.scrollHeight > scrollingElement.clientHeight && SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowY)) {
+      break
+    }
+    scrollingElement = scrollingElement.parentElement
+  }
+  scrollingElement ||= document.scrollingElement
+
+  return scrollingElement.scrollTo(scrollLeft ?? scrollingElement.scrollWidth, scrollTop ?? scrollingElement.scrollHeight)
 }
 
 // Returns the value that the user entered in a prompt, if any.

@@ -172,54 +172,52 @@ export async function openWebSearchForSelectedText(context) {
 
 // Scrolls down.
 export async function scrollDown(context) {
-  await executeScript(context.tab, scrollBy, { top: 70, behavior: 'instant' })
+  await executeScript(context.tab, scrollBy, 0, 70)
 }
 
 // Scrolls up.
 export async function scrollUp(context) {
-  await executeScript(context.tab, scrollBy, { top: -70, behavior: 'instant' })
+  await executeScript(context.tab, scrollBy, 0, -70)
 }
 
 // Scrolls left.
 export async function scrollLeft(context) {
-  await executeScript(context.tab, scrollBy, { left: -70, behavior: 'instant' })
+  await executeScript(context.tab, scrollBy, -70, 0)
 }
 
 // Scrolls right.
 export async function scrollRight(context) {
-  await executeScript(context.tab, scrollBy, { left: 70, behavior: 'instant' })
+  await executeScript(context.tab, scrollBy, 70, 0)
 }
 
 // Scrolls one page down.
 export async function scrollPageDown(context) {
-  await executeScript(context.tab, scrollByPages, { top: 0.9, behavior: 'instant' })
+  await executeScript(context.tab, scrollByPages, 0.9)
 }
 
 // Scrolls one page up.
 export async function scrollPageUp(context) {
-  await executeScript(context.tab, scrollByPages, { top: -0.9, behavior: 'instant' })
+  await executeScript(context.tab, scrollByPages, -0.9)
 }
 
 // Scrolls half page down.
 export async function scrollHalfPageDown(context) {
-  await executeScript(context.tab, scrollByPages, { top: 0.5, behavior: 'instant' })
+  await executeScript(context.tab, scrollByPages, 0.5)
 }
 
 // Scrolls half page up.
 export async function scrollHalfPageUp(context) {
-  await executeScript(context.tab, scrollByPages, { top: -0.5, behavior: 'instant' })
+  await executeScript(context.tab, scrollByPages, -0.5)
 }
 
 // Scrolls to the top of the page.
-// Uses smooth scrolling for long jumps.
 export async function scrollToTop(context) {
-  await executeScript(context.tab, scrollTo, { top: 0, left: 0, behavior: 'smooth' })
+  await executeScript(context.tab, scrollTo, 0, 0)
 }
 
 // Scrolls to the bottom of the page.
-// Uses smooth scrolling for long jumps.
 export async function scrollToBottom(context) {
-  await executeScript(context.tab, scrollToMax, { left: 0, behavior: 'smooth' })
+  await executeScript(context.tab, scrollToMax, 0)
 }
 
 // Zoom ------------------------------------------------------------------------
