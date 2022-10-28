@@ -8,7 +8,7 @@
 // Manifest: https://developer.chrome.com/docs/extensions/mv3/manifest/
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
-import { chunk } from './lib/array.js'
+import { partition, chunk } from './lib/array.js'
 import { modulo, clamp } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
@@ -328,10 +328,28 @@ export async function toggleGroupTab(context) {
 }
 
 // Collapses or uncollapses tab groups.
+// Note: Active groups are not collapsible.
+// Ensures highlighted tabs are visible.
 export async function toggleCollapseTabGroups(context) {
-  const tabGroups = await getAllTabGroups(context)
-  const someTabGroupsNotCollapsed = tabGroups.some((tabGroup) => !tabGroup.collapsed)
-  await updateTabGroups(tabGroups, { collapsed: someTabGroupsNotCollapsed })
+  const selectedTabs = await getSelectedTabs(context)
+  const allTabGroups = await getAllTabGroups(context)
+
+  // Determine whose groups are active.
+  // A group that contains highlighted tabs is considered active.
+  const activeGroupIds = new Set(selectedTabs.map(tab => tab.groupId))
+  activeGroupIds.delete(TAB_GROUP_ID_NONE)
+
+  // Note: Active groups are not collapsible.
+  const [activeGroups, collapsibleGroups] = partition(allTabGroups, (tabGroup) => activeGroupIds.has(tabGroup.id))
+  const someExpanded = collapsibleGroups.some(tabGroup => !tabGroup.collapsed)
+
+  await Promise.all([
+    // At least one group is not collapsed, so collapse everything.
+    // All groups are collapsed, so expand everything.
+    updateTabGroups(collapsibleGroups, { collapsed: someExpanded }),
+    // Ensure highlighted tabs are visible.
+    updateTabGroups(activeGroups, { collapsed: false })
+  ])
 }
 
 // Mutes or unmutes selected tabs.
