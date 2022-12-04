@@ -296,12 +296,44 @@ export async function restoreTab(context) {
 
 // Duplicates selected tabs.
 export async function duplicateTab(context) {
-  const tabs = await getSelectedTabs(context)
-  const tabIndex = findTabIndex(context, tabs)
-  const duplicatedTabs = await duplicateTabs(tabs)
-  // Preserve tab selection.
-  const tabToActivate = duplicatedTabs[tabIndex]
-  await highlightTabs([tabToActivate, ...duplicatedTabs])
+  const isSelected = tab => tab.highlighted
+  const byGroup = tab => tab.groupId
+
+  const allTabs = await getAllTabs(context)
+  const allTabGroups = await getAllTabGroups(context)
+
+  const groupIdToProperties = new Map(
+    allTabGroups.map(({ id, title, color, collapsed }) => [
+      id, { title, color, collapsed }
+    ])
+  )
+
+  const duplicatedTabChunksWithOrigin = await Promise.all(
+    chunk(allTabs, byGroup).map(([groupId, tabs]) => {
+      const groupProperties = groupIdToProperties.get(groupId)
+      const selectedTabs = tabs.filter(isSelected)
+
+      // Duplicate selected tabs.
+      // Only duplicate tab group if fully selected.
+      const duplicatedTabs = groupId !== TAB_GROUP_ID_NONE && selectedTabs.length === tabs.length
+        ? duplicateTabs(selectedTabs)
+          .then(tabs => groupTabs(tabs))
+          .then(groupId => chrome.tabGroups.update(groupId, groupProperties))
+          .then(tabGroup => chrome.tabs.query({ groupId: tabGroup.id }))
+        : duplicateTabs(selectedTabs)
+
+      return duplicatedTabs.then(duplicatedTabs => [duplicatedTabs, selectedTabs])
+    })
+  )
+
+  // Select duplicated tabs.
+  const duplicatedTabMap = new Map(
+    duplicatedTabChunksWithOrigin.flatMap(([duplicatedTabs, originalTabs]) =>
+      originalTabs.map((tab, index) => [tab.id, duplicatedTabs[index]])
+    )
+  )
+  const tabToActivate = duplicatedTabMap.get(context.tab.id)
+  await highlightTabs([tabToActivate, ...duplicatedTabMap.values()])
 }
 
 // Pins or unpins selected tabs.
