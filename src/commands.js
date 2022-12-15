@@ -9,6 +9,7 @@
 // Commands: https://developer.chrome.com/docs/extensions/reference/commands/
 
 import { partition, chunk } from './lib/array.js'
+import { getISODateString } from './lib/date.js'
 import { modulo, clamp } from './lib/math.js'
 import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
@@ -1106,6 +1107,70 @@ export async function flipTabSelection(context) {
 
   const tabToActivate = allTabs[tabIndex]
   await highlightTabs([tabToActivate, ...selectedTabs])
+}
+
+// Bookmarks -------------------------------------------------------------------
+
+// Saves selected tabs as bookmarks.
+export async function bookmarkTab(context) {
+  const byURL = item => item.url
+
+  const tabs = await getSelectedTabs(context)
+  const bookmarks = await chrome.bookmarks.search({})
+
+  const tabsByURL = tabs.groupToMap(byURL)
+  const bookmarksByURL = bookmarks.groupToMap(byURL)
+
+  // Save selected tabs as bookmarks.
+  const createdBookmarks = await Promise.all(
+    Array.from(tabsByURL).flatMap(([url, [{title}]]) =>
+      // Don’t bookmark a page twice.
+      bookmarksByURL.has(url)
+        ? []
+        : [chrome.bookmarks.create({ title, url })]
+    )
+  )
+
+  // Let user know about created bookmarks.
+  await sendNotification(`${createdBookmarks.length} bookmarks added`)
+}
+
+// Saves the current session as bookmarks.
+export async function bookmarkSession(context) {
+  const byGroup = tab => tab.groupId
+
+  const allTabs = await getAllTabs(context)
+  const allTabGroups = await getAllTabGroups(context)
+
+  const dateString = getISODateString(new Date)
+  const baseFolder = await chrome.bookmarks.create({ title: `Session ${dateString}` })
+
+  const groupIdToProperties = new Map(
+    allTabGroups.map(({ id, title }) => [
+      id, { parentId: baseFolder.id, title }
+    ])
+  )
+
+  // Save the current session as bookmarks.
+  // Note: The create calls must be processed synchronously to ensure order.
+  for (const [groupId, tabs] of chunk(allTabs, byGroup)) {
+    const groupProperties = groupIdToProperties.get(groupId)
+
+    // The parent folder into which to place bookmarks.
+    // Either the base folder or a subfolder of it to represent a group.
+    const parentFolder = groupId === TAB_GROUP_ID_NONE
+      ? baseFolder
+      : await chrome.bookmarks.create(groupProperties)
+
+    const parentId = parentFolder.id
+    for (const { title, url } of tabs) {
+      await chrome.bookmarks.create({ parentId, title, url })
+    }
+  }
+
+  // Show result in folder.
+  await openChromePage(context, `chrome://bookmarks/?id=${baseFolder.id}`)
+  await sendNotification('Session bookmarked')
 }
 
 // Folders ---------------------------------------------------------------------

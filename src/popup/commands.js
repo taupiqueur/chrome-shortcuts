@@ -142,6 +142,11 @@ export const selectAllTabs = message('selectAllTabs')
 export const selectRightTabs = message('selectRightTabs')
 export const flipTabSelection = message('flipTabSelection', false, true)
 
+// Bookmarks -------------------------------------------------------------------
+
+export const bookmarkTab = message('bookmarkTab')
+export const bookmarkSession = message('bookmarkSession', false, true)
+
 // Folders ---------------------------------------------------------------------
 
 export const openDownloadsFolder = message('openDownloadsFolder')

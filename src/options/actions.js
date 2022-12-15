@@ -2,7 +2,7 @@
 // Implementation reference: https://github.com/lydell/LinkHints/blob/main/src/options/Program.tsx
 
 import { saveFile, selectFile, readFileAsJSON } from './lib/file.js'
-import { getISODateString } from './lib/date.js'
+import { getISODateString } from '../lib/date.js'
 import popupConfig from '../popup/config.json' assert { type: 'json' }
 
 // Imports options.
@@ -16,7 +16,7 @@ export async function importOptions() {
 export async function exportOptions() {
   const options = await chrome.storage.sync.get()
   const content = JSON.stringify(options, null, 2)
-  const dateString = getISODateString(new Date())
+  const dateString = getISODateString(new Date)
   await saveFile(content, `shortcuts-options-${dateString}.json`, 'application/json')
 }
 
