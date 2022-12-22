@@ -58,8 +58,8 @@ You will find the list of code values and informative symbols.
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`goBack` | Go back to the previous page in tab’s history | `⌥ ←` | `⌘ [`, `⌘ ←` | `BracketLeft`, `⌥ KeyH`
-`goForward` | Go forward to the next page in tab’s history | `⌥ →` | `⌘ ]`, `⌘ →` | `BracketRight`, `⌥ KeyL`
+`goBack` | Go back to the previous page in tab’s history | `⌥ ←` | `⌘ [`, `⌘ ←` | `⌥ KeyH`
+`goForward` | Go forward to the next page in tab’s history | `⌥ →` | `⌘ ]`, `⌘ →` | `⌥ KeyL`
 `reloadTab` | Reload selected tabs | `F5`, `⌃ R` | `⌘ R` | `KeyR`
 `reloadTabWithoutCache` | Reload selected tabs, ignoring cached content | `⇧ F5`, `⌃ ⇧ R` | `⇧ ⌘ R` | `⇧ KeyR`
 `goToNextPage` | Go to the next page in the series | | | `⇧ Period`
@@ -104,7 +104,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `scrollHalfPageDown` | Scroll half page down | | | `⇧ KeyJ`
 `scrollHalfPageUp` | Scroll half page up | | | `⇧ KeyK`
 `scrollToTop` | Scroll to the top of the page | `↖` | `↖` | `KeyG`
-`scrollToBottom` | Scroll to the bottom of the page | `↘` | `↘` | `KeyE`, `⇧ KeyG`
+`scrollToBottom` | Scroll to the bottom of the page | `↘` | `↘` | `KeyE`
 
 ### Zoom
 
@@ -119,7 +119,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openNewTab` | Open and activate a new tab | `⌃ T` | `⌘ T` | `KeyO`, `⇧ KeyT`
+`openNewTab` | Open and activate a new tab | `⌃ T` | `⌘ T` | `KeyO`
 `openNewTabRight` | Open and activate a new tab to the right | | | `KeyT`
 `openNewWindow` | Open a new window | `⌃ N` | `⌘ N` | `KeyN`
 `openNewIncognitoWindow` | Open a new window in Incognito mode | `⌃ ⇧ N` | `⇧ ⌘ N` | `⇧ KeyN`
@@ -154,7 +154,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`renameTabGroupPrompt` | Rename tab group | | | `⌥ ⇧ KeyP`
+`renameTabGroupPrompt` | Rename tab group | | | `⌥ KeyR`
 `cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `⌥ KeyA`
 `cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `⌥ ⇧ KeyA`
 
