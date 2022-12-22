@@ -11,7 +11,7 @@
 import { partition, chunk } from './lib/array.js'
 import { getISODateString } from './lib/date.js'
 import { modulo, clamp } from './lib/math.js'
-import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
+import { clickPageElement, focusPageElement, blurActiveElement, goPageHistory, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { findTabIndex, getSelectedTabs, getAllTabs, getAllTabGroups, getVisibleTabs, getOpenTabRelative, getCurrentWindow, getOpenWindowRelative } from './context.js'
 
@@ -37,12 +37,20 @@ const Direction = { Backward: -1, Forward: 1 }
 
 // Goes back to the previous page in tab’s history.
 export async function goBack(context) {
-  await chrome.tabs.goBack(context.tab.id)
+  // Chrome’s promise is fulfilled before the page navigation finishes,
+  // hence using the Web’s History API, if possible.
+  return new URL(context.tab.url).protocol !== 'chrome:'
+    ? executeScript(context.tab, goPageHistory, -1)
+    : chrome.tabs.goBack(context.tab.id)
 }
 
 // Goes forward to the next page in tab’s history.
 export async function goForward(context) {
-  await chrome.tabs.goForward(context.tab.id)
+  // Chrome’s promise is fulfilled before the page navigation finishes,
+  // hence using the Web’s History API, if possible.
+  return new URL(context.tab.url).protocol !== 'chrome:'
+    ? executeScript(context.tab, goPageHistory, 1)
+    : chrome.tabs.goForward(context.tab.id)
 }
 
 // Reloads selected tabs.
