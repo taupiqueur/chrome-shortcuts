@@ -8,7 +8,7 @@
     "type": "module",
     "service_worker": "src/background.js"
   },
-  "permissions": ["activeTab", "bookmarks", "downloads", "notifications", "scripting", "search", "sessions", "storage", "tabGroups", "tabs"],
+  "permissions": ["activeTab", "bookmarks", "downloads", "notifications", "scripting", "search", "sessions", "storage", "tabGroups", "tabs", "webNavigation"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "src/popup/popup.html"

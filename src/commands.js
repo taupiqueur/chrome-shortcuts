@@ -11,7 +11,7 @@
 import { partition, chunk } from './lib/array.js'
 import { getISODateString } from './lib/date.js'
 import { modulo, clamp } from './lib/math.js'
-import { clickPageElement, focusPageElement, blurActiveElement, goPageHistory, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
+import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipboard, getSelectedText, scrollBy, scrollByPages, scrollTo, scrollToMax, prompt } from './script.js'
 import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification } from './lib/browser.js'
 import { findTabIndex, getSelectedTabs, getAllTabs, getAllTabGroups, getVisibleTabs, getOpenTabRelative, getCurrentWindow, getOpenWindowRelative } from './context.js'
 
@@ -35,22 +35,48 @@ const Direction = { Backward: -1, Forward: 1 }
 
 // Navigation ------------------------------------------------------------------
 
+// Loads a specific page from the session history.
+// Returns a `Promise` that is fulfilled when navigation is committed.
+async function goPageHistory(context, direction) {
+  const tabId = context.tab.id
+
+  let navigateHistory
+  switch (direction) {
+    case Direction.Backward:
+      navigateHistory = chrome.tabs.goBack
+      break
+    case Direction.Forward:
+      navigateHistory = chrome.tabs.goForward
+      break
+  }
+
+  // Return a `Promise` that is fulfilled when navigation is committed.
+  return new Promise((resolve) => {
+    // Chrome’s promise is fulfilled when navigation is about to start.
+    // Reference: https://developer.chrome.com/docs/extensions/reference/webNavigation/#event-onBeforeNavigate
+    navigateHistory(tabId).then(() => {
+      // Fire and forget when navigation is committed.
+      // Reference: https://developer.chrome.com/docs/extensions/reference/webNavigation/#event-onCommitted
+      chrome.webNavigation.onCommitted.addListener(
+        function fireAndForget(details) {
+          if (details.tabId === tabId) {
+            chrome.webNavigation.onCommitted.removeListener(fireAndForget)
+            resolve()
+          }
+        }
+      )
+    })
+  })
+}
+
 // Goes back to the previous page in tab’s history.
 export async function goBack(context) {
-  // Chrome’s promise is fulfilled before the page navigation finishes,
-  // hence using the Web’s History API, if possible.
-  return new URL(context.tab.url).protocol !== 'chrome:'
-    ? executeScript(context.tab, goPageHistory, -1)
-    : chrome.tabs.goBack(context.tab.id)
+  await goPageHistory(context, Direction.Backward)
 }
 
 // Goes forward to the next page in tab’s history.
 export async function goForward(context) {
-  // Chrome’s promise is fulfilled before the page navigation finishes,
-  // hence using the Web’s History API, if possible.
-  return new URL(context.tab.url).protocol !== 'chrome:'
-    ? executeScript(context.tab, goPageHistory, 1)
-    : chrome.tabs.goForward(context.tab.id)
+  await goPageHistory(context, Direction.Forward)
 }
 
 // Reloads selected tabs.

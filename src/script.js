@@ -19,16 +19,6 @@ export function blurActiveElement() {
   return document.activeElement.blur()
 }
 
-// Loads a specific page from the session history.
-// Returns a `Promise` that is fulfilled when navigation is complete.
-// Reference: https://developer.mozilla.org/en-US/docs/Web/API/History/go
-export function goPageHistory(delta) {
-  return new Promise((resolve) => {
-    window.addEventListener('popstate', resolve, { once: true })
-    history.go(delta)
-  })
-}
-
 // Writes the specified text to the system clipboard.
 // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
 export async function writeTextToClipboard(text) {
