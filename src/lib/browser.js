@@ -140,3 +140,20 @@ export async function highlightTabs(tabs) {
 export async function sendNotification(message) {
   return chrome.notifications.create({ title: 'Chrome', message, type: 'basic', iconUrl: '/assets/chrome-logo@128px.png' })
 }
+
+// Waits for a specific navigation event.
+// Reference: https://developer.chrome.com/docs/extensions/reference/webNavigation/#event
+export async function waitForNavigation(tabId, eventType) {
+  const event = chrome.webNavigation[eventType]
+
+  return new Promise((resolve) => {
+    event.addListener(
+      function fireAndForget(details) {
+        if (details.tabId === tabId) {
+          event.removeListener(fireAndForget)
+          resolve()
+        }
+      }
+    )
+  })
+}
