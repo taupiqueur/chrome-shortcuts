@@ -5,23 +5,24 @@
 // Messaging: https://developer.chrome.com/docs/extensions/mv3/messaging/
 
 import * as commands from './commands.js'
-import * as popupWorker from './popup/service_worker.js'
+import popupWorker from './popup/service_worker.js'
+import optionsWorker from './options/service_worker.js'
 
 // Handle the initial setup when the extension is first installed or updated to a new version.
 // Reference: https://developer.chrome.com/docs/extensions/reference/runtime/#event-onInstalled
 chrome.runtime.onInstalled.addListener((details) => {
   switch (details.reason) {
     case 'install':
-      popupWorker.handleSetup()
+      popupWorker.onInstall()
       break
     case 'update':
-      popupWorker.handleUpdate(details.previousVersion)
+      popupWorker.onUpdate(details.previousVersion)
       break
   }
 })
 
 // Handles a single command.
-async function handleCommand(commandName, tab) {
+async function onCommand(commandName, tab) {
   await commands[commandName]({ tab })
 }
 
@@ -29,7 +30,7 @@ async function handleCommand(commandName, tab) {
 // Reference: https://developer.chrome.com/docs/extensions/reference/commands/
 chrome.commands.onCommand.addListener((commandNameWithIndex, tab) => {
   const commandName = commandNameWithIndex.split('.')[1]
-  handleCommand(commandName, tab)
+  onCommand(commandName, tab)
 })
 
 // Handle long-lived connections.
@@ -38,9 +39,12 @@ chrome.commands.onCommand.addListener((commandNameWithIndex, tab) => {
 chrome.runtime.onConnect.addListener((port) => {
   switch (port.name) {
     case 'popup':
-      popupWorker.handleConnection(port)
+      popupWorker.onConnect(port)
+      break
+    case 'options':
+      optionsWorker.onConnect(port)
       break
     default:
-      port.postMessage({ type: 'error', message: 'Unknown type of connection' })
+      port.postMessage({ type: 'error', message: `Unknown type of connection: ${port.name}` })
   }
 })

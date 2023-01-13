@@ -10,18 +10,18 @@
 import * as commands from '../commands.js'
 
 // Retrieve the popup config.
-const popupConfigPromise = fetch('/src/popup/config.json').then(response => response.json())
+const popupConfigPromise = fetch('popup/config.json').then(response => response.json())
 
 let popupIsOpen = false
 
-// Handles setup.
-async function handleSetup() {
+// Handles the initial setup when the extension is first installed.
+async function onInstall() {
   const popupConfig = await popupConfigPromise
   await chrome.storage.sync.set({ popupConfig })
 }
 
-// Handles update.
-async function handleUpdate(previousVersion) {
+// Handles the setup when the extension is updated to a new version.
+async function onUpdate(previousVersion) {
   const popupConfig = await popupConfigPromise
   // Merge config to handle added commands.
   const { popupConfig: { commandBindings } } = await chrome.storage.sync.get('popupConfig')
@@ -30,24 +30,24 @@ async function handleUpdate(previousVersion) {
 }
 
 // Handles a new connection when the popup shows up.
-async function handleConnection(port) {
+function onConnect(port) {
   popupIsOpen = true
-  port.onDisconnect.addListener(handleDisconnection)
-  port.onMessage.addListener(handleMessage)
+  port.onDisconnect.addListener(onDisconnect)
+  port.onMessage.addListener(onMessage)
 }
 
 // Handles disconnection when the popup goes away.
-async function handleDisconnection(port) {
+function onDisconnect(port) {
   popupIsOpen = false
 }
 
 // Handles message by using a discriminator field.
 // Each message has a `type` field, and the rest of the fields, and their meaning, depend on its value.
 // Reference: https://crystal-lang.org/api/master/JSON/Serializable.html#discriminator-field
-async function handleMessage(message, port) {
+function onMessage(message, port) {
   switch (message.type) {
     case 'command':
-      handleCommand(message, port)
+      onCommandMessage(message, port)
       break
     default:
       port.postMessage({ type: 'error', message: 'Unknown request' })
@@ -55,12 +55,12 @@ async function handleMessage(message, port) {
 }
 
 // Handles a single command.
-async function handleCommand(message, port) {
+async function onCommandMessage(message, port) {
   const { command: commandName, passingMode, stickyWindow, tab } = message
 
   // If passing mode is specified, close the popup window.
   if (passingMode) {
-    await port.postMessage({ type: 'command', command: 'closePopup' })
+    port.postMessage({ type: 'command', command: 'closePopup' })
   }
 
   // Execute the command and wait for it to complete.
@@ -75,4 +75,4 @@ async function handleCommand(message, port) {
   await chrome.storage.session.set({ lastCommand: commandName })
 }
 
-export { handleSetup, handleUpdate, handleConnection }
+export default { onInstall, onUpdate, onConnect }

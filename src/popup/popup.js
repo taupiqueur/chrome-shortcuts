@@ -19,7 +19,7 @@ const port = chrome.runtime.connect({ name: 'popup' })
 port.onMessage.addListener((message, port) => {
   switch (message.type) {
     case 'command':
-      handleCommand(message.command, port)
+      handleCommand(message.command)
       break
     default:
       port.postMessage({ type: 'error', message: 'Unknown request' })
@@ -27,7 +27,7 @@ port.onMessage.addListener((message, port) => {
 })
 
 // Handles a single command.
-async function handleCommand(commandName, port) {
+async function handleCommand(commandName) {
   const tab = await getCurrentTab()
   await commands[commandName]({ tab, window, port })
 }
@@ -36,7 +36,7 @@ async function handleCommand(commandName, port) {
 // Restore selected command from session.
 for (const menuItemElement of menuItemElements) {
   const commandName = menuItemElement.dataset.command
-  menuItemElement.addEventListener('click', handleCommand.bind(null, commandName, port))
+  menuItemElement.addEventListener('click', handleCommand.bind(null, commandName))
   for (const keybinding of commandBindings[commandName]) {
     menuItemElement.addKeyboardShortcut(keybinding)
   }
