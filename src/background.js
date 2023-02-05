@@ -27,7 +27,7 @@ async function onCommand(commandName, tab) {
 }
 
 // Handle keyboard shortcuts.
-// Reference: https://developer.chrome.com/docs/extensions/reference/commands/
+// Reference: https://developer.chrome.com/docs/extensions/reference/commands/#event-onCommand
 chrome.commands.onCommand.addListener((commandNameWithIndex, tab) => {
   const commandName = commandNameWithIndex.split('.')[1]
   onCommand(commandName, tab)
