@@ -14,6 +14,18 @@ const popupConfigPromise = fetch('popup/config.json').then(response => response.
 
 let popupIsOpen = false
 
+// Handles the initial setup when the extension is first installed or updated to a new version.
+function onInstalled(details) {
+  switch (details.reason) {
+    case 'install':
+      onInstall()
+      break
+    case 'update':
+      onUpdate(details.previousVersion)
+      break
+  }
+}
+
 // Handles the initial setup when the extension is first installed.
 async function onInstall() {
   const popupConfig = await popupConfigPromise
@@ -75,4 +87,4 @@ async function onCommandMessage(message, port) {
   await chrome.storage.session.set({ lastCommand: commandName })
 }
 
-export default { onInstall, onUpdate, onConnect }
+export default { onInstalled, onConnect }
