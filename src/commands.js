@@ -15,6 +15,10 @@ import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipb
 import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification, waitForNavigation } from './lib/browser.js'
 import { findTabIndex, getSelectedTabs, getAllTabs, getAllTabGroups, getVisibleTabs, getOpenTabRelative, getCurrentWindow, getOpenWindowRelative } from './context.js'
 
+// Use array grouping with static methods.
+// Reference: https://bugs.chromium.org/p/v8/issues/detail?id=12499
+Map.groupBy = (items, callbackFn) => items.groupToMap(callbackFn)
+
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
 const { compare: localeCompare } = new Intl.Collator
@@ -425,11 +429,11 @@ export async function sortTabsByURL(context) {
 // Groups tabs by domain.
 export async function groupTabsByDomain(context) {
   const tabs = await getSelectedTabs(context)
-  const tabsByDomain = tabs.groupToMap(tab => new URL(tab.url).hostname)
+  const tabsByDomain = Map.groupBy(tabs, tab => new URL(tab.url).hostname)
 
   // Get all tab groups and group them by title.
   const tabGroups = await getAllTabGroups(context)
-  const tabGroupsByTitle = tabGroups.group(tabGroup => tabGroup.title)
+  const tabGroupsByTitle = Object.groupBy(tabGroups, tabGroup => tabGroup.title)
 
   // Group tabs by domain.
   await Promise.all(
@@ -693,7 +697,7 @@ async function moveTabDirection(context, direction) {
 
   // Partition pinned tabs and group tabs by group.
   const allTabs = await getAllTabs(context)
-  const allTabsByGroup = allTabs.group(byGroup)
+  const allTabsByGroup = Object.groupBy(allTabs, byGroup)
   const startIndex = allTabs.findIndex(tab => !tab.pinned)
   const [pinnedTabs, otherTabs] = startIndex === -1
     ? [allTabs, []]
@@ -715,7 +719,7 @@ async function moveTabDirection(context, direction) {
   }
   if (otherChunks.length > 0 && otherChunks.at(focusIndex)[0]) {
     const [[_, selectedTabs]] = otherChunks.splice(focusIndex, 1)
-    const [[groupId, tabs], ...otherGroups] = selectedTabs.groupToMap(byGroup)
+    const [[groupId, tabs], ...otherGroups] = Map.groupBy(selectedTabs, byGroup)
     const singleGroup = otherGroups.length === 0
     const fullySelected = groupId !== TAB_GROUP_ID_NONE && tabs.length === allTabsByGroup[groupId].length
     // Only ungroup tabs if the selection
@@ -1044,7 +1048,7 @@ export async function selectRelatedTabs(context) {
   const allTabs = await getAllTabs(context)
   const tabsToHighlight = [context.tab]
   for (const [_, tabPartition] of chunk(allTabs, byGroup)) {
-    for (const [_, tabs] of tabPartition.groupToMap(byDomain)) {
+    for (const [_, tabs] of Map.groupBy(tabPartition, byDomain)) {
       if (tabs.some(isSelected)) {
         tabsToHighlight.push(...tabs)
       }
@@ -1120,8 +1124,8 @@ export async function bookmarkTab(context) {
   const tabs = await getSelectedTabs(context)
   const bookmarks = await chrome.bookmarks.search({})
 
-  const tabsByURL = tabs.groupToMap(byURL)
-  const bookmarksByURL = bookmarks.groupToMap(byURL)
+  const tabsByURL = Map.groupBy(tabs, byURL)
+  const bookmarksByURL = Map.groupBy(bookmarks, byURL)
 
   // Save selected tabs as bookmarks.
   const createdBookmarks = await Promise.all(
