@@ -15,10 +15,6 @@ import { clickPageElement, focusPageElement, blurActiveElement, writeTextToClipb
 import { focusTab, isTabInGroup, getTabGroup, executeScript, updateTabs, updateTabGroups, reloadTabs, moveTabs, closeTabs, duplicateTabs, discardTabs, groupTabs, ungroupTabs, highlightTabs, sendNotification, waitForNavigation } from './lib/browser.js'
 import { findTabIndex, getSelectedTabs, getAllTabs, getAllTabGroups, getVisibleTabs, getOpenTabRelative, getCurrentWindow, getOpenWindowRelative } from './context.js'
 
-// Use array grouping with static methods.
-// Reference: https://bugs.chromium.org/p/v8/issues/detail?id=12499
-Map.groupBy = (items, callbackFn) => items.groupToMap(callbackFn)
-
 // Language-sensitive string comparison
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
 const { compare: localeCompare } = new Intl.Collator
