@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Perform common tasks with your keyboard.",
   "homepage_url": "https://github.com/taupiqueur/chrome-shortcuts",
+  "author": "Mathieu Ablasou <taupiqueur.kanto@gmail.com>",
   "manifest_version": 3,
   "background": {
     "type": "module",
