@@ -1234,7 +1234,7 @@ export async function openSettingsPage(context) {
 
 // Opens the Passwords page.
 export async function openPasswordsPage(context) {
-  await openChromePage(context, 'chrome://settings/passwords')
+  await openChromePage(context, 'chrome://password-manager/passwords')
 }
 
 // Opens the Search engines page.
