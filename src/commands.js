@@ -593,6 +593,61 @@ export async function focusLastTab(context) {
   await focusTabByIndex(context, -1)
 }
 
+// Activates the nth most recently used tab among your open tabs.
+async function focusMostRecentTabByIndex(context, index) {
+  const { mostRecentlyUsedTabsManager } = context
+  const tabIds = mostRecentlyUsedTabsManager.getMostRecentTabs()
+  if (tabIds.length > index) {
+    const tab = await chrome.tabs.get(tabIds[index])
+    await focusTab(tab)
+  }
+}
+
+// Activates the last active tab.
+export async function focusLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 0)
+}
+
+// Activates the second last active tab.
+export async function focusSecondLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 1)
+}
+
+// Activates the third last active tab.
+export async function focusThirdLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 2)
+}
+
+// Activates the fourth last active tab.
+export async function focusFourthLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 3)
+}
+
+// Activates the fifth last active tab.
+export async function focusFifthLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 4)
+}
+
+// Activates the sixth last active tab.
+export async function focusSixthLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 5)
+}
+
+// Activates the seventh last active tab.
+export async function focusSeventhLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 6)
+}
+
+// Activates the eighth last active tab.
+export async function focusEighthLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 7)
+}
+
+// Activates the ninth last active tab.
+export async function focusNinthLastActiveTab(context) {
+  await focusMostRecentTabByIndex(context, 8)
+}
+
 // Activates an open window relative to the current window.
 // Skips minimized windows and wraps around.
 async function focusWindowRelative(context, delta) {

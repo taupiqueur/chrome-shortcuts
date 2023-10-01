@@ -42,10 +42,12 @@ async function onUpdate(previousVersion) {
 }
 
 // Handles a new connection when the popup shows up.
-function onConnect(port) {
+function onConnect(port, backgroundContext) {
   popupIsOpen = true
   port.onDisconnect.addListener(onDisconnect)
-  port.onMessage.addListener(onMessage)
+  port.onMessage.addListener((message, port) => {
+    onMessage(message, port, backgroundContext)
+  })
 }
 
 // Handles disconnection when the popup goes away.
@@ -56,10 +58,10 @@ function onDisconnect(port) {
 // Handles message by using a discriminator field.
 // Each message has a `type` field, and the rest of the fields, and their meaning, depend on its value.
 // Reference: https://crystal-lang.org/api/master/JSON/Serializable.html#discriminator-field
-function onMessage(message, port) {
+function onMessage(message, port, backgroundContext) {
   switch (message.type) {
     case 'command':
-      onCommandMessage(message, port)
+      onCommandMessage(message, port, backgroundContext)
       break
     default:
       port.postMessage({ type: 'error', message: 'Unknown request' })
@@ -67,8 +69,9 @@ function onMessage(message, port) {
 }
 
 // Handles a single command.
-async function onCommandMessage(message, port) {
+async function onCommandMessage(message, port, backgroundContext) {
   const { command: commandName, passingMode, stickyWindow, tab } = message
+  const { mostRecentlyUsedTabsManager } = backgroundContext
 
   // If passing mode is specified, close the popup window.
   if (passingMode) {
@@ -76,7 +79,11 @@ async function onCommandMessage(message, port) {
   }
 
   // Execute the command and wait for it to complete.
-  await commands[commandName]({ tab })
+  const commandContext = {
+    tab,
+    mostRecentlyUsedTabsManager
+  }
+  await commands[commandName](commandContext)
 
   // If the sticky flag has been specified, then “stick” the extension’s popup.
   if (stickyWindow) {

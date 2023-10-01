@@ -16,8 +16,8 @@ function getTabIds(tabs) {
 // Focuses the specified tab.
 export async function focusTab(tab) {
   // Focus window and activate tab.
+  await chrome.tabs.update(tab.id, { active: true })
   await chrome.windows.update(tab.windowId, { focused: true })
-  return chrome.tabs.update(tab.id, { active: true })
 }
 
 // Returns `true` if the specified tab is in a group.

@@ -174,6 +174,15 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `focusSeventhTab` | Activate the seventh leftmost open tab | `⌃ 7` | `⌘ 7` | `Digit7`
 `focusEighthTab` | Activate the eighth leftmost open tab | `⌃ 8` | `⌘ 8` | `Digit8`
 `focusLastTab` | Activate the rightmost open tab | `⌃ 9` | `⌘ 9` | `Digit9`
+`focusLastActiveTab` | Activate the last active tab | | | `⌥ Digit1`
+`focusSecondLastActiveTab` | Activate the second last active tab | | | `⌥ Digit2`
+`focusThirdLastActiveTab` | Activate the third last active tab | | | `⌥ Digit3`
+`focusFourthLastActiveTab` | Activate the fourth last active tab | | | `⌥ Digit4`
+`focusFifthLastActiveTab` | Activate the fifth last active tab | | | `⌥ Digit5`
+`focusSixthLastActiveTab` | Activate the sixth last active tab | | | `⌥ Digit6`
+`focusSeventhLastActiveTab` | Activate the seventh last active tab | | | `⌥ Digit7`
+`focusEighthLastActiveTab` | Activate the eighth last active tab | | | `⌥ Digit8`
+`focusNinthLastActiveTab` | Activate the ninth last active tab | | | `⌥ Digit9`
 `focusNextWindow` | Activate the next open window | | | `KeyW`
 `focusPreviousWindow` | Activate the previous open window | | | `⇧ KeyW`
 
