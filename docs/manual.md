@@ -119,8 +119,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openNewTab` | Open and activate a new tab | `⌃ T` | `⌘ T` | `KeyO`
-`openNewTabRight` | Open and activate a new tab to the right | | | `KeyT`
+`openNewTab` | Open and activate a new tab | `⌃ T` | `⌘ T` | `KeyT`
+`openNewTabRight` | Open and activate a new tab to the right | | | `KeyO`
 `openNewWindow` | Open a new window | `⌃ N` | `⌘ N` | `KeyN`
 `openNewIncognitoWindow` | Open a new window in Incognito mode | `⌃ ⇧ N` | `⇧ ⌘ N` | `⇧ KeyN`
 
