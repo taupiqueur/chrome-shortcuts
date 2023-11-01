@@ -1,18 +1,21 @@
 // This module contains the popup commands.
-//
-// Commands are sent through a channel defined in the popup service worker.
-//
-// The command signature must be a function of one argument, a context made of:
-//
-// - `tab`: the current tab,
-// - `window`: a reference to the popup window,
-// - `port`: the channel to communicate with the service worker.
 
-// Creates a new function that, when called, sends a message to the service worker.
+/**
+ * Creates a new function that, when called, sends a message to the service worker.
+ *
+ * @param {string} commandName
+ * @param {boolean} passingMode
+ * @param {boolean} stickyWindow
+ * @returns {(port: chrome.runtime.Port) => void}
+ */
 function message(commandName, passingMode, stickyWindow) {
-  return (context) => {
-    const { tab, port } = context
-    port.postMessage({ type: 'command', command: commandName, passingMode, stickyWindow, tab })
+  return (port) => {
+    port.postMessage({
+      type: 'command',
+      commandName,
+      passingMode,
+      stickyWindow
+    })
   }
 }
 
@@ -22,11 +25,11 @@ export const goBack = message('goBack', false, true)
 export const goForward = message('goForward', false, true)
 export const reloadTab = message('reloadTab')
 export const reloadTabWithoutCache = message('reloadTabWithoutCache')
-export const goToNextPage = message('goToNextPage')
-export const goToPreviousPage = message('goToPreviousPage')
-export const removeURLParams = message('removeURLParams')
-export const goUp = message('goUp')
-export const goToRoot = message('goToRoot')
+export const goToNextPage = message('goToNextPage', false, true)
+export const goToPreviousPage = message('goToPreviousPage', false, true)
+export const removeURLParams = message('removeURLParams', false, true)
+export const goUp = message('goUp', false, true)
+export const goToRoot = message('goToRoot', false, true)
 
 // Accessibility ---------------------------------------------------------------
 
@@ -94,35 +97,35 @@ export const groupTabsByDomain = message('groupTabsByDomain')
 
 // Manage tab groups -----------------------------------------------------------
 
-export const renameTabGroupPrompt = message('renameTabGroupPrompt')
+export const renameTabGroup = message('renameTabGroup')
 export const cycleTabGroupColorForward = message('cycleTabGroupColorForward')
 export const cycleTabGroupColorBackward = message('cycleTabGroupColorBackward')
 
 // Switch tabs -----------------------------------------------------------------
 
-export const focusAudibleTab = message('focusAudibleTab')
-export const focusNextTab = message('focusNextTab', false, true)
-export const focusPreviousTab = message('focusPreviousTab', false, true)
-export const focusFirstTab = message('focusFirstTab', false, true)
-export const focusSecondTab = message('focusSecondTab', false, true)
-export const focusThirdTab = message('focusThirdTab', false, true)
-export const focusFourthTab = message('focusFourthTab', false, true)
-export const focusFifthTab = message('focusFifthTab', false, true)
-export const focusSixthTab = message('focusSixthTab', false, true)
-export const focusSeventhTab = message('focusSeventhTab', false, true)
-export const focusEighthTab = message('focusEighthTab', false, true)
-export const focusLastTab = message('focusLastTab', false, true)
-export const focusLastActiveTab = message('focusLastActiveTab', true, true)
-export const focusSecondLastActiveTab = message('focusSecondLastActiveTab', true, true)
-export const focusThirdLastActiveTab = message('focusThirdLastActiveTab', true, true)
-export const focusFourthLastActiveTab = message('focusFourthLastActiveTab', true, true)
-export const focusFifthLastActiveTab = message('focusFifthLastActiveTab', true, true)
-export const focusSixthLastActiveTab = message('focusSixthLastActiveTab', true, true)
-export const focusSeventhLastActiveTab = message('focusSeventhLastActiveTab', true, true)
-export const focusEighthLastActiveTab = message('focusEighthLastActiveTab', true, true)
-export const focusNinthLastActiveTab = message('focusNinthLastActiveTab', true, true)
-export const focusNextWindow = message('focusNextWindow', true, true)
-export const focusPreviousWindow = message('focusPreviousWindow', true, true)
+export const activateAudibleTab = message('activateAudibleTab', false, true)
+export const activateNextTab = message('activateNextTab', false, true)
+export const activatePreviousTab = message('activatePreviousTab', false, true)
+export const activateFirstTab = message('activateFirstTab', false, true)
+export const activateSecondTab = message('activateSecondTab', false, true)
+export const activateThirdTab = message('activateThirdTab', false, true)
+export const activateFourthTab = message('activateFourthTab', false, true)
+export const activateFifthTab = message('activateFifthTab', false, true)
+export const activateSixthTab = message('activateSixthTab', false, true)
+export const activateSeventhTab = message('activateSeventhTab', false, true)
+export const activateEighthTab = message('activateEighthTab', false, true)
+export const activateLastTab = message('activateLastTab', false, true)
+export const activateLastActiveTab = message('activateLastActiveTab', true, true)
+export const activateSecondLastActiveTab = message('activateSecondLastActiveTab', true, true)
+export const activateThirdLastActiveTab = message('activateThirdLastActiveTab', true, true)
+export const activateFourthLastActiveTab = message('activateFourthLastActiveTab', true, true)
+export const activateFifthLastActiveTab = message('activateFifthLastActiveTab', true, true)
+export const activateSixthLastActiveTab = message('activateSixthLastActiveTab', true, true)
+export const activateSeventhLastActiveTab = message('activateSeventhLastActiveTab', true, true)
+export const activateEighthLastActiveTab = message('activateEighthLastActiveTab', true, true)
+export const activateNinthLastActiveTab = message('activateNinthLastActiveTab', true, true)
+export const activateNextWindow = message('activateNextWindow', true, true)
+export const activatePreviousWindow = message('activatePreviousWindow', true, true)
 
 // Move tabs -------------------------------------------------------------------
 
@@ -142,14 +145,15 @@ export const moveTabGroupPreviousWindow = message('moveTabGroupPreviousWindow', 
 
 // Select tabs -----------------------------------------------------------------
 
-export const selectTab = message('selectTab')
+export const selectActiveTab = message('selectActiveTab')
 export const selectPreviousTab = message('selectPreviousTab')
 export const selectNextTab = message('selectNextTab')
 export const selectRelatedTabs = message('selectRelatedTabs')
 export const selectTabsInGroup = message('selectTabsInGroup')
 export const selectAllTabs = message('selectAllTabs')
 export const selectRightTabs = message('selectRightTabs')
-export const flipTabSelection = message('flipTabSelection', false, true)
+export const moveTabSelectionFaceBackward = message('moveTabSelectionFaceBackward', false, true)
+export const moveTabSelectionFaceForward = message('moveTabSelectionFaceForward', false, true)
 
 // Bookmarks -------------------------------------------------------------------
 
@@ -169,13 +173,16 @@ export const openSettingsPage = message('openSettingsPage')
 export const openPasswordsPage = message('openPasswordsPage')
 export const openSearchEnginesPage = message('openSearchEnginesPage')
 export const openExtensionsPage = message('openExtensionsPage')
-export const openShortcutsPage = message('openShortcutsPage')
+export const openExtensionShortcutsPage = message('openExtensionShortcutsPage')
 export const openExperimentsPage = message('openExperimentsPage')
 
 // Popup -----------------------------------------------------------------------
 
-// Closes the popup window.
-// Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/close
-export function closePopup(context) {
-  context.window.close()
+/**
+ * Closes the popup window.
+ *
+ * @returns {void}
+ */
+export function closePopup() {
+  window.close()
 }

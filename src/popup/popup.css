@@ -33,12 +33,16 @@ body {
   font-family: var(--font-family);
 }
 
-/* Use the system font */
+/*
+ * Use the system font.
+ */
 menu-item::part(button), keyboard-shortcut::part(key), button, kbd {
   font-family: inherit;
 }
 
-/* Reset list style for menu items */
+/*
+ * Reset list style for menu items.
+ */
 custom-menu::part(menu) {
   list-style: none;
   padding-inline-start: 0;
@@ -52,7 +56,9 @@ custom-menu:focus {
   outline: none;
 }
 
-/* Separator for menu items */
+/*
+ * Separator for menu items
+ */
 hr {
   margin: auto;
   width: 90%;
@@ -61,7 +67,9 @@ hr {
   margin-block: 0.2rem;
 }
 
-/* Reset button style */
+/*
+ * Reset button style.
+ */
 menu-item::part(button) {
   width: 100%;
   border: none;
@@ -74,8 +82,10 @@ menu-item::part(button):hover {
   background-color: var(--selection-color);
 }
 
-/* Buttons with shortcuts
-/* Reference: https://flexbox.ninja/demos/buttons-with-icons/ */
+/*
+ * Buttons with shortcuts
+ * https://flexbox.ninja/demos/buttons-with-icons/
+ */
 menu-item::part(button) {
   display: flex;
   padding-block: 0.5rem;

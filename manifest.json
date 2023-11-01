@@ -9,7 +9,19 @@
     "type": "module",
     "service_worker": "src/background.js"
   },
-  "permissions": ["activeTab", "bookmarks", "downloads", "notifications", "scripting", "search", "sessions", "storage", "tabGroups", "tabs", "webNavigation"],
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "downloads",
+    "notifications",
+    "scripting",
+    "search",
+    "sessions",
+    "storage",
+    "tabGroups",
+    "tabs",
+    "webNavigation"
+  ],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "src/popup/popup.html"
@@ -163,12 +175,12 @@
       "description": "Tab state · Discard selected tabs"
     },
     "45.sortTabsByURL": {
-      "description": "Organize tabs · Sort tabs by URL"
+      "description": "Organize tabs · Sort selected tabs by URL"
     },
     "46.groupTabsByDomain": {
-      "description": "Organize tabs · Group tabs by domain"
+      "description": "Organize tabs · Group selected tabs by domain"
     },
-    "47.renameTabGroupPrompt": {
+    "47.renameTabGroup": {
       "description": "Manage tab groups · Rename tab group"
     },
     "48.cycleTabGroupColorForward": {
@@ -177,73 +189,73 @@
     "49.cycleTabGroupColorBackward": {
       "description": "Manage tab groups · Cycle backward through tab group colors"
     },
-    "50.focusAudibleTab": {
+    "50.activateAudibleTab": {
       "description": "Switch tabs · Activate the first audible tab"
     },
-    "51.focusNextTab": {
+    "51.activateNextTab": {
       "description": "Switch tabs · Activate the next open tab"
     },
-    "52.focusPreviousTab": {
+    "52.activatePreviousTab": {
       "description": "Switch tabs · Activate the previous open tab"
     },
-    "53.focusFirstTab": {
+    "53.activateFirstTab": {
       "description": "Switch tabs · Activate the leftmost open tab"
     },
-    "54.focusSecondTab": {
+    "54.activateSecondTab": {
       "description": "Switch tabs · Activate the second leftmost open tab"
     },
-    "55.focusThirdTab": {
+    "55.activateThirdTab": {
       "description": "Switch tabs · Activate the third leftmost open tab"
     },
-    "56.focusFourthTab": {
+    "56.activateFourthTab": {
       "description": "Switch tabs · Activate the fourth leftmost open tab"
     },
-    "57.focusFifthTab": {
+    "57.activateFifthTab": {
       "description": "Switch tabs · Activate the fifth leftmost open tab"
     },
-    "58.focusSixthTab": {
+    "58.activateSixthTab": {
       "description": "Switch tabs · Activate the sixth leftmost open tab"
     },
-    "59.focusSeventhTab": {
+    "59.activateSeventhTab": {
       "description": "Switch tabs · Activate the seventh leftmost open tab"
     },
-    "60.focusEighthTab": {
+    "60.activateEighthTab": {
       "description": "Switch tabs · Activate the eighth leftmost open tab"
     },
-    "61.focusLastTab": {
+    "61.activateLastTab": {
       "description": "Switch tabs · Activate the rightmost open tab"
     },
-    "62.focusLastActiveTab": {
+    "62.activateLastActiveTab": {
       "description": "Switch tabs · Activate the last active tab"
     },
-    "63.focusSecondLastActiveTab": {
+    "63.activateSecondLastActiveTab": {
       "description": "Switch tabs · Activate the second last active tab"
     },
-    "64.focusThirdLastActiveTab": {
+    "64.activateThirdLastActiveTab": {
       "description": "Switch tabs · Activate the third last active tab"
     },
-    "65.focusFourthLastActiveTab": {
+    "65.activateFourthLastActiveTab": {
       "description": "Switch tabs · Activate the fourth last active tab"
     },
-    "66.focusFifthLastActiveTab": {
+    "66.activateFifthLastActiveTab": {
       "description": "Switch tabs · Activate the fifth last active tab"
     },
-    "67.focusSixthLastActiveTab": {
+    "67.activateSixthLastActiveTab": {
       "description": "Switch tabs · Activate the sixth last active tab"
     },
-    "68.focusSeventhLastActiveTab": {
+    "68.activateSeventhLastActiveTab": {
       "description": "Switch tabs · Activate the seventh last active tab"
     },
-    "69.focusEighthLastActiveTab": {
+    "69.activateEighthLastActiveTab": {
       "description": "Switch tabs · Activate the eighth last active tab"
     },
-    "70.focusNinthLastActiveTab": {
+    "70.activateNinthLastActiveTab": {
       "description": "Switch tabs · Activate the ninth last active tab"
     },
-    "71.focusNextWindow": {
+    "71.activateNextWindow": {
       "description": "Switch tabs · Activate the next open window"
     },
-    "72.focusPreviousWindow": {
+    "72.activatePreviousWindow": {
       "description": "Switch tabs · Activate the previous open window"
     },
     "73.grabTab": {
@@ -267,7 +279,7 @@
     "79.moveTabPreviousWindow": {
       "description": "Move tabs · Move selected tabs to the previous open window"
     },
-    "80.selectTab": {
+    "80.selectActiveTab": {
       "description": "Select tabs · Deselect all other tabs"
     },
     "81.selectPreviousTab": {
@@ -288,44 +300,47 @@
     "86.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "87.flipTabSelection": {
-      "description": "Select tabs · Flip tab selection"
+    "87.moveTabSelectionFaceBackward": {
+      "description": "Select tabs · Move tab selection’s face backward"
     },
-    "88.bookmarkTab": {
+    "88.moveTabSelectionFaceForward": {
+      "description": "Select tabs · Move tab selection’s face forward"
+    },
+    "89.bookmarkTab": {
       "description": "Bookmarks · Save selected tabs as bookmarks"
     },
-    "89.bookmarkSession": {
+    "90.bookmarkSession": {
       "description": "Bookmarks · Save the current session as bookmarks"
     },
-    "90.openDownloadsFolder": {
-      "description": "Folders · Open the Downloads folder"
+    "91.openDownloadsFolder": {
+      "description": "Folders · Open the “Downloads” folder"
     },
-    "91.openHistoryPage": {
-      "description": "Chrome URLs · Open the History page"
+    "92.openHistoryPage": {
+      "description": "Chrome URLs · Open the “History” page"
     },
-    "92.openDownloadsPage": {
-      "description": "Chrome URLs · Open the Downloads page"
+    "93.openDownloadsPage": {
+      "description": "Chrome URLs · Open the “Downloads” page"
     },
-    "93.openBookmarksPage": {
-      "description": "Chrome URLs · Open the Bookmarks page"
+    "94.openBookmarksPage": {
+      "description": "Chrome URLs · Open the “Bookmarks” page"
     },
-    "94.openSettingsPage": {
-      "description": "Chrome URLs · Open the Settings page"
+    "95.openSettingsPage": {
+      "description": "Chrome URLs · Open the “Settings” page"
     },
-    "95.openPasswordsPage": {
-      "description": "Chrome URLs · Open the Passwords page"
+    "96.openPasswordsPage": {
+      "description": "Chrome URLs · Open the “Passwords” page"
     },
-    "96.openSearchEnginesPage": {
-      "description": "Chrome URLs · Open the Search engines page"
+    "97.openSearchEnginesPage": {
+      "description": "Chrome URLs · Open the “Search engines” page"
     },
-    "97.openExtensionsPage": {
-      "description": "Chrome URLs · Open the Extensions page"
+    "98.openExtensionsPage": {
+      "description": "Chrome URLs · Open the “Extensions” page"
     },
-    "98.openShortcutsPage": {
-      "description": "Chrome URLs · Open the Extensions > Keyboard shortcuts page"
+    "99.openExtensionShortcutsPage": {
+      "description": "Chrome URLs · Open the “Extensions > Keyboard shortcuts” page"
     },
-    "99.openExperimentsPage": {
-      "description": "Chrome URLs · Open the Experiments page"
+    "100.openExperimentsPage": {
+      "description": "Chrome URLs · Open the “Experiments” page"
     }
   }
 }

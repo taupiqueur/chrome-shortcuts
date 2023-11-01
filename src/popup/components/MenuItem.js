@@ -3,8 +3,9 @@
 
 import KeyboardShortcut from './KeyboardShortcut.js'
 
-const template = document.createElement('template')
-template.innerHTML = `
+const templateElement = document.createElement('template')
+
+templateElement.innerHTML = `
   <li part="item">
     <button part="button">
       <span part="description">
@@ -17,17 +18,35 @@ template.innerHTML = `
   </li>
 `
 
-// Define our custom menu item.
+/**
+ * @extends {HTMLElement}
+ */
 class MenuItem extends HTMLElement {
   constructor() {
     super()
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot.append(template.content.cloneNode(true))
 
-    // Causes the element to be focusable.
+    this.attachShadow({
+      mode: 'open'
+    })
+
+    this.shadowRoot.append(
+      templateElement.content.cloneNode(true)
+    )
+
+    /**
+     * A value of “0” causes the element to be focusable.
+     *
+     * @type {number}
+     */
     this.tabIndex = 0
   }
 
+  /**
+   * Adds keyboard shortcut.
+   *
+   * @param {KeyboardEvent} keyboardEvent
+   * @returns {void}
+   */
   addKeyboardShortcut(keyboardEvent) {
     const keyboardShortcutElement = document.createElement('keyboard-shortcut')
     keyboardShortcutElement.slot = 'shortcut'

@@ -20,6 +20,7 @@ assets/chrome-logo@128px.png: assets/chrome-logo.svg
 	inkscape $< -o $@ -w 128 -h 128
 
 build: all
+	npm install
 
 release: clean build
 	7z a releases/$(name)-$(version).zip manifest.json src assets

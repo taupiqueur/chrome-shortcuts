@@ -9,8 +9,8 @@ Shortcuts is a browser extension that lets you perform common tasks with your ke
 - Implements a self-contained “Vim” mode in the extension’s popup.
 [Content scripts] are not injected into every tab, and you can skim through Chrome URLs in the tab strip.
 
-[Commands UI]: https://developer.chrome.com/docs/extensions/mv3/user_interface/#commands
-[Content scripts]: https://developer.chrome.com/docs/extensions/mv3/content_scripts/
+[Commands UI]: https://developer.chrome.com/docs/extensions/develop/ui#commands
+[Content scripts]: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts
 
 ###### What is Shortcuts _not_?
 
@@ -24,7 +24,7 @@ Here are some features that Shortcuts won’t implement.
 
 ## Installation
 
-**Experimental**: Requires [Chrome Dev] or [Chrome Canary] with **Experimental JavaScript** features enabled—tweakable at `chrome://flags/#enable-javascript-harmony`—for sticky popup and grouping tabs.
+**Experimental**: Requires [Chrome Dev] or [Chrome Canary] for sticky popup.
 
 [Chrome Dev]: https://google.com/chrome/dev/
 [Chrome Canary]: https://google.com/chrome/canary/
@@ -51,8 +51,8 @@ make build
 ### Load an unpacked extension
 
 1. Navigate to `chrome://extensions`.
-2. Enable **Developer mode**.
-3. Click **Load unpacked** and select the extension directory.
+2. Enable “Developer mode”.
+3. Click “Load unpacked” and select the extension directory.
 
 ## Documentation
 

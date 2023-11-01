@@ -3,95 +3,199 @@
 // Uses a long-lived connection for the popup lifetime.
 // This allows to determine when the popup shows up or goes away.
 //
-// Action: https://developer.chrome.com/docs/extensions/reference/action/
-// Service workers: https://developer.chrome.com/docs/extensions/mv3/service_workers/
-// Long-lived connections: https://developer.chrome.com/docs/extensions/mv3/messaging/#connect
+// Popup page: https://developer.chrome.com/docs/extensions/develop/ui/add-popup
+// Service workers: https://developer.chrome.com/docs/extensions/develop/concepts/service-workers
+// Long-lived connections: https://developer.chrome.com/docs/extensions/develop/concepts/messaging#connect
+
+/**
+ * @typedef {CommandMessage} Message
+ *
+ * @typedef {object} CommandMessage
+ * @property {"command"} type
+ * @property {string} commandName
+ * @property {boolean} passingMode
+ * @property {boolean} stickyWindow
+ */
 
 import * as commands from '../commands.js'
 
-// Retrieve the popup config.
-const popupConfigPromise = fetch('popup/config.json').then(response => response.json())
+const popupConfigPromise = fetch('popup/config.json')
+  .then((response) =>
+    response.json()
+  )
 
-let popupIsOpen = false
-
-// Handles the initial setup when the extension is first installed or updated to a new version.
+/**
+ * Handles the initial setup when the extension is first installed or updated to a new version.
+ *
+ * @param {object} details
+ * @returns {void}
+ */
 function onInstalled(details) {
   switch (details.reason) {
     case 'install':
       onInstall()
       break
+
     case 'update':
       onUpdate(details.previousVersion)
       break
   }
 }
 
-// Handles the initial setup when the extension is first installed.
+/**
+ * Handles the initial setup when the extension is first installed.
+ *
+ * @returns {Promise<void>}
+ */
 async function onInstall() {
   const popupConfig = await popupConfigPromise
-  await chrome.storage.sync.set({ popupConfig })
-}
-
-// Handles the setup when the extension is updated to a new version.
-async function onUpdate(previousVersion) {
-  const popupConfig = await popupConfigPromise
-  // Merge config to handle added commands.
-  const { popupConfig: { commandBindings } } = await chrome.storage.sync.get('popupConfig')
-  Object.assign(popupConfig.commandBindings, commandBindings)
-  await chrome.storage.sync.set({ popupConfig })
-}
-
-// Handles a new connection when the popup shows up.
-function onConnect(port, backgroundContext) {
-  popupIsOpen = true
-  port.onDisconnect.addListener(onDisconnect)
-  port.onMessage.addListener((message, port) => {
-    onMessage(message, port, backgroundContext)
+  await chrome.storage.sync.set({
+    popupConfig
   })
 }
 
-// Handles disconnection when the popup goes away.
-function onDisconnect(port) {
-  popupIsOpen = false
+/**
+ * Handles the setup when the extension is updated to a new version.
+ *
+ * @param {string} previousVersion
+ * @returns {Promise<void>}
+ */
+async function onUpdate(previousVersion) {
+  const popupConfig = await popupConfigPromise
+  const localStorage = await chrome.storage.sync.get('popupConfig')
+
+  // Merge config to handle added commands.
+  Object.assign(
+    popupConfig.commandBindings,
+    localStorage.popupConfig.commandBindings
+  )
+
+  await chrome.storage.sync.set({
+    popupConfig
+  })
 }
 
-// Handles message by using a discriminator field.
-// Each message has a `type` field, and the rest of the fields, and their meaning, depend on its value.
-// Reference: https://crystal-lang.org/api/master/JSON/Serializable.html#discriminator-field
-function onMessage(message, port, backgroundContext) {
+/**
+ * Handles a new connection when the popup shows up.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {Context} cx
+ * @returns {void}
+ */
+function onConnect(port, cx) {
+  port.onMessage.addListener((message, port) => {
+    onMessage(message, port, cx)
+  })
+}
+
+/**
+ * Handles message by using a discriminator field. Each message has a `type` field,
+ * and the rest of the fields, and their meaning, depend on its value.
+ *
+ * https://crystal-lang.org/api/master/JSON/Serializable.html#discriminator-field
+ *
+ * @param {Message} message
+ * @param {chrome.runtime.Port} port
+ * @param {Context} cx
+ * @returns {void}
+ */
+function onMessage(message, port, cx) {
   switch (message.type) {
     case 'command':
-      onCommandMessage(message, port, backgroundContext)
+      onCommandMessage(message, port, cx)
       break
+
     default:
-      port.postMessage({ type: 'error', message: 'Unknown request' })
+      port.postMessage({
+        type: 'error',
+        message: 'Unknown request'
+      })
   }
 }
 
-// Handles a single command.
-async function onCommandMessage(message, port, backgroundContext) {
-  const { command: commandName, passingMode, stickyWindow, tab } = message
-  const { mostRecentlyUsedTabsManager } = backgroundContext
+/**
+ * Handles a command message.
+ *
+ * The options are as follows:
+ *
+ * ###### passingMode
+ *
+ * Specifies whether to close the popup window before executing the command.
+ *
+ * Default is `false`.
+ *
+ * ###### stickyWindow
+ *
+ * Specifies whether to reopen the popup window after executing the command.
+ *
+ * Default is `false`.
+ *
+ * @param {CommandMessage} message
+ * @param {chrome.runtime.Port} port
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+async function onCommandMessage(message, port, cx) {
+  const { commandName, passingMode, stickyWindow } = message
 
-  // If passing mode is specified, close the popup window.
-  if (passingMode) {
-    port.postMessage({ type: 'command', command: 'closePopup' })
+  const tabs = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true
+  })
+
+  if (tabs.length > 0) {
+    const tabInfo = tabs[0]
+
+    if (passingMode) {
+      await closePopup(port)
+    }
+
+    await commands[commandName]({
+      tab: tabInfo,
+      ...cx
+    })
+
+    if (
+      stickyWindow &&
+      // Requires Chrome Dev or Chrome Canary for sticky popup.
+      chrome.action.openPopup
+    ) {
+      await openPopup(port)
+    }
+
+    // Save state into the session storage area for later use,
+    // when reopening the extension’s popup.
+    await chrome.storage.session.set({
+      lastCommand: commandName
+    })
   }
+}
 
-  // Execute the command and wait for it to complete.
-  const commandContext = {
-    tab,
-    mostRecentlyUsedTabsManager
-  }
-  await commands[commandName](commandContext)
+/**
+ * Opens the extension’s popup.
+ *
+ * @param {chrome.runtime.Port} port
+ * @returns {Promise<void>}
+ */
+async function openPopup(port) {
+  port.disconnect()
+  await chrome.action.openPopup()
+}
 
-  // If the sticky flag has been specified, then “stick” the extension’s popup.
-  if (stickyWindow) {
-    await chrome.action.openPopup()
-  }
-
-  // Save command to session.
-  await chrome.storage.session.set({ lastCommand: commandName })
+/**
+ * Closes the extension’s popup.
+ *
+ * @param {chrome.runtime.Port} port
+ * @returns {Promise<void>}
+ */
+async function closePopup(port) {
+  return new Promise((resolve) => {
+    port.onDisconnect.addListener(resolve)
+    port.postMessage({
+      type: 'command',
+      command: 'closePopup'
+    })
+  })
 }
 
 export default { onInstalled, onConnect }

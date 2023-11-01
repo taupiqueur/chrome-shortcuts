@@ -16,7 +16,7 @@ You can for example bind `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to du
 or change the default shortcut—to open the popup—to `Alt+J`.
 
 You can also configure the popup keys by importing and exporting settings
-in the **Options** page—Right-click the Shortcuts toolbar button and select **Options**.
+in the “Options” page—Right-click the Shortcuts toolbar button and select “Options”.
 
 ### In practice?
 
@@ -31,7 +31,7 @@ I’ve configured `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate
 
 [Commands] are actions that can be performed with keyboard shortcuts or mouse clicks in the extension’s popup.
 
-[Commands]: https://developer.chrome.com/docs/extensions/reference/commands/
+[Commands]: https://developer.chrome.com/docs/extensions/reference/api/commands
 
 ### About keyboard shortcuts
 
@@ -147,14 +147,14 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`sortTabsByURL` | Sort tabs by URL | | | `⇧ Digit1`
-`groupTabsByDomain` | Group tabs by domain | | | `⇧ Digit2`
+`sortTabsByURL` | Sort selected tabs by URL | | | `⇧ Digit1`
+`groupTabsByDomain` | Group selected tabs by domain | | | `⇧ Digit2`
 
 ### Manage tab groups
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`renameTabGroupPrompt` | Rename tab group | | | `⌥ KeyR`
+`renameTabGroup` | Rename tab group | | | `⌥ KeyR`
 `cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `⌥ KeyA`
 `cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `⌥ ⇧ KeyA`
 
@@ -162,29 +162,29 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`focusAudibleTab` | Activate the first audible tab | | | `⇧ Digit3`
-`focusNextTab` | Activate the next open tab | `⌃ ⇥`, `⌃ ⇟` | `⌃ ⇥`, `⌥ ⌘ →` | `Tab`, `⌥ KeyK`
-`focusPreviousTab` | Activate the previous open tab | `⌃ ⇧ ⇥`, `⌃ ⇞` | `⌃ ⇧ ⇥`, `⌥ ⌘ ←` | `⇧ Tab`, `⌥ KeyJ`
-`focusFirstTab` | Activate the leftmost open tab | `⌃ 1` | `⌘ 1` | `Digit1`
-`focusSecondTab` | Activate the second leftmost open tab | `⌃ 2` | `⌘ 2` | `Digit2`
-`focusThirdTab` | Activate the third leftmost open tab | `⌃ 3` | `⌘ 3` | `Digit3`
-`focusFourthTab` | Activate the fourth leftmost open tab | `⌃ 4` | `⌘ 4` | `Digit4`
-`focusFifthTab` | Activate the fifth leftmost open tab | `⌃ 5` | `⌘ 5` | `Digit5`
-`focusSixthTab` | Activate the sixth leftmost open tab | `⌃ 6` | `⌘ 6` | `Digit6`
-`focusSeventhTab` | Activate the seventh leftmost open tab | `⌃ 7` | `⌘ 7` | `Digit7`
-`focusEighthTab` | Activate the eighth leftmost open tab | `⌃ 8` | `⌘ 8` | `Digit8`
-`focusLastTab` | Activate the rightmost open tab | `⌃ 9` | `⌘ 9` | `Digit9`
-`focusLastActiveTab` | Activate the last active tab | | | `⌥ Digit1`
-`focusSecondLastActiveTab` | Activate the second last active tab | | | `⌥ Digit2`
-`focusThirdLastActiveTab` | Activate the third last active tab | | | `⌥ Digit3`
-`focusFourthLastActiveTab` | Activate the fourth last active tab | | | `⌥ Digit4`
-`focusFifthLastActiveTab` | Activate the fifth last active tab | | | `⌥ Digit5`
-`focusSixthLastActiveTab` | Activate the sixth last active tab | | | `⌥ Digit6`
-`focusSeventhLastActiveTab` | Activate the seventh last active tab | | | `⌥ Digit7`
-`focusEighthLastActiveTab` | Activate the eighth last active tab | | | `⌥ Digit8`
-`focusNinthLastActiveTab` | Activate the ninth last active tab | | | `⌥ Digit9`
-`focusNextWindow` | Activate the next open window | | | `KeyW`
-`focusPreviousWindow` | Activate the previous open window | | | `⇧ KeyW`
+`activateAudibleTab` | Activate the first audible tab | | | `⇧ Digit3`
+`activateNextTab` | Activate the next open tab | `⌃ ⇥`, `⌃ ⇟` | `⌃ ⇥`, `⌥ ⌘ →` | `Tab`, `⌥ KeyK`
+`activatePreviousTab` | Activate the previous open tab | `⌃ ⇧ ⇥`, `⌃ ⇞` | `⌃ ⇧ ⇥`, `⌥ ⌘ ←` | `⇧ Tab`, `⌥ KeyJ`
+`activateFirstTab` | Activate the leftmost open tab | `⌃ 1` | `⌘ 1` | `Digit1`
+`activateSecondTab` | Activate the second leftmost open tab | `⌃ 2` | `⌘ 2` | `Digit2`
+`activateThirdTab` | Activate the third leftmost open tab | `⌃ 3` | `⌘ 3` | `Digit3`
+`activateFourthTab` | Activate the fourth leftmost open tab | `⌃ 4` | `⌘ 4` | `Digit4`
+`activateFifthTab` | Activate the fifth leftmost open tab | `⌃ 5` | `⌘ 5` | `Digit5`
+`activateSixthTab` | Activate the sixth leftmost open tab | `⌃ 6` | `⌘ 6` | `Digit6`
+`activateSeventhTab` | Activate the seventh leftmost open tab | `⌃ 7` | `⌘ 7` | `Digit7`
+`activateEighthTab` | Activate the eighth leftmost open tab | `⌃ 8` | `⌘ 8` | `Digit8`
+`activateLastTab` | Activate the rightmost open tab | `⌃ 9` | `⌘ 9` | `Digit9`
+`activateLastActiveTab` | Activate the last active tab | | | `⌥ Digit1`
+`activateSecondLastActiveTab` | Activate the second last active tab | | | `⌥ Digit2`
+`activateThirdLastActiveTab` | Activate the third last active tab | | | `⌥ Digit3`
+`activateFourthLastActiveTab` | Activate the fourth last active tab | | | `⌥ Digit4`
+`activateFifthLastActiveTab` | Activate the fifth last active tab | | | `⌥ Digit5`
+`activateSixthLastActiveTab` | Activate the sixth last active tab | | | `⌥ Digit6`
+`activateSeventhLastActiveTab` | Activate the seventh last active tab | | | `⌥ Digit7`
+`activateEighthLastActiveTab` | Activate the eighth last active tab | | | `⌥ Digit8`
+`activateNinthLastActiveTab` | Activate the ninth last active tab | | | `⌥ Digit9`
+`activateNextWindow` | Activate the next open window | | | `KeyW`
+`activatePreviousWindow` | Activate the previous open window | | | `⇧ KeyW`
 
 ### Move tabs
 
@@ -202,14 +202,15 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`selectTab` | Deselect all other tabs | | | `KeyS`
+`selectActiveTab` | Deselect all other tabs | | | `KeyS`
 `selectPreviousTab` | Select the previous tab | | | `BracketLeft`
 `selectNextTab` | Select the next tab | | | `BracketRight`
 `selectRelatedTabs` | Select related tabs | | | `Backquote`
 `selectTabsInGroup` | Select tabs in group | | | `KeyA`
 `selectAllTabs` | Select all tabs | | | `⇧ KeyA`
 `selectRightTabs` | Select tabs to the right | | | `⇧ KeyS`
-`flipTabSelection` | Flip tab selection | | | `⌥ Tab`
+`moveTabSelectionFaceBackward` | Move tab selection’s face backward | | | `⇧ BracketLeft`
+`moveTabSelectionFaceForward` | Move tab selection’s face forward | | | `⇧ BracketRight`
 
 **Tip**: Selecting tabs in group can be used for ungrouped tabs.
 
@@ -224,21 +225,21 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openDownloadsFolder` | Open the **Downloads** folder | | | `⌃ KeyK`
+`openDownloadsFolder` | Open the “Downloads” folder | | | `⌃ KeyK`
 
 ### Chrome URLs
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openHistoryPage` | Open the **History** page | `⌃ H` | `⌘ Y` | `⌃ KeyH`
-`openDownloadsPage` | Open the **Downloads** page | `⌃ J` | `⌥ ⌘ L` | `⌃ KeyJ`
-`openBookmarksPage` | Open the **Bookmarks** page | `⌃ ⇧ O` | `⌥ ⌘ B` | `⌃ KeyO`
-`openSettingsPage` | Open the **Settings** page | | `⌘ ,` | `Comma`
-`openPasswordsPage` | Open the **Passwords** page | | | `⌃ KeyY`
-`openSearchEnginesPage` | Open the **Search engines** page | | | `⌃ Slash`
-`openExtensionsPage` | Open the **Extensions** page | | | `⌃ KeyA`
-`openShortcutsPage` | Open the **Extensions > Keyboard shortcuts** page | | | `⇧ Equal`
-`openExperimentsPage` | Open the **Experiments** page | | | `⌃ Comma`
+`openHistoryPage` | Open the “History” page | `⌃ H` | `⌘ Y` | `⌃ KeyH`
+`openDownloadsPage` | Open the “Downloads” page | `⌃ J` | `⌥ ⌘ L` | `⌃ KeyJ`
+`openBookmarksPage` | Open the “Bookmarks” page | `⌃ ⇧ O` | `⌥ ⌘ B` | `⌃ KeyO`
+`openSettingsPage` | Open the “Settings” page | | `⌘ ,` | `Comma`
+`openPasswordsPage` | Open the “Passwords” page | | | `⌃ KeyY`
+`openSearchEnginesPage` | Open the “Search engines” page | | | `⌃ Slash`
+`openExtensionsPage` | Open the “Extensions” page | | | `⌃ KeyA`
+`openExtensionShortcutsPage` | Open the “Extensions > Keyboard shortcuts” page | | | `⇧ Equal`
+`openExperimentsPage` | Open the “Experiments” page | | | `⌃ Comma`
 
 ### Popup
 
