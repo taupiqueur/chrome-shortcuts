@@ -373,9 +373,7 @@ export async function copyURL(cx) {
     windowId: cx.tab.windowId
   })
 
-  const text = tabs.reduce((text, { url }) =>
-    text.concat(`${url}\n`), ''
-  )
+  const text = tabs.map(_url).join('\n')
 
   await chrome.scripting.executeScript({
     target: {
@@ -400,9 +398,7 @@ export async function copyTitle(cx) {
     windowId: cx.tab.windowId
   })
 
-  const text = tabs.reduce((text, { title }) =>
-    text.concat(`${title}\n`), ''
-  )
+  const text = tabs.map(_title).join('\n')
 
   await chrome.scripting.executeScript({
     target: {
@@ -427,9 +423,7 @@ export async function copyTitleAndURL(cx) {
     windowId: cx.tab.windowId
   })
 
-  const text = tabs.reduce((text, { title, url }) =>
-    text.concat(`[${title}](${url})\n`), ''
-  )
+  const text = tabs.map(({ title, url }) => `[${title}](${url})`).join('\n')
 
   await chrome.scripting.executeScript({
     target: {
