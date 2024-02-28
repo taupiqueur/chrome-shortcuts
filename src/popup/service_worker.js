@@ -157,7 +157,8 @@ async function onCommandMessage(message, port, cx) {
 
     if (
       stickyWindow &&
-      // Requires Chrome Dev or Chrome Canary for sticky popup.
+      // Requires the dev channel.
+      // See https://issues.chromium.org/issues/40057101 for more information.
       chrome.action.openPopup
     ) {
       await openPopup(port)

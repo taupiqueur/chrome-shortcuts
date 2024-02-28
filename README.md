@@ -24,7 +24,8 @@ Here are some features that Shortcuts won’t implement.
 
 ## Installation
 
-**Experimental**: Requires [Chrome Dev] or [Chrome Canary] for sticky popup.
+**Experimental**: Requires [Chrome Dev] or [Chrome Canary] for sticky popup—to keep the popup open after entering a command.
+See https://issues.chromium.org/issues/40057101 for more information.
 
 [Chrome Dev]: https://google.com/chrome/dev/
 [Chrome Canary]: https://google.com/chrome/canary/
