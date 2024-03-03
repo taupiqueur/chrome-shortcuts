@@ -85,6 +85,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `copyTitle` | Copy title of selected tabs | | | `⌥ KeyY`
 `copyTitleAndURL` | Copy title and URL of selected tabs | | | `⇧ KeyY`
 
+**Info**: If Chrome notifications are enabled,
+clipboard commands will show you a message for copied text.
+
 ### Web search
 
 Command | Description | Windows and Linux key | macOS key | Popup key
@@ -220,6 +223,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `bookmarkTab` | Save selected tabs as bookmarks | `⌃ D` | `⌘ D` | `⇧ KeyD`
 `bookmarkSession` | Save the current session as bookmarks | `⌃ ⇧ D` | `⇧ ⌘ D` | `⇧ KeyB`
+
+**Info**: If Chrome notifications are enabled,
+bookmark commands will show you a message for created bookmarks.
 
 ### Folders
 

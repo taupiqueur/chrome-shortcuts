@@ -1,8 +1,6 @@
 // This module contains “content script” functions that run in the context of web pages.
 //
-// Notes:
-//
-// - The function’s body must be self-contained.
+// NOTE: The function’s body must be self-contained.
 //
 // Content scripts: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts
 

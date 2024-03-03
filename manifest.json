@@ -12,6 +12,7 @@
   "permissions": [
     "activeTab",
     "bookmarks",
+    "clipboardWrite",
     "downloads",
     "notifications",
     "scripting",

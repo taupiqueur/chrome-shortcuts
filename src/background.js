@@ -100,7 +100,7 @@ function onTabRemoved(tabId, removeInfo) {
  * Handles window activation, when the currently focused window changes.
  * Will be `WINDOW_ID_NONE` if all Chrome windows have lost focus.
  *
- * Note: On some window managers (e.g., Sway), `WINDOW_ID_NONE` is always
+ * NOTE: On some window managers (e.g., Sway), `WINDOW_ID_NONE` is always
  * sent immediately preceding a switch from one Chrome window to another.
  *
  * https://developer.chrome.com/docs/extensions/reference/api/windows#event-onFocusChanged

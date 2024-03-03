@@ -2,7 +2,7 @@
 //
 // Commands are parameter-less actions that can be performed with a tab context.
 // Their main use is for key bindings. Commands are defined by adding properties
-// to the `commands` object in the extension’s manifest. The command signature
+// to the `"commands"` object in the extension’s manifest. The command signature
 // must be a function of one argument (a context received by the service worker).
 //
 // Manifest: https://developer.chrome.com/docs/extensions/reference/manifest
@@ -364,6 +364,9 @@ export async function blurElement(cx) {
 /**
  * Copies URL of selected tabs.
  *
+ * NOTE: If Chrome notifications are enabled,
+ * clipboard commands will show you a message for copied text.
+ *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
@@ -389,6 +392,9 @@ export async function copyURL(cx) {
 /**
  * Copies title of selected tabs.
  *
+ * NOTE: If Chrome notifications are enabled,
+ * clipboard commands will show you a message for copied text.
+ *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
@@ -413,6 +419,9 @@ export async function copyTitle(cx) {
 
 /**
  * Copies title and URL of selected tabs.
+ *
+ * NOTE: If Chrome notifications are enabled,
+ * clipboard commands will show you a message for copied text.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -901,7 +910,8 @@ export async function toggleGroupTab(cx) {
 
 /**
  * Collapses or uncollapses tab groups.
- * Note: Active groups are not collapsible.
+ *
+ * NOTE: Active groups are not collapsible.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -2141,7 +2151,8 @@ export async function selectRelatedTabs(cx) {
 
 /**
  * Selects tabs in group.
- * Note: Can be used for ungrouped tabs.
+ *
+ * NOTE: Selecting tabs in group can be used for ungrouped tabs.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -2274,6 +2285,9 @@ export async function moveTabSelectionFaceForward(cx) {
  * Saves selected tabs as bookmarks.
  * Ensures not to bookmark a page twice.
  *
+ * NOTE: If Chrome notifications are enabled,
+ * bookmark commands will show you a message for created bookmarks.
+ *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
@@ -2311,6 +2325,9 @@ export async function bookmarkTab(cx) {
 
 /**
  * Saves the current session as bookmarks.
+ *
+ * NOTE: If Chrome notifications are enabled,
+ * bookmark commands will show you a message for created bookmarks.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
