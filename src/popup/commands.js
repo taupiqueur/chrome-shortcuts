@@ -160,6 +160,10 @@ export const moveTabSelectionFaceForward = message('moveTabSelectionFaceForward'
 export const bookmarkTab = message('bookmarkTab')
 export const bookmarkSession = message('bookmarkSession', false, true)
 
+// Reading list ----------------------------------------------------------------
+
+export const addTabToReadingList = message('addTabToReadingList')
+
 // Folders ---------------------------------------------------------------------
 
 export const openDownloadsFolder = message('openDownloadsFolder')

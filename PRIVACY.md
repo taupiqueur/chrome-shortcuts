@@ -9,10 +9,11 @@ Performs common tasks with your keyboard.
 Permission | Justification
 --- | ---
 [`"activeTab"`] | This permission is used in conjunction with the `"scripting"` permission for commands interacting with web pages, and commands requiring some context about the current URL, such as opening Chrome pages, to fill the “New Tab” page slot.
-[`"bookmarks"`] | This permission is used for the “Bookmarks” commands.
+[`"bookmarks"`] | This permission is used to save your tabs and current session as bookmarks.
 [`"clipboardWrite"`] | This permission is used for the “Clipboard” commands. Without this permission, a runtime permission is asked for every new site you use the commands.
 [`"downloads"`] | This permission is used to open the “Downloads” folder.
 [`"notifications"`] | This permission is used to give users feedback after copying text and creating bookmarks.
+[`"readingList"`] | This permission is used to add tabs to your reading list.
 [`"scripting"`] | This permission is used to interact with web pages and write text to the system clipboard.
 [`"search"`] | This permission is used to perform a web search.
 [`"sessions"`] | This permission is used to reopen closed tabs.
@@ -27,6 +28,7 @@ Permission | Justification
 [`"clipboardWrite"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#clipboardWrite
 [`"downloads"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#downloads
 [`"notifications"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#notifications
+[`"readingList"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#readingList
 [`"scripting"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#scripting
 [`"search"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#search
 [`"sessions"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#sessions

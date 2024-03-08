@@ -90,6 +90,7 @@
     "moveTabSelectionFaceForward": [{ "shiftKey": true, "code": "BracketRight" }],
     "bookmarkTab": [{ "shiftKey": true, "code": "KeyD" }],
     "bookmarkSession": [{ "shiftKey": true, "code": "KeyB" }],
+    "addTabToReadingList": [{ "altKey": true, "code": "KeyD" }],
     "openDownloadsFolder": [{ "ctrlKey": true, "code": "KeyK" }],
     "openHistoryPage": [{ "ctrlKey": true, "code": "KeyH" }],
     "openDownloadsPage": [{ "ctrlKey": true, "code": "KeyJ" }],

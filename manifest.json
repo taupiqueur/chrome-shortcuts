@@ -15,6 +15,7 @@
     "clipboardWrite",
     "downloads",
     "notifications",
+    "readingList",
     "scripting",
     "search",
     "sessions",
@@ -313,34 +314,37 @@
     "90.bookmarkSession": {
       "description": "Bookmarks · Save the current session as bookmarks"
     },
-    "91.openDownloadsFolder": {
+    "91.addTabToReadingList": {
+      "description": "Reading list · Add selected tabs to your reading list"
+    },
+    "92.openDownloadsFolder": {
       "description": "Folders · Open the “Downloads” folder"
     },
-    "92.openHistoryPage": {
+    "93.openHistoryPage": {
       "description": "Chrome URLs · Open the “History” page"
     },
-    "93.openDownloadsPage": {
+    "94.openDownloadsPage": {
       "description": "Chrome URLs · Open the “Downloads” page"
     },
-    "94.openBookmarksPage": {
+    "95.openBookmarksPage": {
       "description": "Chrome URLs · Open the “Bookmarks” page"
     },
-    "95.openSettingsPage": {
+    "96.openSettingsPage": {
       "description": "Chrome URLs · Open the “Settings” page"
     },
-    "96.openPasswordsPage": {
+    "97.openPasswordsPage": {
       "description": "Chrome URLs · Open the “Passwords” page"
     },
-    "97.openSearchEnginesPage": {
+    "98.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the “Search engines” page"
     },
-    "98.openExtensionsPage": {
+    "99.openExtensionsPage": {
       "description": "Chrome URLs · Open the “Extensions” page"
     },
-    "99.openExtensionShortcutsPage": {
+    "100.openExtensionShortcutsPage": {
       "description": "Chrome URLs · Open the “Extensions > Keyboard shortcuts” page"
     },
-    "100.openExperimentsPage": {
+    "101.openExperimentsPage": {
       "description": "Chrome URLs · Open the “Experiments” page"
     }
   }

@@ -365,7 +365,7 @@ export async function blurElement(cx) {
  * Copies URL of selected tabs.
  *
  * NOTE: If Chrome notifications are enabled,
- * clipboard commands will show you a message for copied text.
+ * Shortcuts will show you a message for copied text.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -393,7 +393,7 @@ export async function copyURL(cx) {
  * Copies title of selected tabs.
  *
  * NOTE: If Chrome notifications are enabled,
- * clipboard commands will show you a message for copied text.
+ * Shortcuts will show you a message for copied text.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -421,7 +421,7 @@ export async function copyTitle(cx) {
  * Copies title and URL of selected tabs.
  *
  * NOTE: If Chrome notifications are enabled,
- * clipboard commands will show you a message for copied text.
+ * Shortcuts will show you a message for copied text.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -2286,7 +2286,7 @@ export async function moveTabSelectionFaceForward(cx) {
  * Ensures not to bookmark a page twice.
  *
  * NOTE: If Chrome notifications are enabled,
- * bookmark commands will show you a message for created bookmarks.
+ * Shortcuts will show you a message for created bookmarks.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -2327,7 +2327,7 @@ export async function bookmarkTab(cx) {
  * Saves the current session as bookmarks.
  *
  * NOTE: If Chrome notifications are enabled,
- * bookmark commands will show you a message for created bookmarks.
+ * Shortcuts will show you a message for created bookmarks.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -2379,6 +2379,55 @@ export async function bookmarkSession(cx) {
 
   await openChromePage(cx, `chrome://bookmarks/?id=${baseFolder.id}`)
   await sendNotification('Session bookmarked', `${createdBookmarks.length} bookmarks added into “${baseFolder.title}”`)
+}
+
+// Reading list ----------------------------------------------------------------
+
+/**
+ * Adds selected tabs to your reading list.
+ *
+ * NOTE: If Chrome notifications are enabled,
+ * Shortcuts will show you a message for pages added to your reading list.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function addTabToReadingList(cx) {
+  const readingListURLPattern = new URLPattern({
+    protocol: 'http{s}?'
+  })
+
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    windowId: cx.tab.windowId
+  })
+
+  const items = await chrome.readingList.query({})
+
+  const tabsByURL = Map.groupBy(tabs, _url)
+
+  const readingListInfo = new Set(
+    items.map(_url)
+  )
+
+  const createdItems = await Promise.all(
+    Array.from(tabsByURL)
+      .flatMap(([url, tabs]) =>
+        !readingListURLPattern.test(url) ||
+        readingListInfo.has(url)
+          ? []
+          : [tabs[0]]
+      )
+      .map((tab) =>
+        chrome.readingList.addEntry({
+          title: tab.title,
+          url: tab.url,
+          hasBeenRead: false
+        })
+      )
+  )
+
+  await sendNotification('Read later', `${createdItems.length} pages added to your reading list`)
 }
 
 // Folders ---------------------------------------------------------------------
