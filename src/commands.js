@@ -2676,7 +2676,7 @@ async function getOpenWindows(incognito) {
 async function sendNotification(title, message) {
   return chrome.notifications.create({
     type: 'basic',
-    iconUrl: '/assets/chrome-logo@128px.png',
+    iconUrl: '/assets/shortcuts-logo@128px.png',
     title,
     message
   })

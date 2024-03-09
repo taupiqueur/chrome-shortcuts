@@ -32,10 +32,10 @@
     "page": "src/options/options.html"
   },
   "icons": {
-    "16": "assets/chrome-logo@16px.png",
-    "32": "assets/chrome-logo@32px.png",
-    "48": "assets/chrome-logo@48px.png",
-    "128": "assets/chrome-logo@128px.png"
+    "16": "assets/shortcuts-logo@16px.png",
+    "32": "assets/shortcuts-logo@32px.png",
+    "48": "assets/shortcuts-logo@48px.png",
+    "128": "assets/shortcuts-logo@128px.png"
   },
   "commands": {
     "_execute_action": {
