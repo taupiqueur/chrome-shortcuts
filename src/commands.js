@@ -42,14 +42,19 @@ import {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
 const { compare: localeCompare } = new Intl.Collator
 
-// List of tab group colors
-// https://developer.chrome.com/docs/extensions/reference/api/tabGroups#type-Color
-const tabGroupColors = Object.values(chrome.tabGroups.Color)
-
 // Constants -------------------------------------------------------------------
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
+
+/**
+ * List of tab group colors.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/tabGroups#type-Color
+ *
+ * @type {string[]}
+ */
+const TAB_GROUP_COLORS = Object.values(chrome.tabGroups.Color)
 
 // Enums -----------------------------------------------------------------------
 
@@ -1136,10 +1141,10 @@ async function cycleTabGroupColor(cx, delta) {
   if (hasGroup(cx.tab)) {
     const tabGroup = await chrome.tabGroups.get(cx.tab.groupId)
 
-    const nextColor = tabGroupColors[
+    const nextColor = TAB_GROUP_COLORS[
       modulo(
-        tabGroupColors.indexOf(tabGroup.color) + delta,
-        tabGroupColors.length
+        TAB_GROUP_COLORS.indexOf(tabGroup.color) + delta,
+        TAB_GROUP_COLORS.length
       )
     ]
 
