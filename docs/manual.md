@@ -3,14 +3,14 @@
 ## Usage
 
 `Alt+Space` (`Ctrl+Space` on Windows) is the main keyboard shortcut.
-
 Use it to open the extension’s popup—aka “Vim” mode.
-
 Press `Escape` to cancel.
+
+The keyboard shortcuts are fully customizable.
 
 ### Configure keyboard shortcuts
 
-Navigate to `chrome://extensions/shortcuts` to configure keyboard shortcuts.
+Navigate to `chrome://extensions/shortcuts` to configure global keyboard shortcuts.
 
 You can for example bind `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate the current tab,
 or change the default shortcut—to open the popup—to `Alt+J`.
