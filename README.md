@@ -1,6 +1,17 @@
 # Shortcuts for Chrome
 
+<img src="assets/shortcuts-logo.svg" alt="" width="96" height="96" align="left">
+
 Shortcuts is a browser extension that lets you perform common tasks with your keyboard.
+
+**[Documentation] | [Changelog] | [Contributing]**
+
+**[Add to Chrome]**
+
+[Documentation]: docs/manual.md
+[Changelog]: CHANGELOG.md
+[Contributing]: CONTRIBUTING.md
+[Add to Chrome]: https://chromewebstore.google.com/detail/shortcuts/kblochbjinbdokphljadjabpkbcibenj
 
 ## Features
 
@@ -29,6 +40,10 @@ See https://issues.chromium.org/issues/40057101 for more information.
 
 [Chrome Dev]: https://google.com/chrome/dev/
 [Chrome Canary]: https://google.com/chrome/canary/
+
+### Chrome Web Store
+
+[Add to Chrome](https://chromewebstore.google.com/detail/shortcuts/kblochbjinbdokphljadjabpkbcibenj)
 
 ### Nightly builds
 
