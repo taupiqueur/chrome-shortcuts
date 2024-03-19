@@ -94,10 +94,18 @@ export function splitWhile(array, predicate) {
  * @returns {[Result, Array<Element>][]}
  */
 export function chunk(array, callback) {
-  const chunks = []
+  if (array.length === 0) {
+    return []
+  }
 
-  for (const element of array) {
-    const [lastKey, chunkedValues] = chunks.at(-1) ?? []
+  const chunks = [
+    [
+      callback(array[0]), [array[0]]
+    ]
+  ]
+
+  for (const element of array.slice(1)) {
+    const [lastKey, chunkedValues] = chunks.at(-1)
 
     const key = callback(element)
 
