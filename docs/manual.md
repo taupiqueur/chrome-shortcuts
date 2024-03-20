@@ -106,8 +106,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `scrollPageUp` | Scroll one page up | `⇧ Space`, `⇞` | `⇧ Space`, `⇞` | `⇧ Space`
 `scrollHalfPageDown` | Scroll half page down | | | `⇧ KeyJ`
 `scrollHalfPageUp` | Scroll half page up | | | `⇧ KeyK`
-`scrollToTop` | Scroll to the top of the page | `↖` | `↖` | `KeyG`
-`scrollToBottom` | Scroll to the bottom of the page | `↘` | `↘` | `KeyE`
+`scrollToTop` | Scroll to the top of the page | `↖`, `⌃ ↑` | `↖`, `⌘ ↑` | `KeyG`
+`scrollToBottom` | Scroll to the bottom of the page | `↘`, `⌃ ↓` | `↘`, `⌘ ↓` | `KeyE`
 
 ### Zoom
 
@@ -131,8 +131,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`closeTab` | Close selected tabs | `⌃ W` | `⌘ W` | `KeyX`
-`closeWindow` | Close the window that contains the tab | `⌃ ⇧ W` | `⇧ ⌘ W` | `⇧ KeyX`
+`closeTab` | Close selected tabs | `⌃ W`, `⌃ F4` | `⌘ W` | `KeyX`
+`closeWindow` | Close the window that contains the tab | `⌃ ⇧ W`, `⌥ F4` | `⇧ ⌘ W` | `⇧ KeyX`
 `restoreTab` | Reopen previously closed tabs | `⌃ ⇧ T` | `⇧ ⌘ T` | `KeyU`
 
 ### Tab state
