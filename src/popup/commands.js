@@ -136,12 +136,6 @@ export const moveTabFirst = message('moveTabFirst')
 export const moveTabLast = message('moveTabLast')
 export const moveTabNewWindow = message('moveTabNewWindow', false, true)
 export const moveTabPreviousWindow = message('moveTabPreviousWindow', false, true)
-export const moveTabGroupLeft = message('moveTabGroupLeft')
-export const moveTabGroupRight = message('moveTabGroupRight')
-export const moveTabGroupFirst = message('moveTabGroupFirst')
-export const moveTabGroupLast = message('moveTabGroupLast')
-export const moveTabGroupNewWindow = message('moveTabGroupNewWindow', false, true)
-export const moveTabGroupPreviousWindow = message('moveTabGroupPreviousWindow', false, true)
 
 // Select tabs -----------------------------------------------------------------
 
