@@ -66,7 +66,7 @@ export const scrollToBottom = message('scrollToBottom')
 export const zoomIn = message('zoomIn')
 export const zoomOut = message('zoomOut')
 export const zoomReset = message('zoomReset')
-export const toggleFullScreen = message('toggleFullScreen', true)
+export const toggleFullScreen = message('toggleFullScreen', true, true)
 
 // Create tabs -----------------------------------------------------------------
 
