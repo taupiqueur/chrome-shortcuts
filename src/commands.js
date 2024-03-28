@@ -1023,9 +1023,9 @@ export async function sortTabsByURL(cx) {
       )
 
       return Promise.all(
-        tabs.map((tab, index) =>
+        sortedTabs.map((tab, index) =>
           chrome.tabs.move(tab.id, {
-            index: sortedTabs[index].index
+            index: tabs[index].index
           })
         )
       )
