@@ -29,9 +29,7 @@ I’ve configured `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate
 
 ## Commands
 
-[Commands] are actions that can be performed with keyboard shortcuts or mouse clicks in the extension’s popup.
-
-[Commands]: https://developer.chrome.com/docs/extensions/reference/api/commands
+Commands are actions that can be performed with keyboard shortcuts or mouse clicks in the extension’s popup.
 
 ### About keyboard shortcuts
 

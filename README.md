@@ -15,13 +15,10 @@ Shortcuts is a browser extension that lets you perform common tasks with your ke
 
 ## Features
 
-- Lets you bind actions to keyboard shortcuts by using the native [Commands UI].
+- Lets you bind actions to keyboard shortcuts by using the “Extension shortcuts” interface.
 - Actions can be performed with keyboard shortcuts or mouse clicks in the extension’s popup.
 - Implements a self-contained “Vim” mode in the extension’s popup.
-[Content scripts] are not injected into every tab, and you can skim through Chrome URLs in the tab strip.
-
-[Commands UI]: https://developer.chrome.com/docs/extensions/develop/ui#commands
-[Content scripts]: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts
+Content scripts are not injected into every tab, and you can skim through Chrome URLs in the tab strip.
 
 ###### What is Shortcuts _not_?
 
