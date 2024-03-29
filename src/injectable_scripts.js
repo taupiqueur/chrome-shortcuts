@@ -6,7 +6,8 @@
 
 /**
  * Simulates a mouse click on selected page element.
- * If there’s no element matching *selectors*, the method throws an error.
+ * Ignores elements that are not directly rendered.
+ * If there’s no matching elements, the method throws an error.
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click
  *
@@ -14,12 +15,21 @@
  * @returns {void}
  */
 export function clickPageElement(selectors) {
-  document.querySelector(selectors).click()
+  for (const element of document.querySelectorAll(selectors)) {
+    if (element.getClientRects().length > 0) {
+      return element.click()
+    }
+  }
+
+  throw new Error(
+    'No matching elements.'
+  )
 }
 
 /**
  * Focuses selected page element.
- * If there’s no element matching *selectors*, the method throws an error.
+ * Ignores elements that are not directly rendered.
+ * If there’s no matching elements, the method throws an error.
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
  *
@@ -27,7 +37,15 @@ export function clickPageElement(selectors) {
  * @returns {void}
  */
 export function focusPageElement(selectors) {
-  document.querySelector(selectors).focus()
+  for (const element of document.querySelectorAll(selectors)) {
+    if (element.getClientRects().length > 0) {
+      return element.focus()
+    }
+  }
+
+  throw new Error(
+    'No matching elements.'
+  )
 }
 
 /**
