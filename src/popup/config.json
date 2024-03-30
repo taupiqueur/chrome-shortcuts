@@ -51,18 +51,12 @@
         "code": "Slash"
       }
     ],
-    "focusInput": [
+    "focusTextInput": [
       {
         "code": "KeyI"
       }
     ],
-    "focusTextArea": [
-      {
-        "shiftKey": true,
-        "code": "KeyI"
-      }
-    ],
-    "focusVideo": [
+    "focusMediaPlayer": [
       {
         "code": "KeyV"
       }

@@ -6,8 +6,6 @@
 
 /**
  * Simulates a mouse click on selected page element.
- * Ignores elements that are not directly rendered.
- * If there’s no matching elements, the method throws an error.
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click
  *
@@ -15,37 +13,40 @@
  * @returns {void}
  */
 export function clickPageElement(selectors) {
-  for (const element of document.querySelectorAll(selectors)) {
-    if (element.getClientRects().length > 0) {
-      return element.click()
+  for (const childElement of getAllElements(document)) {
+    if (childElement.matches(selectors)) {
+      childElement.click()
+      break
     }
   }
-
-  throw new Error(
-    'No matching elements.'
-  )
 }
 
 /**
- * Focuses selected page element.
- * Ignores elements that are not directly rendered.
- * If there’s no matching elements, the method throws an error.
+ * Cycles through matching page elements.
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
  *
  * @param {string} selectors
  * @returns {void}
  */
-export function focusPageElement(selectors) {
-  for (const element of document.querySelectorAll(selectors)) {
-    if (element.getClientRects().length > 0) {
-      return element.focus()
-    }
-  }
+export function cyclePageElements(selectors) {
+  const activeElement = getActiveElement(document)
 
-  throw new Error(
-    'No matching elements.'
-  )
+  const elements = Array.from(getAllElements(document))
+    .filter((element) =>
+      element.matches(selectors) &&
+      element.checkVisibility({
+        opacityProperty: true,
+        visibilityProperty: true,
+        contentVisibilityAuto: true
+      })
+    )
+
+  const nextElement = elements[
+    (elements.indexOf(activeElement) + 1) % elements.length
+  ]
+
+  nextElement.focus()
 }
 
 /**
@@ -56,7 +57,8 @@ export function focusPageElement(selectors) {
  * @returns {void}
  */
 export function blurActiveElement() {
-  document.activeElement.blur()
+  const activeElement = getActiveElement(document)
+  activeElement.blur()
 }
 
 /**
@@ -101,50 +103,9 @@ export async function getSelectedText() {
  * @returns {void}
  */
 export function scrollBy(deltaX, deltaY) {
-  const SCROLLABLE_OVERFLOW_VALUES = new Set([
-    'auto',
-    'scroll'
-  ])
-
-  let scrollingElement = document.activeElement
-
-  const selection = window.getSelection()
-
-  switch (selection.type) {
-    case 'Caret':
-    case 'Range':
-      scrollingElement = selection.focusNode.parentElement
-      break
-  }
-
-  while (scrollingElement instanceof HTMLElement) {
-    const computedStyle = window.getComputedStyle(scrollingElement)
-
-    const isHorizontallyScrollable =
-      scrollingElement.scrollWidth > scrollingElement.clientWidth &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowX
-      )
-
-    const isVerticallyScrollable =
-      scrollingElement.scrollHeight > scrollingElement.clientHeight &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowY
-      )
-
-    if (
-      deltaX !== 0 && isHorizontallyScrollable ||
-      deltaY !== 0 && isVerticallyScrollable
-    ) {
-      break
-    }
-
-    scrollingElement = scrollingElement.parentElement
-  }
-
-  scrollingElement ||= document.scrollingElement
-
-  scrollingElement.scrollBy(deltaX, deltaY)
+  performScroll((scrollingElement) => {
+    scrollingElement.scrollBy(deltaX, deltaY)
+  })
 }
 
 /**
@@ -156,41 +117,9 @@ export function scrollBy(deltaX, deltaY) {
  * @returns {void}
  */
 export function scrollByPages(pageFactor) {
-  const SCROLLABLE_OVERFLOW_VALUES = new Set([
-    'auto',
-    'scroll'
-  ])
-
-  let scrollingElement = document.activeElement
-
-  const selection = window.getSelection()
-
-  switch (selection.type) {
-    case 'Caret':
-    case 'Range':
-      scrollingElement = selection.focusNode.parentElement
-      break
-  }
-
-  while (scrollingElement instanceof HTMLElement) {
-    const computedStyle = window.getComputedStyle(scrollingElement)
-
-    const isScrollable =
-      scrollingElement.scrollHeight > scrollingElement.clientHeight &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowY
-      )
-
-    if (isScrollable) {
-      break
-    }
-
-    scrollingElement = scrollingElement.parentElement
-  }
-
-  scrollingElement ||= document.scrollingElement
-
-  scrollingElement.scrollBy(0, window.innerHeight * pageFactor)
+  performScroll((scrollingElement) => {
+    scrollingElement.scrollBy(0, window.innerHeight * pageFactor)
+  })
 }
 
 /**
@@ -203,47 +132,9 @@ export function scrollByPages(pageFactor) {
  * @returns {void}
  */
 export function scrollTo(scrollLeft, scrollTop) {
-  const SCROLLABLE_OVERFLOW_VALUES = new Set([
-    'auto',
-    'scroll'
-  ])
-
-  let scrollingElement = document.activeElement
-
-  const selection = window.getSelection()
-
-  switch (selection.type) {
-    case 'Caret':
-    case 'Range':
-      scrollingElement = selection.focusNode.parentElement
-      break
-  }
-
-  while (scrollingElement instanceof HTMLElement) {
-    const computedStyle = window.getComputedStyle(scrollingElement)
-
-    const isHorizontallyScrollable =
-      scrollingElement.scrollWidth > scrollingElement.clientWidth &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowX
-      )
-
-    const isVerticallyScrollable =
-      scrollingElement.scrollHeight > scrollingElement.clientHeight &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowY
-      )
-
-    if (isHorizontallyScrollable || isVerticallyScrollable) {
-      break
-    }
-
-    scrollingElement = scrollingElement.parentElement
-  }
-
-  scrollingElement ||= document.scrollingElement
-
-  scrollingElement.scrollTo(scrollLeft, scrollTop)
+  performScroll((scrollingElement) => {
+    scrollingElement.scrollTo(scrollLeft, scrollTop)
+  })
 }
 
 /**
@@ -257,50 +148,12 @@ export function scrollTo(scrollLeft, scrollTop) {
  * @returns {void}
  */
 export function scrollToMax(scrollLeft, scrollTop) {
-  const SCROLLABLE_OVERFLOW_VALUES = new Set([
-    'auto',
-    'scroll'
-  ])
-
-  let scrollingElement = document.activeElement
-
-  const selection = window.getSelection()
-
-  switch (selection.type) {
-    case 'Caret':
-    case 'Range':
-      scrollingElement = selection.focusNode.parentElement
-      break
-  }
-
-  while (scrollingElement instanceof HTMLElement) {
-    const computedStyle = window.getComputedStyle(scrollingElement)
-
-    const isHorizontallyScrollable =
-      scrollingElement.scrollWidth > scrollingElement.clientWidth &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowX
-      )
-
-    const isVerticallyScrollable =
-      scrollingElement.scrollHeight > scrollingElement.clientHeight &&
-      SCROLLABLE_OVERFLOW_VALUES.has(
-        computedStyle.overflowY
-      )
-
-    if (isHorizontallyScrollable || isVerticallyScrollable) {
-      break
-    }
-
-    scrollingElement = scrollingElement.parentElement
-  }
-
-  scrollingElement ||= document.scrollingElement
-
-  scrollingElement.scrollTo(
-    scrollLeft ?? scrollingElement.scrollWidth,
-    scrollTop ?? scrollingElement.scrollHeight
-  )
+  performScroll((scrollingElement) => {
+    scrollingElement.scrollTo(
+      scrollLeft ?? scrollingElement.scrollWidth,
+      scrollTop ?? scrollingElement.scrollHeight
+    )
+  })
 }
 
 /**

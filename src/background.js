@@ -21,6 +21,40 @@ const recentTabsManager = new RecentTabsManager
  */
 function onInstalled(details) {
   popupWorker.onInstalled(details)
+
+  // Chrome only automatically loads content scripts into new tabs.
+  runContentScripts()
+}
+
+/**
+ * Runs content scripts.
+ *
+ * https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#programmatic
+ *
+ * @returns {Promise<void>}
+ */
+async function runContentScripts() {
+  const tabs = await chrome.tabs.query({
+    url: [
+      'file:///*',
+      'http://*/*',
+      'https://*/*'
+    ],
+    status: 'complete'
+  })
+
+  await Promise.allSettled(
+    tabs.map((tab) =>
+      chrome.scripting.executeScript({
+        target: {
+          tabId: tab.id
+        },
+        files: [
+          'src/content_script.js'
+        ]
+      })
+    )
+  )
 }
 
 /**

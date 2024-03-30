@@ -70,9 +70,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`focusInput` | Focus the first input | | | `KeyI`
-`focusTextArea` | Focus the first text area | | | `⇧ KeyI`
-`focusVideo` | Focus the first video | | | `KeyV`
+`focusTextInput` | Cycle through text fields | | | `KeyI`
+`focusMediaPlayer` | Cycle through media players | | | `KeyV`
 `blurElement` | Blur the active element | | | `⇧ Escape`
 
 ### Clipboard

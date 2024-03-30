@@ -28,7 +28,7 @@ import {
 import {
   blurActiveElement,
   clickPageElement,
-  focusPageElement,
+  cyclePageElements,
   getSelectedText,
   prompt,
   scrollBy,
@@ -294,56 +294,60 @@ export async function goToRoot(cx) {
 // Accessibility ---------------------------------------------------------------
 
 /**
- * Focuses the first input, if any.
+ * Cycles through text fields.
  *
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+ * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+ * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+ * - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable
  *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
-export async function focusInput(cx) {
+export async function focusTextInput(cx) {
   await chrome.scripting.executeScript({
     target: {
       tabId: cx.tab.id
     },
-    func: focusPageElement,
-    args: ['input']
+    func: cyclePageElements,
+    args: [
+      `
+        input[type="date"]:not([disabled], [readonly]),
+        input[type="datetime-local"]:not([disabled], [readonly]),
+        input[type="email"]:not([disabled], [readonly]),
+        input[type="month"]:not([disabled], [readonly]),
+        input[type="number"]:not([disabled], [readonly]),
+        input[type="password"]:not([disabled], [readonly]),
+        input[type="search"]:not([disabled], [readonly]),
+        input[type="tel"]:not([disabled], [readonly]),
+        input[type="text"]:not([disabled], [readonly]),
+        input[type="time"]:not([disabled], [readonly]),
+        input[type="url"]:not([disabled], [readonly]),
+        input[type="week"]:not([disabled], [readonly]),
+        textarea:not([disabled], [readonly]),
+        [contenteditable="true"],
+        [contenteditable=""],
+        [contenteditable="plaintext-only"]
+      `
+    ]
   })
 }
 
 /**
- * Focuses the first text area, if any.
+ * Cycles through media players.
  *
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
- *
- * @param {Context} cx
- * @returns {Promise<void>}
- */
-export async function focusTextArea(cx) {
-  await chrome.scripting.executeScript({
-    target: {
-      tabId: cx.tab.id
-    },
-    func: focusPageElement,
-    args: ['textarea']
-  })
-}
-
-/**
- * Focuses the first video, if any.
- *
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+ * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+ * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
-export async function focusVideo(cx) {
+export async function focusMediaPlayer(cx) {
   await chrome.scripting.executeScript({
     target: {
       tabId: cx.tab.id
     },
-    func: focusPageElement,
-    args: ['video']
+    func: cyclePageElements,
+    args: ['video, audio']
   })
 }
 

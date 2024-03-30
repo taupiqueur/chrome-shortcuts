@@ -33,9 +33,8 @@ export const goToRoot = message('goToRoot', false, true)
 
 // Accessibility ---------------------------------------------------------------
 
-export const focusInput = message('focusInput', true)
-export const focusTextArea = message('focusTextArea', true)
-export const focusVideo = message('focusVideo', true)
+export const focusTextInput = message('focusTextInput', true)
+export const focusMediaPlayer = message('focusMediaPlayer', true)
 export const blurElement = message('blurElement', true)
 
 // Clipboard -------------------------------------------------------------------
