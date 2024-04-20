@@ -4,6 +4,8 @@
 //
 // Content scripts: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts
 
+const scroller = new Scroller
+
 /**
  * Returns the element within the DOM—including “open” shadow roots—that currently has focus.
  *

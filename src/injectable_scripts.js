@@ -104,7 +104,7 @@ export async function getSelectedText() {
  */
 export function scrollBy(deltaX, deltaY) {
   performScroll((scrollingElement) => {
-    scrollingElement.scrollBy(deltaX, deltaY)
+    scroller.scrollBy(scrollingElement, deltaX, deltaY)
   })
 }
 
@@ -118,7 +118,7 @@ export function scrollBy(deltaX, deltaY) {
  */
 export function scrollByPages(pageFactor) {
   performScroll((scrollingElement) => {
-    scrollingElement.scrollBy(0, window.innerHeight * pageFactor)
+    scroller.scrollBy(scrollingElement, 0, window.innerHeight * pageFactor)
   })
 }
 
@@ -133,7 +133,7 @@ export function scrollByPages(pageFactor) {
  */
 export function scrollTo(scrollLeft, scrollTop) {
   performScroll((scrollingElement) => {
-    scrollingElement.scrollTo(scrollLeft, scrollTop)
+    scroller.scrollTo(scrollingElement, scrollLeft, scrollTop)
   })
 }
 
@@ -149,7 +149,8 @@ export function scrollTo(scrollLeft, scrollTop) {
  */
 export function scrollToMax(scrollLeft, scrollTop) {
   performScroll((scrollingElement) => {
-    scrollingElement.scrollTo(
+    scroller.scrollTo(
+      scrollingElement,
       scrollLeft ?? scrollingElement.scrollWidth,
       scrollTop ?? scrollingElement.scrollHeight
     )

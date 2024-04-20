@@ -13,6 +13,7 @@
     {
       "matches": ["<all_urls>"],
       "js": [
+        "src/lib/scroller.js",
         "src/content_script.js"
       ]
     }

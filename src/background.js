@@ -50,6 +50,7 @@ async function runContentScripts() {
           tabId: tab.id
         },
         files: [
+          'src/lib/scroller.js',
           'src/content_script.js'
         ]
       })
