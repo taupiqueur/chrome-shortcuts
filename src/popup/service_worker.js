@@ -161,7 +161,7 @@ async function onCommandMessage(message, port, cx) {
       // See https://issues.chromium.org/issues/40057101 for more information.
       chrome.action.openPopup
     ) {
-      await openPopup(port)
+      await openPopup()
     }
 
     // Save state into the session storage area for later use,
@@ -175,11 +175,9 @@ async function onCommandMessage(message, port, cx) {
 /**
  * Opens the extension’s popup.
  *
- * @param {chrome.runtime.Port} port
  * @returns {Promise<void>}
  */
-async function openPopup(port) {
-  port.disconnect()
+async function openPopup() {
   await chrome.action.openPopup()
 }
 
