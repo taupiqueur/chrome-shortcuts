@@ -6,6 +6,8 @@
 Use it to open the extension’s popup—aka “Vim” mode.
 Press `Escape` to cancel.
 
+If you need explanations of the shortcuts—Right-click the Shortcuts toolbar button and select “Documentation”.
+
 The keyboard shortcuts are fully customizable.
 
 ### Configure keyboard shortcuts

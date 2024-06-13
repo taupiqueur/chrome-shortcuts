@@ -12,6 +12,27 @@ import RecentTabsManager from './recent_tabs_manager.js'
 const recentTabsManager = new RecentTabsManager
 
 /**
+ * Adds items to the browser’s context menu.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/contextMenus
+ *
+ * @returns {void}
+ */
+function createMenuItems() {
+  chrome.contextMenus.create({
+    id: 'open_documentation',
+    title: 'Documentation',
+    contexts: ['action']
+  })
+
+  chrome.contextMenus.create({
+    id: 'open_support_chat',
+    title: 'Support Chat',
+    contexts: ['action']
+  })
+}
+
+/**
  * Handles the initial setup when the extension is first installed or updated to a new version.
  *
  * https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onInstalled
@@ -21,6 +42,7 @@ const recentTabsManager = new RecentTabsManager
  */
 function onInstalled(details) {
   popupWorker.onInstalled(details)
+  createMenuItems()
 
   // Chrome only automatically loads content scripts into new tabs.
   runContentScripts()
@@ -74,6 +96,39 @@ async function onCommand(commandNameWithIndex, tab) {
     tab,
     recentTabsManager
   })
+}
+
+/**
+ * Handles the context menu on click.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/contextMenus#event-onClicked
+ *
+ * @param {chrome.contextMenus.OnClickData} info
+ * @param {chrome.tabs.Tab} tab
+ * @returns {void}
+ */
+function onMenuItemClicked(info, tab) {
+  switch (info.menuItemId) {
+    case 'open_documentation':
+      chrome.tabs.create({
+        active: true,
+        url: 'https://github.com/taupiqueur/chrome-shortcuts/blob/master/docs/manual.md',
+        index: tab.index + 1,
+        openerTabId: tab.id,
+        windowId: tab.windowId
+      })
+      break
+
+    case 'open_support_chat':
+      chrome.tabs.create({
+        active: true,
+        url: 'https://web.libera.chat/gamja/#taupiqueur',
+        index: tab.index + 1,
+        openerTabId: tab.id,
+        windowId: tab.windowId
+      })
+      break
+  }
 }
 
 /**
@@ -151,6 +206,7 @@ function onWindowFocusChanged(windowId) {
 // https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/events
 chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.commands.onCommand.addListener(onCommand)
+chrome.contextMenus.onClicked.addListener(onMenuItemClicked)
 chrome.runtime.onConnect.addListener(onConnect)
 chrome.tabs.onActivated.addListener(onTabActivated)
 chrome.tabs.onRemoved.addListener(onTabRemoved)
