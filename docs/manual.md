@@ -51,8 +51,9 @@ You will find the list of code values and informative symbols.
 
 [Keyboard Event `code` Value Tables]: https://w3c.github.io/uievents-code/#code-value-tables
 
-**Tip**: You can hover over the menu commands to show the keys to press
-(e.g., hovering over `KeyJ` will show `j` on a US keyboard).
+> [!TIP]
+> You can hover over the menu commands to show the keys to press
+> (e.g., hovering over `KeyJ` will show `j` on a US keyboard).
 
 ### Navigation
 
@@ -84,8 +85,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `copyTitle` | Copy title of selected tabs | | | `⌥ KeyY`
 `copyTitleAndURL` | Copy title and URL of selected tabs | | | `⇧ KeyY`
 
-**Note**: If Chrome notifications are enabled,
-Shortcuts will show you a message for copied text.
+> [!NOTE]
+> If Chrome notifications are enabled,
+> Shortcuts will show you a message for copied text.
 
 ### Web search
 
@@ -214,7 +216,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `moveTabSelectionFaceBackward` | Move tab selection’s face backward | | | `⇧ BracketLeft`
 `moveTabSelectionFaceForward` | Move tab selection’s face forward | | | `⇧ BracketRight`
 
-**Tip**: Selecting tabs in group can be used for ungrouped tabs.
+> [!TIP]
+> Selecting tabs in group can be used for ungrouped tabs.
 
 ### Bookmarks
 
@@ -232,8 +235,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `addTabToReadingList` | Add selected tabs to your reading list | | | `⌥ KeyD`
 
-**Note**: If Chrome notifications are enabled,
-Shortcuts will show you a message for pages added to your reading list.
+> [!NOTE]
+> If Chrome notifications are enabled,
+> Shortcuts will show you a message for pages added to your reading list.
 
 ### Folders
 
