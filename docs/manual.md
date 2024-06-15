@@ -59,13 +59,13 @@ You will find the list of code values and informative symbols.
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`goBack` | Go back to the previous page in tab’s history | `⌥ ←` | `⌘ [`, `⌘ ←` | `⌥ KeyH`
-`goForward` | Go forward to the next page in tab’s history | `⌥ →` | `⌘ ]`, `⌘ →` | `⌥ KeyL`
-`reloadTab` | Reload selected tabs | `F5`, `⌃ R` | `⌘ R` | `KeyR`
-`reloadTabWithoutCache` | Reload selected tabs, ignoring cached content | `⇧ F5`, `⌃ ⇧ R` | `⇧ ⌘ R` | `⇧ KeyR`
-`goToNextPage` | Go to the next page in the series | | | `⇧ Period`
-`goToPreviousPage` | Go to the previous page in the series | | | `⇧ Comma`
-`removeURLParams` | Remove any URL parameters | | | `⇧ Slash`
+`goBack` | Go back to the previous page in tab’s history | `Alt+ArrowLeft` | `Command+BracketLeft`, `Command+ArrowLeft` | `Alt+KeyH`
+`goForward` | Go forward to the next page in tab’s history | `Alt+ArrowRight` | `Command+BracketRight`, `Command+ArrowRight` | `Alt+KeyL`
+`reloadTab` | Reload selected tabs | `F5`, `Control+R` | `Command+R` | `KeyR`
+`reloadTabWithoutCache` | Reload selected tabs, ignoring cached content | `Shift+F5`, `Control+Shift+R` | `Shift+Command+R` | `Shift+KeyR`
+`goToNextPage` | Go to the next page in the series | | | `Shift+Period`
+`goToPreviousPage` | Go to the previous page in the series | | | `Shift+Comma`
+`removeURLParams` | Remove any URL parameters | | | `Shift+Slash`
 `goUp` | Go up in the URL hierarchy | | | `Period`
 `goToRoot` | Go to the root URL | | | `Slash`
 
@@ -75,15 +75,15 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `focusTextInput` | Cycle through text fields | | | `KeyI`
 `focusMediaPlayer` | Cycle through media players | | | `KeyV`
-`blurElement` | Blur the active element | | | `⇧ Escape`
+`blurElement` | Blur the active element | | | `Shift+Escape`
 
 ### Clipboard
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `copyURL` | Copy URL of selected tabs | | | `KeyY`
-`copyTitle` | Copy title of selected tabs | | | `⌥ KeyY`
-`copyTitleAndURL` | Copy title and URL of selected tabs | | | `⇧ KeyY`
+`copyTitle` | Copy title of selected tabs | | | `Alt+KeyY`
+`copyTitleAndURL` | Copy title and URL of selected tabs | | | `Shift+KeyY`
 
 > [!NOTE]
 > If Chrome notifications are enabled,
@@ -93,48 +93,48 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openWebSearchForSelectedText` | Perform a web search for selected text | | | `⌥ KeyW`
+`openWebSearchForSelectedText` | Perform a web search for selected text | | | `Alt+KeyW`
 
 ### Scroll
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`scrollDown` | Scroll down | `↓` | `↓` | `KeyJ`
-`scrollUp` | Scroll up | `↑` | `↑` | `KeyK`
-`scrollLeft` | Scroll left | `←` | `←` | `KeyH`
-`scrollRight` | Scroll right | `→` | `→` | `KeyL`
-`scrollPageDown` | Scroll one page down | `Space`, `⇟` | `Space`, `⇟` | `Space`
-`scrollPageUp` | Scroll one page up | `⇧ Space`, `⇞` | `⇧ Space`, `⇞` | `⇧ Space`
-`scrollHalfPageDown` | Scroll half page down | | | `⇧ KeyJ`
-`scrollHalfPageUp` | Scroll half page up | | | `⇧ KeyK`
-`scrollToTop` | Scroll to the top of the page | `↖`, `⌃ ↑` | `↖`, `⌘ ↑` | `KeyG`
-`scrollToBottom` | Scroll to the bottom of the page | `↘`, `⌃ ↓` | `↘`, `⌘ ↓` | `KeyE`
+`scrollDown` | Scroll down | `ArrowDown` | `ArrowDown` | `KeyJ`
+`scrollUp` | Scroll up | `ArrowUp` | `ArrowUp` | `KeyK`
+`scrollLeft` | Scroll left | `ArrowLeft` | `ArrowLeft` | `KeyH`
+`scrollRight` | Scroll right | `ArrowRight` | `ArrowRight` | `KeyL`
+`scrollPageDown` | Scroll one page down | `Space`, `PageDown` | `Space`, `PageDown` | `Space`
+`scrollPageUp` | Scroll one page up | `Shift+Space`, `PageUp` | `Shift+Space`, `PageUp` | `Shift+Space`
+`scrollHalfPageDown` | Scroll half page down | | | `Shift+KeyJ`
+`scrollHalfPageUp` | Scroll half page up | | | `Shift+KeyK`
+`scrollToTop` | Scroll to the top of the page | `Home`, `Control+ArrowUp` | `Home`, `Command+ArrowUp` | `KeyG`
+`scrollToBottom` | Scroll to the bottom of the page | `End`, `Control+ArrowDown` | `End`, `Command+ArrowDown` | `KeyE`
 
 ### Zoom
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`zoomIn` | Zoom in | `⌃ Equal` | `⌘ Equal` | `Equal`
-`zoomOut` | Zoom out | `⌃ Minus` | `⌘ Minus` | `Minus`
-`zoomReset` | Reset the zoom factor | `⌃ 0` | `⌘ 0` | `Digit0`
-`toggleFullScreen` | Turn full-screen mode on or off | `F11` | `🌐 F`, `⌃ ⌘ F` | `KeyF`
+`zoomIn` | Zoom in | `Control+Equal` | `Command+Equal` | `Equal`
+`zoomOut` | Zoom out | `Control+Minus` | `Command+Minus` | `Minus`
+`zoomReset` | Reset the zoom factor | `Control+0` | `Command+0` | `Digit0`
+`toggleFullScreen` | Turn full-screen mode on or off | `F11` | `Globe+F`, `Control+Command+F` | `KeyF`
 
 ### Create tabs
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openNewTab` | Open and activate a new tab | `⌃ T` | `⌘ T` | `KeyT`
+`openNewTab` | Open and activate a new tab | `Control+T` | `Command+T` | `KeyT`
 `openNewTabRight` | Open and activate a new tab to the right | | | `KeyO`
-`openNewWindow` | Open a new window | `⌃ N` | `⌘ N` | `KeyN`
-`openNewIncognitoWindow` | Open a new window in Incognito mode | `⌃ ⇧ N` | `⇧ ⌘ N` | `⇧ KeyN`
+`openNewWindow` | Open a new window | `Control+N` | `Command+N` | `KeyN`
+`openNewIncognitoWindow` | Open a new window in Incognito mode | `Control+Shift+N` | `Shift+Command+N` | `Shift+KeyN`
 
 ### Close tabs
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`closeTab` | Close selected tabs | `⌃ W`, `⌃ F4` | `⌘ W` | `KeyX`
-`closeWindow` | Close the window that contains the tab | `⌃ ⇧ W`, `⌥ F4` | `⇧ ⌘ W` | `⇧ KeyX`
-`restoreTab` | Reopen previously closed tabs | `⌃ ⇧ T` | `⇧ ⌘ T` | `KeyU`
+`closeTab` | Close selected tabs | `Control+W`, `Control+F4` | `Command+W` | `KeyX`
+`closeWindow` | Close the window that contains the tab | `Control+Shift+W`, `Alt+F4` | `Shift+Command+W` | `Shift+KeyX`
+`restoreTab` | Reopen previously closed tabs | `Control+Shift+T` | `Shift+Command+T` | `KeyU`
 
 ### Tab state
 
@@ -142,7 +142,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `duplicateTab` | Duplicate selected tabs | | | `KeyB`
 `togglePinTab` | Pin or unpin selected tabs | | | `KeyP`
-`toggleGroupTab` | Group or ungroup selected tabs | | | `⇧ KeyP`
+`toggleGroupTab` | Group or ungroup selected tabs | | | `Shift+KeyP`
 `toggleCollapseTabGroups` | Collapse or uncollapse tab groups | | | `KeyC`
 `toggleMuteTab` | Mute or unmute selected tabs | | | `KeyM`
 `discardTab` | Discard selected tabs | | | `KeyD`
@@ -151,52 +151,52 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`sortTabsByURL` | Sort selected tabs by URL | | | `⇧ Digit1`
-`groupTabsByDomain` | Group selected tabs by domain | | | `⇧ Digit2`
+`sortTabsByURL` | Sort selected tabs by URL | | | `Shift+Digit1`
+`groupTabsByDomain` | Group selected tabs by domain | | | `Shift+Digit2`
 
 ### Manage tab groups
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`renameTabGroup` | Rename tab group | | | `⌥ KeyR`
-`cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `⌥ KeyA`
-`cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `⌥ ⇧ KeyA`
+`renameTabGroup` | Rename tab group | | | `Alt+KeyR`
+`cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `Alt+KeyA`
+`cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `Alt+Shift+KeyA`
 
 ### Switch tabs
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`activateAudibleTab` | Activate the first audible tab | | | `⇧ Digit3`
-`activateNextTab` | Activate the next open tab | `⌃ ⇥`, `⌃ ⇟` | `⌃ ⇥`, `⌥ ⌘ →` | `Tab`, `⌥ KeyK`
-`activatePreviousTab` | Activate the previous open tab | `⌃ ⇧ ⇥`, `⌃ ⇞` | `⌃ ⇧ ⇥`, `⌥ ⌘ ←` | `⇧ Tab`, `⌥ KeyJ`
-`activateFirstTab` | Activate the leftmost open tab | `⌃ 1` | `⌘ 1` | `Digit1`
-`activateSecondTab` | Activate the second leftmost open tab | `⌃ 2` | `⌘ 2` | `Digit2`
-`activateThirdTab` | Activate the third leftmost open tab | `⌃ 3` | `⌘ 3` | `Digit3`
-`activateFourthTab` | Activate the fourth leftmost open tab | `⌃ 4` | `⌘ 4` | `Digit4`
-`activateFifthTab` | Activate the fifth leftmost open tab | `⌃ 5` | `⌘ 5` | `Digit5`
-`activateSixthTab` | Activate the sixth leftmost open tab | `⌃ 6` | `⌘ 6` | `Digit6`
-`activateSeventhTab` | Activate the seventh leftmost open tab | `⌃ 7` | `⌘ 7` | `Digit7`
-`activateEighthTab` | Activate the eighth leftmost open tab | `⌃ 8` | `⌘ 8` | `Digit8`
-`activateLastTab` | Activate the rightmost open tab | `⌃ 9` | `⌘ 9` | `Digit9`
-`activateLastActiveTab` | Activate the last active tab | | | `⌥ Digit1`
-`activateSecondLastActiveTab` | Activate the second last active tab | | | `⌥ Digit2`
-`activateThirdLastActiveTab` | Activate the third last active tab | | | `⌥ Digit3`
-`activateFourthLastActiveTab` | Activate the fourth last active tab | | | `⌥ Digit4`
-`activateFifthLastActiveTab` | Activate the fifth last active tab | | | `⌥ Digit5`
-`activateSixthLastActiveTab` | Activate the sixth last active tab | | | `⌥ Digit6`
-`activateSeventhLastActiveTab` | Activate the seventh last active tab | | | `⌥ Digit7`
-`activateEighthLastActiveTab` | Activate the eighth last active tab | | | `⌥ Digit8`
-`activateNinthLastActiveTab` | Activate the ninth last active tab | | | `⌥ Digit9`
+`activateAudibleTab` | Activate the first audible tab | | | `Shift+Digit3`
+`activateNextTab` | Activate the next open tab | `Control+Tab`, `Control+PageDown` | `Control+Tab`, `Option+Command+ArrowRight` | `Tab`, `Alt+KeyK`
+`activatePreviousTab` | Activate the previous open tab | `Control+Shift+Tab`, `Control+PageUp` | `Control+Shift+Tab`, `Option+Command+ArrowLeft` | `Shift+Tab`, `Alt+KeyJ`
+`activateFirstTab` | Activate the leftmost open tab | `Control+1` | `Command+1` | `Digit1`
+`activateSecondTab` | Activate the second leftmost open tab | `Control+2` | `Command+2` | `Digit2`
+`activateThirdTab` | Activate the third leftmost open tab | `Control+3` | `Command+3` | `Digit3`
+`activateFourthTab` | Activate the fourth leftmost open tab | `Control+4` | `Command+4` | `Digit4`
+`activateFifthTab` | Activate the fifth leftmost open tab | `Control+5` | `Command+5` | `Digit5`
+`activateSixthTab` | Activate the sixth leftmost open tab | `Control+6` | `Command+6` | `Digit6`
+`activateSeventhTab` | Activate the seventh leftmost open tab | `Control+7` | `Command+7` | `Digit7`
+`activateEighthTab` | Activate the eighth leftmost open tab | `Control+8` | `Command+8` | `Digit8`
+`activateLastTab` | Activate the rightmost open tab | `Control+9` | `Command+9` | `Digit9`
+`activateLastActiveTab` | Activate the last active tab | | | `Alt+Digit1`
+`activateSecondLastActiveTab` | Activate the second last active tab | | | `Alt+Digit2`
+`activateThirdLastActiveTab` | Activate the third last active tab | | | `Alt+Digit3`
+`activateFourthLastActiveTab` | Activate the fourth last active tab | | | `Alt+Digit4`
+`activateFifthLastActiveTab` | Activate the fifth last active tab | | | `Alt+Digit5`
+`activateSixthLastActiveTab` | Activate the sixth last active tab | | | `Alt+Digit6`
+`activateSeventhLastActiveTab` | Activate the seventh last active tab | | | `Alt+Digit7`
+`activateEighthLastActiveTab` | Activate the eighth last active tab | | | `Alt+Digit8`
+`activateNinthLastActiveTab` | Activate the ninth last active tab | | | `Alt+Digit9`
 `activateNextWindow` | Activate the next open window | | | `KeyW`
-`activatePreviousWindow` | Activate the previous open window | | | `⇧ KeyW`
+`activatePreviousWindow` | Activate the previous open window | | | `Shift+KeyW`
 
 ### Move tabs
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`grabTab` | Grab selected tabs | | | `⌥ KeyG`
-`moveTabLeft` | Move selected tabs left | `⌃ ⇧ ⇞` | `⌃ ⇧ ⇞` | `ArrowLeft`
-`moveTabRight` | Move selected tabs right | `⌃ ⇧ ⇟` | `⌃ ⇧ ⇟` | `ArrowRight`
+`grabTab` | Grab selected tabs | | | `Alt+KeyG`
+`moveTabLeft` | Move selected tabs left | `Control+Shift+PageUp` | `Control+Shift+PageUp` | `ArrowLeft`
+`moveTabRight` | Move selected tabs right | `Control+Shift+PageDown` | `Control+Shift+PageDown` | `ArrowRight`
 `moveTabFirst` | Move selected tabs to the far left | | | `Home`
 `moveTabLast` | Move selected tabs to the far right | | | `End`
 `moveTabNewWindow` | Move selected tabs to a new window | | | `ArrowUp`
@@ -211,10 +211,10 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `selectNextTab` | Select the next tab | | | `BracketRight`
 `selectRelatedTabs` | Select related tabs | | | `Backquote`
 `selectTabsInGroup` | Select tabs in group | | | `KeyA`
-`selectAllTabs` | Select all tabs | | | `⇧ KeyA`
-`selectRightTabs` | Select tabs to the right | | | `⇧ KeyS`
-`moveTabSelectionFaceBackward` | Move tab selection’s face backward | | | `⇧ BracketLeft`
-`moveTabSelectionFaceForward` | Move tab selection’s face forward | | | `⇧ BracketRight`
+`selectAllTabs` | Select all tabs | | | `Shift+KeyA`
+`selectRightTabs` | Select tabs to the right | | | `Shift+KeyS`
+`moveTabSelectionFaceBackward` | Move tab selection’s face backward | | | `Shift+BracketLeft`
+`moveTabSelectionFaceForward` | Move tab selection’s face forward | | | `Shift+BracketRight`
 
 > [!TIP]
 > Selecting tabs in group can be used for ungrouped tabs.
@@ -223,8 +223,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`bookmarkTab` | Save selected tabs as bookmarks | `⌃ D` | `⌘ D` | `⇧ KeyD`
-`bookmarkSession` | Save the current session as bookmarks | `⌃ ⇧ D` | `⇧ ⌘ D` | `⇧ KeyB`
+`bookmarkTab` | Save selected tabs as bookmarks | `Control+D` | `Command+D` | `Shift+KeyD`
+`bookmarkSession` | Save the current session as bookmarks | `Control+Shift+D` | `Shift+Command+D` | `Shift+KeyB`
 
 > [!NOTE]
 > If Chrome notifications are enabled,
@@ -234,7 +234,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`addTabToReadingList` | Add selected tabs to your reading list | | | `⌥ KeyD`
+`addTabToReadingList` | Add selected tabs to your reading list | | | `Alt+KeyD`
 
 > [!NOTE]
 > If Chrome notifications are enabled,
@@ -244,21 +244,21 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openDownloadsFolder` | Open the “Downloads” folder | | | `⌃ KeyK`
+`openDownloadsFolder` | Open the “Downloads” folder | | | `Control+KeyK`
 
 ### Chrome URLs
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openHistoryPage` | Open the “History” page | `⌃ H` | `⌘ Y` | `⌃ KeyH`
-`openDownloadsPage` | Open the “Downloads” page | `⌃ J` | `⌥ ⌘ L` | `⌃ KeyJ`
-`openBookmarksPage` | Open the “Bookmarks” page | `⌃ ⇧ O` | `⌥ ⌘ B` | `⌃ KeyO`
-`openSettingsPage` | Open the “Settings” page | | `⌘ ,` | `Comma`
-`openPasswordsPage` | Open the “Passwords” page | | | `⌃ KeyY`
-`openSearchEnginesPage` | Open the “Search engines” page | | | `⌃ Slash`
-`openExtensionsPage` | Open the “Extensions” page | | | `⌃ KeyA`
-`openExtensionShortcutsPage` | Open the “Extensions > Keyboard shortcuts” page | | | `⇧ Equal`
-`openExperimentsPage` | Open the “Experiments” page | | | `⌃ Comma`
+`openHistoryPage` | Open the “History” page | `Control+H` | `Command+Y` | `Control+KeyH`
+`openDownloadsPage` | Open the “Downloads” page | `Control+J` | `Option+Command+L` | `Control+KeyJ`
+`openBookmarksPage` | Open the “Bookmarks” page | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
+`openSettingsPage` | Open the “Settings” page | | `Command+Comma` | `Comma`
+`openPasswordsPage` | Open the “Passwords” page | | | `Control+KeyY`
+`openSearchEnginesPage` | Open the “Search engines” page | | | `Control+Slash`
+`openExtensionsPage` | Open the “Extensions” page | | | `Control+KeyA`
+`openExtensionShortcutsPage` | Open the “Extensions > Keyboard shortcuts” page | | | `Shift+Equal`
+`openExperimentsPage` | Open the “Experiments” page | | | `Control+Comma`
 
 ### Popup
 
@@ -274,10 +274,10 @@ For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboa
 
 ## Tips and tricks
 
-- **To close right tabs**—Select tabs to the right with `Tab`, `⇧ KeyS`, then close selection with `KeyX`.
+- **To close right tabs**—Select tabs to the right with `Tab`, `Shift+KeyS`, then close selection with `KeyX`.
 - **To close other tabs**—Move the tab you want to keep to the far left with the `Home` key, then close tabs to the right.
 - **To move tab groups**—Select all tabs in group with `KeyA`, then use a move action, such as `ArrowLeft` / `ArrowRight` for horizontal movements.
-- **To merge windows**—Select all tabs with `⇧ KeyA`, then press the `Down` key to move selected tabs to the previous window.
+- **To merge windows**—Select all tabs with `Shift+KeyA`, then press the `Down` key to move selected tabs to the previous window.
 
 For more tips, see the [Google Chrome documentation][Chrome tips].
 
