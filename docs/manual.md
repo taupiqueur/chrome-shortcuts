@@ -226,8 +226,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `bookmarkTab` | Save selected tabs as bookmarks | `⌃ D` | `⌘ D` | `⇧ KeyD`
 `bookmarkSession` | Save the current session as bookmarks | `⌃ ⇧ D` | `⇧ ⌘ D` | `⇧ KeyB`
 
-**Note**: If Chrome notifications are enabled,
-Shortcuts will show you a message for created bookmarks.
+> [!NOTE]
+> If Chrome notifications are enabled,
+> Shortcuts will show you a message for created bookmarks.
 
 ### Reading list
 
