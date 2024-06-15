@@ -9,6 +9,8 @@ import popupWorker from './popup/service_worker.js'
 import optionsWorker from './options/service_worker.js'
 import RecentTabsManager from './recent_tabs_manager.js'
 
+const { TAB_GROUP_ID_NONE } = chrome.tabGroups
+
 const recentTabsManager = new RecentTabsManager
 
 /**
@@ -110,24 +112,38 @@ async function onCommand(commandNameWithIndex, tab) {
 function onMenuItemClicked(info, tab) {
   switch (info.menuItemId) {
     case 'open_documentation':
-      chrome.tabs.create({
-        active: true,
-        url: 'https://github.com/taupiqueur/chrome-shortcuts/blob/master/docs/manual.md',
-        index: tab.index + 1,
-        openerTabId: tab.id,
-        windowId: tab.windowId
-      })
+      openNewTabRight(tab, 'https://github.com/taupiqueur/chrome-shortcuts/blob/master/docs/manual.md')
       break
 
     case 'open_support_chat':
-      chrome.tabs.create({
-        active: true,
-        url: 'https://web.libera.chat/gamja/#taupiqueur',
-        index: tab.index + 1,
-        openerTabId: tab.id,
-        windowId: tab.windowId
-      })
+      openNewTabRight(tab, 'https://web.libera.chat/gamja/#taupiqueur')
       break
+  }
+}
+
+/**
+ * Opens and activates a new tab to the right.
+ *
+ * @param {chrome.tabs.Tab} openerTab
+ * @param {string} url
+ * @returns {Promise<void>}
+ */
+async function openNewTabRight(openerTab, url) {
+  const createdTab = await chrome.tabs.create({
+    active: true,
+    url,
+    index: openerTab.index + 1,
+    openerTabId: openerTab.id,
+    windowId: openerTab.windowId
+  })
+
+  if (openerTab.groupId !== TAB_GROUP_ID_NONE) {
+    await chrome.tabs.group({
+      groupId: openerTab.groupId,
+      tabIds: [
+        createdTab.id
+      ]
+    })
   }
 }
 
