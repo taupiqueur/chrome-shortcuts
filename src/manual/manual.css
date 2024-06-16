@@ -1,0 +1,126 @@
+:root {
+  color-scheme: light dark;
+  --keyboard-input-code-background-color: #ffc4ff;
+  --keyboard-input-code-text-color: #191970;
+  --keyboard-input-code-border-color: #f0a4f0;
+  --keyboard-input-code-selected-background-color: #f0a4f0;
+  --keyboard-input-code-selected-text-color: #000000;
+  --table-head-background-color: #b9c9fe;
+  --table-head-text-color: #003399;
+  --table-head-border-color: #aabcfe;
+  --table-body-background-color: #e8edff;
+  --table-body-text-color: #666699;
+  --table-body-border-color: #ffffff;
+  --table-body-selected-background-color: #d0dafd;
+  --table-body-selected-text-color: #333399;
+  --note-background-color: #e9fbe9;
+  --note-text-color: #000000;
+  --note-border-color: #52e052;
+  --tip-background-color: #fcfaee;
+  --tip-text-color: #000000;
+  --tip-border-color: #e0cb52;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffffff;
+    --foreground-color: #202020;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #202020;
+    --foreground-color: #eaeaea;
+  }
+}
+
+body {
+  margin: auto;
+  max-width: 800px;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+section {
+  margin-block: 3rem;
+}
+
+:is(h1, h2, h3, h4, h5, h6) a:not(:hover, :focus, :active) {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+:is(h1, h2, h3, h4, h5, h6) a:is(:hover, :focus, :active)::after {
+  content: "#";
+}
+
+p[role="note"] {
+  background-color: var(--note-background-color);
+  color: var(--note-text-color);
+  border-inline-start: 0.5em solid var(--note-border-color);
+  padding: 0.5em;
+}
+
+p[role="tip"] {
+  background-color: var(--tip-background-color);
+  color: var(--tip-text-color);
+  border-inline-start: 0.5em solid var(--tip-border-color);
+  padding: 0.5em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead tr {
+  background-color: var(--table-head-background-color);
+  color: var(--table-head-text-color);
+  border-block-start: 4px solid var(--table-head-border-color);
+}
+
+tbody tr {
+  background-color: var(--table-body-background-color);
+  color: var(--table-body-text-color);
+  border-block: 1px solid var(--table-body-border-color);
+}
+
+tbody tr:hover {
+  background-color: var(--table-body-selected-background-color);
+  color: var(--table-body-selected-text-color);
+}
+
+th {
+  text-align: start;
+  font-weight: normal;
+}
+
+th, td {
+  padding: 0.4em 1em;
+}
+
+kbd {
+  border: 1px solid;
+  padding-inline: 2px;
+  border-radius: 3px;
+}
+
+kbd.code {
+  background-color: var(--keyboard-input-code-background-color);
+  color: var(--keyboard-input-code-text-color);
+  border-color: var(--keyboard-input-code-border-color);
+}
+
+kbd.code:hover {
+  background-color: var(--keyboard-input-code-selected-background-color);
+  color: var(--keyboard-input-code-selected-text-color);
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}

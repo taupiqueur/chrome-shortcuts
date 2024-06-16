@@ -147,7 +147,8 @@ const sameGroup = compare(_groupId)
  * @returns {Promise<void>}
  */
 export async function openShortcutsManual(cx) {
-  await openNewTabRight(cx, 'https://github.com/taupiqueur/chrome-shortcuts/blob/master/docs/manual.md')
+  const url = chrome.runtime.getURL('src/manual/manual.html')
+  await openChromePage(cx, url)
 }
 
 // Navigation ------------------------------------------------------------------
@@ -751,13 +752,11 @@ export async function openNewTab(cx) {
  * Opens and activates a new tab to the right.
  *
  * @param {Context} cx
- * @param {?string} url
  * @returns {Promise<void>}
  */
-export async function openNewTabRight(cx, url) {
+export async function openNewTabRight(cx) {
   const createdTab = await chrome.tabs.create({
     active: true,
-    url,
     index: cx.tab.index + 1,
     openerTabId: cx.tab.id,
     windowId: cx.tab.windowId

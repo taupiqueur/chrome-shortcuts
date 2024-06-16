@@ -112,7 +112,7 @@ async function onCommand(commandNameWithIndex, tab) {
 function onMenuItemClicked(info, tab) {
   switch (info.menuItemId) {
     case 'open_documentation':
-      openNewTabRight(tab, 'https://github.com/taupiqueur/chrome-shortcuts/blob/master/docs/manual.md')
+      openNewTabRight(tab, 'src/manual/manual.html')
       break
 
     case 'open_support_chat':

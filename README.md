@@ -50,8 +50,9 @@ Download the [Nightly builds].
 
 ### Build from source
 
-Install [Inkscape] to build the images.
+Install [curl] and [Inkscape] to get and build the images.
 
+[curl]: https://curl.se
 [Inkscape]: https://inkscape.org
 
 ``` sh
