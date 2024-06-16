@@ -1,5 +1,10 @@
 {
   "commandBindings": {
+    "openShortcutsManual": [
+      {
+        "code": "F1"
+      }
+    ],
     "goBack": [
       {
         "altKey": true,

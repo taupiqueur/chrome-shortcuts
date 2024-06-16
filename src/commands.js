@@ -138,6 +138,18 @@ const hasGroup = ({ groupId }) => groupId !== TAB_GROUP_ID_NONE
  */
 const sameGroup = compare(_groupId)
 
+// Shortcuts -------------------------------------------------------------------
+
+/**
+ * Opens Shortcuts manual.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openShortcutsManual(cx) {
+  await openNewTabRight(cx, 'https://github.com/taupiqueur/chrome-shortcuts/blob/master/docs/manual.md')
+}
+
 // Navigation ------------------------------------------------------------------
 
 /**
@@ -739,11 +751,13 @@ export async function openNewTab(cx) {
  * Opens and activates a new tab to the right.
  *
  * @param {Context} cx
+ * @param {?string} url
  * @returns {Promise<void>}
  */
-export async function openNewTabRight(cx) {
+export async function openNewTabRight(cx, url) {
   const createdTab = await chrome.tabs.create({
     active: true,
+    url,
     index: cx.tab.index + 1,
     openerTabId: cx.tab.id,
     windowId: cx.tab.windowId

@@ -19,6 +19,10 @@ function message(commandName, passingMode, stickyWindow) {
   }
 }
 
+// Shortcuts -------------------------------------------------------------------
+
+export const openShortcutsManual = message('openShortcutsManual')
+
 // Navigation ------------------------------------------------------------------
 
 export const goBack = message('goBack', false, true)

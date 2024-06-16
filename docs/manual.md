@@ -55,6 +55,12 @@ You will find the list of code values and informative symbols.
 > You can hover over the menu commands to show the keys to press
 > (e.g., hovering over `KeyJ` will show `j` on a US keyboard).
 
+### Shortcuts
+
+Command | Description | Windows and Linux key | macOS key | Popup key
+--- | --- | --- | --- | ---
+`openShortcutsManual` | Open Shortcuts manual | | | `F1`
+
 ### Navigation
 
 Command | Description | Windows and Linux key | macOS key | Popup key
