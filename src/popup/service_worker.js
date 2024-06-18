@@ -19,6 +19,18 @@
 
 import * as commands from '../commands.js'
 
+const CHROME_DOMAINS = [
+  new URLPattern({
+    protocol: 'chrome'
+  }),
+  new URLPattern({
+    protocol: 'chrome-extension'
+  }),
+  new URLPattern({
+    hostname: 'chromewebstore.google.com'
+  })
+]
+
 const popupConfigPromise = fetch('popup/config.json')
   .then((response) =>
     response.json()
@@ -86,6 +98,29 @@ function onConnect(port, cx) {
   port.onMessage.addListener((message, port) => {
     onMessage(message, port, cx)
   })
+  onPopupScriptAdded(port)
+}
+
+/**
+ * Handles the popup initialization.
+ *
+ * @param {chrome.runtime.Port} port
+ * @returns {Promise<void>}
+ */
+async function onPopupScriptAdded(port) {
+  const tabs = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true
+  })
+
+  if (tabs.length > 0) {
+    const { url } = tabs[0]
+
+    port.postMessage({
+      type: 'init',
+      isEnabled: !CHROME_DOMAINS.some((domain) => domain.test(url))
+    })
+  }
 }
 
 /**

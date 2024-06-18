@@ -6,7 +6,14 @@ import CustomMenu from './components/CustomMenu.js'
 import MenuItem from './components/MenuItem.js'
 
 const menuElement = document.querySelector('custom-menu')
-const menuItemElements = document.querySelectorAll('menu-item')
+const menuItemElements = menuElement.querySelectorAll('menu-item')
+const scriptingMenuItemElements = menuElement.querySelectorAll('menu-item[data-permissions~="scripting"]')
+
+const menuCommands = new Map(
+  Array.from(menuItemElements, (menuItemElement) => [
+    menuItemElement.dataset.command, menuItemElement
+  ])
+)
 
 const localStorage = await chrome.storage.sync.get('popupConfig')
 const sessionStorage = await chrome.storage.session.get('lastCommand')
@@ -19,6 +26,12 @@ const port = chrome.runtime.connect({
 // Listen for messages.
 port.onMessage.addListener((message) => {
   switch (message.type) {
+    case 'init':
+      render({
+        isEnabled: message.isEnabled
+      })
+      break
+
     case 'command':
       onCommand(message.command)
       break
@@ -31,28 +44,38 @@ port.onMessage.addListener((message) => {
   }
 })
 
-const menuCommands = new Map(
-  Array.from(menuItemElements, (menuItemElement) => [
-    menuItemElement.dataset.command, menuItemElement
-  ])
-)
+/**
+ * Handles the popup rendering.
+ *
+ * @param {{ isEnabled: boolean }} options
+ * @returns {void}
+ */
+function render({ isEnabled }) {
+  if (!isEnabled) {
+    menuElement.title = 'Browser extensions are not allowed on this page.'
 
-// Add menu commands and keyboard shortcuts.
-for (const [commandName, menuItemElement] of menuCommands) {
-  menuItemElement.addEventListener('click', () => {
-    onCommand(commandName)
-  })
-
-  for (const keybinding of localStorage.popupConfig.commandBindings[commandName]) {
-    menuItemElement.addKeyboardShortcut(keybinding)
+    for (const menuItemElement of scriptingMenuItemElements) {
+      menuItemElement.setAttribute('disabled', '')
+    }
   }
-}
 
-// Listen for keyboard shortcuts.
-if (sessionStorage.lastCommand) {
-  menuCommands.get(sessionStorage.lastCommand).focus()
-} else {
-  menuElement.focus()
+  // Add menu commands and keyboard shortcuts.
+  for (const [commandName, menuItemElement] of menuCommands) {
+    menuItemElement.addEventListener('click', () => {
+      onCommand(commandName)
+    })
+
+    for (const keybinding of localStorage.popupConfig.commandBindings[commandName]) {
+      menuItemElement.addKeyboardShortcut(keybinding)
+    }
+  }
+
+  // Listen for keyboard shortcuts.
+  if (sessionStorage.lastCommand) {
+    menuCommands.get(sessionStorage.lastCommand).focus()
+  } else {
+    menuElement.focus()
+  }
 }
 
 /**

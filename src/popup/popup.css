@@ -100,6 +100,10 @@ menu-item::part(shortcuts) {
   color: var(--dim-foreground-color);
 }
 
+menu-item[disabled] {
+  opacity: 0.5;
+}
+
 keyboard-shortcut + keyboard-shortcut::before {
   content: ",";
 }
