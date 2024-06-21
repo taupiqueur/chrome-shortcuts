@@ -19,6 +19,9 @@
   --tip-background-color: #fcfaee;
   --tip-text-color: #000000;
   --tip-border-color: #e0cb52;
+  --important-background-color: #eeeeee;
+  --important-text-color: #000000;
+  --important-border-color: #aaaaaa;
   --code-block-background-color: #e8edff;
   --code-block-text-color: #000000;
   --string-color: green;
@@ -72,6 +75,13 @@ p[role="tip"] {
   background-color: var(--tip-background-color);
   color: var(--tip-text-color);
   border-inline-start: 0.5em solid var(--tip-border-color);
+  padding: 0.5em;
+}
+
+p[role="important"] {
+  background-color: var(--important-background-color);
+  color: var(--important-text-color);
+  border-inline-start: 0.5em solid var(--important-border-color);
   padding: 0.5em;
 }
 
