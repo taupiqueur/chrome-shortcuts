@@ -19,6 +19,9 @@
   --tip-background-color: #fcfaee;
   --tip-text-color: #000000;
   --tip-border-color: #e0cb52;
+  --code-block-background-color: #e8edff;
+  --code-block-text-color: #000000;
+  --string-color: green;
 }
 
 @media (prefers-color-scheme: light) {
@@ -46,7 +49,7 @@ body {
 }
 
 section {
-  margin-block: 3rem;
+  margin-block: 2rem;
 }
 
 :is(h1, h2, h3, h4, h5, h6) a:not(:hover, :focus, :active) {
@@ -123,4 +126,23 @@ kbd.code:hover {
 figcaption {
   text-align: center;
   font-style: italic;
+}
+
+pre {
+  overflow: auto;
+}
+
+pre:has(code) {
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  background-color: var(--code-block-background-color);
+  color: var(--code-block-text-color);
+}
+
+[data-type="keyword"] {
+  font-weight: bold;
+}
+
+[data-type="string"] {
+  color: var(--string-color);
 }
