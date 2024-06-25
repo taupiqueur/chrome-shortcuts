@@ -24,6 +24,7 @@
   --important-border-color: #aaaaaa;
   --code-block-background-color: #e8edff;
   --code-block-text-color: #000000;
+  --boolean-color: darkred;
   --string-color: green;
 }
 
@@ -151,6 +152,10 @@ pre:has(code) {
 
 [data-type="keyword"] {
   font-weight: bold;
+}
+
+[data-type="boolean"] {
+  color: var(--boolean-color);
 }
 
 [data-type="string"] {

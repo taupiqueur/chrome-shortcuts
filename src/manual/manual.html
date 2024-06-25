@@ -53,6 +53,586 @@
             You can also configure the popup keys by importing and exporting settings
             in the “Options” page—Right-click the Shortcuts toolbar button and select “Options”.
           </p>
+          <details>
+            <summary>Example configuration</summary>
+            <pre><code data-lang="json">{
+  <span data-type="string">"commandBindings"</span>: {
+    <span data-type="string">"openShortcutsManual"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"F1"</span>
+      }
+    ],
+    <span data-type="string">"goBack"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span>
+      }
+    ],
+    <span data-type="string">"goForward"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyL"</span>
+      }
+    ],
+    <span data-type="string">"reloadTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span>
+      }
+    ],
+    <span data-type="string">"reloadTabWithoutCache"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span>
+      }
+    ],
+    <span data-type="string">"goToNextPage"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Period"</span>
+      }
+    ],
+    <span data-type="string">"goToPreviousPage"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
+      }
+    ],
+    <span data-type="string">"removeURLParams"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
+      }
+    ],
+    <span data-type="string">"goUp"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Period"</span>
+      }
+    ],
+    <span data-type="string">"goToRoot"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
+      }
+    ],
+    <span data-type="string">"focusTextInput"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyI"</span>
+      }
+    ],
+    <span data-type="string">"focusMediaPlayer"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyV"</span>
+      }
+    ],
+    <span data-type="string">"blurElement"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
+      }
+    ],
+    <span data-type="string">"copyURL"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
+      }
+    ],
+    <span data-type="string">"copyTitle"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
+      }
+    ],
+    <span data-type="string">"copyTitleAndURL"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
+      }
+    ],
+    <span data-type="string">"openWebSearchForSelectedText"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span>
+      }
+    ],
+    <span data-type="string">"scrollDown"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
+      }
+    ],
+    <span data-type="string">"scrollUp"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
+      }
+    ],
+    <span data-type="string">"scrollLeft"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span>
+      }
+    ],
+    <span data-type="string">"scrollRight"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyL"</span>
+      }
+    ],
+    <span data-type="string">"scrollPageDown"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Space"</span>
+      }
+    ],
+    <span data-type="string">"scrollPageUp"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Space"</span>
+      }
+    ],
+    <span data-type="string">"scrollHalfPageDown"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
+      }
+    ],
+    <span data-type="string">"scrollHalfPageUp"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
+      }
+    ],
+    <span data-type="string">"scrollToTop"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyG"</span>
+      }
+    ],
+    <span data-type="string">"scrollToBottom"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyE"</span>
+      }
+    ],
+    <span data-type="string">"zoomIn"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span>
+      }
+    ],
+    <span data-type="string">"zoomOut"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Minus"</span>
+      }
+    ],
+    <span data-type="string">"zoomReset"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit0"</span>
+      }
+    ],
+    <span data-type="string">"toggleFullScreen"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span>
+      }
+    ],
+    <span data-type="string">"openNewTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span>
+      }
+    ],
+    <span data-type="string">"openNewTabRight"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span>
+      }
+    ],
+    <span data-type="string">"openNewWindow"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span>
+      }
+    ],
+    <span data-type="string">"openNewIncognitoWindow"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span>
+      }
+    ],
+    <span data-type="string">"closeTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span>
+      }
+    ],
+    <span data-type="string">"closeWindow"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span>
+      }
+    ],
+    <span data-type="string">"restoreTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
+      }
+    ],
+    <span data-type="string">"duplicateTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyB"</span>
+      }
+    ],
+    <span data-type="string">"togglePinTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span>
+      }
+    ],
+    <span data-type="string">"toggleGroupTab"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span>
+      }
+    ],
+    <span data-type="string">"toggleCollapseTabGroups"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span>
+      }
+    ],
+    <span data-type="string">"toggleMuteTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span>
+      }
+    ],
+    <span data-type="string">"discardTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
+      }
+    ],
+    <span data-type="string">"sortTabsByURL"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span>
+      }
+    ],
+    <span data-type="string">"groupTabsByDomain"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span>
+      }
+    ],
+    <span data-type="string">"renameTabGroup"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span>
+      }
+    ],
+    <span data-type="string">"cycleTabGroupColorForward"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
+      }
+    ],
+    <span data-type="string">"cycleTabGroupColorBackward"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
+      }
+    ],
+    <span data-type="string">"activateAudibleTab"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span>
+      }
+    ],
+    <span data-type="string">"activateNextTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
+      },
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
+      }
+    ],
+    <span data-type="string">"activatePreviousTab"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
+      },
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
+      }
+    ],
+    <span data-type="string">"activateFirstTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span>
+      }
+    ],
+    <span data-type="string">"activateSecondTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span>
+      }
+    ],
+    <span data-type="string">"activateThirdTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span>
+      }
+    ],
+    <span data-type="string">"activateFourthTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span>
+      }
+    ],
+    <span data-type="string">"activateFifthTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span>
+      }
+    ],
+    <span data-type="string">"activateSixthTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span>
+      }
+    ],
+    <span data-type="string">"activateSeventhTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit7"</span>
+      }
+    ],
+    <span data-type="string">"activateEighthTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit8"</span>
+      }
+    ],
+    <span data-type="string">"activateLastTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit9"</span>
+      }
+    ],
+    <span data-type="string">"activateLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span>
+      }
+    ],
+    <span data-type="string">"activateSecondLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span>
+      }
+    ],
+    <span data-type="string">"activateThirdLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span>
+      }
+    ],
+    <span data-type="string">"activateFourthLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span>
+      }
+    ],
+    <span data-type="string">"activateFifthLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span>
+      }
+    ],
+    <span data-type="string">"activateSixthLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span>
+      }
+    ],
+    <span data-type="string">"activateSeventhLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit7"</span>
+      }
+    ],
+    <span data-type="string">"activateEighthLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit8"</span>
+      }
+    ],
+    <span data-type="string">"activateNinthLastActiveTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Digit9"</span>
+      }
+    ],
+    <span data-type="string">"activateNextWindow"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span>
+      }
+    ],
+    <span data-type="string">"activatePreviousWindow"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span>
+      }
+    ],
+    <span data-type="string">"grabTab"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyG"</span>
+      }
+    ],
+    <span data-type="string">"moveTabLeft"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"ArrowLeft"</span>
+      }
+    ],
+    <span data-type="string">"moveTabRight"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"ArrowRight"</span>
+      }
+    ],
+    <span data-type="string">"moveTabFirst"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Home"</span>
+      }
+    ],
+    <span data-type="string">"moveTabLast"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"End"</span>
+      }
+    ],
+    <span data-type="string">"moveTabNewWindow"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"ArrowUp"</span>
+      }
+    ],
+    <span data-type="string">"moveTabPreviousWindow"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"ArrowDown"</span>
+      }
+    ],
+    <span data-type="string">"selectActiveTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
+      }
+    ],
+    <span data-type="string">"selectPreviousTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"BracketLeft"</span>
+      }
+    ],
+    <span data-type="string">"selectNextTab"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"BracketRight"</span>
+      }
+    ],
+    <span data-type="string">"selectRelatedTabs"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Backquote"</span>
+      }
+    ],
+    <span data-type="string">"selectTabsInGroup"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
+      }
+    ],
+    <span data-type="string">"selectAllTabs"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
+      }
+    ],
+    <span data-type="string">"selectRightTabs"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
+      }
+    ],
+    <span data-type="string">"moveTabSelectionFaceBackward"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"BracketLeft"</span>
+      }
+    ],
+    <span data-type="string">"moveTabSelectionFaceForward"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"BracketRight"</span>
+      }
+    ],
+    <span data-type="string">"bookmarkTab"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
+      }
+    ],
+    <span data-type="string">"bookmarkSession"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyB"</span>
+      }
+    ],
+    <span data-type="string">"addTabToReadingList"</span>: [
+      {
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
+      }
+    ],
+    <span data-type="string">"openDownloadsFolder"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
+      }
+    ],
+    <span data-type="string">"openHistoryPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span>
+      }
+    ],
+    <span data-type="string">"openDownloadsPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
+      }
+    ],
+    <span data-type="string">"openBookmarksPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span>
+      }
+    ],
+    <span data-type="string">"openSettingsPage"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
+      }
+    ],
+    <span data-type="string">"openPasswordsPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
+      }
+    ],
+    <span data-type="string">"openSearchEnginesPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
+      }
+    ],
+    <span data-type="string">"openExtensionsPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
+      }
+    ],
+    <span data-type="string">"openExtensionShortcutsPage"</span>: [
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span>
+      }
+    ],
+    <span data-type="string">"openExperimentsPage"</span>: [
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
+      }
+    ],
+    <span data-type="string">"closePopup"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
+      },
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyQ"</span>
+      }
+    ]
+  }
+}
+</code></pre>
+          </details>
         </section>
         <section id="in_practice">
           <h3>
