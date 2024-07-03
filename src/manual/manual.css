@@ -1,44 +1,76 @@
 :root {
   color-scheme: light dark;
-  --keyboard-input-code-background-color: #ffc4ff;
-  --keyboard-input-code-text-color: #191970;
-  --keyboard-input-code-border-color: #f0a4f0;
-  --keyboard-input-code-selected-background-color: #f0a4f0;
-  --keyboard-input-code-selected-text-color: #000000;
-  --table-head-background-color: #b9c9fe;
-  --table-head-text-color: #003399;
-  --table-head-border-color: #aabcfe;
-  --table-body-background-color: #e8edff;
-  --table-body-text-color: #666699;
-  --table-body-border-color: #ffffff;
-  --table-body-selected-background-color: #d0dafd;
-  --table-body-selected-text-color: #333399;
-  --note-background-color: #e9fbe9;
-  --note-text-color: #000000;
-  --note-border-color: #52e052;
-  --tip-background-color: #fcfaee;
-  --tip-text-color: #000000;
-  --tip-border-color: #e0cb52;
-  --important-background-color: #eeeeee;
-  --important-text-color: #000000;
-  --important-border-color: #aaaaaa;
-  --code-block-background-color: #e8edff;
-  --code-block-text-color: #000000;
-  --boolean-color: darkred;
-  --string-color: green;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --background-color: #ffffff;
     --foreground-color: #202020;
+    --keyboard-input-background-color: inherit;
+    --keyboard-input-text-color: inherit;
+    --keyboard-input-border-color: inherit;
+    --keyboard-input-code-background-color: #ffc4ff;
+    --keyboard-input-code-text-color: #191970;
+    --keyboard-input-code-border-color: #f0a4f0;
+    --keyboard-input-code-selected-background-color: #f0a4f0;
+    --keyboard-input-code-selected-text-color: #000000;
+    --table-head-background-color: #b9c9fe;
+    --table-head-text-color: #003399;
+    --table-head-border-color: #aabcfe;
+    --table-body-background-color: #e8edff;
+    --table-body-text-color: #666699;
+    --table-body-border-color: #ffffff;
+    --table-body-selected-background-color: #d0dafd;
+    --table-body-selected-text-color: #333399;
+    --note-background-color: #e9fbe9;
+    --note-text-color: #000000;
+    --note-border-color: #52e052;
+    --tip-background-color: #fcfaee;
+    --tip-text-color: #000000;
+    --tip-border-color: #e0cb52;
+    --important-background-color: #eeeeee;
+    --important-text-color: #000000;
+    --important-border-color: #aaaaaa;
+    --code-block-background-color: #e8edff;
+    --code-block-text-color: #000000;
+    --boolean-color: darkred;
+    --string-color: green;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-color: #202020;
-    --foreground-color: #eaeaea;
+    --background-color: #22272e;
+    --foreground-color: #c5d1de;
+    --keyboard-input-background-color: #636e7b66;
+    --keyboard-input-text-color: #c5d1de;
+    --keyboard-input-border-color: #636e7b66;
+    --keyboard-input-code-background-color: #ffc4ff;
+    --keyboard-input-code-text-color: #191970;
+    --keyboard-input-code-border-color: #f0a4f0;
+    --keyboard-input-code-selected-background-color: #f0a4f0;
+    --keyboard-input-code-selected-text-color: #000000;
+    --table-head-background-color: #2d333b;
+    --table-head-text-color: #c5d1de;
+    --table-head-border-color: #444c56;
+    --table-body-background-color: #22272e;
+    --table-body-text-color: #c5d1de;
+    --table-body-border-color: #444c56;
+    --table-body-selected-background-color: #2d333b;
+    --table-body-selected-text-color: #c5d1de;
+    --note-background-color: #22272e;
+    --note-text-color: #c5d1de;
+    --note-border-color: #347d39;
+    --tip-background-color: #22272e;
+    --tip-text-color: #c5d1de;
+    --tip-border-color: #316dca;
+    --important-background-color: #22272e;
+    --important-text-color: #c5d1de;
+    --important-border-color: #8256d0;
+    --code-block-background-color: #2d333b;
+    --code-block-text-color: #c5d1de;
+    --boolean-color: #6cb6ff;
+    --string-color: #8ddb8c;
   }
 }
 
@@ -121,6 +153,9 @@ kbd {
   border: 1px solid;
   padding-inline: 2px;
   border-radius: 3px;
+  background-color: var(--keyboard-input-background-color);
+  color: var(--keyboard-input-text-color);
+  border-color: var(--keyboard-input-border-color);
 }
 
 kbd.code {
