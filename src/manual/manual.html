@@ -55,7 +55,8 @@
           </p>
           <details>
             <summary>Example configuration</summary>
-            <pre><code data-lang="json">{
+            <div class="code-block-container">
+              <pre><code data-lang="json">{
   <span data-type="string">"commandBindings"</span>: {
     <span data-type="string">"openShortcutsManual"</span>: [
       {
@@ -632,6 +633,593 @@
   }
 }
 </code></pre>
+              <div>
+                <button
+                  aria-label="Copy"
+                  data-copy-feedback="Copied!"
+                  data-action="copyToClipboard"
+                  value="{
+  &quot;commandBindings&quot;: {
+    &quot;openShortcutsManual&quot;: [
+      {
+        &quot;code&quot;: &quot;F1&quot;
+      }
+    ],
+    &quot;goBack&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyH&quot;
+      }
+    ],
+    &quot;goForward&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyL&quot;
+      }
+    ],
+    &quot;reloadTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyR&quot;
+      }
+    ],
+    &quot;reloadTabWithoutCache&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyR&quot;
+      }
+    ],
+    &quot;goToNextPage&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Period&quot;
+      }
+    ],
+    &quot;goToPreviousPage&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Comma&quot;
+      }
+    ],
+    &quot;removeURLParams&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Slash&quot;
+      }
+    ],
+    &quot;goUp&quot;: [
+      {
+        &quot;code&quot;: &quot;Period&quot;
+      }
+    ],
+    &quot;goToRoot&quot;: [
+      {
+        &quot;code&quot;: &quot;Slash&quot;
+      }
+    ],
+    &quot;focusTextInput&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyI&quot;
+      }
+    ],
+    &quot;focusMediaPlayer&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyV&quot;
+      }
+    ],
+    &quot;blurElement&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Escape&quot;
+      }
+    ],
+    &quot;copyURL&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyY&quot;
+      }
+    ],
+    &quot;copyTitle&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyY&quot;
+      }
+    ],
+    &quot;copyTitleAndURL&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyY&quot;
+      }
+    ],
+    &quot;openWebSearchForSelectedText&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyW&quot;
+      }
+    ],
+    &quot;scrollDown&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyJ&quot;
+      }
+    ],
+    &quot;scrollUp&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyK&quot;
+      }
+    ],
+    &quot;scrollLeft&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyH&quot;
+      }
+    ],
+    &quot;scrollRight&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyL&quot;
+      }
+    ],
+    &quot;scrollPageDown&quot;: [
+      {
+        &quot;code&quot;: &quot;Space&quot;
+      }
+    ],
+    &quot;scrollPageUp&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Space&quot;
+      }
+    ],
+    &quot;scrollHalfPageDown&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyJ&quot;
+      }
+    ],
+    &quot;scrollHalfPageUp&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyK&quot;
+      }
+    ],
+    &quot;scrollToTop&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyG&quot;
+      }
+    ],
+    &quot;scrollToBottom&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyE&quot;
+      }
+    ],
+    &quot;zoomIn&quot;: [
+      {
+        &quot;code&quot;: &quot;Equal&quot;
+      }
+    ],
+    &quot;zoomOut&quot;: [
+      {
+        &quot;code&quot;: &quot;Minus&quot;
+      }
+    ],
+    &quot;zoomReset&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit0&quot;
+      }
+    ],
+    &quot;toggleFullScreen&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyF&quot;
+      }
+    ],
+    &quot;openNewTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyT&quot;
+      }
+    ],
+    &quot;openNewTabRight&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyO&quot;
+      }
+    ],
+    &quot;openNewWindow&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyN&quot;
+      }
+    ],
+    &quot;openNewIncognitoWindow&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyN&quot;
+      }
+    ],
+    &quot;closeTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyX&quot;
+      }
+    ],
+    &quot;closeWindow&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyX&quot;
+      }
+    ],
+    &quot;restoreTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyU&quot;
+      }
+    ],
+    &quot;duplicateTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyB&quot;
+      }
+    ],
+    &quot;togglePinTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyP&quot;
+      }
+    ],
+    &quot;toggleGroupTab&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyP&quot;
+      }
+    ],
+    &quot;toggleCollapseTabGroups&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyC&quot;
+      }
+    ],
+    &quot;toggleMuteTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyM&quot;
+      }
+    ],
+    &quot;discardTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyD&quot;
+      }
+    ],
+    &quot;sortTabsByURL&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Digit1&quot;
+      }
+    ],
+    &quot;groupTabsByDomain&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Digit2&quot;
+      }
+    ],
+    &quot;renameTabGroup&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyR&quot;
+      }
+    ],
+    &quot;cycleTabGroupColorForward&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyA&quot;
+      }
+    ],
+    &quot;cycleTabGroupColorBackward&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyA&quot;
+      }
+    ],
+    &quot;activateAudibleTab&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Digit3&quot;
+      }
+    ],
+    &quot;activateNextTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Tab&quot;
+      },
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyK&quot;
+      }
+    ],
+    &quot;activatePreviousTab&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Tab&quot;
+      },
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyJ&quot;
+      }
+    ],
+    &quot;activateFirstTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit1&quot;
+      }
+    ],
+    &quot;activateSecondTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit2&quot;
+      }
+    ],
+    &quot;activateThirdTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit3&quot;
+      }
+    ],
+    &quot;activateFourthTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit4&quot;
+      }
+    ],
+    &quot;activateFifthTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit5&quot;
+      }
+    ],
+    &quot;activateSixthTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit6&quot;
+      }
+    ],
+    &quot;activateSeventhTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit7&quot;
+      }
+    ],
+    &quot;activateEighthTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit8&quot;
+      }
+    ],
+    &quot;activateLastTab&quot;: [
+      {
+        &quot;code&quot;: &quot;Digit9&quot;
+      }
+    ],
+    &quot;activateLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit1&quot;
+      }
+    ],
+    &quot;activateSecondLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit2&quot;
+      }
+    ],
+    &quot;activateThirdLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit3&quot;
+      }
+    ],
+    &quot;activateFourthLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit4&quot;
+      }
+    ],
+    &quot;activateFifthLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit5&quot;
+      }
+    ],
+    &quot;activateSixthLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit6&quot;
+      }
+    ],
+    &quot;activateSeventhLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit7&quot;
+      }
+    ],
+    &quot;activateEighthLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit8&quot;
+      }
+    ],
+    &quot;activateNinthLastActiveTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;Digit9&quot;
+      }
+    ],
+    &quot;activateNextWindow&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyW&quot;
+      }
+    ],
+    &quot;activatePreviousWindow&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyW&quot;
+      }
+    ],
+    &quot;grabTab&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyG&quot;
+      }
+    ],
+    &quot;moveTabLeft&quot;: [
+      {
+        &quot;code&quot;: &quot;ArrowLeft&quot;
+      }
+    ],
+    &quot;moveTabRight&quot;: [
+      {
+        &quot;code&quot;: &quot;ArrowRight&quot;
+      }
+    ],
+    &quot;moveTabFirst&quot;: [
+      {
+        &quot;code&quot;: &quot;Home&quot;
+      }
+    ],
+    &quot;moveTabLast&quot;: [
+      {
+        &quot;code&quot;: &quot;End&quot;
+      }
+    ],
+    &quot;moveTabNewWindow&quot;: [
+      {
+        &quot;code&quot;: &quot;ArrowUp&quot;
+      }
+    ],
+    &quot;moveTabPreviousWindow&quot;: [
+      {
+        &quot;code&quot;: &quot;ArrowDown&quot;
+      }
+    ],
+    &quot;selectActiveTab&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyS&quot;
+      }
+    ],
+    &quot;selectPreviousTab&quot;: [
+      {
+        &quot;code&quot;: &quot;BracketLeft&quot;
+      }
+    ],
+    &quot;selectNextTab&quot;: [
+      {
+        &quot;code&quot;: &quot;BracketRight&quot;
+      }
+    ],
+    &quot;selectRelatedTabs&quot;: [
+      {
+        &quot;code&quot;: &quot;Backquote&quot;
+      }
+    ],
+    &quot;selectTabsInGroup&quot;: [
+      {
+        &quot;code&quot;: &quot;KeyA&quot;
+      }
+    ],
+    &quot;selectAllTabs&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyA&quot;
+      }
+    ],
+    &quot;selectRightTabs&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyS&quot;
+      }
+    ],
+    &quot;moveTabSelectionFaceBackward&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;BracketLeft&quot;
+      }
+    ],
+    &quot;moveTabSelectionFaceForward&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;BracketRight&quot;
+      }
+    ],
+    &quot;bookmarkTab&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyD&quot;
+      }
+    ],
+    &quot;bookmarkSession&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyB&quot;
+      }
+    ],
+    &quot;addTabToReadingList&quot;: [
+      {
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyD&quot;
+      }
+    ],
+    &quot;openDownloadsFolder&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyK&quot;
+      }
+    ],
+    &quot;openHistoryPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyH&quot;
+      }
+    ],
+    &quot;openDownloadsPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyJ&quot;
+      }
+    ],
+    &quot;openBookmarksPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyO&quot;
+      }
+    ],
+    &quot;openSettingsPage&quot;: [
+      {
+        &quot;code&quot;: &quot;Comma&quot;
+      }
+    ],
+    &quot;openPasswordsPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyY&quot;
+      }
+    ],
+    &quot;openSearchEnginesPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;Slash&quot;
+      }
+    ],
+    &quot;openExtensionsPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyA&quot;
+      }
+    ],
+    &quot;openExtensionShortcutsPage&quot;: [
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Equal&quot;
+      }
+    ],
+    &quot;openExperimentsPage&quot;: [
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;Comma&quot;
+      }
+    ],
+    &quot;closePopup&quot;: [
+      {
+        &quot;code&quot;: &quot;Escape&quot;
+      },
+      {
+        &quot;code&quot;: &quot;KeyQ&quot;
+      }
+    ]
+  }
+}
+"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
           </details>
         </section>
         <section id="in_practice">
@@ -2253,5 +2841,6 @@
         </p>
       </section>
     </main>
+    <script type="module" src="manual.js"></script>
   </body>
 </html>
