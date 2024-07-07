@@ -32,11 +32,12 @@ Here are some features that Shortcuts won’t implement.
 ## Installation
 
 > [!IMPORTANT]
-> Requires [Chrome Dev] or [Chrome Canary] for sticky popup—to keep the popup open after entering a command.
-> See https://issues.chromium.org/issues/40057101 for more information.
+> Requires either Chrome 127+, [Chrome Dev] or [Chrome Canary] for sticky popup—to keep the popup open after entering a command.
+> See https://issues.chromium.org/issues/40057101 and [Chrome 127: New `action.openPopup` API] for more information.
 
 [Chrome Dev]: https://google.com/chrome/dev/
 [Chrome Canary]: https://google.com/chrome/canary/
+[Chrome 127: New `action.openPopup` API]: https://developer.chrome.com/docs/extensions/whats-new#chrome_127_new_actionopenpopup_api
 
 ### Chrome Web Store
 

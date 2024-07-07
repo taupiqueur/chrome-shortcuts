@@ -22,6 +22,8 @@
     --table-body-border-color: #ffffff;
     --table-body-selected-background-color: #d0dafd;
     --table-body-selected-text-color: #333399;
+    --tag-pill-background-color: #e8f0fe66;
+    --tag-pill-text-color: #174ea6;
     --note-background-color: #e9fbe9;
     --note-text-color: #000000;
     --note-border-color: #52e052;
@@ -58,6 +60,8 @@
     --table-body-border-color: #444c56;
     --table-body-selected-background-color: #2d333b;
     --table-body-selected-text-color: #c5d1de;
+    --tag-pill-background-color: #2d333b;
+    --tag-pill-text-color: #c5d1de;
     --note-background-color: #22272e;
     --note-text-color: #c5d1de;
     --note-border-color: #347d39;
@@ -95,6 +99,14 @@ section {
 
 :is(h1, h2, h3, h4, h5, h6) a:is(:hover, :focus, :active)::after {
   content: "#";
+}
+
+.tag-pill {
+  padding: 0.1em 0.2em;
+  border-radius: 0.3em;
+  background-color: var(--tag-pill-background-color);
+  color: var(--tag-pill-text-color);
+  cursor: help;
 }
 
 p[role="note"] {
