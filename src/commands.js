@@ -56,6 +56,42 @@ const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
  */
 const TAB_GROUP_COLORS = Object.values(chrome.tabGroups.Color)
 
+/**
+ * List of zoom presets.
+ *
+ * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/common/page/page_zoom.cc
+ *
+ * @type {number[]}
+ */
+const PRESET_ZOOM_FACTORS = [
+  0.25,
+  1 / 3.0,
+  0.5,
+  2 / 3.0,
+  0.75,
+  0.8,
+  0.9,
+  1.0,
+  1.1,
+  1.25,
+  1.5,
+  1.75,
+  2.0,
+  2.5,
+  3.0,
+  4.0,
+  5.0,
+]
+
+/**
+ * Epsilon value for comparing two floating-point zoom values.
+ *
+ * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/common/page/page_zoom.cc
+ *
+ * @type {number}
+ */
+const PAGE_ZOOM_EPSILON = 0.001
+
 // Enums -----------------------------------------------------------------------
 
 // Enum representing a direction.
@@ -687,17 +723,29 @@ export async function scrollToBottom(cx) {
 /**
  * Zooms in.
  *
+ * https://source.chromium.org/chromium/chromium/src/+/main:components/zoom/page_zoom.cc
+ *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
 export async function zoomIn(cx) {
   const zoomFactor = await chrome.tabs.getZoom(cx.tab.id)
 
-  await chrome.tabs.setZoom(cx.tab.id, zoomFactor + 0.1)
+  const nextHigherZoomFactor =
+    PRESET_ZOOM_FACTORS.find((presetZoomFactor) =>
+      presetZoomFactor > zoomFactor &&
+      !zoomValuesEqual(presetZoomFactor, zoomFactor)
+    )
+
+  if (nextHigherZoomFactor) {
+    await chrome.tabs.setZoom(cx.tab.id, nextHigherZoomFactor)
+  }
 }
 
 /**
  * Zooms out.
+ *
+ * https://source.chromium.org/chromium/chromium/src/+/main:components/zoom/page_zoom.cc
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -705,7 +753,28 @@ export async function zoomIn(cx) {
 export async function zoomOut(cx) {
   const zoomFactor = await chrome.tabs.getZoom(cx.tab.id)
 
-  await chrome.tabs.setZoom(cx.tab.id, zoomFactor - 0.1)
+  const nextLowerZoomFactor =
+    PRESET_ZOOM_FACTORS.findLast((presetZoomFactor) =>
+      presetZoomFactor < zoomFactor &&
+      !zoomValuesEqual(presetZoomFactor, zoomFactor)
+    )
+
+  if (nextLowerZoomFactor) {
+    await chrome.tabs.setZoom(cx.tab.id, nextLowerZoomFactor)
+  }
+}
+
+/**
+ * Compares page zoom factors.
+ *
+ * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/common/page/page_zoom.cc
+ *
+ * @param {number} zoomFactor
+ * @param {number} otherZoomFactor
+ * @returns {boolean}
+ */
+function zoomValuesEqual(zoomFactor, otherZoomFactor) {
+  return Math.abs(zoomFactor - otherZoomFactor) <= PAGE_ZOOM_EPSILON
 }
 
 /**
