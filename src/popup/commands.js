@@ -168,6 +168,7 @@ export const openDownloadsFolder = message('openDownloadsFolder')
 // Chrome URLs -----------------------------------------------------------------
 
 export const openHistoryPage = message('openHistoryPage')
+export const openSyncedTabsPage = message('openSyncedTabsPage')
 export const openDownloadsPage = message('openDownloadsPage')
 export const openBookmarksPage = message('openBookmarksPage')
 export const openSettingsPage = message('openSettingsPage')

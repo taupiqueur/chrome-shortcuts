@@ -517,6 +517,12 @@
         "code": "KeyH"
       }
     ],
+    "openSyncedTabsPage": [
+      {
+        "ctrlKey": true,
+        "code": "KeyT"
+      }
+    ],
     "openDownloadsPage": [
       {
         "ctrlKey": true,

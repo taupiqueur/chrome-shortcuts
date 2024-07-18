@@ -2594,6 +2594,16 @@ export async function openHistoryPage(cx) {
 }
 
 /**
+ * Opens the “Tabs from other devices” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openSyncedTabsPage(cx) {
+  await openChromePage(cx, 'chrome://history/syncedTabs')
+}
+
+/**
  * Opens the “Downloads” page.
  *
  * @param {Context} cx

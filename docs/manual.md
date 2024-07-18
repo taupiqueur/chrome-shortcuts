@@ -552,6 +552,12 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "code": "KeyH"
       }
     ],
+    "openSyncedTabsPage": [
+      {
+        "ctrlKey": true,
+        "code": "KeyT"
+      }
+    ],
     "openDownloadsPage": [
       {
         "ctrlKey": true,
@@ -850,6 +856,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openHistoryPage` | Open the “History” page | `Control+H` | `Command+Y` | `Control+KeyH`
+`openSyncedTabsPage` | Open the “Tabs from other devices” page | | | `Control+KeyT`
 `openDownloadsPage` | Open the “Downloads” page | `Control+J` | `Option+Command+L` | `Control+KeyJ`
 `openBookmarksPage` | Open the “Bookmarks” page | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
 `openSettingsPage` | Open the “Settings” page | | `Command+Comma` | `Comma`
