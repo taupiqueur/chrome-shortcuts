@@ -169,6 +169,7 @@ export const openDownloadsFolder = message('openDownloadsFolder')
 
 export const openHistoryPage = message('openHistoryPage')
 export const openSyncedTabsPage = message('openSyncedTabsPage')
+export const openClearBrowserDataPage = message('openClearBrowserDataPage')
 export const openDownloadsPage = message('openDownloadsPage')
 export const openBookmarksPage = message('openBookmarksPage')
 export const openSettingsPage = message('openSettingsPage')

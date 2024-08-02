@@ -2604,6 +2604,16 @@ export async function openSyncedTabsPage(cx) {
 }
 
 /**
+ * Opens the “Delete browsing data” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openClearBrowserDataPage(cx) {
+  await openChromePage(cx, 'chrome://settings/clearBrowserData')
+}
+
+/**
  * Opens the “Downloads” page.
  *
  * @param {Context} cx

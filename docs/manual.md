@@ -558,6 +558,12 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "code": "KeyT"
       }
     ],
+    "openClearBrowserDataPage": [
+      {
+        "ctrlKey": true,
+        "code": "Delete"
+      }
+    ],
     "openDownloadsPage": [
       {
         "ctrlKey": true,
@@ -857,6 +863,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openHistoryPage` | Open the “History” page | `Control+H` | `Command+Y` | `Control+KeyH`
 `openSyncedTabsPage` | Open the “Tabs from other devices” page | | | `Control+KeyT`
+`openClearBrowserDataPage` | Open the “Delete browsing data” page | `Control+Shift+Delete` | `Command+Shift+Delete` | `Control+Delete`
 `openDownloadsPage` | Open the “Downloads” page | `Control+J` | `Option+Command+L` | `Control+KeyJ`
 `openBookmarksPage` | Open the “Bookmarks” page | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
 `openSettingsPage` | Open the “Settings” page | | `Command+Comma` | `Comma`

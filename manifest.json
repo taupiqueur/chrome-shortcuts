@@ -336,28 +336,31 @@
     "094.openSyncedTabsPage": {
       "description": "Chrome URLs · Open the “Tabs from other devices” page"
     },
-    "095.openDownloadsPage": {
+    "095.openClearBrowserDataPage": {
+      "description": "Chrome URLs · Open the “Delete browsing data” page"
+    },
+    "096.openDownloadsPage": {
       "description": "Chrome URLs · Open the “Downloads” page"
     },
-    "096.openBookmarksPage": {
+    "097.openBookmarksPage": {
       "description": "Chrome URLs · Open the “Bookmarks” page"
     },
-    "097.openSettingsPage": {
+    "098.openSettingsPage": {
       "description": "Chrome URLs · Open the “Settings” page"
     },
-    "098.openPasswordsPage": {
+    "099.openPasswordsPage": {
       "description": "Chrome URLs · Open the “Passwords” page"
     },
-    "099.openSearchEnginesPage": {
+    "100.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the “Search engines” page"
     },
-    "100.openExtensionsPage": {
+    "101.openExtensionsPage": {
       "description": "Chrome URLs · Open the “Extensions” page"
     },
-    "101.openExtensionShortcutsPage": {
+    "102.openExtensionShortcutsPage": {
       "description": "Chrome URLs · Open the “Extensions > Keyboard shortcuts” page"
     },
-    "102.openExperimentsPage": {
+    "103.openExperimentsPage": {
       "description": "Chrome URLs · Open the “Experiments” page"
     }
   }

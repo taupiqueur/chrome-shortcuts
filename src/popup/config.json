@@ -523,6 +523,12 @@
         "code": "KeyT"
       }
     ],
+    "openClearBrowserDataPage": [
+      {
+        "ctrlKey": true,
+        "code": "Delete"
+      }
+    ],
     "openDownloadsPage": [
       {
         "ctrlKey": true,
