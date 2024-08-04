@@ -1,23 +1,78 @@
 :root {
   color-scheme: light dark;
   --font-family: system-ui;
+
+  /*
+   * macOS color palette
+   * https://developer.apple.com/design/human-interface-guidelines/foundations/color#specifications
+   */
+  --aqua-red-color: #ff3b30;
+  --dark-red-color: #ff453a;
+  --aqua-orange-color: #ff9500;
+  --dark-orange-color: #ff9f0a;
+  --aqua-yellow-color: #ffcc00;
+  --dark-yellow-color: #ffd60a;
+  --aqua-green-color: #28cd41;
+  --dark-green-color: #32d74b;
+  --aqua-mint-color: #00c7be;
+  --dark-mint-color: #66d4cf;
+  --aqua-teal-color: #59adc4;
+  --dark-teal-color: #6ac4dc;
+  --aqua-cyan-color: #55bef0;
+  --dark-cyan-color: #5ac8f5;
+  --aqua-blue-color: #007aff;
+  --dark-blue-color: #0a84ff;
+  --aqua-indigo-color: #5856d6;
+  --dark-indigo-color: #5e5ce6;
+  --aqua-purple-color: #af52de;
+  --dark-purple-color: #bf5af2;
+  --aqua-pink-color: #ff2d55;
+  --dark-pink-color: #ff375f;
+  --aqua-brown-color: #a2845e;
+  --dark-brown-color: #ac8e68;
+  --aqua-gray-color: #8e8e93;
+  --dark-gray-color: #98989d;
+  --aqua-gray-2-color: #aeaeb2;
+  --dark-gray-2-color: #636366;
+  --aqua-gray-3-color: #c7c7cc;
+  --dark-gray-3-color: #48484a;
+  --aqua-gray-4-color: #d1d1d6;
+  --dark-gray-4-color: #3a3a3c;
+  --aqua-gray-5-color: #e5e5ea;
+  --dark-gray-5-color: #2c2c2e;
+  --aqua-gray-6-color: #f2f2f7;
+  --dark-gray-6-color: #1c1c1e;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --background-color: #ffffff;
-    --foreground-color: #202020;
-    --selection-color: #eaeaea;
-    --dim-foreground-color: gray;
+    --background-color: linear-gradient(90deg, var(--aqua-gray-6-color), var(--aqua-gray-5-color), var(--aqua-gray-6-color));
+    --foreground-color: black;
+    --scrollbar-thumb-color: var(--aqua-gray-3-color);
+    --scrollbar-track-color: var(--aqua-gray-6-color);
+    --selected-text-color: white;
+    --selected-text-background-color: var(--aqua-blue-color);
+    --label-color: #000000d9;
+    --secondary-label-color: #00000080;
+    --tertiary-label-color: #00000042;
+    --disabled-control-text-color: #00000040;
+    --separator-color: #0000001a;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-color: #202020;
-    --foreground-color: #eaeaea;
-    --selection-color: #444444;
-    --dim-foreground-color: gray;
+    --background-color: linear-gradient(90deg, var(--dark-gray-5-color), var(--dark-gray-4-color), var(--dark-gray-5-color));
+    --foreground-color: white;
+    --scrollbar-thumb-color: var(--dark-gray-2-color);
+    --scrollbar-track-color: var(--dark-gray-5-color);
+    --selected-text-color: white;
+    --selected-text-background-color: var(--dark-blue-color);
+    --label-color: #ffffffd9;
+    --secondary-label-color: #ffffff8c;
+    --tertiary-label-color: #ffffff40;
+    --disabled-control-text-color: #ffffff40;
+    --separator-color: #ffffff1a;
   }
 }
 
@@ -26,69 +81,61 @@
   padding: 0;
 }
 
+html {
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+  scrollbar-width: thin;
+}
+
 body {
   min-width: 300px;
-  background-color: var(--background-color);
+  background: var(--background-color);
   color: var(--foreground-color);
   font-family: var(--font-family);
 }
 
-/*
- * Use the system font.
- */
-menu-item::part(button), keyboard-shortcut::part(key), button, kbd {
-  font-family: inherit;
-}
-
-/*
- * Reset list style for menu items.
- */
-custom-menu::part(menu) {
-  list-style: none;
-  padding-inline-start: 0;
-}
-
-custom-menu::part(menu) {
-  margin-block: 0.4rem;
-}
-
-custom-menu:focus {
-  outline: none;
-}
-
-/*
- * Separator for menu items
- */
 hr {
   margin: auto;
   width: 90%;
   border: none;
-  border-top: 1px solid var(--selection-color);
-  margin-block: 0.2rem;
+  border-top: 1px solid var(--separator-color);
+  margin-block: 0.3rem;
 }
 
-/*
- * Reset button style.
- */
+menu-item::part(button),
+keyboard-shortcut::part(key),
+button,
+kbd {
+  font-family: inherit;
+}
+
+custom-menu:focus,
+menu-item:focus {
+  outline: none;
+}
+
+custom-menu {
+  user-select: none;
+}
+
+custom-menu::part(menu) {
+  list-style: none;
+  padding-inline: 0.3rem;
+}
+
 menu-item::part(button) {
   width: 100%;
   border: none;
   background-color: unset;
-  color: unset;
+  color: var(--label-color);
   text-align: start;
-}
-
-menu-item::part(button):hover {
-  background-color: var(--selection-color);
-}
-
-/*
- * Buttons with shortcuts
- * https://flexbox.ninja/demos/buttons-with-icons/
- */
-menu-item::part(button) {
   display: flex;
-  padding-block: 0.5rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 0.3rem;
+}
+
+menu-item:is(:hover, :focus, :active)::part(button) {
+  background-color: var(--selected-text-background-color);
+  color: var(--selected-text-color);
 }
 
 menu-item::part(description) {
@@ -97,11 +144,19 @@ menu-item::part(description) {
 
 menu-item::part(shortcuts) {
   display: flex;
-  color: var(--dim-foreground-color);
+  color: var(--tertiary-label-color);
+}
+
+menu-item:is(:hover, :focus, :active)::part(shortcuts) {
+  color: var(--selected-text-color);
 }
 
 menu-item[disabled] {
-  opacity: 0.5;
+  pointer-events: none;
+}
+
+menu-item[disabled]:not(:hover, :focus, :active)::part(button) {
+  color: var(--disabled-control-text-color);
 }
 
 keyboard-shortcut + keyboard-shortcut::before {
