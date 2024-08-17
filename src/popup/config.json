@@ -5,6 +5,23 @@
         "code": "F1"
       }
     ],
+    "openCommandPalette": [
+      {
+        "code": "Slash"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyF"
+      }
+    ],
+    "closePopup": [
+      {
+        "code": "Escape"
+      },
+      {
+        "code": "KeyQ"
+      }
+    ],
     "goBack": [
       {
         "altKey": true,
@@ -43,17 +60,20 @@
     "removeURLParams": [
       {
         "shiftKey": true,
-        "code": "Slash"
+        "code": "KeyU"
       }
     ],
     "goUp": [
       {
-        "code": "Period"
+        "altKey": true,
+        "code": "KeyU"
       }
     ],
     "goToRoot": [
       {
-        "code": "Slash"
+        "altKey": true,
+        "shiftKey": true,
+        "code": "KeyU"
       }
     ],
     "focusTextInput": [
@@ -575,13 +595,42 @@
         "ctrlKey": true,
         "code": "Comma"
       }
-    ],
-    "closePopup": [
+    ]
+  },
+  "paletteBindings": {
+    "selectNextItem": [
       {
-        "code": "Escape"
+        "code": "ArrowDown"
       },
       {
-        "code": "KeyQ"
+        "ctrlKey": true,
+        "code": "KeyN"
+      },
+      {
+        "code": "Tab"
+      }
+    ],
+    "selectPreviousItem": [
+      {
+        "code": "ArrowUp"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyP"
+      },
+      {
+        "shiftKey": true,
+        "code": "Tab"
+      }
+    ],
+    "activateSelectedItem": [
+      {
+        "code": "Enter"
+      }
+    ],
+    "closeCommandPalette": [
+      {
+        "code": "Escape"
       }
     ]
   }

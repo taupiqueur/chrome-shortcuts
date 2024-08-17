@@ -32,13 +32,22 @@ class MenuItem extends HTMLElement {
     this.shadowRoot.append(
       templateElement.content.cloneNode(true)
     )
+  }
 
+  connectedCallback() {
     /**
      * A value of “0” causes the element to be focusable.
      *
      * @type {number}
      */
     this.tabIndex = 0
+
+    /**
+     * The menu item description.
+     *
+     * @type {string}
+     */
+    this.description = this.textContent
   }
 
   /**

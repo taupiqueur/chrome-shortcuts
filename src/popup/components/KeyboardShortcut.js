@@ -44,6 +44,12 @@ class KeyboardShortcut extends HTMLElement {
   }
 
   connectedCallback() {
+    for (const slotElement of this.shadowRoot.querySelectorAll('slot')) {
+      for (const slottedElement of slotElement.assignedElements()) {
+        slottedElement.remove()
+      }
+    }
+
     if (this.dataset.ctrlKey) {
       this.addKey('ctrlKey', 'Control', keyDisplay.ctrlKey)
     }

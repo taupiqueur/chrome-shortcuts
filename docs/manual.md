@@ -18,6 +18,14 @@ If you need explanations of the shortcuts—Right-click the Shortcuts toolbar bu
 
 The keyboard shortcuts are fully customizable.
 
+### Command palette
+
+The command palette is the main way to search functionality in Shortcuts.
+
+1. To open the command palette—Press either `Slash`, `Control+KeyF` or click the search field in the extension’s popup.
+2. In the search field, type what you’re looking for—results appear as you type.
+3. Choose a suggestion and press `Enter` to activate the selection.
+
 ### Configure keyboard shortcuts
 
 Navigate to `chrome://extensions/shortcuts` to configure global keyboard shortcuts.
@@ -38,6 +46,23 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     "openShortcutsManual": [
       {
         "code": "F1"
+      }
+    ],
+    "openCommandPalette": [
+      {
+        "code": "Slash"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyF"
+      }
+    ],
+    "closePopup": [
+      {
+        "code": "Escape"
+      },
+      {
+        "code": "KeyQ"
       }
     ],
     "goBack": [
@@ -78,17 +103,20 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     "removeURLParams": [
       {
         "shiftKey": true,
-        "code": "Slash"
+        "code": "KeyU"
       }
     ],
     "goUp": [
       {
-        "code": "Period"
+        "altKey": true,
+        "code": "KeyU"
       }
     ],
     "goToRoot": [
       {
-        "code": "Slash"
+        "altKey": true,
+        "shiftKey": true,
+        "code": "KeyU"
       }
     ],
     "focusTextInput": [
@@ -610,13 +638,42 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "ctrlKey": true,
         "code": "Comma"
       }
-    ],
-    "closePopup": [
+    ]
+  },
+  "paletteBindings": {
+    "selectNextItem": [
       {
-        "code": "Escape"
+        "code": "ArrowDown"
       },
       {
-        "code": "KeyQ"
+        "ctrlKey": true,
+        "code": "KeyN"
+      },
+      {
+        "code": "Tab"
+      }
+    ],
+    "selectPreviousItem": [
+      {
+        "code": "ArrowUp"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyP"
+      },
+      {
+        "shiftKey": true,
+        "code": "Tab"
+      }
+    ],
+    "activateSelectedItem": [
+      {
+        "code": "Enter"
+      }
+    ],
+    "closeCommandPalette": [
+      {
+        "code": "Escape"
       }
     ]
   }
@@ -662,9 +719,24 @@ You will find the list of code values and informative symbols.
 
 ### Shortcuts
 
+These commands are only available in the extension’s popup.
+
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openShortcutsManual` | Open Shortcuts manual | | | `F1`
+`openCommandPalette` | Open the command palette | | | `Slash`, `Control+KeyF`
+`closePopup` | Close the popup window | | | `Escape`, `KeyQ`
+
+### Command palette
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`selectNextItem` | Select the next item | | | `ArrowDown`, `Control+KeyN`, `Tab`
+`selectPreviousItem` | Select the previous item | | | `ArrowUp`, `Control+KeyP`, `Shift+Tab`
+`activateSelectedItem` | Activate selected item | | | `Enter`
+`closeCommandPalette` | Close the command palette | | | `Escape`
 
 ### Navigation
 
@@ -676,9 +748,9 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `reloadTabWithoutCache` | Reload selected tabs, ignoring cached content | `Shift+F5`, `Control+Shift+R` | `Shift+Command+R` | `Shift+KeyR`
 `goToNextPage` | Go to the next page in the series | | | `Shift+Period`
 `goToPreviousPage` | Go to the previous page in the series | | | `Shift+Comma`
-`removeURLParams` | Remove any URL parameters | | | `Shift+Slash`
-`goUp` | Go up in the URL hierarchy | | | `Period`
-`goToRoot` | Go to the root URL | | | `Slash`
+`removeURLParams` | Remove any URL parameters | | | `Shift+KeyU`
+`goUp` | Go up in the URL hierarchy | | | `Alt+KeyU`
+`goToRoot` | Go to the root URL | | | `Alt+Shift+KeyU`
 
 ### Accessibility
 
@@ -872,14 +944,6 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openExtensionsPage` | Open the “Extensions” page | | | `Control+KeyA`
 `openExtensionShortcutsPage` | Open the “Extensions > Keyboard shortcuts” page | | | `Shift+Equal`
 `openExperimentsPage` | Open the “Experiments” page | | | `Control+Comma`
-
-### Popup
-
-These commands are only available in the extension’s popup.
-
-Command | Description | Windows and Linux key | macOS key | Popup key
---- | --- | --- | --- | ---
-`closePopup` | Close the popup window | | | `Escape`, `KeyQ`
 
 For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboard shortcuts].
 

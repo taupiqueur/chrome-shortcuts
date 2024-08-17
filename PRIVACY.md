@@ -18,7 +18,7 @@ Permission | Justification
 [`"scripting"`] | This permission is used to interact with web pages and write text to the system clipboard.
 [`"search"`] | This permission is used to perform a web search.
 [`"sessions"`] | This permission is used to reopen closed tabs.
-[`"storage"`] | This permission is used to save your options and persist some states in memory, related to the MRU and the popup interface.
+[`"storage"`] | This permission is used to save your options and persist some states in memory, related to the MRU.
 [`"tabGroups"`] | This permission is used to manage tab groups and determine whose tabs are hidden. The latter is used for many tab-related commands, to do the correct action (e.g., to “Activate the next open tab”, we skip tabs in collapsed groups).
 [`"tabs"`] | This permission is used to access the `url` and `title` properties of tabs in the currently focused window (e.g., to “Copy title and URL of selected tabs”, “Sort selected tabs by URL” or “Save the current session as bookmarks”).
 [`"webNavigation"`] | This permission is used for the “sticky popup” functionality. Specifically, `chrome.webNavigation.onCommitted` is used to eliminate a race condition for commands causing a web navigation, to reopen the extension’s popup after it goes away (e.g., to “Go back to the previous page in tab’s history”). We want to make sure the navigation is committed when the command resolves, so that we can reopen the popup afterwards.

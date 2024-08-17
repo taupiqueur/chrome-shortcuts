@@ -6,6 +6,9 @@ import Keymap from '../lib/keymap.js'
 const templateElement = document.createElement('template')
 
 templateElement.innerHTML = `
+  <h6 part="name">
+    <slot name="name">Menu Items</slot>
+  </h6>
   <ul part="menu">
     <slot></slot>
   </ul>
@@ -27,19 +30,44 @@ class CustomMenu extends HTMLElement {
     )
 
     /**
-     * A value of “0” causes the element to be focusable.
-     *
-     * @type {number}
-     */
-    this.tabIndex = 0
-
-    /**
      * @type {Keymap<KeyboardEvent, MenuItem>}
      */
     this.keymap = new Keymap
 
     // Handle keyboard shortcuts.
     this.addEventListener('keydown', this.onKeyDown)
+  }
+
+  connectedCallback() {
+    /**
+     * A value of “0” causes the element to be focusable.
+     *
+     * @type {number}
+     */
+    this.tabIndex = 0
+  }
+
+  /**
+   * Replaces menu items.
+   *
+   * @param {HTMLElement[]} menuItemElements
+   * @returns {void}
+   */
+  replaceMenuItems(menuItemElements) {
+    this.clearMenuItems()
+    this.append(...menuItemElements)
+  }
+
+  /**
+   * Clears menu items.
+   *
+   * @returns {void}
+   */
+  clearMenuItems() {
+    const slotElement = this.shadowRoot.querySelector('slot:not([name])')
+    for (const slottedElement of slotElement.assignedElements()) {
+      slottedElement.remove()
+    }
   }
 
   /**

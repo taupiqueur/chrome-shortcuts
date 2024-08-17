@@ -34,6 +34,27 @@
         <p>
           The keyboard shortcuts are fully customizable.
         </p>
+        <section id="command_palette">
+          <h3>
+            <a href="#command_palette">
+              Command palette
+            </a>
+          </h3>
+          <p>
+            The command palette is the main way to search functionality in Shortcuts.
+          </p>
+          <ol>
+            <li>
+              To open the command palette—Press either <kbd class="code">Slash</kbd>, <kbd>Control</kbd>+<kbd class="code">KeyF</kbd> or click the search field in the extension’s popup.
+            </li>
+            <li>
+              In the search field, type what you’re looking for—results appear as you type.
+            </li>
+            <li>
+              Choose a suggestion and press <kbd class="code">Enter</kbd> to activate the selection.
+            </li>
+          </ol>
+        </section>
         <section id="configure_keyboard_shortcuts">
           <h3>
             <a href="#configure_keyboard_shortcuts">
@@ -61,6 +82,23 @@
     <span data-type="string">"openShortcutsManual"</span>: [
       {
         <span data-type="string">"code"</span>: <span data-type="string">"F1"</span>
+      }
+    ],
+    <span data-type="string">"openCommandPalette"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
+      },
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span>
+      }
+    ],
+    <span data-type="string">"closePopup"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
+      },
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyQ"</span>
       }
     ],
     <span data-type="string">"goBack"</span>: [
@@ -101,17 +139,20 @@
     <span data-type="string">"removeURLParams"</span>: [
       {
         <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-        <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
       }
     ],
     <span data-type="string">"goUp"</span>: [
       {
-        <span data-type="string">"code"</span>: <span data-type="string">"Period"</span>
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
       }
     ],
     <span data-type="string">"goToRoot"</span>: [
       {
-        <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
+        <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
       }
     ],
     <span data-type="string">"focusTextInput"</span>: [
@@ -633,13 +674,42 @@
         <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
         <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
       }
-    ],
-    <span data-type="string">"closePopup"</span>: [
+    ]
+  },
+  <span data-type="string">"paletteBindings"</span>: {
+    <span data-type="string">"selectNextItem"</span>: [
       {
-        <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
+        <span data-type="string">"code"</span>: <span data-type="string">"ArrowDown"</span>
       },
       {
-        <span data-type="string">"code"</span>: <span data-type="string">"KeyQ"</span>
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span>
+      },
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
+      }
+    ],
+    <span data-type="string">"selectPreviousItem"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"ArrowUp"</span>
+      },
+      {
+        <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span>
+      },
+      {
+        <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+        <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
+      }
+    ],
+    <span data-type="string">"activateSelectedItem"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Enter"</span>
+      }
+    ],
+    <span data-type="string">"closeCommandPalette"</span>: [
+      {
+        <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
       }
     ]
   }
@@ -655,6 +725,23 @@
     &quot;openShortcutsManual&quot;: [
       {
         &quot;code&quot;: &quot;F1&quot;
+      }
+    ],
+    &quot;openCommandPalette&quot;: [
+      {
+        &quot;code&quot;: &quot;Slash&quot;
+      },
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyF&quot;
+      }
+    ],
+    &quot;closePopup&quot;: [
+      {
+        &quot;code&quot;: &quot;Escape&quot;
+      },
+      {
+        &quot;code&quot;: &quot;KeyQ&quot;
       }
     ],
     &quot;goBack&quot;: [
@@ -695,17 +782,20 @@
     &quot;removeURLParams&quot;: [
       {
         &quot;shiftKey&quot;: true,
-        &quot;code&quot;: &quot;Slash&quot;
+        &quot;code&quot;: &quot;KeyU&quot;
       }
     ],
     &quot;goUp&quot;: [
       {
-        &quot;code&quot;: &quot;Period&quot;
+        &quot;altKey&quot;: true,
+        &quot;code&quot;: &quot;KeyU&quot;
       }
     ],
     &quot;goToRoot&quot;: [
       {
-        &quot;code&quot;: &quot;Slash&quot;
+        &quot;altKey&quot;: true,
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;KeyU&quot;
       }
     ],
     &quot;focusTextInput&quot;: [
@@ -1227,13 +1317,42 @@
         &quot;ctrlKey&quot;: true,
         &quot;code&quot;: &quot;Comma&quot;
       }
-    ],
-    &quot;closePopup&quot;: [
+    ]
+  },
+  &quot;paletteBindings&quot;: {
+    &quot;selectNextItem&quot;: [
       {
-        &quot;code&quot;: &quot;Escape&quot;
+        &quot;code&quot;: &quot;ArrowDown&quot;
       },
       {
-        &quot;code&quot;: &quot;KeyQ&quot;
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyN&quot;
+      },
+      {
+        &quot;code&quot;: &quot;Tab&quot;
+      }
+    ],
+    &quot;selectPreviousItem&quot;: [
+      {
+        &quot;code&quot;: &quot;ArrowUp&quot;
+      },
+      {
+        &quot;ctrlKey&quot;: true,
+        &quot;code&quot;: &quot;KeyP&quot;
+      },
+      {
+        &quot;shiftKey&quot;: true,
+        &quot;code&quot;: &quot;Tab&quot;
+      }
+    ],
+    &quot;activateSelectedItem&quot;: [
+      {
+        &quot;code&quot;: &quot;Enter&quot;
+      }
+    ],
+    &quot;closeCommandPalette&quot;: [
+      {
+        &quot;code&quot;: &quot;Escape&quot;
       }
     ]
   }
@@ -1322,6 +1441,9 @@
               Shortcuts
             </a>
           </h3>
+          <p>
+            These commands are only available in the extension’s popup.
+          </p>
           <table>
             <thead>
               <tr>
@@ -1340,6 +1462,89 @@
                 <td></td>
                 <td>
                   <kbd class="code">F1</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td><code>openCommandPalette</code></td>
+                <td>Open the command palette</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd class="code">Slash</kbd>,
+                  <kbd>Control</kbd>+<kbd class="code">KeyF</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td><code>closePopup</code></td>
+                <td>Close the popup window</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd class="code">Escape</kbd>,
+                  <kbd class="code">KeyQ</kbd>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section id="command_palette_commands">
+          <h3>
+            <a href="#command_palette_commands">
+              Command palette
+            </a>
+          </h3>
+          <p>
+            These commands are only available in the command palette.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+                <th>Windows and Linux key</th>
+                <th>macOS key</th>
+                <th>Palette key</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>selectNextItem</code></td>
+                <td>Select the next item</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd class="code">ArrowDown</kbd>,
+                  <kbd>Control</kbd>+<kbd class="code">KeyN</kbd>,
+                  <kbd class="code">Tab</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td><code>selectPreviousItem</code></td>
+                <td>Select the previous item</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd class="code">ArrowUp</kbd>,
+                  <kbd>Control</kbd>+<kbd class="code">KeyP</kbd>,
+                  <kbd>Shift</kbd>+<kbd class="code">Tab</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td><code>activateSelectedItem</code></td>
+                <td>Activate selected item</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd class="code">Enter</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td><code>closeCommandPalette</code></td>
+                <td>Close the command palette</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd class="code">Escape</kbd>
                 </td>
               </tr>
             </tbody>
@@ -1442,7 +1647,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <kbd>Shift</kbd>+<kbd class="code">Slash</kbd>
+                  <kbd>Shift</kbd>+<kbd class="code">KeyU</kbd>
                 </td>
               </tr>
               <tr>
@@ -1451,7 +1656,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <kbd class="code">Period</kbd>
+                  <kbd>Alt</kbd>+<kbd class="code">KeyU</kbd>
                 </td>
               </tr>
               <tr>
@@ -1460,7 +1665,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <kbd class="code">Slash</kbd>
+                  <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyU</kbd>
                 </td>
               </tr>
             </tbody>
@@ -2820,39 +3025,6 @@
                 <td></td>
                 <td>
                   <kbd>Control</kbd>+<kbd class="code">Comma</kbd>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section id="popup_commands">
-          <h3>
-            <a href="#popup_commands">
-              Popup
-            </a>
-          </h3>
-          <p>
-            These commands are only available in the extension’s popup.
-          </p>
-          <table>
-            <thead>
-              <tr>
-                <th>Command</th>
-                <th>Description</th>
-                <th>Windows and Linux key</th>
-                <th>macOS key</th>
-                <th>Popup key</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>closePopup</code></td>
-                <td>Close the popup window</td>
-                <td></td>
-                <td></td>
-                <td>
-                  <kbd class="code">Escape</kbd>,
-                  <kbd class="code">KeyQ</kbd>
                 </td>
               </tr>
             </tbody>

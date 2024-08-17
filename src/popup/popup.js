@@ -1,11 +1,14 @@
 // This module contains the code to interpret the “popup.html” custom menu.
 
 import * as commands from './commands.js'
+import commandPalette from './command_palette/command_palette.js'
 
 import CustomMenu from './components/CustomMenu.js'
 import MenuItem from './components/MenuItem.js'
 
-const menuElement = document.querySelector('custom-menu')
+const paletteInputElement = document.getElementById('palette-input')
+const paletteMenuElement = document.getElementById('palette-menu')
+const menuElement = document.getElementById('menu-commands')
 const menuItemElements = menuElement.querySelectorAll('menu-item')
 const scriptingMenuItemElements = menuElement.querySelectorAll('menu-item[data-permissions~="scripting"]')
 
@@ -14,9 +17,6 @@ const menuCommands = new Map(
     menuItemElement.dataset.command, menuItemElement
   ])
 )
-
-const localStorage = await chrome.storage.sync.get('popupConfig')
-const sessionStorage = await chrome.storage.session.get('lastCommand')
 
 // Open a channel to communicate with the service worker.
 const port = chrome.runtime.connect({
@@ -28,8 +28,20 @@ port.onMessage.addListener((message) => {
   switch (message.type) {
     case 'init':
       render({
-        isEnabled: message.isEnabled
+        commandBindings: message.commandBindings,
+        isEnabled: message.isEnabled,
       })
+      commandPalette.render({
+        paletteBindings: message.paletteBindings,
+        paletteInputElement,
+        paletteMenuElement,
+        menuElement,
+        menuItemElements,
+      })
+      break
+
+    case 'stateSync':
+      onStateSync(message.command)
       break
 
     case 'command':
@@ -47,10 +59,10 @@ port.onMessage.addListener((message) => {
 /**
  * Handles the popup rendering.
  *
- * @param {{ isEnabled: boolean }} options
+ * @param {{ commandBindings: object, isEnabled: boolean }} options
  * @returns {void}
  */
-function render({ isEnabled }) {
+function render({ commandBindings, isEnabled }) {
   if (!isEnabled) {
     menuElement.title = 'Browser extensions are not allowed on this page.'
 
@@ -65,16 +77,28 @@ function render({ isEnabled }) {
       onCommand(commandName)
     })
 
-    for (const keybinding of localStorage.popupConfig.commandBindings[commandName]) {
+    for (const keybinding of commandBindings[commandName]) {
       menuItemElement.addKeyboardShortcut(keybinding)
     }
   }
 
   // Listen for keyboard shortcuts.
-  if (sessionStorage.lastCommand) {
-    menuCommands.get(sessionStorage.lastCommand).focus()
-  } else {
-    menuElement.focus()
+  if (!menuElement.contains(document.activeElement)) {
+    menuElement.focus({
+      preventScroll: true
+    })
+  }
+}
+
+/**
+ * Handles state syncing.
+ *
+ * @param {string} commandName
+ * @returns {void}
+ */
+function onStateSync(commandName) {
+  if (menuCommands.has(commandName)) {
+    menuCommands.get(commandName).focus()
   }
 }
 
@@ -85,5 +109,9 @@ function render({ isEnabled }) {
  * @returns {void}
  */
 function onCommand(commandName) {
-  commands[commandName](port)
+  commands[commandName]({
+    port,
+    popupWindow: window,
+    paletteInputElement,
+  })
 }

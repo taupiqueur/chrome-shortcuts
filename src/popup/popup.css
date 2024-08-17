@@ -50,8 +50,11 @@
     --foreground-color: black;
     --scrollbar-thumb-color: var(--aqua-gray-3-color);
     --scrollbar-track-color: var(--aqua-gray-6-color);
+    --text-field-background-color: var(--aqua-gray-5-color);
+    --placeholder-text-color: #00000040;
     --selected-text-color: white;
     --selected-text-background-color: var(--aqua-blue-color);
+    --control-accent-color: var(--aqua-blue-color);
     --label-color: #000000d9;
     --secondary-label-color: #00000080;
     --tertiary-label-color: #00000042;
@@ -66,8 +69,11 @@
     --foreground-color: white;
     --scrollbar-thumb-color: var(--dark-gray-2-color);
     --scrollbar-track-color: var(--dark-gray-5-color);
+    --text-field-background-color: var(--dark-gray-4-color);
+    --placeholder-text-color: #ffffff40;
     --selected-text-color: white;
     --selected-text-background-color: var(--dark-blue-color);
+    --control-accent-color: var(--dark-blue-color);
     --label-color: #ffffffd9;
     --secondary-label-color: #ffffff8c;
     --tertiary-label-color: #ffffff40;
@@ -91,6 +97,21 @@ body {
   background: var(--background-color);
   color: var(--foreground-color);
   font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+  background-color: var(--text-field-background-color);
+  caret-color: var(--control-accent-color);
+  margin: 0.3rem 0.9rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 0.3rem;
+}
+
+input::placeholder {
+  color: var(--placeholder-text-color);
 }
 
 hr {
@@ -108,18 +129,33 @@ kbd {
   font-family: inherit;
 }
 
+input:focus,
 custom-menu:focus,
 menu-item:focus {
   outline: none;
 }
 
 custom-menu {
+  display: flex;
+  flex-direction: column;
   user-select: none;
 }
 
 custom-menu::part(menu) {
   list-style: none;
+  margin-block: 0.3rem;
   padding-inline: 0.3rem;
+}
+
+custom-menu::part(name) {
+  font-size: 90%;
+  color: var(--tertiary-label-color);
+  margin: 0;
+  padding: 0.3rem 0.9rem;
+}
+
+custom-menu:is([hidden="hidden"], [hidden=""]) {
+  display: none;
 }
 
 menu-item::part(button) {
@@ -149,6 +185,21 @@ menu-item::part(shortcuts) {
 
 menu-item:is(:hover, :focus, :active)::part(shortcuts) {
   color: var(--selected-text-color);
+}
+
+menu-item.active::part(button) {
+  border: none;
+  border-radius: 0;
+  box-shadow: -0.3rem 0 var(--control-accent-color);
+}
+
+menu-item.active:is(:hover, :focus, :active)::part(button) {
+  background-color: inherit;
+  color: inherit;
+}
+
+menu-item.active:is(:hover, :focus, :active)::part(shortcuts) {
+  color: var(--tertiary-label-color);
 }
 
 menu-item[disabled] {

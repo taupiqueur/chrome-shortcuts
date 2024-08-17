@@ -1,16 +1,23 @@
 // This module contains the popup commands.
 
 /**
+ * @typedef {object} PopupCommandContext
+ * @property {chrome.runtime.Port} port
+ * @property {Window} popupWindow
+ * @property {HTMLElement} paletteInputElement
+ */
+
+/**
  * Creates a new function that, when called, sends a message to the service worker.
  *
  * @param {string} commandName
  * @param {boolean} passingMode
  * @param {boolean} stickyWindow
- * @returns {(port: chrome.runtime.Port) => void}
+ * @returns {(cx: PopupCommandContext) => void}
  */
 function message(commandName, passingMode, stickyWindow) {
-  return (port) => {
-    port.postMessage({
+  return (cx) => {
+    cx.port.postMessage({
       type: 'command',
       commandName,
       passingMode,
@@ -22,6 +29,26 @@ function message(commandName, passingMode, stickyWindow) {
 // Shortcuts -------------------------------------------------------------------
 
 export const openShortcutsManual = message('openShortcutsManual')
+
+/**
+ * Opens the command palette.
+ *
+ * @param {PopupCommandContext} cx
+ * @returns {void}
+ */
+export function openCommandPalette(cx) {
+  cx.paletteInputElement.focus()
+}
+
+/**
+ * Closes the popup window.
+ *
+ * @param {PopupCommandContext} cx
+ * @returns {void}
+ */
+export function closePopup(cx) {
+  cx.popupWindow.close()
+}
 
 // Navigation ------------------------------------------------------------------
 
@@ -178,14 +205,3 @@ export const openSearchEnginesPage = message('openSearchEnginesPage')
 export const openExtensionsPage = message('openExtensionsPage')
 export const openExtensionShortcutsPage = message('openExtensionShortcutsPage')
 export const openExperimentsPage = message('openExperimentsPage')
-
-// Popup -----------------------------------------------------------------------
-
-/**
- * Closes the popup window.
- *
- * @returns {void}
- */
-export function closePopup() {
-  window.close()
-}

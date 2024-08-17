@@ -82,6 +82,11 @@ async function onUpdate(previousVersion) {
     localStorage.popupConfig.commandBindings
   )
 
+  Object.assign(
+    popupConfig.paletteBindings,
+    localStorage.popupConfig.paletteBindings
+  )
+
   await chrome.storage.sync.set({
     popupConfig
   })
@@ -108,6 +113,8 @@ function onConnect(port, cx) {
  * @returns {Promise<void>}
  */
 async function onPopupScriptAdded(port) {
+  const localStorage = await chrome.storage.sync.get('popupConfig')
+
   const tabs = await chrome.tabs.query({
     active: true,
     lastFocusedWindow: true
@@ -118,7 +125,11 @@ async function onPopupScriptAdded(port) {
 
     port.postMessage({
       type: 'init',
-      isEnabled: !CHROME_DOMAINS.some((domain) => domain.test(url))
+      commandBindings: localStorage.popupConfig.commandBindings,
+      paletteBindings: localStorage.popupConfig.paletteBindings,
+      isEnabled: !CHROME_DOMAINS.some((domain) =>
+        domain.test(url)
+      )
     })
   }
 }
@@ -196,24 +207,35 @@ async function onCommandMessage(message, port, cx) {
       // See https://issues.chromium.org/issues/40057101 for more information.
       chrome.action.openPopup
     ) {
-      await openPopup()
+      const port = await openPopup(chrome.windows.WINDOW_ID_CURRENT)
+      port.postMessage({
+        type: 'stateSync',
+        command: commandName
+      })
     }
-
-    // Save state into the session storage area for later use,
-    // when reopening the extension’s popup.
-    await chrome.storage.session.set({
-      lastCommand: commandName
-    })
   }
 }
 
 /**
  * Opens the extension’s popup.
  *
- * @returns {Promise<void>}
+ * @param {number} windowId
+ * @returns {Promise<chrome.runtime.Port>}
  */
-async function openPopup() {
-  await chrome.action.openPopup()
+async function openPopup(windowId) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.onConnect.addListener(
+      function fireAndForget(port) {
+        if (port.name === 'popup') {
+          chrome.runtime.onConnect.removeListener(fireAndForget)
+          resolve(port)
+        }
+      }
+    )
+    chrome.action.openPopup({
+      windowId
+    }).catch(reject)
+  })
 }
 
 /**
