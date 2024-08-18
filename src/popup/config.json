@@ -572,6 +572,10 @@
         "code": "KeyY"
       }
     ],
+    "openPaymentsPage": [
+    ],
+    "openAddressesPage": [
+    ],
     "openSearchEnginesPage": [
       {
         "ctrlKey": true,
@@ -595,6 +599,12 @@
         "ctrlKey": true,
         "code": "Comma"
       }
+    ],
+    "openAboutChromePage": [
+    ],
+    "openAboutChromeVersionPage": [
+    ],
+    "openWhatsNewPage": [
     ]
   },
   "paletteBindings": {

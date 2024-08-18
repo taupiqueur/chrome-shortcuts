@@ -2644,13 +2644,33 @@ export async function openSettingsPage(cx) {
 }
 
 /**
- * Opens the “Passwords” page.
+ * Opens the “Password manager > Passwords” page.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
  */
 export async function openPasswordsPage(cx) {
   await openChromePage(cx, 'chrome://password-manager/passwords')
+}
+
+/**
+ * Opens the “Payment methods” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openPaymentsPage(cx) {
+  await openChromePage(cx, 'chrome://settings/payments')
+}
+
+/**
+ * Opens the “Addresses and more” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openAddressesPage(cx) {
+  await openChromePage(cx, 'chrome://settings/addresses')
 }
 
 /**
@@ -2691,6 +2711,36 @@ export async function openExtensionShortcutsPage(cx) {
  */
 export async function openExperimentsPage(cx) {
   await openChromePage(cx, 'chrome://flags/')
+}
+
+/**
+ * Opens the “About Chrome” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openAboutChromePage(cx) {
+  await openChromePage(cx, 'chrome://settings/help')
+}
+
+/**
+ * Opens the “About Chrome version” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openAboutChromeVersionPage(cx) {
+  await openChromePage(cx, 'chrome://version/')
+}
+
+/**
+ * Opens the “What’s new in Chrome” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openWhatsNewPage(cx) {
+  await openChromePage(cx, 'chrome://whats-new/')
 }
 
 /**

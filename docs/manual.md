@@ -615,6 +615,10 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "code": "KeyY"
       }
     ],
+    "openPaymentsPage": [
+    ],
+    "openAddressesPage": [
+    ],
     "openSearchEnginesPage": [
       {
         "ctrlKey": true,
@@ -638,6 +642,12 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "ctrlKey": true,
         "code": "Comma"
       }
+    ],
+    "openAboutChromePage": [
+    ],
+    "openAboutChromeVersionPage": [
+    ],
+    "openWhatsNewPage": [
     ]
   },
   "paletteBindings": {
@@ -939,11 +949,16 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openDownloadsPage` | Open the “Downloads” page | `Control+J` | `Option+Command+L` | `Control+KeyJ`
 `openBookmarksPage` | Open the “Bookmarks” page | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
 `openSettingsPage` | Open the “Settings” page | | `Command+Comma` | `Comma`
-`openPasswordsPage` | Open the “Passwords” page | | | `Control+KeyY`
+`openPasswordsPage` | Open the “Password manager > Passwords” page | | | `Control+KeyY`
+`openPaymentsPage` | Open the “Payment methods” page | | |
+`openAddressesPage` | Open the “Addresses and more” page | | |
 `openSearchEnginesPage` | Open the “Search engines” page | | | `Control+Slash`
 `openExtensionsPage` | Open the “Extensions” page | | | `Control+KeyA`
 `openExtensionShortcutsPage` | Open the “Extensions > Keyboard shortcuts” page | | | `Shift+Equal`
 `openExperimentsPage` | Open the “Experiments” page | | | `Control+Comma`
+`openAboutChromePage` | Open the “About Chrome” page | | |
+`openAboutChromeVersionPage` | Open the “About Chrome version” page | | |
+`openWhatsNewPage` | Open the “What’s new in Chrome” page | | |
 
 For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboard shortcuts].
 

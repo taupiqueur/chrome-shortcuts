@@ -349,19 +349,34 @@
       "description": "Chrome URLs · Open the “Settings” page"
     },
     "099.openPasswordsPage": {
-      "description": "Chrome URLs · Open the “Passwords” page"
+      "description": "Chrome URLs · Open the “Password manager > Passwords” page"
     },
-    "100.openSearchEnginesPage": {
+    "100.openPaymentsPage": {
+      "description": "Chrome URLs · Open the “Payment methods” page"
+    },
+    "101.openAddressesPage": {
+      "description": "Chrome URLs · Open the “Addresses and more” page"
+    },
+    "102.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the “Search engines” page"
     },
-    "101.openExtensionsPage": {
+    "103.openExtensionsPage": {
       "description": "Chrome URLs · Open the “Extensions” page"
     },
-    "102.openExtensionShortcutsPage": {
+    "104.openExtensionShortcutsPage": {
       "description": "Chrome URLs · Open the “Extensions > Keyboard shortcuts” page"
     },
-    "103.openExperimentsPage": {
+    "105.openExperimentsPage": {
       "description": "Chrome URLs · Open the “Experiments” page"
+    },
+    "106.openAboutChromePage": {
+      "description": "Chrome URLs · Open the “About Chrome” page"
+    },
+    "107.openAboutChromeVersionPage": {
+      "description": "Chrome URLs · Open the “About Chrome version” page"
+    },
+    "108.openWhatsNewPage": {
+      "description": "Chrome URLs · Open the “What’s new in Chrome” page"
     }
   }
 }
