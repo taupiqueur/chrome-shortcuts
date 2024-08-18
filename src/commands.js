@@ -886,6 +886,43 @@ export async function closeTab(cx) {
 }
 
 /**
+ * Closes other tabs.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function closeOtherTabs(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: false,
+    pinned: false,
+    windowId: cx.tab.windowId
+  })
+
+  await chrome.tabs.remove(
+    tabs.map(_id)
+  )
+}
+
+/**
+ * Closes tabs to the right.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function closeRightTabs(cx) {
+  const tabs = await chrome.tabs.query({
+    windowId: cx.tab.windowId
+  })
+
+  await chrome.tabs.remove(
+    tabs
+      .slice(tabs.findLast(_highlighted).index + 1)
+      .filter(not(_pinned))
+      .map(_id)
+  )
+}
+
+/**
  * Closes the window that contains the tab.
  *
  * @param {Context} cx

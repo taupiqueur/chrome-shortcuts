@@ -214,6 +214,19 @@
         "code": "KeyX"
       }
     ],
+    "closeOtherTabs": [
+      {
+        "altKey": true,
+        "code": "KeyX"
+      }
+    ],
+    "closeRightTabs": [
+      {
+        "altKey": true,
+        "shiftKey": true,
+        "code": "KeyX"
+      }
+    ],
     "closeWindow": [
       {
         "shiftKey": true,

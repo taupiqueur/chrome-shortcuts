@@ -257,6 +257,19 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "code": "KeyX"
       }
     ],
+    "closeOtherTabs": [
+      {
+        "altKey": true,
+        "code": "KeyX"
+      }
+    ],
+    "closeRightTabs": [
+      {
+        "altKey": true,
+        "shiftKey": true,
+        "code": "KeyX"
+      }
+    ],
     "closeWindow": [
       {
         "shiftKey": true,
@@ -826,6 +839,8 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `closeTab` | Close selected tabs | `Control+W`, `Control+F4` | `Command+W` | `KeyX`
+`closeOtherTabs` | Close other tabs | | | `Alt+KeyX`
+`closeRightTabs` | Close tabs to the right | | | `Alt+Shift+KeyX`
 `closeWindow` | Close the window that contains the tab | `Control+Shift+W`, `Alt+F4` | `Shift+Command+W` | `Shift+KeyX`
 `restoreTab` | Reopen previously closed tabs | `Control+Shift+T` | `Shift+Command+T` | `KeyU`
 

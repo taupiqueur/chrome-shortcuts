@@ -108,6 +108,8 @@ export const openNewIncognitoWindow = message('openNewIncognitoWindow')
 // Close tabs ------------------------------------------------------------------
 
 export const closeTab = message('closeTab', false, true)
+export const closeOtherTabs = message('closeOtherTabs', false, true)
+export const closeRightTabs = message('closeRightTabs', false, true)
 export const closeWindow = message('closeWindow')
 export const restoreTab = message('restoreTab', false, true)
 
