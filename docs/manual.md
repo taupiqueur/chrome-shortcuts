@@ -12,7 +12,7 @@
 
 `Alt+Space` (`Ctrl+Space` on Windows) is the main keyboard shortcut.
 Use it to open the extension’s popup—aka “Vim” mode.
-Press `Escape` to cancel.
+Press `Slash` to search commands and `Escape` to cancel.
 
 If you need explanations of the shortcuts—Right-click the Shortcuts toolbar button and select “Documentation”.
 
