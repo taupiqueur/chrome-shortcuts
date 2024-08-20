@@ -48,6 +48,11 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "code": "F1"
       }
     ],
+    "openShortcutsOptionsPage": [
+      {
+        "code": "F2"
+      }
+    ],
     "openCommandPalette": [
       {
         "code": "Slash"
@@ -755,6 +760,7 @@ These commands are only available in the extension’s popup.
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openShortcutsManual` | Open Shortcuts manual | | | `F1`
+`openShortcutsOptionsPage` | Open Shortcuts “Options” page | | | `F2`
 `openCommandPalette` | Open the command palette | | | `Slash`, `Control+KeyF`
 `closePopup` | Close the popup window | | | `Escape`, `Control+KeyC`, `KeyQ`
 

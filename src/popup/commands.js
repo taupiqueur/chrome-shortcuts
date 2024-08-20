@@ -29,6 +29,7 @@ function message(commandName, passingMode, stickyWindow) {
 // Shortcuts -------------------------------------------------------------------
 
 export const openShortcutsManual = message('openShortcutsManual')
+export const openShortcutsOptionsPage = message('openShortcutsOptionsPage')
 
 /**
  * Opens the command palette.

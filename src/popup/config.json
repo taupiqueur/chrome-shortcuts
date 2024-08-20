@@ -5,6 +5,11 @@
         "code": "F1"
       }
     ],
+    "openShortcutsOptionsPage": [
+      {
+        "code": "F2"
+      }
+    ],
     "openCommandPalette": [
       {
         "code": "Slash"

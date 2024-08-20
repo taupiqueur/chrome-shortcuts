@@ -187,6 +187,16 @@ export async function openShortcutsManual(cx) {
   await openChromePage(cx, url)
 }
 
+/**
+ * Opens Shortcuts “Options” page.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function openShortcutsOptionsPage(cx) {
+  await chrome.runtime.openOptionsPage()
+}
+
 // Navigation ------------------------------------------------------------------
 
 /**
