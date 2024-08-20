@@ -28,8 +28,8 @@ function message(commandName, passingMode, stickyWindow) {
 
 // Shortcuts -------------------------------------------------------------------
 
-export const openShortcutsManual = message('openShortcutsManual')
-export const openShortcutsOptionsPage = message('openShortcutsOptionsPage')
+export const openShortcutsManual = message('openShortcutsManual', true)
+export const openShortcutsOptionsPage = message('openShortcutsOptionsPage', true)
 
 /**
  * Opens the command palette.
@@ -197,19 +197,19 @@ export const openDownloadsFolder = message('openDownloadsFolder')
 
 // Chrome URLs -----------------------------------------------------------------
 
-export const openHistoryPage = message('openHistoryPage')
-export const openSyncedTabsPage = message('openSyncedTabsPage')
-export const openClearBrowserDataPage = message('openClearBrowserDataPage')
-export const openDownloadsPage = message('openDownloadsPage')
-export const openBookmarksPage = message('openBookmarksPage')
-export const openSettingsPage = message('openSettingsPage')
-export const openPasswordsPage = message('openPasswordsPage')
-export const openPaymentsPage = message('openPaymentsPage')
-export const openAddressesPage = message('openAddressesPage')
-export const openSearchEnginesPage = message('openSearchEnginesPage')
-export const openExtensionsPage = message('openExtensionsPage')
-export const openExtensionShortcutsPage = message('openExtensionShortcutsPage')
-export const openExperimentsPage = message('openExperimentsPage')
-export const openAboutChromePage = message('openAboutChromePage')
-export const openAboutChromeVersionPage = message('openAboutChromeVersionPage')
-export const openWhatsNewPage = message('openWhatsNewPage')
+export const openHistoryPage = message('openHistoryPage', true)
+export const openSyncedTabsPage = message('openSyncedTabsPage', true)
+export const openClearBrowserDataPage = message('openClearBrowserDataPage', true)
+export const openDownloadsPage = message('openDownloadsPage', true)
+export const openBookmarksPage = message('openBookmarksPage', true)
+export const openSettingsPage = message('openSettingsPage', true)
+export const openPasswordsPage = message('openPasswordsPage', true)
+export const openPaymentsPage = message('openPaymentsPage', true)
+export const openAddressesPage = message('openAddressesPage', true)
+export const openSearchEnginesPage = message('openSearchEnginesPage', true)
+export const openExtensionsPage = message('openExtensionsPage', true)
+export const openExtensionShortcutsPage = message('openExtensionShortcutsPage', true)
+export const openExperimentsPage = message('openExperimentsPage', true)
+export const openAboutChromePage = message('openAboutChromePage', true)
+export const openAboutChromeVersionPage = message('openAboutChromeVersionPage', true)
+export const openWhatsNewPage = message('openWhatsNewPage', true)
