@@ -55,6 +55,15 @@ function createMenuItems() {
  * @returns {void}
  */
 function onInstalled(details) {
+  switch (details.reason) {
+    case 'install':
+      chrome.tabs.create({
+        active: true,
+        url: 'src/manual/manual.html'
+      })
+      break
+  }
+
   popupWorker.onInstalled(details)
   createMenuItems()
 
