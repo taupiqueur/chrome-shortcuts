@@ -54,334 +54,331 @@
         "windows": "Ctrl+Space"
       }
     },
-    "001.openShortcutsManual": {
-      "description": "Shortcuts · Open Shortcuts manual"
-    },
-    "002.goBack": {
+    "001.goBack": {
       "description": "Navigation · Go back to the previous page in tab’s history"
     },
-    "003.goForward": {
+    "002.goForward": {
       "description": "Navigation · Go forward to the next page in tab’s history"
     },
-    "004.reloadTab": {
+    "003.reloadTab": {
       "description": "Navigation · Reload selected tabs"
     },
-    "005.reloadTabWithoutCache": {
+    "004.reloadTabWithoutCache": {
       "description": "Navigation · Reload selected tabs, ignoring cached content"
     },
-    "006.goToNextPage": {
+    "005.goToNextPage": {
       "description": "Navigation · Go to the next page in the series"
     },
-    "007.goToPreviousPage": {
+    "006.goToPreviousPage": {
       "description": "Navigation · Go to the previous page in the series"
     },
-    "008.removeURLParams": {
+    "007.removeURLParams": {
       "description": "Navigation · Remove any URL parameters"
     },
-    "009.goUp": {
+    "008.goUp": {
       "description": "Navigation · Go up in the URL hierarchy"
     },
-    "010.goToRoot": {
+    "009.goToRoot": {
       "description": "Navigation · Go to the root URL"
     },
-    "011.focusTextInput": {
+    "010.focusTextInput": {
       "description": "Accessibility · Cycle through text fields"
     },
-    "012.focusMediaPlayer": {
+    "011.focusMediaPlayer": {
       "description": "Accessibility · Cycle through media players"
     },
-    "013.blurElement": {
+    "012.blurElement": {
       "description": "Accessibility · Blur the active element"
     },
-    "014.copyURL": {
+    "013.copyURL": {
       "description": "Clipboard · Copy URL of selected tabs"
     },
-    "015.copyTitle": {
+    "014.copyTitle": {
       "description": "Clipboard · Copy title of selected tabs"
     },
-    "016.copyTitleAndURL": {
+    "015.copyTitleAndURL": {
       "description": "Clipboard · Copy title and URL of selected tabs"
     },
-    "017.openWebSearchForSelectedText": {
+    "016.openWebSearchForSelectedText": {
       "description": "Web search · Perform a web search for selected text"
     },
-    "018.scrollDown": {
+    "017.scrollDown": {
       "description": "Scroll · Scroll down"
     },
-    "019.scrollUp": {
+    "018.scrollUp": {
       "description": "Scroll · Scroll up"
     },
-    "020.scrollLeft": {
+    "019.scrollLeft": {
       "description": "Scroll · Scroll left"
     },
-    "021.scrollRight": {
+    "020.scrollRight": {
       "description": "Scroll · Scroll right"
     },
-    "022.scrollPageDown": {
+    "021.scrollPageDown": {
       "description": "Scroll · Scroll one page down"
     },
-    "023.scrollPageUp": {
+    "022.scrollPageUp": {
       "description": "Scroll · Scroll one page up"
     },
-    "024.scrollHalfPageDown": {
+    "023.scrollHalfPageDown": {
       "description": "Scroll · Scroll half page down"
     },
-    "025.scrollHalfPageUp": {
+    "024.scrollHalfPageUp": {
       "description": "Scroll · Scroll half page up"
     },
-    "026.scrollToTop": {
+    "025.scrollToTop": {
       "description": "Scroll · Scroll to the top of the page"
     },
-    "027.scrollToBottom": {
+    "026.scrollToBottom": {
       "description": "Scroll · Scroll to the bottom of the page"
     },
-    "028.zoomIn": {
+    "027.zoomIn": {
       "description": "Zoom · Zoom in"
     },
-    "029.zoomOut": {
+    "028.zoomOut": {
       "description": "Zoom · Zoom out"
     },
-    "030.zoomReset": {
+    "029.zoomReset": {
       "description": "Zoom · Reset the zoom factor"
     },
-    "031.toggleFullScreen": {
+    "030.toggleFullScreen": {
       "description": "Zoom · Turn full-screen mode on or off"
     },
-    "032.openNewTab": {
+    "031.openNewTab": {
       "description": "Create tabs · Open and activate a new tab"
     },
-    "033.openNewTabRight": {
+    "032.openNewTabRight": {
       "description": "Create tabs · Open and activate a new tab to the right"
     },
-    "034.openNewWindow": {
+    "033.openNewWindow": {
       "description": "Create tabs · Open a new window"
     },
-    "035.openNewIncognitoWindow": {
+    "034.openNewIncognitoWindow": {
       "description": "Create tabs · Open a new window in Incognito mode"
     },
-    "036.closeTab": {
+    "035.closeTab": {
       "description": "Close tabs · Close selected tabs"
     },
-    "037.closeOtherTabs": {
+    "036.closeOtherTabs": {
       "description": "Close tabs · Close other tabs"
     },
-    "038.closeRightTabs": {
+    "037.closeRightTabs": {
       "description": "Close tabs · Close tabs to the right"
     },
-    "039.closeWindow": {
+    "038.closeWindow": {
       "description": "Close tabs · Close the window that contains the tab"
     },
-    "040.restoreTab": {
+    "039.restoreTab": {
       "description": "Close tabs · Reopen previously closed tabs"
     },
-    "041.duplicateTab": {
+    "040.duplicateTab": {
       "description": "Tab state · Duplicate selected tabs"
     },
-    "042.togglePinTab": {
+    "041.togglePinTab": {
       "description": "Tab state · Pin or unpin selected tabs"
     },
-    "043.toggleGroupTab": {
+    "042.toggleGroupTab": {
       "description": "Tab state · Group or ungroup selected tabs"
     },
-    "044.toggleCollapseTabGroups": {
+    "043.toggleCollapseTabGroups": {
       "description": "Tab state · Collapse or uncollapse tab groups"
     },
-    "045.toggleMuteTab": {
+    "044.toggleMuteTab": {
       "description": "Tab state · Mute or unmute selected tabs"
     },
-    "046.discardTab": {
+    "045.discardTab": {
       "description": "Tab state · Discard selected tabs"
     },
-    "047.sortTabsByURL": {
+    "046.sortTabsByURL": {
       "description": "Organize tabs · Sort selected tabs by URL"
     },
-    "048.groupTabsByDomain": {
+    "047.groupTabsByDomain": {
       "description": "Organize tabs · Group selected tabs by domain"
     },
-    "049.renameTabGroup": {
+    "048.renameTabGroup": {
       "description": "Manage tab groups · Rename tab group"
     },
-    "050.cycleTabGroupColorForward": {
+    "049.cycleTabGroupColorForward": {
       "description": "Manage tab groups · Cycle forward through tab group colors"
     },
-    "051.cycleTabGroupColorBackward": {
+    "050.cycleTabGroupColorBackward": {
       "description": "Manage tab groups · Cycle backward through tab group colors"
     },
-    "052.activateAudibleTab": {
+    "051.activateAudibleTab": {
       "description": "Switch tabs · Activate the first audible tab"
     },
-    "053.activateNextTab": {
+    "052.activateNextTab": {
       "description": "Switch tabs · Activate the next open tab"
     },
-    "054.activatePreviousTab": {
+    "053.activatePreviousTab": {
       "description": "Switch tabs · Activate the previous open tab"
     },
-    "055.activateFirstTab": {
+    "054.activateFirstTab": {
       "description": "Switch tabs · Activate the leftmost open tab"
     },
-    "056.activateSecondTab": {
+    "055.activateSecondTab": {
       "description": "Switch tabs · Activate the second leftmost open tab"
     },
-    "057.activateThirdTab": {
+    "056.activateThirdTab": {
       "description": "Switch tabs · Activate the third leftmost open tab"
     },
-    "058.activateFourthTab": {
+    "057.activateFourthTab": {
       "description": "Switch tabs · Activate the fourth leftmost open tab"
     },
-    "059.activateFifthTab": {
+    "058.activateFifthTab": {
       "description": "Switch tabs · Activate the fifth leftmost open tab"
     },
-    "060.activateSixthTab": {
+    "059.activateSixthTab": {
       "description": "Switch tabs · Activate the sixth leftmost open tab"
     },
-    "061.activateSeventhTab": {
+    "060.activateSeventhTab": {
       "description": "Switch tabs · Activate the seventh leftmost open tab"
     },
-    "062.activateEighthTab": {
+    "061.activateEighthTab": {
       "description": "Switch tabs · Activate the eighth leftmost open tab"
     },
-    "063.activateLastTab": {
+    "062.activateLastTab": {
       "description": "Switch tabs · Activate the rightmost open tab"
     },
-    "064.activateLastActiveTab": {
+    "063.activateLastActiveTab": {
       "description": "Switch tabs · Activate the last active tab"
     },
-    "065.activateSecondLastActiveTab": {
+    "064.activateSecondLastActiveTab": {
       "description": "Switch tabs · Activate the second last active tab"
     },
-    "066.activateThirdLastActiveTab": {
+    "065.activateThirdLastActiveTab": {
       "description": "Switch tabs · Activate the third last active tab"
     },
-    "067.activateFourthLastActiveTab": {
+    "066.activateFourthLastActiveTab": {
       "description": "Switch tabs · Activate the fourth last active tab"
     },
-    "068.activateFifthLastActiveTab": {
+    "067.activateFifthLastActiveTab": {
       "description": "Switch tabs · Activate the fifth last active tab"
     },
-    "069.activateSixthLastActiveTab": {
+    "068.activateSixthLastActiveTab": {
       "description": "Switch tabs · Activate the sixth last active tab"
     },
-    "070.activateSeventhLastActiveTab": {
+    "069.activateSeventhLastActiveTab": {
       "description": "Switch tabs · Activate the seventh last active tab"
     },
-    "071.activateEighthLastActiveTab": {
+    "070.activateEighthLastActiveTab": {
       "description": "Switch tabs · Activate the eighth last active tab"
     },
-    "072.activateNinthLastActiveTab": {
+    "071.activateNinthLastActiveTab": {
       "description": "Switch tabs · Activate the ninth last active tab"
     },
-    "073.activateNextWindow": {
+    "072.activateNextWindow": {
       "description": "Switch tabs · Activate the next open window"
     },
-    "074.activatePreviousWindow": {
+    "073.activatePreviousWindow": {
       "description": "Switch tabs · Activate the previous open window"
     },
-    "075.grabTab": {
+    "074.grabTab": {
       "description": "Move tabs · Grab selected tabs"
     },
-    "076.moveTabLeft": {
+    "075.moveTabLeft": {
       "description": "Move tabs · Move selected tabs left"
     },
-    "077.moveTabRight": {
+    "076.moveTabRight": {
       "description": "Move tabs · Move selected tabs right"
     },
-    "078.moveTabFirst": {
+    "077.moveTabFirst": {
       "description": "Move tabs · Move selected tabs to the far left"
     },
-    "079.moveTabLast": {
+    "078.moveTabLast": {
       "description": "Move tabs · Move selected tabs to the far right"
     },
-    "080.moveTabNewWindow": {
+    "079.moveTabNewWindow": {
       "description": "Move tabs · Move selected tabs to a new window"
     },
-    "081.moveTabPreviousWindow": {
+    "080.moveTabPreviousWindow": {
       "description": "Move tabs · Move selected tabs to the previous open window"
     },
-    "082.selectActiveTab": {
+    "081.selectActiveTab": {
       "description": "Select tabs · Deselect all other tabs"
     },
-    "083.selectPreviousTab": {
+    "082.selectPreviousTab": {
       "description": "Select tabs · Select the previous tab"
     },
-    "084.selectNextTab": {
+    "083.selectNextTab": {
       "description": "Select tabs · Select the next tab"
     },
-    "085.selectRelatedTabs": {
+    "084.selectRelatedTabs": {
       "description": "Select tabs · Select related tabs"
     },
-    "086.selectTabsInGroup": {
+    "085.selectTabsInGroup": {
       "description": "Select tabs · Select tabs in group"
     },
-    "087.selectAllTabs": {
+    "086.selectAllTabs": {
       "description": "Select tabs · Select all tabs"
     },
-    "088.selectRightTabs": {
+    "087.selectRightTabs": {
       "description": "Select tabs · Select tabs to the right"
     },
-    "089.moveTabSelectionFaceBackward": {
+    "088.moveTabSelectionFaceBackward": {
       "description": "Select tabs · Move tab selection’s face backward"
     },
-    "090.moveTabSelectionFaceForward": {
+    "089.moveTabSelectionFaceForward": {
       "description": "Select tabs · Move tab selection’s face forward"
     },
-    "091.bookmarkTab": {
+    "090.bookmarkTab": {
       "description": "Bookmarks · Save selected tabs as bookmarks"
     },
-    "092.bookmarkSession": {
+    "091.bookmarkSession": {
       "description": "Bookmarks · Save the current session as bookmarks"
     },
-    "093.addTabToReadingList": {
+    "092.addTabToReadingList": {
       "description": "Reading list · Add selected tabs to your reading list"
     },
-    "094.openDownloadsFolder": {
+    "093.openDownloadsFolder": {
       "description": "Folders · Open the “Downloads” folder"
     },
-    "095.openHistoryPage": {
+    "094.openHistoryPage": {
       "description": "Chrome URLs · Open the “History” page"
     },
-    "096.openSyncedTabsPage": {
+    "095.openSyncedTabsPage": {
       "description": "Chrome URLs · Open the “Tabs from other devices” page"
     },
-    "097.openClearBrowserDataPage": {
+    "096.openClearBrowserDataPage": {
       "description": "Chrome URLs · Open the “Delete browsing data” page"
     },
-    "098.openDownloadsPage": {
+    "097.openDownloadsPage": {
       "description": "Chrome URLs · Open the “Downloads” page"
     },
-    "099.openBookmarksPage": {
+    "098.openBookmarksPage": {
       "description": "Chrome URLs · Open the “Bookmarks” page"
     },
-    "100.openSettingsPage": {
+    "099.openSettingsPage": {
       "description": "Chrome URLs · Open the “Settings” page"
     },
-    "101.openPasswordsPage": {
+    "100.openPasswordsPage": {
       "description": "Chrome URLs · Open the “Password manager > Passwords” page"
     },
-    "102.openPaymentsPage": {
+    "101.openPaymentsPage": {
       "description": "Chrome URLs · Open the “Payment methods” page"
     },
-    "103.openAddressesPage": {
+    "102.openAddressesPage": {
       "description": "Chrome URLs · Open the “Addresses and more” page"
     },
-    "104.openSearchEnginesPage": {
+    "103.openSearchEnginesPage": {
       "description": "Chrome URLs · Open the “Search engines” page"
     },
-    "105.openExtensionsPage": {
+    "104.openExtensionsPage": {
       "description": "Chrome URLs · Open the “Extensions” page"
     },
-    "106.openExtensionShortcutsPage": {
+    "105.openExtensionShortcutsPage": {
       "description": "Chrome URLs · Open the “Extensions > Keyboard shortcuts” page"
     },
-    "107.openExperimentsPage": {
+    "106.openExperimentsPage": {
       "description": "Chrome URLs · Open the “Experiments” page"
     },
-    "108.openAboutChromePage": {
+    "107.openAboutChromePage": {
       "description": "Chrome URLs · Open the “About Chrome” page"
     },
-    "109.openAboutChromeVersionPage": {
+    "108.openAboutChromeVersionPage": {
       "description": "Chrome URLs · Open the “About Chrome version” page"
     },
-    "110.openWhatsNewPage": {
+    "109.openWhatsNewPage": {
       "description": "Chrome URLs · Open the “What’s new in Chrome” page"
     }
   }
