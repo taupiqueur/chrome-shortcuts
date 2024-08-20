@@ -31,10 +31,19 @@ const CHROME_DOMAINS = [
   })
 ]
 
-const popupConfigPromise = fetch('popup/config.json')
-  .then((response) =>
-    response.json()
+/**
+ * Retrieves the popup config.
+ *
+ * @returns {Promise<object>}
+ */
+async function getPopupDefaults() {
+  return (
+    fetch('popup/config.json')
+      .then((response) =>
+        response.json()
+      )
   )
+}
 
 /**
  * Handles the initial setup when the extension is first installed or updated to a new version.
@@ -60,7 +69,7 @@ function onInstalled(details) {
  * @returns {Promise<void>}
  */
 async function onInstall() {
-  const popupConfig = await popupConfigPromise
+  const popupConfig = await getPopupDefaults()
   await chrome.storage.sync.set({
     popupConfig
   })
@@ -73,7 +82,7 @@ async function onInstall() {
  * @returns {Promise<void>}
  */
 async function onUpdate(previousVersion) {
-  const popupConfig = await popupConfigPromise
+  const popupConfig = await getPopupDefaults()
   const localStorage = await chrome.storage.sync.get('popupConfig')
 
   // Merge config to handle added commands.

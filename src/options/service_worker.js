@@ -4,10 +4,19 @@
 // Service workers: https://developer.chrome.com/docs/extensions/develop/concepts/service-workers
 // Long-lived connections: https://developer.chrome.com/docs/extensions/develop/concepts/messaging#connect
 
-const popupConfigPromise = fetch('popup/config.json')
-  .then((response) =>
-    response.json()
+/**
+ * Retrieves the popup config.
+ *
+ * @returns {Promise<object>}
+ */
+async function getPopupDefaults() {
+  return (
+    fetch('popup/config.json')
+      .then((response) =>
+        response.json()
+      )
   )
+}
 
 /**
  * Handles a new connection when opening the “Options” page.
@@ -63,7 +72,7 @@ async function saveOptions(partialOptions) {
  * @returns {Promise<void>}
  */
 async function resetOptions() {
-  const popupConfig = await popupConfigPromise
+  const popupConfig = await getPopupDefaults()
   await chrome.storage.sync.clear()
   await chrome.storage.sync.set({
     popupConfig
