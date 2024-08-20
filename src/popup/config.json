@@ -19,6 +19,10 @@
         "code": "Escape"
       },
       {
+        "ctrlKey": true,
+        "code": "KeyC"
+      },
+      {
         "code": "KeyQ"
       }
     ],
@@ -654,6 +658,10 @@
     "closeCommandPalette": [
       {
         "code": "Escape"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyC"
       }
     ]
   }

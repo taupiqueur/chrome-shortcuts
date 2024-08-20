@@ -62,6 +62,10 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
         "code": "Escape"
       },
       {
+        "ctrlKey": true,
+        "code": "KeyC"
+      },
+      {
         "code": "KeyQ"
       }
     ],
@@ -697,6 +701,10 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     "closeCommandPalette": [
       {
         "code": "Escape"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyC"
       }
     ]
   }
@@ -748,7 +756,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openShortcutsManual` | Open Shortcuts manual | | | `F1`
 `openCommandPalette` | Open the command palette | | | `Slash`, `Control+KeyF`
-`closePopup` | Close the popup window | | | `Escape`, `KeyQ`
+`closePopup` | Close the popup window | | | `Escape`, `Control+KeyC`, `KeyQ`
 
 ### Command palette
 
@@ -759,7 +767,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 `selectNextItem` | Select the next item | | | `ArrowDown`, `Control+KeyN`, `Tab`
 `selectPreviousItem` | Select the previous item | | | `ArrowUp`, `Control+KeyP`, `Shift+Tab`
 `activateSelectedItem` | Activate selected item | | | `Enter`
-`closeCommandPalette` | Close the command palette | | | `Escape`
+`closeCommandPalette` | Close the command palette | | | `Escape`, `Control+KeyC`
 
 ### Navigation
 
