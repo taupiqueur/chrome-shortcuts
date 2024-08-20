@@ -57,10 +57,7 @@ function createMenuItems() {
 function onInstalled(details) {
   switch (details.reason) {
     case 'install':
-      chrome.tabs.create({
-        active: true,
-        url: 'src/manual/manual.html'
-      })
+      onInstall()
       break
   }
 
@@ -69,6 +66,18 @@ function onInstalled(details) {
 
   // Chrome only automatically loads content scripts into new tabs.
   runContentScripts()
+}
+
+/**
+ * Handles the initial setup when the extension is first installed.
+ *
+ * @returns {Promise<void>}
+ */
+async function onInstall() {
+  await chrome.tabs.create({
+    active: true,
+    url: 'src/manual/manual.html'
+  })
 }
 
 /**
