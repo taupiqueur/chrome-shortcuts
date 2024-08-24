@@ -4,6 +4,8 @@
 // Service workers: https://developer.chrome.com/docs/extensions/develop/concepts/service-workers
 // Long-lived connections: https://developer.chrome.com/docs/extensions/develop/concepts/messaging#connect
 
+const KEEP_ALIVE_INTERVAL = 29000
+
 /**
  * Retrieves the popup config.
  *
@@ -25,7 +27,26 @@ async function getPopupDefaults() {
  * @returns {void}
  */
 function onConnect(port) {
+  const keepAliveIntervalId = setInterval(() => {
+    port.postMessage({
+      type: 'keepAlive'
+    })
+  }, KEEP_ALIVE_INTERVAL)
+  port.onDisconnect.addListener((port) => {
+    onDisconnect(port, keepAliveIntervalId)
+  })
   port.onMessage.addListener(onMessage)
+}
+
+/**
+ * Handles disconnection by clearing the keep-alive interval.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {number} keepAliveIntervalId
+ * @returns {void}
+ */
+function onDisconnect(port, keepAliveIntervalId) {
+  clearInterval(keepAliveIntervalId)
 }
 
 /**

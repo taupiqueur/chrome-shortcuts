@@ -48,6 +48,9 @@ port.onMessage.addListener((message) => {
       onCommand(message.command)
       break
 
+    case 'keepAlive':
+      break
+
     default:
       port.postMessage({
         type: 'error',

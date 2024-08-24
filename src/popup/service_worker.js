@@ -19,6 +19,8 @@
 
 import * as commands from '../commands.js'
 
+const KEEP_ALIVE_INTERVAL = 29000
+
 const CHROME_DOMAINS = [
   new URLPattern({
     protocol: 'chrome'
@@ -109,10 +111,29 @@ async function onUpdate(previousVersion) {
  * @returns {void}
  */
 function onConnect(port, cx) {
+  const keepAliveIntervalId = setInterval(() => {
+    port.postMessage({
+      type: 'keepAlive'
+    })
+  }, KEEP_ALIVE_INTERVAL)
+  port.onDisconnect.addListener((port) => {
+    onDisconnect(port, keepAliveIntervalId)
+  })
   port.onMessage.addListener((message, port) => {
     onMessage(message, port, cx)
   })
   onPopupScriptAdded(port)
+}
+
+/**
+ * Handles disconnection by clearing the keep-alive interval.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {number} keepAliveIntervalId
+ * @returns {void}
+ */
+function onDisconnect(port, keepAliveIntervalId) {
+  clearInterval(keepAliveIntervalId)
 }
 
 /**
