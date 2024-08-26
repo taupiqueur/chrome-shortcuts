@@ -4,6 +4,12 @@
 //
 // Content scripts: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts
 
+const SCROLLABLE_OVERFLOW_VALUES = new Set([
+  'visible',
+  'scroll',
+  'auto'
+])
+
 const scroller = new Scroller
 
 /**
@@ -55,6 +61,24 @@ function* getAllElements(documentOrShadowRoot) {
 }
 
 /**
+ * Returns whether the element is scrollable,
+ * either horizontally or vertically.
+ *
+ * @param {HTMLElement} scrollingElement
+ * @returns {boolean}
+ */
+function isScrollable(scrollingElement) {
+  const computedStyle = window.getComputedStyle(scrollingElement)
+
+  return (
+    scrollingElement.scrollWidth > scrollingElement.clientWidth &&
+    SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowX) ||
+    scrollingElement.scrollHeight > scrollingElement.clientHeight &&
+    SCROLLABLE_OVERFLOW_VALUES.has(computedStyle.overflowY)
+  )
+}
+
+/**
  * Performs a scroll with the given scroll performer.
  *
  * @param {(scrollingElement: HTMLElement) => void} scrollPerformer
@@ -64,17 +88,17 @@ function performScroll(scrollPerformer) {
   let scrollingElement = getActiveElement(document) ?? document.scrollingElement
 
   while (scrollingElement instanceof HTMLElement) {
-    const { scrollLeft, scrollTop } = scrollingElement
+    if (isScrollable(scrollingElement)) {
+      const { scrollLeft, scrollTop } = scrollingElement
 
-    scrollPerformer(scrollingElement)
-
-    if (
-      scrollingElement.scrollLeft !== scrollLeft ||
-      scrollingElement.scrollTop !== scrollTop
-    ) {
-      break
+      scrollPerformer(scrollingElement)
+      if (
+        scrollingElement.scrollLeft !== scrollLeft ||
+        scrollingElement.scrollTop !== scrollTop
+      ) {
+        break
+      }
     }
-
     scrollingElement = scrollingElement.parentElement
   }
 }
