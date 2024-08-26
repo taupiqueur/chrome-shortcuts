@@ -553,7 +553,9 @@ export async function openWebSearchForSelectedText(cx) {
 
     chrome.tabs.move(createdTab.id, {
       index: cx.tab.index + 1
-    })
+    }),
+
+    waitForNavigation(createdTab.id, 'onCommitted')
   ])
 
   if (hasGroup(cx.tab)) {

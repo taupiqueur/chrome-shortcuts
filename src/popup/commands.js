@@ -28,8 +28,8 @@ function message(commandName, passingMode, stickyWindow) {
 
 // Shortcuts -------------------------------------------------------------------
 
-export const openShortcutsManual = message('openShortcutsManual', true)
-export const openShortcutsOptionsPage = message('openShortcutsOptionsPage', true)
+export const openShortcutsManual = message('openShortcutsManual', false, true)
+export const openShortcutsOptionsPage = message('openShortcutsOptionsPage', false, true)
 
 /**
  * Opens the command palette.
@@ -65,19 +65,19 @@ export const goToRoot = message('goToRoot', false, true)
 
 // Accessibility ---------------------------------------------------------------
 
-export const focusTextInput = message('focusTextInput', true)
-export const focusMediaPlayer = message('focusMediaPlayer', true)
-export const blurElement = message('blurElement', true)
+export const focusTextInput = message('focusTextInput')
+export const focusMediaPlayer = message('focusMediaPlayer')
+export const blurElement = message('blurElement')
 
 // Clipboard -------------------------------------------------------------------
 
-export const copyURL = message('copyURL', true)
-export const copyTitle = message('copyTitle', true)
-export const copyTitleAndURL = message('copyTitleAndURL', true)
+export const copyURL = message('copyURL', true, true)
+export const copyTitle = message('copyTitle', true, true)
+export const copyTitleAndURL = message('copyTitleAndURL', true, true)
 
 // Web search ------------------------------------------------------------------
 
-export const openWebSearchForSelectedText = message('openWebSearchForSelectedText')
+export const openWebSearchForSelectedText = message('openWebSearchForSelectedText', false, true)
 
 // Scroll ----------------------------------------------------------------------
 
@@ -111,7 +111,7 @@ export const openNewIncognitoWindow = message('openNewIncognitoWindow')
 export const closeTab = message('closeTab', false, true)
 export const closeOtherTabs = message('closeOtherTabs', false, true)
 export const closeRightTabs = message('closeRightTabs', false, true)
-export const closeWindow = message('closeWindow')
+export const closeWindow = message('closeWindow', true, true)
 export const restoreTab = message('restoreTab', false, true)
 
 // Tab state -------------------------------------------------------------------
@@ -121,7 +121,7 @@ export const togglePinTab = message('togglePinTab')
 export const toggleGroupTab = message('toggleGroupTab')
 export const toggleCollapseTabGroups = message('toggleCollapseTabGroups')
 export const toggleMuteTab = message('toggleMuteTab')
-export const discardTab = message('discardTab')
+export const discardTab = message('discardTab', false, true)
 
 // Organize tabs ---------------------------------------------------------------
 
@@ -130,7 +130,7 @@ export const groupTabsByDomain = message('groupTabsByDomain')
 
 // Manage tab groups -----------------------------------------------------------
 
-export const renameTabGroup = message('renameTabGroup')
+export const renameTabGroup = message('renameTabGroup', true, true)
 export const cycleTabGroupColorForward = message('cycleTabGroupColorForward')
 export const cycleTabGroupColorBackward = message('cycleTabGroupColorBackward')
 
@@ -197,19 +197,19 @@ export const openDownloadsFolder = message('openDownloadsFolder')
 
 // Chrome URLs -----------------------------------------------------------------
 
-export const openHistoryPage = message('openHistoryPage', true)
-export const openSyncedTabsPage = message('openSyncedTabsPage', true)
-export const openClearBrowserDataPage = message('openClearBrowserDataPage', true)
-export const openDownloadsPage = message('openDownloadsPage', true)
-export const openBookmarksPage = message('openBookmarksPage', true)
-export const openSettingsPage = message('openSettingsPage', true)
-export const openPasswordsPage = message('openPasswordsPage', true)
-export const openPaymentsPage = message('openPaymentsPage', true)
-export const openAddressesPage = message('openAddressesPage', true)
-export const openSearchEnginesPage = message('openSearchEnginesPage', true)
-export const openExtensionsPage = message('openExtensionsPage', true)
-export const openExtensionShortcutsPage = message('openExtensionShortcutsPage', true)
-export const openExperimentsPage = message('openExperimentsPage', true)
-export const openAboutChromePage = message('openAboutChromePage', true)
-export const openAboutChromeVersionPage = message('openAboutChromeVersionPage', true)
-export const openWhatsNewPage = message('openWhatsNewPage', true)
+export const openHistoryPage = message('openHistoryPage', false, true)
+export const openSyncedTabsPage = message('openSyncedTabsPage', false, true)
+export const openClearBrowserDataPage = message('openClearBrowserDataPage', false, true)
+export const openDownloadsPage = message('openDownloadsPage', false, true)
+export const openBookmarksPage = message('openBookmarksPage', false, true)
+export const openSettingsPage = message('openSettingsPage', false, true)
+export const openPasswordsPage = message('openPasswordsPage', false, true)
+export const openPaymentsPage = message('openPaymentsPage', false, true)
+export const openAddressesPage = message('openAddressesPage', false, true)
+export const openSearchEnginesPage = message('openSearchEnginesPage', false, true)
+export const openExtensionsPage = message('openExtensionsPage', false, true)
+export const openExtensionShortcutsPage = message('openExtensionShortcutsPage', false, true)
+export const openExperimentsPage = message('openExperimentsPage', false, true)
+export const openAboutChromePage = message('openAboutChromePage', false, true)
+export const openAboutChromeVersionPage = message('openAboutChromeVersionPage', false, true)
+export const openWhatsNewPage = message('openWhatsNewPage', false, true)
