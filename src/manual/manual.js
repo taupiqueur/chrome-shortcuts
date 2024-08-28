@@ -1,3 +1,5 @@
+// This module contains the code to interpret the “manual.html” buttons and links.
+
 const MIDDLE_MOUSE_BUTTON = 1
 
 const buttonElements = document.querySelectorAll('button')
