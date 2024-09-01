@@ -12,8 +12,9 @@ Permission | Justification
 [`"bookmarks"`] | This permission is used to save your tabs and current session as bookmarks.
 [`"clipboardWrite"`] | This permission is used for the “Clipboard” commands. Without this permission, a runtime permission is asked for every new site you use the commands.
 [`"contextMenus"`] | This permission is used to add the “Documentation” and “Support Chat” buttons to the Shortcuts toolbar.
-[`"downloads"`] | This permission is used to open the “Downloads” folder.
+[`"downloads"`] | This permission is used to save your tabs and open the “Downloads” folder.
 [`"notifications"`] | This permission is used to give users feedback after copying text and creating bookmarks.
+[`"pageCapture"`] | This permission is used to save pages as MHTML.
 [`"readingList"`] | This permission is used to add tabs to your reading list.
 [`"scripting"`] | This permission is used to interact with web pages and write text to the system clipboard.
 [`"search"`] | This permission is used to perform a web search.
@@ -30,6 +31,7 @@ Permission | Justification
 [`"contextMenus"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#contextMenus
 [`"downloads"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#downloads
 [`"notifications"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#notifications
+[`"pageCapture"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#pageCapture
 [`"readingList"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#readingList
 [`"scripting"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#scripting
 [`"search"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#search

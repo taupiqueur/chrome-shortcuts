@@ -75,6 +75,11 @@ export const copyURL = message('copyURL', true, true)
 export const copyTitle = message('copyTitle', true, true)
 export const copyTitleAndURL = message('copyTitleAndURL', true, true)
 
+// Save pages ------------------------------------------------------------------
+
+export const savePage = message('savePage')
+export const savePageAsMHTML = message('savePageAsMHTML')
+
 // Web search ------------------------------------------------------------------
 
 export const openWebSearchForSelectedText = message('openWebSearchForSelectedText', false, true)

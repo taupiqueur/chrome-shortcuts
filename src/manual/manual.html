@@ -198,6 +198,19 @@
           <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
         }
       ],
+      <span data-type="string">"savePage"</span>: [
+        {
+          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+          <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
+        }
+      ],
+      <span data-type="string">"savePageAsMHTML"</span>: [
+        {
+          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
+          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
+          <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
+        }
+      ],
       <span data-type="string">"openWebSearchForSelectedText"</span>: [
         {
           <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
@@ -877,6 +890,19 @@
         {
           &quot;shiftKey&quot;: true,
           &quot;code&quot;: &quot;KeyY&quot;
+        }
+      ],
+      &quot;savePage&quot;: [
+        {
+          &quot;ctrlKey&quot;: true,
+          &quot;code&quot;: &quot;KeyS&quot;
+        }
+      ],
+      &quot;savePageAsMHTML&quot;: [
+        {
+          &quot;ctrlKey&quot;: true,
+          &quot;shiftKey&quot;: true,
+          &quot;code&quot;: &quot;KeyS&quot;
         }
       ],
       &quot;openWebSearchForSelectedText&quot;: [
@@ -1855,6 +1881,48 @@
             Note: If Chrome notifications are enabled,
             Shortcuts will show you a message for copied text.
           </p>
+        </section>
+        <section id="save_pages_commands">
+          <h3>
+            <a href="#save_pages_commands">
+              Save pages
+            </a>
+          </h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+                <th>Windows and Linux key</th>
+                <th>macOS key</th>
+                <th>Popup key</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>savePage</code></td>
+                <td>Save the content of selected tabs</td>
+                <td>
+                  <kbd>Control</kbd>+<kbd>S</kbd>
+                </td>
+                <td>
+                  <kbd>Command</kbd>+<kbd>S</kbd>
+                </td>
+                <td>
+                  <kbd>Control</kbd>+<kbd class="code">KeyS</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td><code>savePageAsMHTML</code></td>
+                <td>Save the content of selected tabs as MHTML</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyS</kbd>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </section>
         <section id="web_search_commands">
           <h3>

@@ -57,6 +57,15 @@ const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
 const TAB_GROUP_COLORS = Object.values(chrome.tabGroups.Color)
 
 /**
+ * List of invalid filename characters.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/downloads#property-DownloadOptions-filename
+ *
+ * @type {RegExp}
+ */
+const INVALID_FILENAME_CHARS = /^\.|["*\/:<>?\\|]/g
+
+/**
  * List of zoom presets.
  *
  * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/common/page/page_zoom.cc
@@ -511,6 +520,86 @@ export async function copyTitleAndURL(cx) {
   })
 
   await sendNotification('Text copied', `${tabs.length} titles and URLs copied to clipboard`)
+}
+
+// Save pages ------------------------------------------------------------------
+
+/**
+ * Saves the content of selected tabs.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function savePage(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    windowId: cx.tab.windowId
+  })
+
+  await Promise.all(
+    tabs.map((tab) =>
+      chrome.downloads.download({
+        url: tab.url
+      })
+    )
+  )
+}
+
+/**
+ * Saves the content of selected tabs as MHTML.
+ *
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+export async function savePageAsMHTML(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    windowId: cx.tab.windowId
+  })
+
+  await Promise.allSettled(
+    tabs.map((tab) =>
+      chrome.pageCapture
+        .saveAsMHTML({
+          tabId: tab.id
+        })
+        .then((file) =>
+          readFileAsDataURL(file)
+        )
+        .then((url) =>
+          chrome.downloads.download({
+            url,
+            filename: getFilenameSuggestion(`${tab.title}.mhtml`)
+          })
+        )
+    )
+  )
+}
+
+/**
+ * Reads file as data URL.
+ *
+ * @param {File} file
+ * @returns {Promise<string>}
+ */
+async function readFileAsDataURL(file) {
+  return new Promise((resolve) => {
+    const fileReader = new FileReader
+    fileReader.addEventListener('load', () => {
+      resolve(fileReader.result)
+    })
+    fileReader.readAsDataURL(file)
+  })
+}
+
+/**
+ * Returns a suitable filename for downloads.
+ *
+ * @param {string} filename
+ * @returns {string}
+ */
+function getFilenameSuggestion(filename) {
+  return filename.replace(INVALID_FILENAME_CHARS, '_')
 }
 
 // Web search ------------------------------------------------------------------

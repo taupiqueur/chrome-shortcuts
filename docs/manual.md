@@ -162,6 +162,19 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
           "code": "KeyY"
         }
       ],
+      "savePage": [
+        {
+          "ctrlKey": true,
+          "code": "KeyS"
+        }
+      ],
+      "savePageAsMHTML": [
+        {
+          "ctrlKey": true,
+          "shiftKey": true,
+          "code": "KeyS"
+        }
+      ],
       "openWebSearchForSelectedText": [
         {
           "altKey": true,
@@ -810,6 +823,13 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > [!NOTE]
 > If Chrome notifications are enabled,
 > Shortcuts will show you a message for copied text.
+
+### Save pages
+
+Command | Description | Windows and Linux key | macOS key | Popup key
+--- | --- | --- | --- | ---
+`savePage` | Save the content of selected tabs | `Control+S` | `Command+S` | `Control+KeyS`
+`savePageAsMHTML` | Save the content of selected tabs as MHTML | | | `Control+Shift+KeyS`
 
 ### Web search
 

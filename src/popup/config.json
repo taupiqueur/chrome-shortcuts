@@ -118,6 +118,19 @@
         "code": "KeyY"
       }
     ],
+    "savePage": [
+      {
+        "ctrlKey": true,
+        "code": "KeyS"
+      }
+    ],
+    "savePageAsMHTML": [
+      {
+        "ctrlKey": true,
+        "shiftKey": true,
+        "code": "KeyS"
+      }
+    ],
     "openWebSearchForSelectedText": [
       {
         "altKey": true,
