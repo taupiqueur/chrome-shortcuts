@@ -1,9 +1,13 @@
-// This module contains the code to interpret the “manual.html” buttons and links.
+// This module contains the code to interpret the “manual.html” buttons and links,
+// and documenting physical keys.
 
 const MIDDLE_MOUSE_BUTTON = 1
 
 const buttonElements = document.querySelectorAll('button')
 const chromeLinkElements = document.querySelectorAll('a[href^="chrome:"]')
+const keyCodeElements = document.querySelectorAll('kbd.code')
+
+const keyboardLayoutMap = await navigator.keyboard.getLayoutMap()
 
 const port = chrome.runtime.connect({
   name: 'manual'
@@ -54,4 +58,14 @@ for (const chromeLinkElement of chromeLinkElements) {
         break
     }
   })
+}
+
+for (const keyElement of keyCodeElements) {
+  const codeValue = keyElement.textContent
+  if (keyboardLayoutMap.has(codeValue)) {
+    const keyValue = keyboardLayoutMap.get(codeValue)
+    keyElement.title = `“${keyValue}” on your keyboard.`
+  } else {
+    keyElement.title = `No value found for “${codeValue}”.`
+  }
 }
