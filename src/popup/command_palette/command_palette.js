@@ -97,6 +97,11 @@ function updateMatches(query, candidates, cx) {
       menuItemElements[0].classList.add('active')
       cx.paletteMenuElement.removeAttribute('hidden')
       cx.paletteMenuElement.replaceMenuItems(menuItemElements)
+      cx.paletteMenuElement.scrollIntoView({
+        behavior: 'instant',
+        block: 'start',
+        inline: 'start'
+      })
     } else {
       const menuItemElement = document.createElement('menu-item')
       menuItemElement.setAttribute('disabled', '')
@@ -104,6 +109,11 @@ function updateMatches(query, candidates, cx) {
 
       cx.paletteMenuElement.removeAttribute('hidden')
       cx.paletteMenuElement.replaceMenuItems([menuItemElement])
+      cx.paletteMenuElement.scrollIntoView({
+        behavior: 'instant',
+        block: 'start',
+        inline: 'start'
+      })
     }
   }
 }

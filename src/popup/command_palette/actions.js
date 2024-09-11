@@ -22,6 +22,11 @@ export function selectNextItem(cx) {
   ) {
     cx.activeElement.classList.remove('active')
     cx.activeElement.nextElementSibling.classList.add('active')
+    cx.activeElement.nextElementSibling.scrollIntoView({
+      behavior: 'instant',
+      block: 'nearest',
+      inline: 'nearest'
+    })
   }
 }
 
@@ -38,6 +43,11 @@ export function selectPreviousItem(cx) {
   ) {
     cx.activeElement.classList.remove('active')
     cx.activeElement.previousElementSibling.classList.add('active')
+    cx.activeElement.previousElementSibling.scrollIntoView({
+      behavior: 'instant',
+      block: 'nearest',
+      inline: 'nearest'
+    })
   }
 }
 
