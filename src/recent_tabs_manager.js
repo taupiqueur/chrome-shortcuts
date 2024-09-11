@@ -32,6 +32,17 @@ class RecentTabsManager {
   }
 
   /**
+   * Replaces a specified tab from the list of recently used tabs.
+   *
+   * @param {number} tabId
+   * @param {number} newTabId
+   * @returns {void}
+   */
+  replaceTabFromCache(tabId, newTabId) {
+    this.cache.replace(tabId, newTabId)
+  }
+
+  /**
    * Removes a specified tab from the list of recently used tabs.
    *
    * @param {number} tabId
@@ -112,6 +123,20 @@ class RecentTabsManager {
    */
   async onTabRemoved(tabId, removeInfo) {
     this.removeTabFromCache(tabId)
+    await this.saveState()
+  }
+
+  /**
+   * Handles tab replacement, when a tab is replaced with another tab due to pre-rendering or instant.
+   *
+   * https://developer.chrome.com/docs/extensions/reference/api/tabs#event-onReplaced
+   *
+   * @param {number} addedTabId
+   * @param {number} removedTabId
+   * @returns {Promise<void>}
+   */
+  async onTabReplaced(addedTabId, removedTabId) {
+    this.replaceTabFromCache(removedTabId, addedTabId)
     await this.saveState()
   }
 

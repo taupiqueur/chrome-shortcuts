@@ -58,6 +58,35 @@ class MRU {
   }
 
   /**
+   * Replaces a specified item from the cache.
+   * The replacement does not change the order of items in the cache.
+   * If the item does not exist, no replacement occurs.
+   * Returns true if the replacement was successful; false otherwise.
+   *
+   * @param {Item} item
+   * @param {Item} newItem
+   * @returns {boolean}
+   */
+  replace(item, newItem) {
+    if (!this.hashMap.has(item)) {
+      return false
+    }
+
+    const previousNode = this.hashMap.get(item)
+
+    if (previousNode) {
+      previousNode.next.value = newItem
+    } else {
+      this.linkedList.head.value = newItem
+    }
+
+    this.hashMap.delete(item)
+    this.hashMap.set(newItem, previousNode)
+
+    return true
+  }
+
+  /**
    * Deletes a specified item from the cache.
    * Returns true if the item existed and has been removed,
    * or false if the item does not exist.
