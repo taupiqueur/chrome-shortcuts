@@ -6,6 +6,7 @@ import commandPalette from './command_palette/command_palette.js'
 import CustomMenu from './components/CustomMenu.js'
 import MenuItem from './components/MenuItem.js'
 
+const mainElement = document.querySelector('main')
 const paletteInputElement = document.getElementById('palette-input')
 const paletteMenuElement = document.getElementById('palette-menu')
 const menuElement = document.getElementById('menu-commands')
@@ -85,6 +86,12 @@ function render({ commandBindings, isEnabled }) {
     }
   }
 
+  mainElement.addEventListener('scroll', debounce(() => {
+    mainElement.dataset.scrollTop = mainElement.scrollTop
+  }))
+
+  mainElement.dataset.scrollTop = 0
+
   // Listen for keyboard shortcuts.
   if (!menuElement.contains(document.activeElement)) {
     menuElement.focus({
@@ -117,4 +124,20 @@ function onCommand(commandName) {
     popupWindow: window,
     paletteInputElement,
   })
+}
+
+/**
+ * Debounces a function, delaying its execution until before the next repaint.
+ *
+ * @param {function} callback
+ * @returns {function}
+ */
+function debounce(callback) {
+  let animationFrame
+  return (...params) => {
+    window.cancelAnimationFrame(animationFrame)
+    animationFrame = window.requestAnimationFrame(() => {
+      callback(...params)
+    })
+  }
 }

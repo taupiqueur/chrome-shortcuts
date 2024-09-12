@@ -6,166 +6,170 @@
     <link href="popup.css" rel="stylesheet">
   </head>
   <body>
-    <input id="palette-input" placeholder="Search">
-    <custom-menu id="palette-menu" hidden>
-      <span slot="name">Palette Results</span>
-    </custom-menu>
-    <custom-menu id="menu-commands">
-      <!-- Shortcuts -->
-      <menu-item data-command="openShortcutsManual" data-permissions="activeTab tabs">Documentation</menu-item>
-      <menu-item data-command="openShortcutsOptionsPage" data-permissions="">Options</menu-item>
-      <menu-item data-command="openCommandPalette" data-permissions="">Command Palette</menu-item>
-      <menu-item data-command="closePopup" data-permissions="">Close Popup</menu-item>
-      <hr>
-      <!-- Navigation -->
-      <menu-item data-command="goBack" data-permissions="webNavigation">Back</menu-item>
-      <menu-item data-command="goForward" data-permissions="webNavigation">Forward</menu-item>
-      <menu-item data-command="reloadTab" data-permissions="">Reload Tab</menu-item>
-      <menu-item data-command="reloadTabWithoutCache" data-permissions="">Hard Reload Tab</menu-item>
-      <menu-item data-command="goToNextPage" data-permissions="activeTab scripting webNavigation">Next Page</menu-item>
-      <menu-item data-command="goToPreviousPage" data-permissions="activeTab scripting webNavigation">Previous Page</menu-item>
-      <menu-item data-command="removeURLParams" data-permissions="activeTab webNavigation">Remove URL Params</menu-item>
-      <menu-item data-command="goUp" data-permissions="activeTab webNavigation">Go Up</menu-item>
-      <menu-item data-command="goToRoot" data-permissions="activeTab webNavigation">Go To Root</menu-item>
-      <hr>
-      <!-- Accessibility -->
-      <menu-item data-command="focusTextInput" data-permissions="activeTab scripting">Focus Text Input</menu-item>
-      <menu-item data-command="focusMediaPlayer" data-permissions="activeTab scripting">Focus Media Player</menu-item>
-      <menu-item data-command="blurElement" data-permissions="activeTab scripting">Blur Element</menu-item>
-      <hr>
-      <!-- Clipboard -->
-      <menu-item data-command="copyURL" data-permissions="activeTab clipboardWrite notifications scripting tabs">Copy URL</menu-item>
-      <menu-item data-command="copyTitle" data-permissions="activeTab clipboardWrite notifications scripting tabs">Copy Title</menu-item>
-      <menu-item data-command="copyTitleAndURL" data-permissions="activeTab clipboardWrite notifications scripting tabs">Copy Title and URL</menu-item>
-      <hr>
-      <!-- Save pages -->
-      <menu-item data-command="savePage" data-permissions="downloads tabs">Save Page</menu-item>
-      <menu-item data-command="savePageAsMHTML" data-permissions="downloads pageCapture tabs">Save Page as MHTML</menu-item>
-      <hr>
-      <!-- Web search -->
-      <menu-item data-command="openWebSearchForSelectedText" data-permissions="activeTab scripting search tabGroups webNavigation">Web Search for Selected Text</menu-item>
-      <hr>
-      <!-- Scroll -->
-      <menu-item data-command="scrollDown" data-permissions="activeTab scripting">Scroll Down</menu-item>
-      <menu-item data-command="scrollUp" data-permissions="activeTab scripting">Scroll Up</menu-item>
-      <menu-item data-command="scrollLeft" data-permissions="activeTab scripting">Scroll Left</menu-item>
-      <menu-item data-command="scrollRight" data-permissions="activeTab scripting">Scroll Right</menu-item>
-      <menu-item data-command="scrollPageDown" data-permissions="activeTab scripting">Scroll Page Down</menu-item>
-      <menu-item data-command="scrollPageUp" data-permissions="activeTab scripting">Scroll Page Up</menu-item>
-      <menu-item data-command="scrollHalfPageDown" data-permissions="activeTab scripting">Scroll Half Page Down</menu-item>
-      <menu-item data-command="scrollHalfPageUp" data-permissions="activeTab scripting">Scroll Half Page Up</menu-item>
-      <menu-item data-command="scrollToTop" data-permissions="activeTab scripting">Scroll To Top</menu-item>
-      <menu-item data-command="scrollToBottom" data-permissions="activeTab scripting">Scroll To Bottom</menu-item>
-      <hr>
-      <!-- Zoom -->
-      <menu-item data-command="zoomIn" data-permissions="">Zoom In</menu-item>
-      <menu-item data-command="zoomOut" data-permissions="">Zoom Out</menu-item>
-      <menu-item data-command="zoomReset" data-permissions="">Zoom Reset</menu-item>
-      <menu-item data-command="toggleFullScreen" data-permissions="">Toggle Full Screen</menu-item>
-      <hr>
-      <!-- Create tabs -->
-      <menu-item data-command="openNewTab" data-permissions="">New Tab</menu-item>
-      <menu-item data-command="openNewTabRight" data-permissions="tabGroups">New Tab to the Right</menu-item>
-      <menu-item data-command="openNewWindow" data-permissions="">New Window</menu-item>
-      <menu-item data-command="openNewIncognitoWindow" data-permissions="">New Incognito Window</menu-item>
-      <hr>
-      <!-- Close tabs -->
-      <menu-item data-command="closeTab" data-permissions="">Close Tab</menu-item>
-      <menu-item data-command="closeOtherTabs" data-permissions="">Close Other Tabs</menu-item>
-      <menu-item data-command="closeRightTabs" data-permissions="">Close Tabs to the Right</menu-item>
-      <menu-item data-command="closeWindow" data-permissions="">Close Window</menu-item>
-      <menu-item data-command="restoreTab" data-permissions="sessions">Restore Tab</menu-item>
-      <hr>
-      <!-- Tab state -->
-      <menu-item data-command="duplicateTab" data-permissions="">Duplicate Tab</menu-item>
-      <menu-item data-command="togglePinTab" data-permissions="">Pin/Unpin Tab</menu-item>
-      <menu-item data-command="toggleGroupTab" data-permissions="tabGroups">Group/Ungroup Tab</menu-item>
-      <menu-item data-command="toggleCollapseTabGroups" data-permissions="tabGroups">Collapse/Uncollapse Tab Groups</menu-item>
-      <menu-item data-command="toggleMuteTab" data-permissions="">Mute/Unmute Tab</menu-item>
-      <menu-item data-command="discardTab" data-permissions="">Discard Tab</menu-item>
-      <hr>
-      <!-- Organize tabs -->
-      <menu-item data-command="sortTabsByURL" data-permissions="tabs">Sort Tabs by URL</menu-item>
-      <menu-item data-command="groupTabsByDomain" data-permissions="tabGroups tabs">Group Tabs by Domain</menu-item>
-      <hr>
-      <!-- Manage tab groups -->
-      <menu-item data-command="renameTabGroup" data-permissions="activeTab scripting tabGroups">Rename Tab Group</menu-item>
-      <menu-item data-command="cycleTabGroupColorForward" data-permissions="tabGroups">Next Tab Group Color</menu-item>
-      <menu-item data-command="cycleTabGroupColorBackward" data-permissions="tabGroups">Previous Tab Group Color</menu-item>
-      <hr>
-      <!-- Switch tabs -->
-      <menu-item data-command="activateAudibleTab" data-permissions="">Activate Audible Tab</menu-item>
-      <menu-item data-command="activateNextTab" data-permissions="tabGroups">Next Tab</menu-item>
-      <menu-item data-command="activatePreviousTab" data-permissions="tabGroups">Previous Tab</menu-item>
-      <menu-item data-command="activateFirstTab" data-permissions="tabGroups">First Tab</menu-item>
-      <menu-item data-command="activateSecondTab" data-permissions="tabGroups">Second Tab</menu-item>
-      <menu-item data-command="activateThirdTab" data-permissions="tabGroups">Third Tab</menu-item>
-      <menu-item data-command="activateFourthTab" data-permissions="tabGroups">Fourth Tab</menu-item>
-      <menu-item data-command="activateFifthTab" data-permissions="tabGroups">Fifth Tab</menu-item>
-      <menu-item data-command="activateSixthTab" data-permissions="tabGroups">Sixth Tab</menu-item>
-      <menu-item data-command="activateSeventhTab" data-permissions="tabGroups">Seventh Tab</menu-item>
-      <menu-item data-command="activateEighthTab" data-permissions="tabGroups">Eighth Tab</menu-item>
-      <menu-item data-command="activateLastTab" data-permissions="tabGroups">Last Tab</menu-item>
-      <menu-item data-command="activateLastActiveTab" data-permissions="">Last Active Tab</menu-item>
-      <menu-item data-command="activateSecondLastActiveTab" data-permissions="">Second Last Active Tab</menu-item>
-      <menu-item data-command="activateThirdLastActiveTab" data-permissions="">Third Last Active Tab</menu-item>
-      <menu-item data-command="activateFourthLastActiveTab" data-permissions="">Fourth Last Active Tab</menu-item>
-      <menu-item data-command="activateFifthLastActiveTab" data-permissions="">Fifth Last Active Tab</menu-item>
-      <menu-item data-command="activateSixthLastActiveTab" data-permissions="">Sixth Last Active Tab</menu-item>
-      <menu-item data-command="activateSeventhLastActiveTab" data-permissions="">Seventh Last Active Tab</menu-item>
-      <menu-item data-command="activateEighthLastActiveTab" data-permissions="">Eighth Last Active Tab</menu-item>
-      <menu-item data-command="activateNinthLastActiveTab" data-permissions="">Ninth Last Active Tab</menu-item>
-      <menu-item data-command="activateNextWindow" data-permissions="">Next Window</menu-item>
-      <menu-item data-command="activatePreviousWindow" data-permissions="">Previous Window</menu-item>
-      <hr>
-      <!-- Move tabs -->
-      <menu-item data-command="grabTab" data-permissions="tabGroups">Grab Tab</menu-item>
-      <menu-item data-command="moveTabLeft" data-permissions="tabGroups">Move Tab Left</menu-item>
-      <menu-item data-command="moveTabRight" data-permissions="tabGroups">Move Tab Right</menu-item>
-      <menu-item data-command="moveTabFirst" data-permissions="tabGroups">Move Tab First</menu-item>
-      <menu-item data-command="moveTabLast" data-permissions="tabGroups">Move Tab Last</menu-item>
-      <menu-item data-command="moveTabNewWindow" data-permissions="tabGroups">Move Tab New Window</menu-item>
-      <menu-item data-command="moveTabPreviousWindow" data-permissions="tabGroups">Move Tab Previous Window</menu-item>
-      <hr>
-      <!-- Select tabs -->
-      <menu-item data-command="selectActiveTab" data-permissions="">Select Active Tab</menu-item>
-      <menu-item data-command="selectPreviousTab" data-permissions="">Select Previous Tab</menu-item>
-      <menu-item data-command="selectNextTab" data-permissions="">Select Next Tab</menu-item>
-      <menu-item data-command="selectRelatedTabs" data-permissions="tabGroups tabs">Select Related Tabs</menu-item>
-      <menu-item data-command="selectTabsInGroup" data-permissions="">Select Tabs In Group</menu-item>
-      <menu-item data-command="selectAllTabs" data-permissions="">Select All Tabs</menu-item>
-      <menu-item data-command="selectRightTabs" data-permissions="">Select Tabs to the Right</menu-item>
-      <menu-item data-command="moveTabSelectionFaceBackward" data-permissions="">Move Tab Selection Face Backward</menu-item>
-      <menu-item data-command="moveTabSelectionFaceForward" data-permissions="">Move Tab Selection Face Forward</menu-item>
-      <hr>
-      <!-- Bookmarks -->
-      <menu-item data-command="bookmarkTab" data-permissions="bookmarks notifications tabs">Bookmark Tab</menu-item>
-      <menu-item data-command="bookmarkSession" data-permissions="bookmarks notifications tabGroups tabs">Bookmark Session</menu-item>
-      <hr>
-      <!-- Reading list -->
-      <menu-item data-command="addTabToReadingList" data-permissions="notifications readingList tabs">Read Later</menu-item>
-      <hr>
-      <!-- Folders -->
-      <menu-item data-command="openDownloadsFolder" data-permissions="downloads">Open Downloads Folder</menu-item>
-      <hr>
-      <!-- Chrome URLs -->
-      <menu-item data-command="openHistoryPage" data-permissions="activeTab tabs">History</menu-item>
-      <menu-item data-command="openSyncedTabsPage" data-permissions="activeTab tabs">Synced Tabs</menu-item>
-      <menu-item data-command="openClearBrowserDataPage" data-permissions="activeTab tabs">Clear Browser Data</menu-item>
-      <menu-item data-command="openDownloadsPage" data-permissions="activeTab tabs">Downloads</menu-item>
-      <menu-item data-command="openBookmarksPage" data-permissions="activeTab tabs">Bookmarks</menu-item>
-      <menu-item data-command="openSettingsPage" data-permissions="activeTab tabs">Settings</menu-item>
-      <menu-item data-command="openPasswordsPage" data-permissions="activeTab tabs">Password Manager</menu-item>
-      <menu-item data-command="openPaymentsPage" data-permissions="activeTab tabs">Payment Methods</menu-item>
-      <menu-item data-command="openAddressesPage" data-permissions="activeTab tabs">Addresses and More</menu-item>
-      <menu-item data-command="openSearchEnginesPage" data-permissions="activeTab tabs">Search Engines</menu-item>
-      <menu-item data-command="openExtensionsPage" data-permissions="activeTab tabs">Extensions</menu-item>
-      <menu-item data-command="openExtensionShortcutsPage" data-permissions="activeTab tabs">Extension Shortcuts</menu-item>
-      <menu-item data-command="openExperimentsPage" data-permissions="activeTab tabs">Experiments</menu-item>
-      <menu-item data-command="openAboutChromePage" data-permissions="activeTab tabs">About Chrome</menu-item>
-      <menu-item data-command="openAboutChromeVersionPage" data-permissions="activeTab tabs">About Chrome Version</menu-item>
-      <menu-item data-command="openWhatsNewPage" data-permissions="activeTab tabs">What’s New</menu-item>
-    </custom-menu>
+    <header>
+      <input id="palette-input" placeholder="Search">
+    </header>
+    <main>
+      <custom-menu id="palette-menu" hidden>
+        <span slot="name">Palette Results</span>
+      </custom-menu>
+      <custom-menu id="menu-commands">
+        <!-- Shortcuts -->
+        <menu-item data-command="openShortcutsManual" data-permissions="activeTab tabs">Documentation</menu-item>
+        <menu-item data-command="openShortcutsOptionsPage" data-permissions="">Options</menu-item>
+        <menu-item data-command="openCommandPalette" data-permissions="">Command Palette</menu-item>
+        <menu-item data-command="closePopup" data-permissions="">Close Popup</menu-item>
+        <hr>
+        <!-- Navigation -->
+        <menu-item data-command="goBack" data-permissions="webNavigation">Back</menu-item>
+        <menu-item data-command="goForward" data-permissions="webNavigation">Forward</menu-item>
+        <menu-item data-command="reloadTab" data-permissions="">Reload Tab</menu-item>
+        <menu-item data-command="reloadTabWithoutCache" data-permissions="">Hard Reload Tab</menu-item>
+        <menu-item data-command="goToNextPage" data-permissions="activeTab scripting webNavigation">Next Page</menu-item>
+        <menu-item data-command="goToPreviousPage" data-permissions="activeTab scripting webNavigation">Previous Page</menu-item>
+        <menu-item data-command="removeURLParams" data-permissions="activeTab webNavigation">Remove URL Params</menu-item>
+        <menu-item data-command="goUp" data-permissions="activeTab webNavigation">Go Up</menu-item>
+        <menu-item data-command="goToRoot" data-permissions="activeTab webNavigation">Go To Root</menu-item>
+        <hr>
+        <!-- Accessibility -->
+        <menu-item data-command="focusTextInput" data-permissions="activeTab scripting">Focus Text Input</menu-item>
+        <menu-item data-command="focusMediaPlayer" data-permissions="activeTab scripting">Focus Media Player</menu-item>
+        <menu-item data-command="blurElement" data-permissions="activeTab scripting">Blur Element</menu-item>
+        <hr>
+        <!-- Clipboard -->
+        <menu-item data-command="copyURL" data-permissions="activeTab clipboardWrite notifications scripting tabs">Copy URL</menu-item>
+        <menu-item data-command="copyTitle" data-permissions="activeTab clipboardWrite notifications scripting tabs">Copy Title</menu-item>
+        <menu-item data-command="copyTitleAndURL" data-permissions="activeTab clipboardWrite notifications scripting tabs">Copy Title and URL</menu-item>
+        <hr>
+        <!-- Save pages -->
+        <menu-item data-command="savePage" data-permissions="downloads tabs">Save Page</menu-item>
+        <menu-item data-command="savePageAsMHTML" data-permissions="downloads pageCapture tabs">Save Page as MHTML</menu-item>
+        <hr>
+        <!-- Web search -->
+        <menu-item data-command="openWebSearchForSelectedText" data-permissions="activeTab scripting search tabGroups webNavigation">Web Search for Selected Text</menu-item>
+        <hr>
+        <!-- Scroll -->
+        <menu-item data-command="scrollDown" data-permissions="activeTab scripting">Scroll Down</menu-item>
+        <menu-item data-command="scrollUp" data-permissions="activeTab scripting">Scroll Up</menu-item>
+        <menu-item data-command="scrollLeft" data-permissions="activeTab scripting">Scroll Left</menu-item>
+        <menu-item data-command="scrollRight" data-permissions="activeTab scripting">Scroll Right</menu-item>
+        <menu-item data-command="scrollPageDown" data-permissions="activeTab scripting">Scroll Page Down</menu-item>
+        <menu-item data-command="scrollPageUp" data-permissions="activeTab scripting">Scroll Page Up</menu-item>
+        <menu-item data-command="scrollHalfPageDown" data-permissions="activeTab scripting">Scroll Half Page Down</menu-item>
+        <menu-item data-command="scrollHalfPageUp" data-permissions="activeTab scripting">Scroll Half Page Up</menu-item>
+        <menu-item data-command="scrollToTop" data-permissions="activeTab scripting">Scroll To Top</menu-item>
+        <menu-item data-command="scrollToBottom" data-permissions="activeTab scripting">Scroll To Bottom</menu-item>
+        <hr>
+        <!-- Zoom -->
+        <menu-item data-command="zoomIn" data-permissions="">Zoom In</menu-item>
+        <menu-item data-command="zoomOut" data-permissions="">Zoom Out</menu-item>
+        <menu-item data-command="zoomReset" data-permissions="">Zoom Reset</menu-item>
+        <menu-item data-command="toggleFullScreen" data-permissions="">Toggle Full Screen</menu-item>
+        <hr>
+        <!-- Create tabs -->
+        <menu-item data-command="openNewTab" data-permissions="">New Tab</menu-item>
+        <menu-item data-command="openNewTabRight" data-permissions="tabGroups">New Tab to the Right</menu-item>
+        <menu-item data-command="openNewWindow" data-permissions="">New Window</menu-item>
+        <menu-item data-command="openNewIncognitoWindow" data-permissions="">New Incognito Window</menu-item>
+        <hr>
+        <!-- Close tabs -->
+        <menu-item data-command="closeTab" data-permissions="">Close Tab</menu-item>
+        <menu-item data-command="closeOtherTabs" data-permissions="">Close Other Tabs</menu-item>
+        <menu-item data-command="closeRightTabs" data-permissions="">Close Tabs to the Right</menu-item>
+        <menu-item data-command="closeWindow" data-permissions="">Close Window</menu-item>
+        <menu-item data-command="restoreTab" data-permissions="sessions">Restore Tab</menu-item>
+        <hr>
+        <!-- Tab state -->
+        <menu-item data-command="duplicateTab" data-permissions="">Duplicate Tab</menu-item>
+        <menu-item data-command="togglePinTab" data-permissions="">Pin/Unpin Tab</menu-item>
+        <menu-item data-command="toggleGroupTab" data-permissions="tabGroups">Group/Ungroup Tab</menu-item>
+        <menu-item data-command="toggleCollapseTabGroups" data-permissions="tabGroups">Collapse/Uncollapse Tab Groups</menu-item>
+        <menu-item data-command="toggleMuteTab" data-permissions="">Mute/Unmute Tab</menu-item>
+        <menu-item data-command="discardTab" data-permissions="">Discard Tab</menu-item>
+        <hr>
+        <!-- Organize tabs -->
+        <menu-item data-command="sortTabsByURL" data-permissions="tabs">Sort Tabs by URL</menu-item>
+        <menu-item data-command="groupTabsByDomain" data-permissions="tabGroups tabs">Group Tabs by Domain</menu-item>
+        <hr>
+        <!-- Manage tab groups -->
+        <menu-item data-command="renameTabGroup" data-permissions="activeTab scripting tabGroups">Rename Tab Group</menu-item>
+        <menu-item data-command="cycleTabGroupColorForward" data-permissions="tabGroups">Next Tab Group Color</menu-item>
+        <menu-item data-command="cycleTabGroupColorBackward" data-permissions="tabGroups">Previous Tab Group Color</menu-item>
+        <hr>
+        <!-- Switch tabs -->
+        <menu-item data-command="activateAudibleTab" data-permissions="">Activate Audible Tab</menu-item>
+        <menu-item data-command="activateNextTab" data-permissions="tabGroups">Next Tab</menu-item>
+        <menu-item data-command="activatePreviousTab" data-permissions="tabGroups">Previous Tab</menu-item>
+        <menu-item data-command="activateFirstTab" data-permissions="tabGroups">First Tab</menu-item>
+        <menu-item data-command="activateSecondTab" data-permissions="tabGroups">Second Tab</menu-item>
+        <menu-item data-command="activateThirdTab" data-permissions="tabGroups">Third Tab</menu-item>
+        <menu-item data-command="activateFourthTab" data-permissions="tabGroups">Fourth Tab</menu-item>
+        <menu-item data-command="activateFifthTab" data-permissions="tabGroups">Fifth Tab</menu-item>
+        <menu-item data-command="activateSixthTab" data-permissions="tabGroups">Sixth Tab</menu-item>
+        <menu-item data-command="activateSeventhTab" data-permissions="tabGroups">Seventh Tab</menu-item>
+        <menu-item data-command="activateEighthTab" data-permissions="tabGroups">Eighth Tab</menu-item>
+        <menu-item data-command="activateLastTab" data-permissions="tabGroups">Last Tab</menu-item>
+        <menu-item data-command="activateLastActiveTab" data-permissions="">Last Active Tab</menu-item>
+        <menu-item data-command="activateSecondLastActiveTab" data-permissions="">Second Last Active Tab</menu-item>
+        <menu-item data-command="activateThirdLastActiveTab" data-permissions="">Third Last Active Tab</menu-item>
+        <menu-item data-command="activateFourthLastActiveTab" data-permissions="">Fourth Last Active Tab</menu-item>
+        <menu-item data-command="activateFifthLastActiveTab" data-permissions="">Fifth Last Active Tab</menu-item>
+        <menu-item data-command="activateSixthLastActiveTab" data-permissions="">Sixth Last Active Tab</menu-item>
+        <menu-item data-command="activateSeventhLastActiveTab" data-permissions="">Seventh Last Active Tab</menu-item>
+        <menu-item data-command="activateEighthLastActiveTab" data-permissions="">Eighth Last Active Tab</menu-item>
+        <menu-item data-command="activateNinthLastActiveTab" data-permissions="">Ninth Last Active Tab</menu-item>
+        <menu-item data-command="activateNextWindow" data-permissions="">Next Window</menu-item>
+        <menu-item data-command="activatePreviousWindow" data-permissions="">Previous Window</menu-item>
+        <hr>
+        <!-- Move tabs -->
+        <menu-item data-command="grabTab" data-permissions="tabGroups">Grab Tab</menu-item>
+        <menu-item data-command="moveTabLeft" data-permissions="tabGroups">Move Tab Left</menu-item>
+        <menu-item data-command="moveTabRight" data-permissions="tabGroups">Move Tab Right</menu-item>
+        <menu-item data-command="moveTabFirst" data-permissions="tabGroups">Move Tab First</menu-item>
+        <menu-item data-command="moveTabLast" data-permissions="tabGroups">Move Tab Last</menu-item>
+        <menu-item data-command="moveTabNewWindow" data-permissions="tabGroups">Move Tab New Window</menu-item>
+        <menu-item data-command="moveTabPreviousWindow" data-permissions="tabGroups">Move Tab Previous Window</menu-item>
+        <hr>
+        <!-- Select tabs -->
+        <menu-item data-command="selectActiveTab" data-permissions="">Select Active Tab</menu-item>
+        <menu-item data-command="selectPreviousTab" data-permissions="">Select Previous Tab</menu-item>
+        <menu-item data-command="selectNextTab" data-permissions="">Select Next Tab</menu-item>
+        <menu-item data-command="selectRelatedTabs" data-permissions="tabGroups tabs">Select Related Tabs</menu-item>
+        <menu-item data-command="selectTabsInGroup" data-permissions="">Select Tabs In Group</menu-item>
+        <menu-item data-command="selectAllTabs" data-permissions="">Select All Tabs</menu-item>
+        <menu-item data-command="selectRightTabs" data-permissions="">Select Tabs to the Right</menu-item>
+        <menu-item data-command="moveTabSelectionFaceBackward" data-permissions="">Move Tab Selection Face Backward</menu-item>
+        <menu-item data-command="moveTabSelectionFaceForward" data-permissions="">Move Tab Selection Face Forward</menu-item>
+        <hr>
+        <!-- Bookmarks -->
+        <menu-item data-command="bookmarkTab" data-permissions="bookmarks notifications tabs">Bookmark Tab</menu-item>
+        <menu-item data-command="bookmarkSession" data-permissions="bookmarks notifications tabGroups tabs">Bookmark Session</menu-item>
+        <hr>
+        <!-- Reading list -->
+        <menu-item data-command="addTabToReadingList" data-permissions="notifications readingList tabs">Read Later</menu-item>
+        <hr>
+        <!-- Folders -->
+        <menu-item data-command="openDownloadsFolder" data-permissions="downloads">Open Downloads Folder</menu-item>
+        <hr>
+        <!-- Chrome URLs -->
+        <menu-item data-command="openHistoryPage" data-permissions="activeTab tabs">History</menu-item>
+        <menu-item data-command="openSyncedTabsPage" data-permissions="activeTab tabs">Synced Tabs</menu-item>
+        <menu-item data-command="openClearBrowserDataPage" data-permissions="activeTab tabs">Clear Browser Data</menu-item>
+        <menu-item data-command="openDownloadsPage" data-permissions="activeTab tabs">Downloads</menu-item>
+        <menu-item data-command="openBookmarksPage" data-permissions="activeTab tabs">Bookmarks</menu-item>
+        <menu-item data-command="openSettingsPage" data-permissions="activeTab tabs">Settings</menu-item>
+        <menu-item data-command="openPasswordsPage" data-permissions="activeTab tabs">Password Manager</menu-item>
+        <menu-item data-command="openPaymentsPage" data-permissions="activeTab tabs">Payment Methods</menu-item>
+        <menu-item data-command="openAddressesPage" data-permissions="activeTab tabs">Addresses and More</menu-item>
+        <menu-item data-command="openSearchEnginesPage" data-permissions="activeTab tabs">Search Engines</menu-item>
+        <menu-item data-command="openExtensionsPage" data-permissions="activeTab tabs">Extensions</menu-item>
+        <menu-item data-command="openExtensionShortcutsPage" data-permissions="activeTab tabs">Extension Shortcuts</menu-item>
+        <menu-item data-command="openExperimentsPage" data-permissions="activeTab tabs">Experiments</menu-item>
+        <menu-item data-command="openAboutChromePage" data-permissions="activeTab tabs">About Chrome</menu-item>
+        <menu-item data-command="openAboutChromeVersionPage" data-permissions="activeTab tabs">About Chrome Version</menu-item>
+        <menu-item data-command="openWhatsNewPage" data-permissions="activeTab tabs">What’s New</menu-item>
+      </custom-menu>
+    </main>
     <script type="module" src="popup.js"></script>
   </body>
 </html>

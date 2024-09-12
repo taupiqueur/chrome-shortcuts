@@ -89,14 +89,37 @@
 
 html {
   scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  scroll-margin-top: 3rem;
+  scroll-padding-top: 3rem;
 }
 
 body {
   min-width: 300px;
+  max-height: 600px;
   background: var(--background-color);
   color: var(--foreground-color);
   font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  height: 3rem;
+  border-bottom: 1px solid var(--separator-color);
+  display: flex;
+  flex-direction: column;
+}
+
+header:has(+ main[data-scroll-top="0"]) {
+  border-bottom: none;
+}
+
+main {
+  overflow: auto;
+  scrollbar-width: thin;
   display: flex;
   flex-direction: column;
 }
@@ -167,6 +190,7 @@ menu-item::part(button) {
   display: flex;
   padding: 0.3rem 0.9rem;
   border-radius: 0.3rem;
+  word-break: break-word;
 }
 
 menu-item:is(:hover, :focus, :active)::part(button) {
@@ -185,6 +209,11 @@ menu-item::part(shortcuts) {
 
 menu-item:is(:hover, :focus, :active)::part(shortcuts) {
   color: var(--selected-text-color);
+}
+
+menu-item.active {
+  scroll-margin-top: 3rem;
+  scroll-padding-top: 3rem;
 }
 
 menu-item.active::part(button) {
