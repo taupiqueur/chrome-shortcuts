@@ -7,6 +7,7 @@
  * @property {HTMLElement} paletteMenuElement
  * @property {HTMLElement} menuElement
  * @property {HTMLElement} menuItemElements
+ * @property {HTMLElement} mainElement
  */
 
 import * as paletteActions from './actions.js'
@@ -18,6 +19,8 @@ const PALETTE_ACTIONS = [
   'selectNextItem',
   'selectPreviousItem',
   'activateSelectedItem',
+  'movePageDown',
+  'movePageUp',
   'closeCommandPalette',
 ]
 
@@ -145,6 +148,7 @@ function onKeyDown(keyboardEvent, cx) {
     const activeMenuItemElement = cx.paletteMenuElement.querySelector('menu-item.active')
     const actionName = inputKeymap.get(keyboardEvent)
     paletteActions[actionName]({
+      mainElement: cx.mainElement,
       inputElement: cx.paletteInputElement,
       menuElement: cx.menuElement,
       activeElement: activeMenuItemElement,

@@ -38,6 +38,7 @@ port.onMessage.addListener((message) => {
         paletteMenuElement,
         menuElement,
         menuItemElements,
+        mainElement,
       })
       break
 

@@ -2,12 +2,15 @@
 
 /**
  * @typedef {object} PaletteActionContext
+ * @property {HTMLElement} mainElement
  * @property {HTMLElement} inputElement
  * @property {HTMLElement} menuElement
  * @property {HTMLElement} activeElement
  */
 
 import MenuItem from '../components/MenuItem.js'
+
+const scroller = new Scroller
 
 /**
  * Selects the next item.
@@ -61,6 +64,34 @@ export function activateSelectedItem(cx) {
   if (cx.activeElement instanceof MenuItem) {
     cx.activeElement.click()
   }
+}
+
+/**
+ * Moves page down.
+ *
+ * @param {PaletteActionContext} cx
+ * @returns {void}
+ */
+export function movePageDown(cx) {
+  scroller.scrollBy(
+    cx.mainElement,
+    0,
+    window.innerHeight * 0.9
+  )
+}
+
+/**
+ * Moves page up.
+ *
+ * @param {PaletteActionContext} cx
+ * @returns {void}
+ */
+export function movePageUp(cx) {
+  scroller.scrollBy(
+    cx.mainElement,
+    0,
+    window.innerHeight * -0.9
+  )
 }
 
 /**

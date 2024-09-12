@@ -717,6 +717,24 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
           "code": "Enter"
         }
       ],
+      "movePageDown": [
+        {
+          "code": "PageDown"
+        },
+        {
+          "ctrlKey": true,
+          "code": "KeyD"
+        }
+      ],
+      "movePageUp": [
+        {
+          "code": "PageUp"
+        },
+        {
+          "ctrlKey": true,
+          "code": "KeyU"
+        }
+      ],
       "closeCommandPalette": [
         {
           "code": "Escape"
@@ -788,6 +806,8 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 `selectNextItem` | Select the next item | | | `ArrowDown`, `Control+KeyN`, `Tab`
 `selectPreviousItem` | Select the previous item | | | `ArrowUp`, `Control+KeyP`, `Shift+Tab`
 `activateSelectedItem` | Activate selected item | | | `Enter`
+`movePageDown` | Move page down | | | `PageDown`, `Control+KeyD`
+`movePageUp` | Move page up | | | `PageUp`, `Control+KeyU`
 `closeCommandPalette` | Close the command palette | | | `Escape`, `Control+KeyC`
 
 ### Navigation

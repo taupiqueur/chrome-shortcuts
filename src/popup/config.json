@@ -673,6 +673,24 @@
         "code": "Enter"
       }
     ],
+    "movePageDown": [
+      {
+        "code": "PageDown"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyD"
+      }
+    ],
+    "movePageUp": [
+      {
+        "code": "PageUp"
+      },
+      {
+        "ctrlKey": true,
+        "code": "KeyU"
+      }
+    ],
     "closeCommandPalette": [
       {
         "code": "Escape"
