@@ -32,6 +32,8 @@ class MenuItem extends HTMLElement {
     this.shadowRoot.append(
       templateElement.content.cloneNode(true)
     )
+
+    this.slotElements = this.shadowRoot.querySelectorAll('slot')
   }
 
   connectedCallback() {
@@ -41,13 +43,19 @@ class MenuItem extends HTMLElement {
      * @type {number}
      */
     this.tabIndex = 0
+  }
 
-    /**
-     * The menu item description.
-     *
-     * @type {string}
-     */
-    this.description = this.textContent
+  /**
+   * The menu item description.
+   *
+   * @type {string}
+   */
+  get description() {
+    return this.slotElements[0]
+      .assignedNodes()
+      .reduce((textContent, node) =>
+        textContent.concat(node.textContent), ''
+      )
   }
 
   /**
