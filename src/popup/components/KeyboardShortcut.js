@@ -41,10 +41,12 @@ class KeyboardShortcut extends HTMLElement {
     this.shadowRoot.append(
       templateElement.content.cloneNode(true)
     )
+
+    this.slotElements = this.shadowRoot.querySelectorAll('slot')
   }
 
   connectedCallback() {
-    for (const slotElement of this.shadowRoot.querySelectorAll('slot')) {
+    for (const slotElement of this.slotElements) {
       for (const slottedElement of slotElement.assignedElements()) {
         slottedElement.remove()
       }
