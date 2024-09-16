@@ -1031,6 +1031,62 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openAboutChromeVersionPage` | Open the “About Chrome version” page | | |
 `openWhatsNewPage` | Open the “What’s new in Chrome” page | | |
 
+### Open tab suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(openTabSuggestion)` | Activate suggestion in the tab strip | | | `Enter`
+
+### Recently closed tab suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(closedTabSuggestion)` | Reopen suggestion in a new tab | | | `Enter`
+
+### Synced tab suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(syncedTabSuggestion)` | Open suggestion in a new tab | | | `Enter`
+
+### Bookmark suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(bookmarkSuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
+
+### Reading list suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(readingListSuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
+
+### Recently visited page suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(historySuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
+
+### Download suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(downloadSuggestion)` | Show suggestion in its folder in a file manager | | | `Enter`
+
 For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboard shortcuts].
 
 [Chrome keyboard shortcuts]: https://support.google.com/chrome/answer/157179

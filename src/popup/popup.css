@@ -60,6 +60,8 @@
     --tertiary-label-color: #00000042;
     --disabled-control-text-color: #00000040;
     --separator-color: #0000001a;
+    --tag-pill-background-color: #e8f0fe66;
+    --tag-pill-text-color: #174ea6;
   }
 }
 
@@ -79,6 +81,8 @@
     --tertiary-label-color: #ffffff40;
     --disabled-control-text-color: #ffffff40;
     --separator-color: #ffffff1a;
+    --tag-pill-background-color: #2d333b;
+    --tag-pill-text-color: #c5d1de;
   }
 }
 
@@ -241,4 +245,24 @@ menu-item[disabled]:not(:hover, :focus, :active)::part(button) {
 
 keyboard-shortcut + keyboard-shortcut::before {
   content: ",";
+}
+
+#menu-commands menu-item:has(suggestion-item) {
+  display: none;
+}
+
+suggestion-item::part(label) {
+  padding: 0.1em 0.2em;
+  border-radius: 0.3em;
+  background-color: var(--tag-pill-background-color);
+  color: var(--tag-pill-text-color);
+}
+
+suggestion-item::part(label)::after {
+  content: " · ";
+}
+
+suggestion-item::part(domain) {
+  display: block;
+  color: var(--tertiary-label-color);
 }

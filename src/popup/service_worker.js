@@ -8,16 +8,29 @@
 // Long-lived connections: https://developer.chrome.com/docs/extensions/develop/concepts/messaging#connect
 
 /**
- * @typedef {CommandMessage} Message
+ * @typedef {CommandMessage | SuggestionMessage | SuggestionSyncRequestMessage} Message
  *
  * @typedef {object} CommandMessage
  * @property {"command"} type
  * @property {string} commandName
  * @property {boolean} passingMode
  * @property {boolean} stickyWindow
+ *
+ * @typedef {object} SuggestionMessage
+ * @property {"suggestion"} type
+ * @property {Suggestion} suggestion
+ *
+ * @typedef {object} SuggestionSyncRequestMessage
+ * @property {"suggestionSyncRequest"} type
  */
 
 import * as commands from '../commands.js'
+
+import {
+  SuggestionType,
+  getSuggestions,
+  activateSuggestion,
+} from './suggestion_engine/suggestion_engine.js'
 
 const KEEP_ALIVE_INTERVAL = 29000
 
@@ -181,6 +194,14 @@ function onMessage(message, port, cx) {
       onCommandMessage(message, port, cx)
       break
 
+    case 'suggestion':
+      onSuggestionMessage(message, port, cx)
+      break
+
+    case 'suggestionSyncRequest':
+      onSuggestionSyncRequestMessage(message, port, cx)
+      break
+
     default:
       port.postMessage({
         type: 'error',
@@ -282,6 +303,54 @@ async function closePopup(port) {
       command: 'closePopup'
     })
   })
+}
+
+/**
+ * Handles a suggestion message.
+ *
+ * @param {SuggestionMessage} message
+ * @param {chrome.runtime.Port} port
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+async function onSuggestionMessage(message, port, cx) {
+  const tabs = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true
+  })
+
+  if (tabs.length > 0) {
+    activateSuggestion(message.suggestion, {
+      tab: tabs[0]
+    })
+  }
+}
+
+/**
+ * Handles a suggestion syncing request message.
+ *
+ * @param {SuggestionSyncRequestMessage} message
+ * @param {chrome.runtime.Port} port
+ * @param {Context} cx
+ * @returns {Promise<void>}
+ */
+async function onSuggestionSyncRequestMessage(message, port, cx) {
+  const tabs = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true
+  })
+
+  if (tabs.length > 0) {
+    const suggestions = await getSuggestions(SuggestionType.Combined, '', {
+      tab: tabs[0],
+      recentTabsManager: cx.recentTabsManager
+    })
+
+    port.postMessage({
+      type: 'suggestionSync',
+      suggestions
+    })
+  }
 }
 
 export default { onInstalled, onConnect }

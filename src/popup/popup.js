@@ -5,12 +5,13 @@ import commandPalette from './command_palette/command_palette.js'
 
 import CustomMenu from './components/CustomMenu.js'
 import MenuItem from './components/MenuItem.js'
+import SuggestionItem from './components/SuggestionItem.js'
 
 const mainElement = document.querySelector('main')
 const paletteInputElement = document.getElementById('palette-input')
 const paletteMenuElement = document.getElementById('palette-menu')
 const menuElement = document.getElementById('menu-commands')
-const menuItemElements = menuElement.querySelectorAll('menu-item')
+const menuItemElements = menuElement.getElementsByTagName('menu-item')
 const scriptingMenuItemElements = menuElement.querySelectorAll('menu-item[data-permissions~="scripting"]')
 
 const menuCommands = new Map(
@@ -33,6 +34,7 @@ port.onMessage.addListener((message) => {
         isEnabled: message.isEnabled,
       })
       commandPalette.render({
+        port,
         paletteBindings: message.paletteBindings,
         paletteInputElement,
         paletteMenuElement,
@@ -44,6 +46,10 @@ port.onMessage.addListener((message) => {
 
     case 'stateSync':
       onStateSync(message.command)
+      break
+
+    case 'suggestionSync':
+      onSuggestionSync(message.suggestions)
       break
 
     case 'command':
@@ -114,6 +120,29 @@ function onStateSync(commandName) {
 }
 
 /**
+ * Handles suggestion syncing.
+ *
+ * @param {Suggestion[]} suggestions
+ * @returns {void}
+ */
+function onSuggestionSync(suggestions) {
+  const menuItemElements = suggestions.map((suggestion) => {
+    const menuItemElement = document.createElement('menu-item')
+    const suggestionElement = document.createElement('suggestion-item')
+    Object.assign(
+      suggestionElement.dataset,
+      suggestion
+    )
+    menuItemElement.addEventListener('click', () => {
+      onSuggestionActivated(suggestion)
+    })
+    menuItemElement.append(suggestionElement)
+    return menuItemElement
+  })
+  menuElement.append(...menuItemElements)
+}
+
+/**
  * Handles a single command.
  *
  * @param {string} commandName
@@ -124,6 +153,19 @@ function onCommand(commandName) {
     port,
     popupWindow: window,
     paletteInputElement,
+  })
+}
+
+/**
+ * Handles suggestion activation.
+ *
+ * @param {Suggestion} suggestion
+ * @returns {void}
+ */
+function onSuggestionActivated(suggestion) {
+  port.postMessage({
+    type: 'suggestion',
+    suggestion
   })
 }
 

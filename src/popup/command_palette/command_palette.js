@@ -2,6 +2,7 @@
 
 /**
  * @typedef {object} PaletteRenderContext
+ * @property {chrome.runtime.Port} port
  * @property {object} paletteBindings
  * @property {HTMLElement} paletteInputElement
  * @property {HTMLElement} paletteMenuElement
@@ -24,6 +25,9 @@ const PALETTE_ACTIONS = [
   'closeCommandPalette',
 ]
 
+const INPUT_DEBOUNCE_DELAY = 50
+const MAX_CANDIDATE_RESULTS = 25
+
 /**
  * @type {Keymap<KeyboardEvent, string>}
  */
@@ -42,9 +46,15 @@ function render(cx) {
     }
   }
 
-  cx.paletteInputElement.addEventListener('input', (inputEvent) => {
-    onInput(inputEvent, cx)
+  cx.paletteInputElement.addEventListener('focus', (focusEvent) => {
+    onFocus(focusEvent, cx)
+  }, {
+    once: true
   })
+
+  cx.paletteInputElement.addEventListener('input', debounce((inputEvent) => {
+    onInput(inputEvent, cx)
+  }, INPUT_DEBOUNCE_DELAY))
 
   cx.paletteMenuElement.addEventListener('pointerover', (pointerEvent) => {
     onPointerOver(pointerEvent, cx)
@@ -52,6 +62,19 @@ function render(cx) {
 
   cx.paletteInputElement.addEventListener('keydown', (keyboardEvent) => {
     onKeyDown(keyboardEvent, cx)
+  })
+}
+
+/**
+ * Handles focus event, when the command palette has been activated.
+ *
+ * @param {FocusEvent} focusEvent
+ * @param {PaletteRenderContext} cx
+ * @returns {void}
+ */
+function onFocus(focusEvent, cx) {
+  cx.port.postMessage({
+    type: 'suggestionSyncRequest'
   })
 }
 
@@ -84,9 +107,12 @@ function updateMatches(query, candidates, cx) {
     cx.paletteMenuElement.clearMenuItems()
   } else {
     const string_matcher = new StringMatcher(query)
-    const filteredCandidates = candidates.filter((candidate) =>
-      string_matcher.matches(candidate.string)
-    )
+    const filteredCandidates = Iterator.from(candidates)
+      .filter((candidate) =>
+        string_matcher.matches(candidate.string)
+      )
+      .take(MAX_CANDIDATE_RESULTS)
+      .toArray()
     if (filteredCandidates.length > 0) {
       const menuItemElements = filteredCandidates.map((candidate) => {
         const commandElement = cx.menuItemElements[candidate.id]
@@ -129,10 +155,14 @@ function updateMatches(query, candidates, cx) {
  * @returns {void}
  */
 function onPointerOver(pointerEvent, cx) {
-  if (pointerEvent.target instanceof MenuItem) {
+  const menuItemElement = pointerEvent.target.closest('menu-item')
+  if (
+    menuItemElement &&
+    !menuItemElement.classList.contains('active')
+  ) {
     const activeMenuItemElement = cx.paletteMenuElement.querySelector('menu-item.active')
     activeMenuItemElement.classList.remove('active')
-    pointerEvent.target.classList.add('active')
+    menuItemElement.classList.add('active')
   }
 }
 
@@ -154,6 +184,23 @@ function onKeyDown(keyboardEvent, cx) {
       activeElement: activeMenuItemElement,
     })
     keyboardEvent.preventDefault()
+  }
+}
+
+/**
+ * Debounces a function, delaying its execution until after a specified delay.
+ *
+ * @param {function} callback
+ * @param {number} delay
+ * @returns {function}
+ */
+function debounce(callback, delay) {
+  let timeoutId
+  return (...params) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      callback(...params)
+    }, delay)
   }
 }
 
