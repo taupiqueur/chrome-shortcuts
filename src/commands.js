@@ -1401,7 +1401,7 @@ export async function cycleTabGroupColorBackward(cx) {
 // Switch tabs -----------------------------------------------------------------
 
 /**
- * Activates the first audible tab.
+ * Cycles through audible tabs.
  *
  * @param {Context} cx
  * @returns {Promise<void>}
@@ -1412,7 +1412,16 @@ export async function activateAudibleTab(cx) {
   })
 
   if (tabs.length > 0) {
-    const tabInfo = tabs[0]
+    const tabIndex = tabs.findIndex(
+      (tab) => tab.id === cx.tab.id
+    )
+
+    const tabInfo = tabs[
+      modulo(
+        tabIndex + 1,
+        tabs.length
+      )
+    ]
 
     await chrome.tabs.update(tabInfo.id, {
       active: true

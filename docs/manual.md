@@ -930,7 +930,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`activateAudibleTab` | Activate the first audible tab | | | `Shift+Digit3`
+`activateAudibleTab` | Cycle through audible tabs | | | `Shift+Digit3`
 `activateNextTab` | Activate the next open tab | `Control+Tab`, `Control+PageDown` | `Control+Tab`, `Option+Command+ArrowRight` | `Tab`, `Alt+KeyK`
 `activatePreviousTab` | Activate the previous open tab | `Control+Shift+Tab`, `Control+PageUp` | `Control+Shift+Tab`, `Option+Command+ArrowLeft` | `Shift+Tab`, `Alt+KeyJ`
 `activateFirstTab` | Activate the leftmost open tab | `Control+1` | `Command+1` | `Digit1`

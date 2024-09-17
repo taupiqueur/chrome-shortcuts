@@ -213,7 +213,7 @@
       "description": "Manage tab groups · Cycle backward through tab group colors"
     },
     "053.activateAudibleTab": {
-      "description": "Switch tabs · Activate the first audible tab"
+      "description": "Switch tabs · Cycle through audible tabs"
     },
     "054.activateNextTab": {
       "description": "Switch tabs · Activate the next open tab"
