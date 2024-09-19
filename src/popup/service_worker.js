@@ -8,6 +8,12 @@
 // Long-lived connections: https://developer.chrome.com/docs/extensions/develop/concepts/messaging#connect
 
 /**
+ * @typedef {object} PopupContext
+ * @property {RecentTabsManager} recentTabsManager
+ * @property {SuggestionEngine} suggestionEngine
+ */
+
+/**
  * @typedef {CommandMessage | SuggestionMessage | SuggestionSyncRequestMessage} Message
  *
  * @typedef {object} CommandMessage
@@ -25,12 +31,6 @@
  */
 
 import * as commands from '../commands.js'
-
-import {
-  SuggestionType,
-  getSuggestions,
-  activateSuggestion,
-} from './suggestion_engine/suggestion_engine.js'
 
 const KEEP_ALIVE_INTERVAL = 29000
 
@@ -120,7 +120,7 @@ async function onUpdate(previousVersion) {
  * Handles a new connection when the popup shows up.
  *
  * @param {chrome.runtime.Port} port
- * @param {Context} cx
+ * @param {PopupContext} cx
  * @returns {void}
  */
 function onConnect(port, cx) {
@@ -185,7 +185,7 @@ async function onPopupScriptAdded(port) {
  *
  * @param {Message} message
  * @param {chrome.runtime.Port} port
- * @param {Context} cx
+ * @param {PopupContext} cx
  * @returns {void}
  */
 function onMessage(message, port, cx) {
@@ -229,7 +229,7 @@ function onMessage(message, port, cx) {
  *
  * @param {CommandMessage} message
  * @param {chrome.runtime.Port} port
- * @param {Context} cx
+ * @param {PopupContext} cx
  * @returns {Promise<void>}
  */
 async function onCommandMessage(message, port, cx) {
@@ -241,15 +241,13 @@ async function onCommandMessage(message, port, cx) {
   })
 
   if (tabs.length > 0) {
-    const tabInfo = tabs[0]
-
     if (passingMode) {
       await closePopup(port)
     }
 
     await commands[commandName]({
-      tab: tabInfo,
-      ...cx
+      tab: tabs[0],
+      recentTabsManager: cx.recentTabsManager
     })
 
     if (
@@ -310,7 +308,7 @@ async function closePopup(port) {
  *
  * @param {SuggestionMessage} message
  * @param {chrome.runtime.Port} port
- * @param {Context} cx
+ * @param {PopupContext} cx
  * @returns {Promise<void>}
  */
 async function onSuggestionMessage(message, port, cx) {
@@ -320,9 +318,10 @@ async function onSuggestionMessage(message, port, cx) {
   })
 
   if (tabs.length > 0) {
-    activateSuggestion(message.suggestion, {
-      tab: tabs[0]
-    })
+    cx.suggestionEngine.activate(
+      message.suggestion,
+      tabs[0]
+    )
   }
 }
 
@@ -331,7 +330,7 @@ async function onSuggestionMessage(message, port, cx) {
  *
  * @param {SuggestionSyncRequestMessage} message
  * @param {chrome.runtime.Port} port
- * @param {Context} cx
+ * @param {PopupContext} cx
  * @returns {Promise<void>}
  */
 async function onSuggestionSyncRequestMessage(message, port, cx) {
@@ -341,9 +340,9 @@ async function onSuggestionSyncRequestMessage(message, port, cx) {
   })
 
   if (tabs.length > 0) {
-    const suggestions = await getSuggestions(SuggestionType.Combined, '', {
-      tab: tabs[0],
-      recentTabsManager: cx.recentTabsManager
+    const suggestions = await cx.suggestionEngine.search({
+      mode: 'combined',
+      query: ''
     })
 
     port.postMessage({

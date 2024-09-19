@@ -9,10 +9,15 @@ import popupWorker from './popup/service_worker.js'
 import optionsWorker from './options/service_worker.js'
 import manualWorker from './manual/service_worker.js'
 import RecentTabsManager from './recent_tabs_manager.js'
+import SuggestionEngine, { SuggestionType } from './suggestion_engine/suggestion_engine.js'
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 
 const recentTabsManager = new RecentTabsManager
+
+const suggestionEngine = new SuggestionEngine({
+  recentTabsManager
+})
 
 /**
  * Adds items to the browser’s context menu.
@@ -267,7 +272,8 @@ function onConnect(port) {
   switch (port.name) {
     case 'popup':
       popupWorker.onConnect(port, {
-        recentTabsManager
+        recentTabsManager,
+        suggestionEngine
       })
       break
 
