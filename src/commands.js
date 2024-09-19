@@ -9,7 +9,7 @@
 // Commands: https://developer.chrome.com/docs/extensions/reference/api/commands
 
 /**
- * @typedef {object} Context
+ * @typedef {object} CommandContext
  * @property {chrome.tabs.Tab} tab
  * @property {RecentTabsManager} recentTabsManager
  */
@@ -188,7 +188,7 @@ const sameGroup = compare(_groupId)
 /**
  * Opens Shortcuts manual.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openShortcutsManual(cx) {
@@ -199,7 +199,7 @@ export async function openShortcutsManual(cx) {
 /**
  * Opens Shortcuts “Options” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openShortcutsOptionsPage(cx) {
@@ -211,7 +211,7 @@ export async function openShortcutsOptionsPage(cx) {
 /**
  * Goes back to the previous page in tab’s history.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function goBack(cx) {
@@ -222,7 +222,7 @@ export async function goBack(cx) {
 /**
  * Goes forward to the next page in tab’s history.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function goForward(cx) {
@@ -233,7 +233,7 @@ export async function goForward(cx) {
 /**
  * Reloads selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function reloadTab(cx) {
@@ -252,7 +252,7 @@ export async function reloadTab(cx) {
 /**
  * Reloads selected tabs, ignoring cached content.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function reloadTabWithoutCache(cx) {
@@ -275,7 +275,7 @@ export async function reloadTabWithoutCache(cx) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#attr-next
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function goToNextPage(cx) {
@@ -294,7 +294,7 @@ export async function goToNextPage(cx) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#attr-prev
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function goToPreviousPage(cx) {
@@ -313,7 +313,7 @@ export async function goToPreviousPage(cx) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Location/assign
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {(url: URL) => string} func
  * @returns {Promise<void>}
  */
@@ -329,7 +329,7 @@ async function assignURL(cx, func) {
 /**
  * Removes any URL parameters.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function removeURLParams(cx) {
@@ -340,7 +340,7 @@ export async function removeURLParams(cx) {
 /**
  * Goes up in the URL hierarchy.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function goUp(cx) {
@@ -351,7 +351,7 @@ export async function goUp(cx) {
 /**
  * Goes to the root URL.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function goToRoot(cx) {
@@ -368,7 +368,7 @@ export async function goToRoot(cx) {
  * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
  * - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function focusTextInput(cx) {
@@ -406,7 +406,7 @@ export async function focusTextInput(cx) {
  * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
  * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function focusMediaPlayer(cx) {
@@ -424,7 +424,7 @@ export async function focusMediaPlayer(cx) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function blurElement(cx) {
@@ -444,7 +444,7 @@ export async function blurElement(cx) {
  * NOTE: If Chrome notifications are enabled,
  * Shortcuts will show you a message for copied text.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function copyURL(cx) {
@@ -472,7 +472,7 @@ export async function copyURL(cx) {
  * NOTE: If Chrome notifications are enabled,
  * Shortcuts will show you a message for copied text.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function copyTitle(cx) {
@@ -500,7 +500,7 @@ export async function copyTitle(cx) {
  * NOTE: If Chrome notifications are enabled,
  * Shortcuts will show you a message for copied text.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function copyTitleAndURL(cx) {
@@ -527,7 +527,7 @@ export async function copyTitleAndURL(cx) {
 /**
  * Saves the content of selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function savePage(cx) {
@@ -548,7 +548,7 @@ export async function savePage(cx) {
 /**
  * Saves the content of selected tabs as MHTML.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function savePageAsMHTML(cx) {
@@ -608,7 +608,7 @@ function getFilenameSuggestion(filename) {
  * Performs a search for selected text using the default search engine.
  * The results will be displayed in a new tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openWebSearchForSelectedText(cx) {
@@ -662,7 +662,7 @@ export async function openWebSearchForSelectedText(cx) {
 /**
  * Scrolls down.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollDown(cx) {
@@ -678,7 +678,7 @@ export async function scrollDown(cx) {
 /**
  * Scrolls up.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollUp(cx) {
@@ -694,7 +694,7 @@ export async function scrollUp(cx) {
 /**
  * Scrolls left.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollLeft(cx) {
@@ -710,7 +710,7 @@ export async function scrollLeft(cx) {
 /**
  * Scrolls right.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollRight(cx) {
@@ -726,7 +726,7 @@ export async function scrollRight(cx) {
 /**
  * Scrolls one page down.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollPageDown(cx) {
@@ -742,7 +742,7 @@ export async function scrollPageDown(cx) {
 /**
  * Scrolls one page up.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollPageUp(cx) {
@@ -758,7 +758,7 @@ export async function scrollPageUp(cx) {
 /**
  * Scrolls half page down.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollHalfPageDown(cx) {
@@ -774,7 +774,7 @@ export async function scrollHalfPageDown(cx) {
 /**
  * Scrolls half page up.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollHalfPageUp(cx) {
@@ -790,7 +790,7 @@ export async function scrollHalfPageUp(cx) {
 /**
  * Scrolls to the top of the page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollToTop(cx) {
@@ -806,7 +806,7 @@ export async function scrollToTop(cx) {
 /**
  * Scrolls to the bottom of the page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function scrollToBottom(cx) {
@@ -826,7 +826,7 @@ export async function scrollToBottom(cx) {
  *
  * https://source.chromium.org/chromium/chromium/src/+/main:components/zoom/page_zoom.cc
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function zoomIn(cx) {
@@ -848,7 +848,7 @@ export async function zoomIn(cx) {
  *
  * https://source.chromium.org/chromium/chromium/src/+/main:components/zoom/page_zoom.cc
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function zoomOut(cx) {
@@ -881,7 +881,7 @@ function zoomValuesEqual(zoomFactor, otherZoomFactor) {
 /**
  * Resets the zoom factor.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function zoomReset(cx) {
@@ -891,7 +891,7 @@ export async function zoomReset(cx) {
 /**
  * Turns full-screen mode on or off.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function toggleFullScreen(cx) {
@@ -907,7 +907,7 @@ export async function toggleFullScreen(cx) {
 /**
  * Opens and activates a new tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openNewTab(cx) {
@@ -921,7 +921,7 @@ export async function openNewTab(cx) {
 /**
  * Opens and activates a new tab to the right.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openNewTabRight(cx) {
@@ -945,7 +945,7 @@ export async function openNewTabRight(cx) {
 /**
  * Opens a new window.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openNewWindow(cx) {
@@ -957,7 +957,7 @@ export async function openNewWindow(cx) {
 /**
  * Opens a new window in Incognito mode.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openNewIncognitoWindow(cx) {
@@ -972,7 +972,7 @@ export async function openNewIncognitoWindow(cx) {
 /**
  * Closes selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function closeTab(cx) {
@@ -989,7 +989,7 @@ export async function closeTab(cx) {
 /**
  * Closes other tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function closeOtherTabs(cx) {
@@ -1007,7 +1007,7 @@ export async function closeOtherTabs(cx) {
 /**
  * Closes tabs to the right.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function closeRightTabs(cx) {
@@ -1026,7 +1026,7 @@ export async function closeRightTabs(cx) {
 /**
  * Closes the window that contains the tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function closeWindow(cx) {
@@ -1036,7 +1036,7 @@ export async function closeWindow(cx) {
 /**
  * Reopens previously closed tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function restoreTab(cx) {
@@ -1048,7 +1048,7 @@ export async function restoreTab(cx) {
 /**
  * Duplicates selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function duplicateTab(cx) {
@@ -1083,7 +1083,7 @@ export async function duplicateTab(cx) {
 /**
  * Pins or unpins selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function togglePinTab(cx) {
@@ -1106,7 +1106,7 @@ export async function togglePinTab(cx) {
 /**
  * Groups or ungroups selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function toggleGroupTab(cx) {
@@ -1142,7 +1142,7 @@ export async function toggleGroupTab(cx) {
  *
  * NOTE: Active groups are not collapsible.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function toggleCollapseTabGroups(cx) {
@@ -1184,7 +1184,7 @@ export async function toggleCollapseTabGroups(cx) {
 /**
  * Mutes or unmutes selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function toggleMuteTab(cx) {
@@ -1209,7 +1209,7 @@ export async function toggleMuteTab(cx) {
 /**
  * Discards selected tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function discardTab(cx) {
@@ -1231,7 +1231,7 @@ export async function discardTab(cx) {
 /**
  * Sorts selected tabs by URL.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function sortTabsByURL(cx) {
@@ -1261,7 +1261,7 @@ export async function sortTabsByURL(cx) {
  * Groups selected tabs by domain.
  * Uses an existing group if possible.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function groupTabsByDomain(cx) {
@@ -1328,7 +1328,7 @@ export async function groupTabsByDomain(cx) {
 /**
  * Renames tab group (prompts for a new name).
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function renameTabGroup(cx) {
@@ -1357,7 +1357,7 @@ export async function renameTabGroup(cx) {
 /**
  * Cycles through tab group colors.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {number} delta
  * @returns {Promise<void>}
  */
@@ -1381,7 +1381,7 @@ async function cycleTabGroupColor(cx, delta) {
 /**
  * Cycles forward through tab group colors.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function cycleTabGroupColorForward(cx) {
@@ -1391,7 +1391,7 @@ export async function cycleTabGroupColorForward(cx) {
 /**
  * Cycles backward through tab group colors.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function cycleTabGroupColorBackward(cx) {
@@ -1403,7 +1403,7 @@ export async function cycleTabGroupColorBackward(cx) {
 /**
  * Cycles through audible tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateAudibleTab(cx) {
@@ -1437,7 +1437,7 @@ export async function activateAudibleTab(cx) {
  * Activates an open tab relative to the current tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups—and wraps around.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {number} delta
  * @returns {Promise<void>}
  */
@@ -1468,7 +1468,7 @@ async function activateTabRelative(cx, delta) {
  * Activates the next open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups—and wraps around.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateNextTab(cx) {
@@ -1479,7 +1479,7 @@ export async function activateNextTab(cx) {
  * Activates the previous open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups—and wraps around.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activatePreviousTab(cx) {
@@ -1490,7 +1490,7 @@ export async function activatePreviousTab(cx) {
  * Activates a tab by its index.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {number} index
  * @returns {Promise<void>}
  */
@@ -1514,7 +1514,7 @@ async function activateTabAtIndex(cx, index) {
  * Activates the leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateFirstTab(cx) {
@@ -1525,7 +1525,7 @@ export async function activateFirstTab(cx) {
  * Activates the second leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateSecondTab(cx) {
@@ -1536,7 +1536,7 @@ export async function activateSecondTab(cx) {
  * Activates the third leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateThirdTab(cx) {
@@ -1547,7 +1547,7 @@ export async function activateThirdTab(cx) {
  * Activates the fourth leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateFourthTab(cx) {
@@ -1558,7 +1558,7 @@ export async function activateFourthTab(cx) {
  * Activates the fifth leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateFifthTab(cx) {
@@ -1569,7 +1569,7 @@ export async function activateFifthTab(cx) {
  * Activates the sixth leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateSixthTab(cx) {
@@ -1580,7 +1580,7 @@ export async function activateSixthTab(cx) {
  * Activates the seventh leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateSeventhTab(cx) {
@@ -1591,7 +1591,7 @@ export async function activateSeventhTab(cx) {
  * Activates the eighth leftmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateEighthTab(cx) {
@@ -1602,7 +1602,7 @@ export async function activateEighthTab(cx) {
  * Activates the rightmost open tab.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateLastTab(cx) {
@@ -1612,7 +1612,7 @@ export async function activateLastTab(cx) {
 /**
  * Activates the nth most recently used tab among your open tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {number} index
  * @returns {Promise<void>}
  */
@@ -1637,7 +1637,7 @@ async function activateMostRecentTabAtIndex(cx, index) {
 /**
  * Activates the last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateLastActiveTab(cx) {
@@ -1647,7 +1647,7 @@ export async function activateLastActiveTab(cx) {
 /**
  * Activates the second last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateSecondLastActiveTab(cx) {
@@ -1657,7 +1657,7 @@ export async function activateSecondLastActiveTab(cx) {
 /**
  * Activates the third last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateThirdLastActiveTab(cx) {
@@ -1667,7 +1667,7 @@ export async function activateThirdLastActiveTab(cx) {
 /**
  * Activates the fourth last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateFourthLastActiveTab(cx) {
@@ -1677,7 +1677,7 @@ export async function activateFourthLastActiveTab(cx) {
 /**
  * Activates the fifth last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateFifthLastActiveTab(cx) {
@@ -1687,7 +1687,7 @@ export async function activateFifthLastActiveTab(cx) {
 /**
  * Activates the sixth last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateSixthLastActiveTab(cx) {
@@ -1697,7 +1697,7 @@ export async function activateSixthLastActiveTab(cx) {
 /**
  * Activates the seventh last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateSeventhLastActiveTab(cx) {
@@ -1707,7 +1707,7 @@ export async function activateSeventhLastActiveTab(cx) {
 /**
  * Activates the eighth last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateEighthLastActiveTab(cx) {
@@ -1717,7 +1717,7 @@ export async function activateEighthLastActiveTab(cx) {
 /**
  * Activates the ninth last active tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateNinthLastActiveTab(cx) {
@@ -1728,7 +1728,7 @@ export async function activateNinthLastActiveTab(cx) {
  * Activates an open window relative to the current window.
  * Skips minimized windows and wraps around.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {number} delta
  * @returns {Promise<void>}
  */
@@ -1755,7 +1755,7 @@ async function activateWindowRelative(cx, delta) {
  * Activates the next open window.
  * Skips minimized windows and wraps around.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activateNextWindow(cx) {
@@ -1766,7 +1766,7 @@ export async function activateNextWindow(cx) {
  * Activates the previous open window.
  * Skips minimized windows and wraps around.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function activatePreviousWindow(cx) {
@@ -1779,7 +1779,7 @@ export async function activatePreviousWindow(cx) {
  * Grabs selected tabs.
  * Moves selected tabs to the current tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function grabTab(cx) {
@@ -1827,7 +1827,7 @@ export async function grabTab(cx) {
  * Moves selected tabs left/right.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {Direction} direction
  * @returns {Promise<void>}
  */
@@ -2076,7 +2076,7 @@ async function moveTabDirection(cx, direction) {
  * Moves selected tabs left.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabLeft(cx) {
@@ -2087,7 +2087,7 @@ export async function moveTabLeft(cx) {
  * Moves selected tabs right.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabRight(cx) {
@@ -2097,7 +2097,7 @@ export async function moveTabRight(cx) {
 /**
  * Moves selected tabs to the far left/right.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {Direction} direction
  * @returns {Promise<void>}
  */
@@ -2150,7 +2150,7 @@ async function moveTabEdgeDirection(cx, direction) {
 /**
  * Moves selected tabs to the far left.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabFirst(cx) {
@@ -2160,7 +2160,7 @@ export async function moveTabFirst(cx) {
 /**
  * Moves selected tabs to the far right.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabLast(cx) {
@@ -2170,7 +2170,7 @@ export async function moveTabLast(cx) {
 /**
  * Moves selected tabs to the specified window.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {number} windowId
  * @returns {Promise<void>}
  */
@@ -2236,7 +2236,7 @@ async function moveTabsToWindow(cx, windowId) {
 /**
  * Moves selected tabs to a new window.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabNewWindow(cx) {
@@ -2255,7 +2255,7 @@ export async function moveTabNewWindow(cx) {
 /**
  * Moves selected tabs to the previous open window, if any.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabPreviousWindow(cx) {
@@ -2277,7 +2277,7 @@ export async function moveTabPreviousWindow(cx) {
 /**
  * Deselects all other tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectActiveTab(cx) {
@@ -2292,7 +2292,7 @@ export async function selectActiveTab(cx) {
 /**
  * Selects the next/previous tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 async function selectTabDirection(cx, direction) {
@@ -2345,7 +2345,7 @@ async function selectTabDirection(cx, direction) {
 /**
  * Selects the previous tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectPreviousTab(cx) {
@@ -2355,7 +2355,7 @@ export async function selectPreviousTab(cx) {
 /**
  * Selects the next tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectNextTab(cx) {
@@ -2366,7 +2366,7 @@ export async function selectNextTab(cx) {
  * Selects related tabs.
  * Skips hidden tabs—the ones whose are in collapsed tab groups.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectRelatedTabs(cx) {
@@ -2392,7 +2392,7 @@ export async function selectRelatedTabs(cx) {
  *
  * NOTE: Selecting tabs in group can be used for ungrouped tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectTabsInGroup(cx) {
@@ -2418,7 +2418,7 @@ export async function selectTabsInGroup(cx) {
 /**
  * Selects all tabs.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectAllTabs(cx) {
@@ -2438,7 +2438,7 @@ export async function selectAllTabs(cx) {
  * Selects tabs to the right.
  * Starts from the leftmost selected tab.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function selectRightTabs(cx) {
@@ -2459,7 +2459,7 @@ export async function selectRightTabs(cx) {
 /**
  * Moves tab selection’s face backward/forward.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {Direction} direction
  * @returns {Promise<void>}
  */
@@ -2500,7 +2500,7 @@ async function moveTabSelectionFaceDirection(cx, direction) {
 /**
  * Moves tab selection’s face backward.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabSelectionFaceBackward(cx) {
@@ -2510,7 +2510,7 @@ export async function moveTabSelectionFaceBackward(cx) {
 /**
  * Moves tab selection’s face forward.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function moveTabSelectionFaceForward(cx) {
@@ -2526,7 +2526,7 @@ export async function moveTabSelectionFaceForward(cx) {
  * NOTE: If Chrome notifications are enabled,
  * Shortcuts will show you a message for created bookmarks.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function bookmarkTab(cx) {
@@ -2567,7 +2567,7 @@ export async function bookmarkTab(cx) {
  * NOTE: If Chrome notifications are enabled,
  * Shortcuts will show you a message for created bookmarks.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function bookmarkSession(cx) {
@@ -2627,7 +2627,7 @@ export async function bookmarkSession(cx) {
  * NOTE: If Chrome notifications are enabled,
  * Shortcuts will show you a message for pages added to your reading list.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function addTabToReadingList(cx) {
@@ -2673,7 +2673,7 @@ export async function addTabToReadingList(cx) {
 /**
  * Opens the “Downloads” folder.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openDownloadsFolder(cx) {
@@ -2685,7 +2685,7 @@ export async function openDownloadsFolder(cx) {
 /**
  * Opens a Chrome page at the URL specified.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @param {string} navigateURL
  * @returns {Promise<void>}
  */
@@ -2733,7 +2733,7 @@ async function openChromePage(cx, navigateURL) {
 /**
  * Opens the “History” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openHistoryPage(cx) {
@@ -2743,7 +2743,7 @@ export async function openHistoryPage(cx) {
 /**
  * Opens the “Tabs from other devices” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openSyncedTabsPage(cx) {
@@ -2753,7 +2753,7 @@ export async function openSyncedTabsPage(cx) {
 /**
  * Opens the “Delete browsing data” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openClearBrowserDataPage(cx) {
@@ -2763,7 +2763,7 @@ export async function openClearBrowserDataPage(cx) {
 /**
  * Opens the “Downloads” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openDownloadsPage(cx) {
@@ -2773,7 +2773,7 @@ export async function openDownloadsPage(cx) {
 /**
  * Opens the “Bookmarks” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openBookmarksPage(cx) {
@@ -2783,7 +2783,7 @@ export async function openBookmarksPage(cx) {
 /**
  * Opens the “Settings” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openSettingsPage(cx) {
@@ -2793,7 +2793,7 @@ export async function openSettingsPage(cx) {
 /**
  * Opens the “Password manager > Passwords” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openPasswordsPage(cx) {
@@ -2803,7 +2803,7 @@ export async function openPasswordsPage(cx) {
 /**
  * Opens the “Payment methods” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openPaymentsPage(cx) {
@@ -2813,7 +2813,7 @@ export async function openPaymentsPage(cx) {
 /**
  * Opens the “Addresses and more” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openAddressesPage(cx) {
@@ -2823,7 +2823,7 @@ export async function openAddressesPage(cx) {
 /**
  * Opens the “Search engines” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openSearchEnginesPage(cx) {
@@ -2833,7 +2833,7 @@ export async function openSearchEnginesPage(cx) {
 /**
  * Opens the “Extensions” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openExtensionsPage(cx) {
@@ -2843,7 +2843,7 @@ export async function openExtensionsPage(cx) {
 /**
  * Opens the “Extensions > Keyboard shortcuts” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openExtensionShortcutsPage(cx) {
@@ -2853,7 +2853,7 @@ export async function openExtensionShortcutsPage(cx) {
 /**
  * Opens the “Experiments” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openExperimentsPage(cx) {
@@ -2863,7 +2863,7 @@ export async function openExperimentsPage(cx) {
 /**
  * Opens the “About Chrome” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openAboutChromePage(cx) {
@@ -2873,7 +2873,7 @@ export async function openAboutChromePage(cx) {
 /**
  * Opens the “About Chrome version” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openAboutChromeVersionPage(cx) {
@@ -2883,7 +2883,7 @@ export async function openAboutChromeVersionPage(cx) {
 /**
  * Opens the “What’s new in Chrome” page.
  *
- * @param {Context} cx
+ * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openWhatsNewPage(cx) {
