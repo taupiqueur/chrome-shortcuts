@@ -1037,7 +1037,7 @@ These commands are only available in the command palette.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
-`activateSuggestion(openTabSuggestion)` | Activate suggestion in the tab strip | | | `Enter`
+`activateSuggestion(openTabSuggestion)` | Activate suggestion in the tab strip | `Control+Shift+A` or `@tabs` in the address bar | `Shift+Command+A` or `@tabs` in the address bar | `Enter`
 
 ### Recently closed tab suggestions
 
@@ -1045,7 +1045,7 @@ These commands are only available in the command palette.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
-`activateSuggestion(closedTabSuggestion)` | Reopen suggestion in a new tab | | | `Enter`
+`activateSuggestion(closedTabSuggestion)` | Reopen suggestion in a new tab | `Control+Shift+A` | `Shift+Command+A` | `Enter`
 
 ### Synced tab suggestions
 
@@ -1061,7 +1061,7 @@ These commands are only available in the command palette.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
-`activateSuggestion(bookmarkSuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
+`activateSuggestion(bookmarkSuggestion)` | Open and activate suggestion in a new tab | `@bookmarks` in the address bar | `@bookmarks` in the address bar | `Enter`
 
 ### Reading list suggestions
 
@@ -1077,7 +1077,7 @@ These commands are only available in the command palette.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
-`activateSuggestion(historySuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
+`activateSuggestion(historySuggestion)` | Open and activate suggestion in a new tab | `@history` in the address bar | `@history` in the address bar | `Enter`
 
 ### Download suggestions
 

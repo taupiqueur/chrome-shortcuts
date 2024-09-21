@@ -37,6 +37,7 @@
     --code-block-text-color: #000000;
     --boolean-color: darkred;
     --string-color: green;
+    --code-color: green;
   }
 }
 
@@ -75,6 +76,7 @@
     --code-block-text-color: #c5d1de;
     --boolean-color: #6cb6ff;
     --string-color: #8ddb8c;
+    --code-color: #8ddb8c;
   }
 }
 
@@ -159,6 +161,10 @@ th {
 
 th, td {
   padding: 0.4em 1em;
+}
+
+td:nth-child(n+3):nth-child(-n+5) code {
+  color: var(--code-color);
 }
 
 kbd {
