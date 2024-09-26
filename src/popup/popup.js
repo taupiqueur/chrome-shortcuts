@@ -13,6 +13,7 @@ const paletteMenuElement = document.getElementById('palette-menu')
 const menuElement = document.getElementById('menu-commands')
 const menuItemElements = menuElement.getElementsByTagName('menu-item')
 const scriptingMenuItemElements = menuElement.querySelectorAll('menu-item[data-permissions~="scripting"]')
+const browserExtensionsNotAllowedPopoverElement = document.getElementById('browser-extensions-not-allowed-popover')
 
 const menuCommands = new Map(
   Array.from(menuItemElements, (menuItemElement) => [
@@ -49,7 +50,7 @@ port.onMessage.addListener((message) => {
       break
 
     case 'suggestionSync':
-      onSuggestionSync(message.suggestions)
+      onSuggestionSync(message.suggestions, message.suggestionLabels)
       break
 
     case 'command':
@@ -75,12 +76,22 @@ port.onMessage.addListener((message) => {
  */
 function render({ commandBindings, isEnabled }) {
   if (!isEnabled) {
-    menuElement.title = 'Browser extensions are not allowed on this page.'
-
     for (const menuItemElement of scriptingMenuItemElements) {
       menuItemElement.setAttribute('disabled', '')
+      menuItemElement.addEventListener('click', () => {
+        browserExtensionsNotAllowedPopoverElement.togglePopover()
+      })
     }
   }
+
+  browserExtensionsNotAllowedPopoverElement.addEventListener('keydown', (keyboardEvent) => {
+    switch (keyboardEvent.code) {
+      case 'Escape':
+        browserExtensionsNotAllowedPopoverElement.hidePopover()
+        keyboardEvent.preventDefault()
+        break
+    }
+  })
 
   // Add menu commands and keyboard shortcuts.
   for (const [commandName, menuItemElement] of menuCommands) {
@@ -123,16 +134,16 @@ function onStateSync(commandName) {
  * Handles suggestion syncing.
  *
  * @param {Suggestion[]} suggestions
+ * @param {Object<string, string>} suggestionLabels
  * @returns {void}
  */
-function onSuggestionSync(suggestions) {
+function onSuggestionSync(suggestions, suggestionLabels) {
   const menuItemElements = suggestions.map((suggestion) => {
     const menuItemElement = document.createElement('menu-item')
     const suggestionElement = document.createElement('suggestion-item')
-    Object.assign(
-      suggestionElement.dataset,
-      suggestion
-    )
+    suggestionElement.dataset.label = suggestionLabels[suggestion.type]
+    suggestionElement.dataset.title = suggestion.title
+    suggestionElement.dataset.domain = new URL(suggestion.url).hostname
     menuItemElement.addEventListener('click', () => {
       onSuggestionActivated(suggestion)
     })

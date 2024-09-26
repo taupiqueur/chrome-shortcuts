@@ -3,7 +3,7 @@
 
 const MIDDLE_MOUSE_BUTTON = 1
 
-const buttonElements = document.querySelectorAll('button')
+const buttonElements = document.querySelectorAll('button[data-action]')
 const chromeLinkElements = document.querySelectorAll('a[href^="chrome:"]')
 const keyCodeElements = document.querySelectorAll('kbd.code')
 
@@ -64,8 +64,43 @@ for (const keyElement of keyCodeElements) {
   const codeValue = keyElement.textContent
   if (keyboardLayoutMap.has(codeValue)) {
     const keyValue = keyboardLayoutMap.get(codeValue)
-    keyElement.title = `“${keyValue}” on your keyboard.`
+    keyElement.replaceWith(
+      createPopover(
+        new Text(
+          `“${keyValue}” on your keyboard.`
+        ),
+        keyElement
+      )
+    )
   } else {
-    keyElement.title = `No value found for “${codeValue}”.`
+    keyElement.replaceWith(
+      createPopover(
+        new Text(
+          `No value found for “${codeValue}”.`
+        ),
+        keyElement
+      )
+    )
   }
+}
+
+/**
+ * Adds a popover to the given element.
+ * Display additional information when clicking on the element.
+ *
+ * @param {Node} content
+ * @param {HTMLElement} element
+ * @returns {HTMLElement}
+ */
+function createPopover(content, element) {
+  const popoverElement = document.createElement('div')
+  popoverElement.popover = 'auto'
+  popoverElement.append(content)
+  const buttonElement = document.createElement('button')
+  buttonElement.popoverTargetElement = popoverElement
+  buttonElement.append(
+    element.cloneNode(true),
+    popoverElement
+  )
+  return buttonElement
 }

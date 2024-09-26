@@ -13,10 +13,13 @@
         </a>
       </h1>
       <p role="important">
-        Important: Requires either <span class="tag-pill" title="Available from this Chrome version and higher.">Chrome 127+</span>, <a href="https://google.com/chrome/dev/" target="_blank">Chrome Dev</a> or <a href="https://google.com/chrome/canary/" target="_blank">Chrome Canary</a>
+        Important: Requires either <button popovertarget="chrome_version_notice_popover" class="tag-pill" title="Available from this Chrome version and higher.">Chrome 127+</button>, <a href="https://google.com/chrome/dev/" target="_blank">Chrome Dev</a> or <a href="https://google.com/chrome/canary/" target="_blank">Chrome Canary</a>
         for sticky popup—to keep the popup open after entering a command.
         See <a href="https://issues.chromium.org/issues/40057101" target="_blank">https://issues.chromium.org/issues/40057101</a> and <a href="https://developer.chrome.com/docs/extensions/whats-new#chrome_127_new_actionopenpopup_api" target="_blank">Chrome 127: New <code>action.openPopup</code> API</a> for more information.
       </p>
+      <div id="chrome_version_notice_popover" popover>
+        Available from this Chrome version and higher.
+      </div>
       <section id="usage">
         <h2>
           <a href="#usage">
@@ -1569,8 +1572,8 @@
             You will find the list of code values and informative symbols.
           </p>
           <p role="tip">
-            Tip: You can hover over the menu commands to show the keys to press
-            (e.g., hovering over <kbd class="code">KeyJ</kbd> will show <kbd>j</kbd> on a US keyboard).
+            Tip: You can click on the keys with code values to show the keys to press
+            (e.g., clicking on <kbd class="code">KeyJ</kbd> will show “j” on a US keyboard).
           </p>
         </section>
         <section id="shortcuts_commands">

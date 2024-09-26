@@ -11,10 +11,6 @@ const keyDisplay = {
   metaKey: '⌘'
 }
 
-// Keyboard mapping
-// https://developer.mozilla.org/en-US/docs/Web/API/Keyboard_API#keyboard_mapping
-const keyboardLayoutMap = await navigator.keyboard.getLayoutMap()
-
 const templateElement = document.createElement('template')
 
 templateElement.innerHTML = `
@@ -68,28 +64,21 @@ class KeyboardShortcut extends HTMLElement {
       this.addKey('metaKey', 'Meta', keyDisplay.metaKey)
     }
 
-    const codeValue = this.dataset.code
-    const keyValue = keyboardLayoutMap.get(codeValue)
-
-    const keyHint = keyValue
-      ? `“${keyValue}” on your keyboard.`
-      : `No value found for “${codeValue}”.`
-
-    this.addKey('code', keyHint, codeValue)
+    this.addKey('code', null, this.dataset.code)
   }
 
   /**
-   * Adds key with specified *title* and *content* to slot.
+   * Adds key with specified *label* and *content* to slot.
    *
    * @param {"ctrlKey" | "altKey" | "shiftKey" | "metaKey" | "code"} slot
-   * @param {string} title
+   * @param {?string} label
    * @param {string} content
    * @returns {void}
    */
-  addKey(slot, title, content) {
+  addKey(slot, label, content) {
     const keyElement = document.createElement('kbd')
     keyElement.slot = slot
-    keyElement.title = title
+    keyElement.ariaLabel = label
     keyElement.textContent = content
     this.append(keyElement)
   }

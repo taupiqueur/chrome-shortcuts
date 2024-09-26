@@ -1,15 +1,5 @@
 // This module defines a custom suggestion element.
 
-const suggestionTypeDisplay = {
-  openTab: 'Open tab',
-  closedTab: 'Recently closed',
-  syncedTab: 'Synced tab',
-  bookmark: 'Bookmark',
-  readingList: 'Reading list',
-  history: 'Recently visited',
-  download: 'Download',
-}
-
 const templateElement = document.createElement('template')
 
 templateElement.innerHTML = `
@@ -51,7 +41,7 @@ class SuggestionItem extends HTMLElement {
 
     const labelElement = document.createElement('span')
     labelElement.slot = 'label'
-    labelElement.textContent = suggestionTypeDisplay[this.dataset.type]
+    labelElement.textContent = this.dataset.label
 
     const titleElement = document.createElement('span')
     titleElement.slot = 'title'
@@ -59,7 +49,7 @@ class SuggestionItem extends HTMLElement {
 
     const domainElement = document.createElement('span')
     domainElement.slot = 'domain'
-    domainElement.textContent = new URL(this.dataset.url).hostname
+    domainElement.textContent = this.dataset.domain
 
     this.append(labelElement, ' ', titleElement, ' ', domainElement)
   }

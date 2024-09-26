@@ -19,6 +19,16 @@ const suggestionEngine = new SuggestionEngine({
   recentTabsManager
 })
 
+const suggestionLabels = new Map([
+  [SuggestionType.OpenTab, 'Open tab'],
+  [SuggestionType.ClosedTab, 'Recently closed'],
+  [SuggestionType.SyncedTab, 'Synced tab'],
+  [SuggestionType.Bookmark, 'Bookmark'],
+  [SuggestionType.ReadingList, 'Reading list'],
+  [SuggestionType.History, 'Recently visited'],
+  [SuggestionType.Download, 'Download'],
+])
+
 /**
  * Adds items to the browser’s context menu.
  *
@@ -273,7 +283,8 @@ function onConnect(port) {
     case 'popup':
       popupWorker.onConnect(port, {
         recentTabsManager,
-        suggestionEngine
+        suggestionEngine,
+        suggestionLabels,
       })
       break
 

@@ -103,12 +103,20 @@ section {
   content: "#";
 }
 
-.tag-pill {
+button[popovertarget] {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  background-color: inherit;
+  cursor: help;
+}
+
+button.tag-pill {
   padding: 0.1em 0.2em;
   border-radius: 0.3em;
   background-color: var(--tag-pill-background-color);
   color: var(--tag-pill-text-color);
-  cursor: help;
 }
 
 p[role="note"] {

@@ -11,6 +11,7 @@
  * @typedef {object} PopupContext
  * @property {RecentTabsManager} recentTabsManager
  * @property {SuggestionEngine} suggestionEngine
+ * @property {Map<string, string>} suggestionLabels
  */
 
 /**
@@ -347,7 +348,10 @@ async function onSuggestionSyncRequestMessage(message, port, cx) {
 
     port.postMessage({
       type: 'suggestionSync',
-      suggestions
+      suggestions,
+      suggestionLabels: Object.fromEntries(
+        cx.suggestionLabels
+      )
     })
   }
 }

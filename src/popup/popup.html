@@ -170,6 +170,17 @@
         <menu-item data-command="openWhatsNewPage" data-permissions="activeTab tabs">What’s New</menu-item>
       </custom-menu>
     </main>
+    <dialog id="browser-extensions-not-allowed-popover" popover>
+      <main>
+        <h3>Information</h3>
+        <section>
+          <p>Browser extensions are not allowed on this page.</p>
+        </section>
+      </main>
+      <footer>
+        <button popovertarget="browser-extensions-not-allowed-popover" popovertargetaction="hide">Done</button>
+      </footer>
+    </dialog>
     <script src="../lib/scroller.js"></script>
     <script type="module" src="popup.js"></script>
   </body>

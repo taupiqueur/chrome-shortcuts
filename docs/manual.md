@@ -783,8 +783,8 @@ You will find the list of code values and informative symbols.
 [Keyboard Event `code` Value Tables]: https://w3c.github.io/uievents-code/#code-value-tables
 
 > [!TIP]
-> You can hover over the menu commands to show the keys to press
-> (e.g., hovering over `KeyJ` will show `j` on a US keyboard).
+> You can click on the keys with code values to show the keys to press
+> (e.g., clicking on `KeyJ` will show “j” on a US keyboard).
 
 ### Shortcuts
 
