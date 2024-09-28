@@ -29,6 +29,8 @@ class CustomMenu extends HTMLElement {
       templateElement.content.cloneNode(true)
     )
 
+    this.slotElement = this.shadowRoot.querySelector('slot:not([name])')
+
     /**
      * @type {Keymap<KeyboardEvent, MenuItem>}
      */
@@ -64,8 +66,7 @@ class CustomMenu extends HTMLElement {
    * @returns {void}
    */
   clearMenuItems() {
-    const slotElement = this.shadowRoot.querySelector('slot:not([name])')
-    for (const slottedElement of slotElement.assignedElements()) {
+    for (const slottedElement of this.slotElement.assignedElements()) {
       slottedElement.remove()
     }
   }
