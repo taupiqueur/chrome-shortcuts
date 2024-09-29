@@ -82,708 +82,138 @@
             <div class="code-block-container">
               <pre><code data-lang="json">{
   <span data-type="string">"popupConfig"</span>: {
-    <span data-type="string">"commandBindings"</span>: {
-      <span data-type="string">"openShortcutsManual"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"F1"</span>
-        }
-      ],
-      <span data-type="string">"openShortcutsOptionsPage"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"F2"</span>
-        }
-      ],
-      <span data-type="string">"openCommandPalette"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span>
-        }
-      ],
-      <span data-type="string">"closePopup"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span>
-        },
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyQ"</span>
-        }
-      ],
-      <span data-type="string">"goBack"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span>
-        }
-      ],
-      <span data-type="string">"goForward"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyL"</span>
-        }
-      ],
-      <span data-type="string">"reloadTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span>
-        }
-      ],
-      <span data-type="string">"reloadTabWithoutCache"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span>
-        }
-      ],
-      <span data-type="string">"goToNextPage"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Period"</span>
-        }
-      ],
-      <span data-type="string">"goToPreviousPage"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
-        }
-      ],
-      <span data-type="string">"removeURLParams"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
-        }
-      ],
-      <span data-type="string">"goUp"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
-        }
-      ],
-      <span data-type="string">"goToRoot"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
-        }
-      ],
-      <span data-type="string">"focusTextInput"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyI"</span>
-        }
-      ],
-      <span data-type="string">"focusMediaPlayer"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyV"</span>
-        }
-      ],
-      <span data-type="string">"blurElement"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
-        }
-      ],
-      <span data-type="string">"copyURL"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
-        }
-      ],
-      <span data-type="string">"copyTitle"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
-        }
-      ],
-      <span data-type="string">"copyTitleAndURL"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
-        }
-      ],
-      <span data-type="string">"savePage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
-        }
-      ],
-      <span data-type="string">"savePageAsMHTML"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
-        }
-      ],
-      <span data-type="string">"openWebSearchForSelectedText"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span>
-        }
-      ],
-      <span data-type="string">"scrollDown"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
-        }
-      ],
-      <span data-type="string">"scrollUp"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
-        }
-      ],
-      <span data-type="string">"scrollLeft"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span>
-        }
-      ],
-      <span data-type="string">"scrollRight"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyL"</span>
-        }
-      ],
-      <span data-type="string">"scrollPageDown"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Space"</span>
-        }
-      ],
-      <span data-type="string">"scrollPageUp"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Space"</span>
-        }
-      ],
-      <span data-type="string">"scrollHalfPageDown"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
-        }
-      ],
-      <span data-type="string">"scrollHalfPageUp"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
-        }
-      ],
-      <span data-type="string">"scrollToTop"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyG"</span>
-        }
-      ],
-      <span data-type="string">"scrollToBottom"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyE"</span>
-        }
-      ],
-      <span data-type="string">"zoomIn"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span>
-        }
-      ],
-      <span data-type="string">"zoomOut"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Minus"</span>
-        }
-      ],
-      <span data-type="string">"zoomReset"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit0"</span>
-        }
-      ],
-      <span data-type="string">"toggleFullScreen"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span>
-        }
-      ],
-      <span data-type="string">"openNewTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span>
-        }
-      ],
-      <span data-type="string">"openNewTabRight"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span>
-        }
-      ],
-      <span data-type="string">"openNewWindow"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span>
-        }
-      ],
-      <span data-type="string">"openNewIncognitoWindow"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span>
-        }
-      ],
-      <span data-type="string">"closeTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span>
-        }
-      ],
-      <span data-type="string">"closeOtherTabs"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span>
-        }
-      ],
-      <span data-type="string">"closeRightTabs"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span>
-        }
-      ],
-      <span data-type="string">"closeWindow"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span>
-        }
-      ],
-      <span data-type="string">"restoreTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
-        }
-      ],
-      <span data-type="string">"duplicateTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyB"</span>
-        }
-      ],
-      <span data-type="string">"togglePinTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span>
-        }
-      ],
-      <span data-type="string">"toggleGroupTab"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span>
-        }
-      ],
-      <span data-type="string">"toggleCollapseTabGroups"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span>
-        }
-      ],
-      <span data-type="string">"toggleMuteTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span>
-        }
-      ],
-      <span data-type="string">"discardTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
-        }
-      ],
-      <span data-type="string">"sortTabsByURL"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span>
-        }
-      ],
-      <span data-type="string">"groupTabsByDomain"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span>
-        }
-      ],
-      <span data-type="string">"renameTabGroup"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span>
-        }
-      ],
-      <span data-type="string">"cycleTabGroupColorForward"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
-        }
-      ],
-      <span data-type="string">"cycleTabGroupColorBackward"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
-        }
-      ],
-      <span data-type="string">"activateAudibleTab"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span>
-        }
-      ],
-      <span data-type="string">"activateNextTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
-        },
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
-        }
-      ],
-      <span data-type="string">"activatePreviousTab"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
-        },
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
-        }
-      ],
-      <span data-type="string">"activateFirstTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span>
-        }
-      ],
-      <span data-type="string">"activateSecondTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span>
-        }
-      ],
-      <span data-type="string">"activateThirdTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span>
-        }
-      ],
-      <span data-type="string">"activateFourthTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span>
-        }
-      ],
-      <span data-type="string">"activateFifthTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span>
-        }
-      ],
-      <span data-type="string">"activateSixthTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span>
-        }
-      ],
-      <span data-type="string">"activateSeventhTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit7"</span>
-        }
-      ],
-      <span data-type="string">"activateEighthTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit8"</span>
-        }
-      ],
-      <span data-type="string">"activateLastTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit9"</span>
-        }
-      ],
-      <span data-type="string">"activateLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span>
-        }
-      ],
-      <span data-type="string">"activateSecondLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span>
-        }
-      ],
-      <span data-type="string">"activateThirdLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span>
-        }
-      ],
-      <span data-type="string">"activateFourthLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span>
-        }
-      ],
-      <span data-type="string">"activateFifthLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span>
-        }
-      ],
-      <span data-type="string">"activateSixthLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span>
-        }
-      ],
-      <span data-type="string">"activateSeventhLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit7"</span>
-        }
-      ],
-      <span data-type="string">"activateEighthLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit8"</span>
-        }
-      ],
-      <span data-type="string">"activateNinthLastActiveTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Digit9"</span>
-        }
-      ],
-      <span data-type="string">"activateNextWindow"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span>
-        }
-      ],
-      <span data-type="string">"activatePreviousWindow"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span>
-        }
-      ],
-      <span data-type="string">"grabTab"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyG"</span>
-        }
-      ],
-      <span data-type="string">"moveTabLeft"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"ArrowLeft"</span>
-        }
-      ],
-      <span data-type="string">"moveTabRight"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"ArrowRight"</span>
-        }
-      ],
-      <span data-type="string">"moveTabFirst"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Home"</span>
-        }
-      ],
-      <span data-type="string">"moveTabLast"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"End"</span>
-        }
-      ],
-      <span data-type="string">"moveTabNewWindow"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"ArrowUp"</span>
-        }
-      ],
-      <span data-type="string">"moveTabPreviousWindow"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"ArrowDown"</span>
-        }
-      ],
-      <span data-type="string">"selectActiveTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
-        }
-      ],
-      <span data-type="string">"selectPreviousTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"BracketLeft"</span>
-        }
-      ],
-      <span data-type="string">"selectNextTab"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"BracketRight"</span>
-        }
-      ],
-      <span data-type="string">"selectRelatedTabs"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Backquote"</span>
-        }
-      ],
-      <span data-type="string">"selectTabsInGroup"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
-        }
-      ],
-      <span data-type="string">"selectAllTabs"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
-        }
-      ],
-      <span data-type="string">"selectRightTabs"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span>
-        }
-      ],
-      <span data-type="string">"moveTabSelectionFaceBackward"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"BracketLeft"</span>
-        }
-      ],
-      <span data-type="string">"moveTabSelectionFaceForward"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"BracketRight"</span>
-        }
-      ],
-      <span data-type="string">"bookmarkTab"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
-        }
-      ],
-      <span data-type="string">"bookmarkSession"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyB"</span>
-        }
-      ],
-      <span data-type="string">"addTabToReadingList"</span>: [
-        {
-          <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
-        }
-      ],
-      <span data-type="string">"openDownloadsFolder"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span>
-        }
-      ],
-      <span data-type="string">"openHistoryPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span>
-        }
-      ],
-      <span data-type="string">"openSyncedTabsPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span>
-        }
-      ],
-      <span data-type="string">"openClearBrowserDataPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Delete"</span>
-        }
-      ],
-      <span data-type="string">"openDownloadsPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span>
-        }
-      ],
-      <span data-type="string">"openBookmarksPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span>
-        }
-      ],
-      <span data-type="string">"openSettingsPage"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
-        }
-      ],
-      <span data-type="string">"openPasswordsPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span>
-        }
-      ],
-      <span data-type="string">"openPaymentsPage"</span>: [
-      ],
-      <span data-type="string">"openAddressesPage"</span>: [
-      ],
-      <span data-type="string">"openSearchEnginesPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span>
-        }
-      ],
-      <span data-type="string">"openExtensionsPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span>
-        }
-      ],
-      <span data-type="string">"openExtensionShortcutsPage"</span>: [
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span>
-        }
-      ],
-      <span data-type="string">"openExperimentsPage"</span>: [
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span>
-        }
-      ],
-      <span data-type="string">"openAboutChromePage"</span>: [
-      ],
-      <span data-type="string">"openAboutChromeVersionPage"</span>: [
-      ],
-      <span data-type="string">"openWhatsNewPage"</span>: [
-      ]
-    },
-    <span data-type="string">"paletteBindings"</span>: {
-      <span data-type="string">"selectNextItem"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"ArrowDown"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span>
-        },
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
-        }
-      ],
-      <span data-type="string">"selectPreviousItem"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"ArrowUp"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span>
-        },
-        {
-          <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span>
-        }
-      ],
-      <span data-type="string">"activateSelectedItem"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Enter"</span>
-        }
-      ],
-      <span data-type="string">"movePageDown"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"PageDown"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span>
-        }
-      ],
-      <span data-type="string">"movePageUp"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"PageUp"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span>
-        }
-      ],
-      <span data-type="string">"closeCommandPalette"</span>: [
-        {
-          <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span>
-        },
-        {
-          <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>,
-          <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span>
-        }
-      ]
-    }
+    <span data-type="string">"commandBindings"</span>: [
+      { <span data-type="string">"command"</span>: <span data-type="string">"openShortcutsManual"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"F1"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openShortcutsOptionsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"F2"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openCommandPalette"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openCommandPalette"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closePopup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closePopup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closePopup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyQ"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"goBack"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"goForward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyL"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"reloadTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"reloadTabWithoutCache"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"goToNextPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Period"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"goToPreviousPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"removeURLParams"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"goUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"goToRoot"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"focusTextInput"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyI"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"focusMediaPlayer"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyV"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"blurElement"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"copyURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"copyTitle"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"copyTitleAndURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"savePage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"savePageAsMHTML"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openWebSearchForSelectedText"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollDown"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollLeft"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollRight"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyL"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollPageDown"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Space"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollPageUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Space"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollHalfPageDown"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollHalfPageUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollToTop"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyG"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"scrollToBottom"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyE"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"zoomIn"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"zoomOut"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Minus"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"zoomReset"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit0"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"toggleFullScreen"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openNewTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openNewTabRight"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openNewWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openNewIncognitoWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closeTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closeOtherTabs"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closeRightTabs"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyX"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"restoreTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"duplicateTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyB"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"togglePinTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"toggleGroupTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"toggleCollapseTabGroups"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"toggleMuteTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"discardTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"sortTabsByURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"groupTabsByDomain"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"renameTabGroup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"cycleTabGroupColorForward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"cycleTabGroupColorBackward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateAudibleTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateNextTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateNextTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activatePreviousTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activatePreviousTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateFirstTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSecondTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateThirdTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateFourthTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateFifthTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSixthTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSeventhTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit7"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateEighthTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit8"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateLastTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit9"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSecondLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateThirdLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateFourthLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateFifthLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSixthLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSeventhLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit7"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateEighthLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit8"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateNinthLastActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit9"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateNextWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activatePreviousWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"grabTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyG"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabLeft"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"ArrowLeft"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabRight"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"ArrowRight"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabFirst"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Home"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabLast"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"End"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabNewWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"ArrowUp"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabPreviousWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"ArrowDown"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectActiveTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectPreviousTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"BracketLeft"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectNextTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"BracketRight"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectRelatedTabs"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Backquote"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectTabsInGroup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectAllTabs"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectRightTabs"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabSelectionFaceBackward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"BracketLeft"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"moveTabSelectionFaceForward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"BracketRight"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"bookmarkTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"bookmarkSession"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyB"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"addTabToReadingList"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openDownloadsFolder"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openHistoryPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyH"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openSyncedTabsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openClearBrowserDataPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Delete"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openDownloadsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openBookmarksPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openSettingsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openPasswordsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openSearchEnginesPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openExtensionsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openExtensionShortcutsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"openExperimentsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span> } }
+    ],
+    <span data-type="string">"paletteBindings"</span>: [
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectNextItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"ArrowDown"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectNextItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectNextItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectPreviousItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"ArrowUp"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectPreviousItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyP"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"selectPreviousItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"activateSelectedItem"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Enter"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"movePageDown"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"PageDown"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"movePageDown"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"movePageUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"PageUp"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"movePageUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closeCommandPalette"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } },
+      { <span data-type="string">"command"</span>: <span data-type="string">"closeCommandPalette"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span> } }
+    ]
   }
 }
 </code></pre>
@@ -794,708 +224,138 @@
                   data-action="copyToClipboard"
                   value="{
   &quot;popupConfig&quot;: {
-    &quot;commandBindings&quot;: {
-      &quot;openShortcutsManual&quot;: [
-        {
-          &quot;code&quot;: &quot;F1&quot;
-        }
-      ],
-      &quot;openShortcutsOptionsPage&quot;: [
-        {
-          &quot;code&quot;: &quot;F2&quot;
-        }
-      ],
-      &quot;openCommandPalette&quot;: [
-        {
-          &quot;code&quot;: &quot;Slash&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyF&quot;
-        }
-      ],
-      &quot;closePopup&quot;: [
-        {
-          &quot;code&quot;: &quot;Escape&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyC&quot;
-        },
-        {
-          &quot;code&quot;: &quot;KeyQ&quot;
-        }
-      ],
-      &quot;goBack&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyH&quot;
-        }
-      ],
-      &quot;goForward&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyL&quot;
-        }
-      ],
-      &quot;reloadTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyR&quot;
-        }
-      ],
-      &quot;reloadTabWithoutCache&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyR&quot;
-        }
-      ],
-      &quot;goToNextPage&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Period&quot;
-        }
-      ],
-      &quot;goToPreviousPage&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Comma&quot;
-        }
-      ],
-      &quot;removeURLParams&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyU&quot;
-        }
-      ],
-      &quot;goUp&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyU&quot;
-        }
-      ],
-      &quot;goToRoot&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyU&quot;
-        }
-      ],
-      &quot;focusTextInput&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyI&quot;
-        }
-      ],
-      &quot;focusMediaPlayer&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyV&quot;
-        }
-      ],
-      &quot;blurElement&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Escape&quot;
-        }
-      ],
-      &quot;copyURL&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyY&quot;
-        }
-      ],
-      &quot;copyTitle&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyY&quot;
-        }
-      ],
-      &quot;copyTitleAndURL&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyY&quot;
-        }
-      ],
-      &quot;savePage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyS&quot;
-        }
-      ],
-      &quot;savePageAsMHTML&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyS&quot;
-        }
-      ],
-      &quot;openWebSearchForSelectedText&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyW&quot;
-        }
-      ],
-      &quot;scrollDown&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyJ&quot;
-        }
-      ],
-      &quot;scrollUp&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyK&quot;
-        }
-      ],
-      &quot;scrollLeft&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyH&quot;
-        }
-      ],
-      &quot;scrollRight&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyL&quot;
-        }
-      ],
-      &quot;scrollPageDown&quot;: [
-        {
-          &quot;code&quot;: &quot;Space&quot;
-        }
-      ],
-      &quot;scrollPageUp&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Space&quot;
-        }
-      ],
-      &quot;scrollHalfPageDown&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyJ&quot;
-        }
-      ],
-      &quot;scrollHalfPageUp&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyK&quot;
-        }
-      ],
-      &quot;scrollToTop&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyG&quot;
-        }
-      ],
-      &quot;scrollToBottom&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyE&quot;
-        }
-      ],
-      &quot;zoomIn&quot;: [
-        {
-          &quot;code&quot;: &quot;Equal&quot;
-        }
-      ],
-      &quot;zoomOut&quot;: [
-        {
-          &quot;code&quot;: &quot;Minus&quot;
-        }
-      ],
-      &quot;zoomReset&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit0&quot;
-        }
-      ],
-      &quot;toggleFullScreen&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyF&quot;
-        }
-      ],
-      &quot;openNewTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyT&quot;
-        }
-      ],
-      &quot;openNewTabRight&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyO&quot;
-        }
-      ],
-      &quot;openNewWindow&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyN&quot;
-        }
-      ],
-      &quot;openNewIncognitoWindow&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyN&quot;
-        }
-      ],
-      &quot;closeTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyX&quot;
-        }
-      ],
-      &quot;closeOtherTabs&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyX&quot;
-        }
-      ],
-      &quot;closeRightTabs&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyX&quot;
-        }
-      ],
-      &quot;closeWindow&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyX&quot;
-        }
-      ],
-      &quot;restoreTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyU&quot;
-        }
-      ],
-      &quot;duplicateTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyB&quot;
-        }
-      ],
-      &quot;togglePinTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyP&quot;
-        }
-      ],
-      &quot;toggleGroupTab&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyP&quot;
-        }
-      ],
-      &quot;toggleCollapseTabGroups&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyC&quot;
-        }
-      ],
-      &quot;toggleMuteTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyM&quot;
-        }
-      ],
-      &quot;discardTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyD&quot;
-        }
-      ],
-      &quot;sortTabsByURL&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Digit1&quot;
-        }
-      ],
-      &quot;groupTabsByDomain&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Digit2&quot;
-        }
-      ],
-      &quot;renameTabGroup&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyR&quot;
-        }
-      ],
-      &quot;cycleTabGroupColorForward&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyA&quot;
-        }
-      ],
-      &quot;cycleTabGroupColorBackward&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyA&quot;
-        }
-      ],
-      &quot;activateAudibleTab&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Digit3&quot;
-        }
-      ],
-      &quot;activateNextTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Tab&quot;
-        },
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyK&quot;
-        }
-      ],
-      &quot;activatePreviousTab&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Tab&quot;
-        },
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyJ&quot;
-        }
-      ],
-      &quot;activateFirstTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit1&quot;
-        }
-      ],
-      &quot;activateSecondTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit2&quot;
-        }
-      ],
-      &quot;activateThirdTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit3&quot;
-        }
-      ],
-      &quot;activateFourthTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit4&quot;
-        }
-      ],
-      &quot;activateFifthTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit5&quot;
-        }
-      ],
-      &quot;activateSixthTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit6&quot;
-        }
-      ],
-      &quot;activateSeventhTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit7&quot;
-        }
-      ],
-      &quot;activateEighthTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit8&quot;
-        }
-      ],
-      &quot;activateLastTab&quot;: [
-        {
-          &quot;code&quot;: &quot;Digit9&quot;
-        }
-      ],
-      &quot;activateLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit1&quot;
-        }
-      ],
-      &quot;activateSecondLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit2&quot;
-        }
-      ],
-      &quot;activateThirdLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit3&quot;
-        }
-      ],
-      &quot;activateFourthLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit4&quot;
-        }
-      ],
-      &quot;activateFifthLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit5&quot;
-        }
-      ],
-      &quot;activateSixthLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit6&quot;
-        }
-      ],
-      &quot;activateSeventhLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit7&quot;
-        }
-      ],
-      &quot;activateEighthLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit8&quot;
-        }
-      ],
-      &quot;activateNinthLastActiveTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;Digit9&quot;
-        }
-      ],
-      &quot;activateNextWindow&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyW&quot;
-        }
-      ],
-      &quot;activatePreviousWindow&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyW&quot;
-        }
-      ],
-      &quot;grabTab&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyG&quot;
-        }
-      ],
-      &quot;moveTabLeft&quot;: [
-        {
-          &quot;code&quot;: &quot;ArrowLeft&quot;
-        }
-      ],
-      &quot;moveTabRight&quot;: [
-        {
-          &quot;code&quot;: &quot;ArrowRight&quot;
-        }
-      ],
-      &quot;moveTabFirst&quot;: [
-        {
-          &quot;code&quot;: &quot;Home&quot;
-        }
-      ],
-      &quot;moveTabLast&quot;: [
-        {
-          &quot;code&quot;: &quot;End&quot;
-        }
-      ],
-      &quot;moveTabNewWindow&quot;: [
-        {
-          &quot;code&quot;: &quot;ArrowUp&quot;
-        }
-      ],
-      &quot;moveTabPreviousWindow&quot;: [
-        {
-          &quot;code&quot;: &quot;ArrowDown&quot;
-        }
-      ],
-      &quot;selectActiveTab&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyS&quot;
-        }
-      ],
-      &quot;selectPreviousTab&quot;: [
-        {
-          &quot;code&quot;: &quot;BracketLeft&quot;
-        }
-      ],
-      &quot;selectNextTab&quot;: [
-        {
-          &quot;code&quot;: &quot;BracketRight&quot;
-        }
-      ],
-      &quot;selectRelatedTabs&quot;: [
-        {
-          &quot;code&quot;: &quot;Backquote&quot;
-        }
-      ],
-      &quot;selectTabsInGroup&quot;: [
-        {
-          &quot;code&quot;: &quot;KeyA&quot;
-        }
-      ],
-      &quot;selectAllTabs&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyA&quot;
-        }
-      ],
-      &quot;selectRightTabs&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyS&quot;
-        }
-      ],
-      &quot;moveTabSelectionFaceBackward&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;BracketLeft&quot;
-        }
-      ],
-      &quot;moveTabSelectionFaceForward&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;BracketRight&quot;
-        }
-      ],
-      &quot;bookmarkTab&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyD&quot;
-        }
-      ],
-      &quot;bookmarkSession&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;KeyB&quot;
-        }
-      ],
-      &quot;addTabToReadingList&quot;: [
-        {
-          &quot;altKey&quot;: true,
-          &quot;code&quot;: &quot;KeyD&quot;
-        }
-      ],
-      &quot;openDownloadsFolder&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyK&quot;
-        }
-      ],
-      &quot;openHistoryPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyH&quot;
-        }
-      ],
-      &quot;openSyncedTabsPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyT&quot;
-        }
-      ],
-      &quot;openClearBrowserDataPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;Delete&quot;
-        }
-      ],
-      &quot;openDownloadsPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyJ&quot;
-        }
-      ],
-      &quot;openBookmarksPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyO&quot;
-        }
-      ],
-      &quot;openSettingsPage&quot;: [
-        {
-          &quot;code&quot;: &quot;Comma&quot;
-        }
-      ],
-      &quot;openPasswordsPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyY&quot;
-        }
-      ],
-      &quot;openPaymentsPage&quot;: [
-      ],
-      &quot;openAddressesPage&quot;: [
-      ],
-      &quot;openSearchEnginesPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;Slash&quot;
-        }
-      ],
-      &quot;openExtensionsPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyA&quot;
-        }
-      ],
-      &quot;openExtensionShortcutsPage&quot;: [
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Equal&quot;
-        }
-      ],
-      &quot;openExperimentsPage&quot;: [
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;Comma&quot;
-        }
-      ],
-      &quot;openAboutChromePage&quot;: [
-      ],
-      &quot;openAboutChromeVersionPage&quot;: [
-      ],
-      &quot;openWhatsNewPage&quot;: [
-      ]
-    },
-    &quot;paletteBindings&quot;: {
-      &quot;selectNextItem&quot;: [
-        {
-          &quot;code&quot;: &quot;ArrowDown&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyN&quot;
-        },
-        {
-          &quot;code&quot;: &quot;Tab&quot;
-        }
-      ],
-      &quot;selectPreviousItem&quot;: [
-        {
-          &quot;code&quot;: &quot;ArrowUp&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyP&quot;
-        },
-        {
-          &quot;shiftKey&quot;: true,
-          &quot;code&quot;: &quot;Tab&quot;
-        }
-      ],
-      &quot;activateSelectedItem&quot;: [
-        {
-          &quot;code&quot;: &quot;Enter&quot;
-        }
-      ],
-      &quot;movePageDown&quot;: [
-        {
-          &quot;code&quot;: &quot;PageDown&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyD&quot;
-        }
-      ],
-      &quot;movePageUp&quot;: [
-        {
-          &quot;code&quot;: &quot;PageUp&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyU&quot;
-        }
-      ],
-      &quot;closeCommandPalette&quot;: [
-        {
-          &quot;code&quot;: &quot;Escape&quot;
-        },
-        {
-          &quot;ctrlKey&quot;: true,
-          &quot;code&quot;: &quot;KeyC&quot;
-        }
-      ]
-    }
+    &quot;commandBindings&quot;: [
+      { &quot;command&quot;: &quot;openShortcutsManual&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;F1&quot; } },
+      { &quot;command&quot;: &quot;openShortcutsOptionsPage&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;F2&quot; } },
+      { &quot;command&quot;: &quot;openCommandPalette&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Slash&quot; } },
+      { &quot;command&quot;: &quot;openCommandPalette&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyF&quot; } },
+      { &quot;command&quot;: &quot;closePopup&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Escape&quot; } },
+      { &quot;command&quot;: &quot;closePopup&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyC&quot; } },
+      { &quot;command&quot;: &quot;closePopup&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyQ&quot; } },
+      { &quot;command&quot;: &quot;goBack&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyH&quot; } },
+      { &quot;command&quot;: &quot;goForward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyL&quot; } },
+      { &quot;command&quot;: &quot;reloadTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyR&quot; } },
+      { &quot;command&quot;: &quot;reloadTabWithoutCache&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyR&quot; } },
+      { &quot;command&quot;: &quot;goToNextPage&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Period&quot; } },
+      { &quot;command&quot;: &quot;goToPreviousPage&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Comma&quot; } },
+      { &quot;command&quot;: &quot;removeURLParams&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyU&quot; } },
+      { &quot;command&quot;: &quot;goUp&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyU&quot; } },
+      { &quot;command&quot;: &quot;goToRoot&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyU&quot; } },
+      { &quot;command&quot;: &quot;focusTextInput&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyI&quot; } },
+      { &quot;command&quot;: &quot;focusMediaPlayer&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyV&quot; } },
+      { &quot;command&quot;: &quot;blurElement&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Escape&quot; } },
+      { &quot;command&quot;: &quot;copyURL&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyY&quot; } },
+      { &quot;command&quot;: &quot;copyTitle&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyY&quot; } },
+      { &quot;command&quot;: &quot;copyTitleAndURL&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyY&quot; } },
+      { &quot;command&quot;: &quot;savePage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyS&quot; } },
+      { &quot;command&quot;: &quot;savePageAsMHTML&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyS&quot; } },
+      { &quot;command&quot;: &quot;openWebSearchForSelectedText&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyW&quot; } },
+      { &quot;command&quot;: &quot;scrollDown&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyJ&quot; } },
+      { &quot;command&quot;: &quot;scrollUp&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyK&quot; } },
+      { &quot;command&quot;: &quot;scrollLeft&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyH&quot; } },
+      { &quot;command&quot;: &quot;scrollRight&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyL&quot; } },
+      { &quot;command&quot;: &quot;scrollPageDown&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Space&quot; } },
+      { &quot;command&quot;: &quot;scrollPageUp&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Space&quot; } },
+      { &quot;command&quot;: &quot;scrollHalfPageDown&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyJ&quot; } },
+      { &quot;command&quot;: &quot;scrollHalfPageUp&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyK&quot; } },
+      { &quot;command&quot;: &quot;scrollToTop&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyG&quot; } },
+      { &quot;command&quot;: &quot;scrollToBottom&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyE&quot; } },
+      { &quot;command&quot;: &quot;zoomIn&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Equal&quot; } },
+      { &quot;command&quot;: &quot;zoomOut&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Minus&quot; } },
+      { &quot;command&quot;: &quot;zoomReset&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit0&quot; } },
+      { &quot;command&quot;: &quot;toggleFullScreen&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyF&quot; } },
+      { &quot;command&quot;: &quot;openNewTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyT&quot; } },
+      { &quot;command&quot;: &quot;openNewTabRight&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyO&quot; } },
+      { &quot;command&quot;: &quot;openNewWindow&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyN&quot; } },
+      { &quot;command&quot;: &quot;openNewIncognitoWindow&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyN&quot; } },
+      { &quot;command&quot;: &quot;closeTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyX&quot; } },
+      { &quot;command&quot;: &quot;closeOtherTabs&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyX&quot; } },
+      { &quot;command&quot;: &quot;closeRightTabs&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyX&quot; } },
+      { &quot;command&quot;: &quot;closeWindow&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyX&quot; } },
+      { &quot;command&quot;: &quot;restoreTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyU&quot; } },
+      { &quot;command&quot;: &quot;duplicateTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyB&quot; } },
+      { &quot;command&quot;: &quot;togglePinTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyP&quot; } },
+      { &quot;command&quot;: &quot;toggleGroupTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyP&quot; } },
+      { &quot;command&quot;: &quot;toggleCollapseTabGroups&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyC&quot; } },
+      { &quot;command&quot;: &quot;toggleMuteTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyM&quot; } },
+      { &quot;command&quot;: &quot;discardTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyD&quot; } },
+      { &quot;command&quot;: &quot;sortTabsByURL&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit1&quot; } },
+      { &quot;command&quot;: &quot;groupTabsByDomain&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit2&quot; } },
+      { &quot;command&quot;: &quot;renameTabGroup&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyR&quot; } },
+      { &quot;command&quot;: &quot;cycleTabGroupColorForward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
+      { &quot;command&quot;: &quot;cycleTabGroupColorBackward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
+      { &quot;command&quot;: &quot;activateAudibleTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit3&quot; } },
+      { &quot;command&quot;: &quot;activateNextTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Tab&quot; } },
+      { &quot;command&quot;: &quot;activateNextTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyK&quot; } },
+      { &quot;command&quot;: &quot;activatePreviousTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Tab&quot; } },
+      { &quot;command&quot;: &quot;activatePreviousTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyJ&quot; } },
+      { &quot;command&quot;: &quot;activateFirstTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit1&quot; } },
+      { &quot;command&quot;: &quot;activateSecondTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit2&quot; } },
+      { &quot;command&quot;: &quot;activateThirdTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit3&quot; } },
+      { &quot;command&quot;: &quot;activateFourthTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit4&quot; } },
+      { &quot;command&quot;: &quot;activateFifthTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit5&quot; } },
+      { &quot;command&quot;: &quot;activateSixthTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit6&quot; } },
+      { &quot;command&quot;: &quot;activateSeventhTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit7&quot; } },
+      { &quot;command&quot;: &quot;activateEighthTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit8&quot; } },
+      { &quot;command&quot;: &quot;activateLastTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit9&quot; } },
+      { &quot;command&quot;: &quot;activateLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit1&quot; } },
+      { &quot;command&quot;: &quot;activateSecondLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit2&quot; } },
+      { &quot;command&quot;: &quot;activateThirdLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit3&quot; } },
+      { &quot;command&quot;: &quot;activateFourthLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit4&quot; } },
+      { &quot;command&quot;: &quot;activateFifthLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit5&quot; } },
+      { &quot;command&quot;: &quot;activateSixthLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit6&quot; } },
+      { &quot;command&quot;: &quot;activateSeventhLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit7&quot; } },
+      { &quot;command&quot;: &quot;activateEighthLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit8&quot; } },
+      { &quot;command&quot;: &quot;activateNinthLastActiveTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;Digit9&quot; } },
+      { &quot;command&quot;: &quot;activateNextWindow&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyW&quot; } },
+      { &quot;command&quot;: &quot;activatePreviousWindow&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyW&quot; } },
+      { &quot;command&quot;: &quot;grabTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyG&quot; } },
+      { &quot;command&quot;: &quot;moveTabLeft&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;ArrowLeft&quot; } },
+      { &quot;command&quot;: &quot;moveTabRight&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;ArrowRight&quot; } },
+      { &quot;command&quot;: &quot;moveTabFirst&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Home&quot; } },
+      { &quot;command&quot;: &quot;moveTabLast&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;End&quot; } },
+      { &quot;command&quot;: &quot;moveTabNewWindow&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;ArrowUp&quot; } },
+      { &quot;command&quot;: &quot;moveTabPreviousWindow&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;ArrowDown&quot; } },
+      { &quot;command&quot;: &quot;selectActiveTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyS&quot; } },
+      { &quot;command&quot;: &quot;selectPreviousTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;BracketLeft&quot; } },
+      { &quot;command&quot;: &quot;selectNextTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;BracketRight&quot; } },
+      { &quot;command&quot;: &quot;selectRelatedTabs&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Backquote&quot; } },
+      { &quot;command&quot;: &quot;selectTabsInGroup&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyA&quot; } },
+      { &quot;command&quot;: &quot;selectAllTabs&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
+      { &quot;command&quot;: &quot;selectRightTabs&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyS&quot; } },
+      { &quot;command&quot;: &quot;moveTabSelectionFaceBackward&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;BracketLeft&quot; } },
+      { &quot;command&quot;: &quot;moveTabSelectionFaceForward&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;BracketRight&quot; } },
+      { &quot;command&quot;: &quot;bookmarkTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyD&quot; } },
+      { &quot;command&quot;: &quot;bookmarkSession&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyB&quot; } },
+      { &quot;command&quot;: &quot;addTabToReadingList&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyD&quot; } },
+      { &quot;command&quot;: &quot;openDownloadsFolder&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyK&quot; } },
+      { &quot;command&quot;: &quot;openHistoryPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyH&quot; } },
+      { &quot;command&quot;: &quot;openSyncedTabsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyT&quot; } },
+      { &quot;command&quot;: &quot;openClearBrowserDataPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;Delete&quot; } },
+      { &quot;command&quot;: &quot;openDownloadsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyJ&quot; } },
+      { &quot;command&quot;: &quot;openBookmarksPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyO&quot; } },
+      { &quot;command&quot;: &quot;openSettingsPage&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Comma&quot; } },
+      { &quot;command&quot;: &quot;openPasswordsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyY&quot; } },
+      { &quot;command&quot;: &quot;openSearchEnginesPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;Slash&quot; } },
+      { &quot;command&quot;: &quot;openExtensionsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
+      { &quot;command&quot;: &quot;openExtensionShortcutsPage&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Equal&quot; } },
+      { &quot;command&quot;: &quot;openExperimentsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;Comma&quot; } }
+    ],
+    &quot;paletteBindings&quot;: [
+      { &quot;command&quot;: &quot;selectNextItem&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;ArrowDown&quot; } },
+      { &quot;command&quot;: &quot;selectNextItem&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyN&quot; } },
+      { &quot;command&quot;: &quot;selectNextItem&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Tab&quot; } },
+      { &quot;command&quot;: &quot;selectPreviousItem&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;ArrowUp&quot; } },
+      { &quot;command&quot;: &quot;selectPreviousItem&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyP&quot; } },
+      { &quot;command&quot;: &quot;selectPreviousItem&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Tab&quot; } },
+      { &quot;command&quot;: &quot;activateSelectedItem&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Enter&quot; } },
+      { &quot;command&quot;: &quot;movePageDown&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;PageDown&quot; } },
+      { &quot;command&quot;: &quot;movePageDown&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyD&quot; } },
+      { &quot;command&quot;: &quot;movePageUp&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;PageUp&quot; } },
+      { &quot;command&quot;: &quot;movePageUp&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyU&quot; } },
+      { &quot;command&quot;: &quot;closeCommandPalette&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Escape&quot; } },
+      { &quot;command&quot;: &quot;closeCommandPalette&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyC&quot; } }
+    ]
   }
 }
 "

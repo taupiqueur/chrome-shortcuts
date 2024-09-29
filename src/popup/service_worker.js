@@ -98,23 +98,36 @@ async function onInstall() {
  * @returns {Promise<void>}
  */
 async function onUpdate(previousVersion) {
-  const popupConfig = await getPopupDefaults()
-  const localStorage = await chrome.storage.sync.get('popupConfig')
-
-  // Merge config to handle added commands.
-  Object.assign(
-    popupConfig.commandBindings,
-    localStorage.popupConfig.commandBindings
-  )
-
-  Object.assign(
-    popupConfig.paletteBindings,
-    localStorage.popupConfig.paletteBindings
-  )
-
-  await chrome.storage.sync.set({
-    popupConfig
-  })
+  switch (previousVersion) {
+    case '0.1.0':
+    case '0.2.0':
+    case '0.2.1':
+    case '0.3.0':
+    case '0.3.1':
+    case '0.3.2':
+    case '0.3.3':
+    case '0.3.4':
+    case '0.3.5':
+    case '0.4.0':
+    case '0.5.0':
+    case '0.6.0':
+    case '0.7.0':
+    case '0.7.1':
+    case '0.7.2':
+    case '0.7.3':
+    case '0.7.4':
+    case '0.8.0':
+    case '0.8.1':
+    case '0.9.0':
+    case '0.9.1':
+    case '0.9.2': {
+      const popupConfig = await getPopupDefaults()
+      await chrome.storage.sync.set({
+        popupConfig
+      })
+      break
+    }
+  }
 }
 
 /**

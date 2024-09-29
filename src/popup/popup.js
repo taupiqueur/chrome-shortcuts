@@ -1,5 +1,18 @@
 // This module contains the code to interpret the “popup.html” custom menu.
 
+/**
+ * @typedef {object} KeyboardMapping
+ * @property {Shortcut} key
+ * @property {string} command
+ *
+ * @typedef {object} Shortcut
+ * @property {boolean} ctrlKey
+ * @property {boolean} altKey
+ * @property {boolean} shiftKey
+ * @property {boolean} metaKey
+ * @property {string} code
+ */
+
 import * as commands from './commands.js'
 import commandPalette from './command_palette/command_palette.js'
 
@@ -7,12 +20,13 @@ import CustomMenu from './components/CustomMenu.js'
 import MenuItem from './components/MenuItem.js'
 import SuggestionItem from './components/SuggestionItem.js'
 
+const SCRIPTING_SELECTOR = '[data-permissions~="scripting"]'
+
 const mainElement = document.querySelector('main')
 const paletteInputElement = document.getElementById('palette-input')
 const paletteMenuElement = document.getElementById('palette-menu')
 const menuElement = document.getElementById('menu-commands')
 const menuItemElements = menuElement.getElementsByTagName('menu-item')
-const scriptingMenuItemElements = menuElement.querySelectorAll('menu-item[data-permissions~="scripting"]')
 const browserExtensionsNotAllowedPopoverElement = document.getElementById('browser-extensions-not-allowed-popover')
 
 const menuCommands = new Map(
@@ -71,15 +85,31 @@ port.onMessage.addListener((message) => {
 /**
  * Handles the popup rendering.
  *
- * @param {{ commandBindings: object, isEnabled: boolean }} options
+ * @param {{ commandBindings: KeyboardMapping[], isEnabled: boolean }} options
  * @returns {void}
  */
 function render({ commandBindings, isEnabled }) {
-  if (!isEnabled) {
-    for (const menuItemElement of scriptingMenuItemElements) {
+  const isDisabled = (menuItemElement) => (
+    !isEnabled &&
+    menuItemElement.matches(SCRIPTING_SELECTOR)
+  )
+
+  for (const { key, command } of commandBindings) {
+    if (menuCommands.has(command)) {
+      const menuItemElement = menuCommands.get(command)
+      menuItemElement.addKeyboardShortcut(key)
+    }
+  }
+
+  for (const [commandName, menuItemElement] of menuCommands) {
+    if (isDisabled(menuItemElement)) {
       menuItemElement.setAttribute('disabled', '')
       menuItemElement.addEventListener('click', () => {
         browserExtensionsNotAllowedPopoverElement.togglePopover()
+      })
+    } else {
+      menuItemElement.addEventListener('click', () => {
+        onCommand(commandName)
       })
     }
   }
@@ -89,20 +119,10 @@ function render({ commandBindings, isEnabled }) {
       case 'Escape':
         browserExtensionsNotAllowedPopoverElement.hidePopover()
         keyboardEvent.preventDefault()
+        keyboardEvent.stopImmediatePropagation()
         break
     }
   })
-
-  // Add menu commands and keyboard shortcuts.
-  for (const [commandName, menuItemElement] of menuCommands) {
-    menuItemElement.addEventListener('click', () => {
-      onCommand(commandName)
-    })
-
-    for (const keybinding of commandBindings[commandName]) {
-      menuItemElement.addKeyboardShortcut(keybinding)
-    }
-  }
 
   mainElement.addEventListener('scroll', debounce(() => {
     mainElement.dataset.scrollTop = mainElement.scrollTop
@@ -110,7 +130,6 @@ function render({ commandBindings, isEnabled }) {
 
   mainElement.dataset.scrollTop = 0
 
-  // Listen for keyboard shortcuts.
   if (!menuElement.contains(document.activeElement)) {
     menuElement.focus({
       preventScroll: true

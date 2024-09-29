@@ -94,6 +94,7 @@ class CustomMenu extends HTMLElement {
       menuItem.focus()
       menuItem.click()
       keyboardEvent.preventDefault()
+      keyboardEvent.stopImmediatePropagation()
     }
   }
 }

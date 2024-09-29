@@ -45,6 +45,7 @@ for (const chromeLinkElement of chromeLinkElements) {
       url: chromeLinkElement.href
     })
     pointerEvent.preventDefault()
+    pointerEvent.stopImmediatePropagation()
   })
 
   chromeLinkElement.addEventListener('auxclick', (pointerEvent) => {
@@ -55,6 +56,7 @@ for (const chromeLinkElement of chromeLinkElements) {
           url: chromeLinkElement.href
         })
         pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
         break
     }
   })

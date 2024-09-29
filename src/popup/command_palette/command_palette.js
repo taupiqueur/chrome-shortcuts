@@ -3,7 +3,7 @@
 /**
  * @typedef {object} PaletteRenderContext
  * @property {chrome.runtime.Port} port
- * @property {object} paletteBindings
+ * @property {KeyboardMapping[]} paletteBindings
  * @property {HTMLElement} paletteInputElement
  * @property {HTMLElement} paletteMenuElement
  * @property {HTMLElement} menuElement
@@ -15,15 +15,6 @@ import * as paletteActions from './actions.js'
 import Keymap from '../lib/keymap.js'
 import StringMatcher from './lib/string_matcher.js'
 import MenuItem from '../components/MenuItem.js'
-
-const PALETTE_ACTIONS = [
-  'selectNextItem',
-  'selectPreviousItem',
-  'activateSelectedItem',
-  'movePageDown',
-  'movePageUp',
-  'closeCommandPalette',
-]
 
 const INPUT_DEBOUNCE_DELAY = 50
 const MAX_CANDIDATE_RESULTS = 25
@@ -40,10 +31,8 @@ const inputKeymap = new Keymap
  * @returns {void}
  */
 function render(cx) {
-  for (const actionName of PALETTE_ACTIONS) {
-    for (const keybinding of cx.paletteBindings[actionName]) {
-      inputKeymap.set(keybinding, actionName)
-    }
+  for (const { key, command } of cx.paletteBindings) {
+    inputKeymap.set(key, command)
   }
 
   cx.paletteInputElement.addEventListener('focus', (focusEvent) => {
@@ -184,6 +173,7 @@ function onKeyDown(keyboardEvent, cx) {
       activeElement: activeMenuItemElement,
     })
     keyboardEvent.preventDefault()
+    keyboardEvent.stopImmediatePropagation()
   }
 }
 
