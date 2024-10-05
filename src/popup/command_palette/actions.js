@@ -2,10 +2,10 @@
 
 /**
  * @typedef {object} PaletteActionContext
- * @property {HTMLElement} mainElement
- * @property {HTMLElement} inputElement
+ * @property {HTMLElement} paletteInputElement
+ * @property {HTMLElement} paletteMenuElement
  * @property {HTMLElement} menuElement
- * @property {HTMLElement} activeElement
+ * @property {HTMLElement} mainElement
  */
 
 import MenuItem from '../components/MenuItem.js'
@@ -19,13 +19,17 @@ const scroller = new Scroller
  * @returns {void}
  */
 export function selectNextItem(cx) {
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
   if (
-    cx.activeElement instanceof MenuItem &&
-    cx.activeElement.nextElementSibling instanceof MenuItem
+    activeElement instanceof MenuItem &&
+    activeElement.nextElementSibling instanceof MenuItem
   ) {
-    cx.activeElement.classList.remove('active')
-    cx.activeElement.nextElementSibling.classList.add('active')
-    cx.activeElement.nextElementSibling.scrollIntoView({
+    activeElement.classList.remove('active')
+    activeElement.nextElementSibling.classList.add('active')
+    activeElement.nextElementSibling.scrollIntoView({
       behavior: 'instant',
       block: 'nearest',
       inline: 'nearest'
@@ -40,13 +44,17 @@ export function selectNextItem(cx) {
  * @returns {void}
  */
 export function selectPreviousItem(cx) {
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
   if (
-    cx.activeElement instanceof MenuItem &&
-    cx.activeElement.previousElementSibling instanceof MenuItem
+    activeElement instanceof MenuItem &&
+    activeElement.previousElementSibling instanceof MenuItem
   ) {
-    cx.activeElement.classList.remove('active')
-    cx.activeElement.previousElementSibling.classList.add('active')
-    cx.activeElement.previousElementSibling.scrollIntoView({
+    activeElement.classList.remove('active')
+    activeElement.previousElementSibling.classList.add('active')
+    activeElement.previousElementSibling.scrollIntoView({
       behavior: 'instant',
       block: 'nearest',
       inline: 'nearest'
@@ -61,8 +69,12 @@ export function selectPreviousItem(cx) {
  * @returns {void}
  */
 export function activateSelectedItem(cx) {
-  if (cx.activeElement instanceof MenuItem) {
-    cx.activeElement.click()
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
+  if (activeElement instanceof MenuItem) {
+    activeElement.click()
   }
 }
 
@@ -101,8 +113,8 @@ export function movePageUp(cx) {
  * @returns {void}
  */
 export function closeCommandPalette(cx) {
-  cx.inputElement.value = ''
-  cx.inputElement.dispatchEvent(
+  cx.paletteInputElement.value = ''
+  cx.paletteInputElement.dispatchEvent(
     new InputEvent('input', {
       inputType: 'deleteContentBackward'
     })

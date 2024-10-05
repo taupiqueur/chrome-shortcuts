@@ -164,13 +164,12 @@ function onPointerOver(pointerEvent, cx) {
  */
 function onKeyDown(keyboardEvent, cx) {
   if (inputKeymap.has(keyboardEvent)) {
-    const activeMenuItemElement = cx.paletteMenuElement.querySelector('menu-item.active')
     const actionName = inputKeymap.get(keyboardEvent)
     paletteActions[actionName]({
-      mainElement: cx.mainElement,
-      inputElement: cx.paletteInputElement,
+      paletteInputElement: cx.paletteInputElement,
+      paletteMenuElement: cx.paletteMenuElement,
       menuElement: cx.menuElement,
-      activeElement: activeMenuItemElement,
+      mainElement: cx.mainElement,
     })
     keyboardEvent.preventDefault()
     keyboardEvent.stopImmediatePropagation()
