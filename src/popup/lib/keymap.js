@@ -11,35 +11,14 @@
  */
 class Keymap extends Map {
   /**
-   * Returns the key sequence from a keyboard event.
-   * Its main use is for accessing the keymap’s elements.
-   *
-   * @param {KeyboardEvent} keyboardEvent
-   * @returns {symbol}
-   */
-  static getKeySequence({
-    ctrlKey = false,
-    altKey = false,
-    shiftKey = false,
-    metaKey = false,
-    code
-  }) {
-    return Symbol.for([
-      ctrlKey,
-      altKey,
-      shiftKey,
-      metaKey,
-      code
-    ])
-  }
-
-  /**
    * @param {KeyboardEvent} keyboardEvent
    * @returns {Value}
    */
   get(keyboardEvent) {
     return super.get(
-      Keymap.getKeySequence(keyboardEvent)
+      keySequence(
+        keyboardEvent
+      )
     )
   }
 
@@ -50,7 +29,9 @@ class Keymap extends Map {
    */
   set(keyboardEvent, value) {
     return super.set(
-      Keymap.getKeySequence(keyboardEvent),
+      keySequence(
+        keyboardEvent
+      ),
       value
     )
   }
@@ -61,9 +42,31 @@ class Keymap extends Map {
    */
   has(keyboardEvent) {
     return super.has(
-      Keymap.getKeySequence(keyboardEvent)
+      keySequence(
+        keyboardEvent
+      )
     )
   }
 }
+
+/**
+ * Returns the key sequence from a keyboard event.
+ *
+ * @param {KeyboardEvent} keyboardEvent
+ * @returns {symbol}
+ */
+const keySequence = ({
+  ctrlKey = false,
+  altKey = false,
+  shiftKey = false,
+  metaKey = false,
+  code
+}) => Symbol.for([
+  ctrlKey,
+  altKey,
+  shiftKey,
+  metaKey,
+  code
+])
 
 export default Keymap
