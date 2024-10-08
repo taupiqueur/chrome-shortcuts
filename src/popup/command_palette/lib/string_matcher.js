@@ -43,7 +43,9 @@ class StringMatcher {
  * @returns {string}
  */
 function normalize(string) {
-  return string.normalize('NFD').replace(/\p{Diacritic}/gu, '')
+  return string
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
 }
 
 /**
