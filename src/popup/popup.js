@@ -124,12 +124,6 @@ function render({ commandBindings, isEnabled }) {
     }
   })
 
-  mainElement.addEventListener('scroll', debounce(() => {
-    mainElement.dataset.scrollTop = mainElement.scrollTop
-  }))
-
-  mainElement.dataset.scrollTop = 0
-
   if (!menuElement.contains(document.activeElement)) {
     menuElement.focus({
       preventScroll: true
@@ -197,20 +191,4 @@ function onSuggestionActivated(suggestion) {
     type: 'suggestion',
     suggestion
   })
-}
-
-/**
- * Debounces a function, delaying its execution until before the next repaint.
- *
- * @param {function} callback
- * @returns {function}
- */
-function debounce(callback) {
-  let animationFrame
-  return (...params) => {
-    window.cancelAnimationFrame(animationFrame)
-    animationFrame = window.requestAnimationFrame(() => {
-      callback(...params)
-    })
-  }
 }

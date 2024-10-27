@@ -100,6 +100,15 @@
   }
 }
 
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -126,13 +135,8 @@ header {
   position: sticky;
   top: 0;
   height: 3rem;
-  border-bottom: 1px solid var(--separator-color);
   display: flex;
   flex-direction: column;
-}
-
-header:has(+ main[data-scroll-top="0"]) {
-  border-bottom: none;
 }
 
 main {
@@ -140,6 +144,18 @@ main {
   scrollbar-width: thin;
   display: flex;
   flex-direction: column;
+  scroll-timeline: --scroller;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 2rem;
+  width: 100%;
+  height: 1px;
+  background-color: var(--separator-color);
+  animation: reveal;
+  animation-timeline: --scroller;
+  animation-range: 0% 1%;
 }
 
 input {
