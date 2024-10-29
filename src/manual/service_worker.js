@@ -4,6 +4,7 @@
 // Long-lived connections: https://developer.chrome.com/docs/extensions/develop/concepts/messaging#connect
 
 const KEEP_ALIVE_INTERVAL = 29000
+
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 
 /**
@@ -48,7 +49,11 @@ function onDisconnect(port, keepAliveIntervalId) {
 function onMessage(message, port) {
   switch (message.type) {
     case 'openNewTab':
-      openNewTabRight(port.sender.tab.id, message.url)
+      openNewTab({
+        active: true,
+        url: message.url,
+        openerTabId: port.sender.tab.id,
+      })
       break
 
     default:
@@ -60,16 +65,22 @@ function onMessage(message, port) {
 }
 
 /**
- * Opens and activates a new tab to the right.
+ * Opens a new tab to the right.
  *
- * @param {number} openerTabId
- * @param {string} url
+ * @param {object} createProperties
+ * @param {boolean} createProperties.active
+ * @param {string} createProperties.url
+ * @param {number} createProperties.openerTabId
  * @returns {Promise<void>}
  */
-async function openNewTabRight(openerTabId, url) {
+async function openNewTab({
+  active,
+  url,
+  openerTabId,
+}) {
   const openerTab = await chrome.tabs.get(openerTabId)
   const createdTab = await chrome.tabs.create({
-    active: true,
+    active,
     url,
     index: openerTab.index + 1,
     openerTabId,

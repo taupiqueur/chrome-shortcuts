@@ -201,15 +201,27 @@ async function onCommand(commandNameWithIndex, tab) {
 async function onMenuItemClicked(info, tab) {
   switch (info.menuItemId) {
     case 'open_documentation':
-      openNewTabRight(tab, 'src/manual/manual.html')
+      openNewTab({
+        active: true,
+        url: 'src/manual/manual.html',
+        openerTabId: tab.id,
+      })
       break
 
     case 'open_support_chat':
-      openNewTabRight(tab, 'https://web.libera.chat/gamja/#taupiqueur')
+      openNewTab({
+        active: true,
+        url: 'https://web.libera.chat/gamja/#taupiqueur',
+        openerTabId: tab.id,
+      })
       break
 
     case 'open_sponsorship_page':
-      openNewTabRight(tab, 'https://github.com/sponsors/taupiqueur')
+      openNewTab({
+        active: true,
+        url: 'https://github.com/sponsors/taupiqueur',
+        openerTabId: tab.id,
+      })
       break
 
     case 'copy_debug_info': {
@@ -232,18 +244,25 @@ async function onMenuItemClicked(info, tab) {
 }
 
 /**
- * Opens and activates a new tab to the right.
+ * Opens a new tab to the right.
  *
- * @param {chrome.tabs.Tab} openerTab
- * @param {string} url
+ * @param {object} createProperties
+ * @param {boolean} createProperties.active
+ * @param {string} createProperties.url
+ * @param {number} createProperties.openerTabId
  * @returns {Promise<void>}
  */
-async function openNewTabRight(openerTab, url) {
+async function openNewTab({
+  active,
+  url,
+  openerTabId,
+}) {
+  const openerTab = await chrome.tabs.get(openerTabId)
   const createdTab = await chrome.tabs.create({
-    active: true,
+    active,
     url,
     index: openerTab.index + 1,
-    openerTabId: openerTab.id,
+    openerTabId,
     windowId: openerTab.windowId
   })
 

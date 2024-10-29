@@ -131,15 +131,27 @@ class SuggestionEngine {
         break
 
       case SuggestionType.Bookmark:
-        await openNewTabRight(tab, suggestion.url)
+        await openNewTab({
+          active: true,
+          url: suggestion.url,
+          openerTabId: tab.id,
+        })
         break
 
       case SuggestionType.ReadingList:
-        await openNewTabRight(tab, suggestion.url)
+        await openNewTab({
+          active: true,
+          url: suggestion.url,
+          openerTabId: tab.id,
+        })
         break
 
       case SuggestionType.History:
-        await openNewTabRight(tab, suggestion.url)
+        await openNewTab({
+          active: true,
+          url: suggestion.url,
+          openerTabId: tab.id,
+        })
         break
 
       case SuggestionType.Download:
@@ -156,18 +168,25 @@ class SuggestionEngine {
 }
 
 /**
- * Opens and activates a new tab to the right.
+ * Opens a new tab to the right.
  *
- * @param {chrome.tabs.Tab} openerTab
- * @param {string} url
+ * @param {object} createProperties
+ * @param {boolean} createProperties.active
+ * @param {string} createProperties.url
+ * @param {number} createProperties.openerTabId
  * @returns {Promise<void>}
  */
-async function openNewTabRight(openerTab, url) {
+async function openNewTab({
+  active,
+  url,
+  openerTabId,
+}) {
+  const openerTab = await chrome.tabs.get(openerTabId)
   const createdTab = await chrome.tabs.create({
-    active: true,
+    active,
     url,
     index: openerTab.index + 1,
-    openerTabId: openerTab.id,
+    openerTabId,
     windowId: openerTab.windowId
   })
 
