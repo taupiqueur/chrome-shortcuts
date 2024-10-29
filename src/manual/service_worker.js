@@ -48,11 +48,27 @@ function onDisconnect(port, keepAliveIntervalId) {
  */
 function onMessage(message, port) {
   switch (message.type) {
-    case 'openNewTab':
+    case 'openNewBackgroundTab':
+      openNewTab({
+        active: false,
+        url: message.url,
+        openerTabId: port.sender.tab.id,
+      })
+      break
+
+    case 'openNewForegroundTab':
       openNewTab({
         active: true,
         url: message.url,
         openerTabId: port.sender.tab.id,
+      })
+      break
+
+    case 'openNewWindow':
+      chrome.windows.create({
+        focused: true,
+        incognito: port.sender.tab.incognito,
+        url: message.url,
       })
       break
 

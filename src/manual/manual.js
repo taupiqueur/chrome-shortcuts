@@ -40,21 +40,55 @@ for (const buttonElement of buttonElements) {
 
 for (const chromeLinkElement of chromeLinkElements) {
   chromeLinkElement.addEventListener('click', (pointerEvent) => {
-    port.postMessage({
-      type: 'openNewTab',
-      url: chromeLinkElement.href
-    })
-    pointerEvent.preventDefault()
-    pointerEvent.stopImmediatePropagation()
+    if (
+      pointerEvent.ctrlKey &&
+      !pointerEvent.altKey &&
+      !pointerEvent.shiftKey &&
+      !pointerEvent.metaKey ||
+
+      !pointerEvent.ctrlKey &&
+      !pointerEvent.altKey &&
+      !pointerEvent.shiftKey &&
+      pointerEvent.metaKey
+    ) {
+      openNewBackgroundTab(chromeLinkElement.href)
+      pointerEvent.preventDefault()
+      pointerEvent.stopImmediatePropagation()
+    } else if (
+      !pointerEvent.ctrlKey &&
+      !pointerEvent.altKey &&
+      !pointerEvent.shiftKey &&
+      !pointerEvent.metaKey ||
+
+      pointerEvent.ctrlKey &&
+      !pointerEvent.altKey &&
+      pointerEvent.shiftKey &&
+      !pointerEvent.metaKey ||
+
+      !pointerEvent.ctrlKey &&
+      !pointerEvent.altKey &&
+      pointerEvent.shiftKey &&
+      pointerEvent.metaKey
+    ) {
+      openNewForegroundTab(chromeLinkElement.href)
+      pointerEvent.preventDefault()
+      pointerEvent.stopImmediatePropagation()
+    } else if (
+      !pointerEvent.ctrlKey &&
+      !pointerEvent.altKey &&
+      pointerEvent.shiftKey &&
+      !pointerEvent.metaKey
+    ) {
+      openNewWindow(chromeLinkElement.href)
+      pointerEvent.preventDefault()
+      pointerEvent.stopImmediatePropagation()
+    }
   })
 
   chromeLinkElement.addEventListener('auxclick', (pointerEvent) => {
     switch (pointerEvent.button) {
       case MIDDLE_MOUSE_BUTTON:
-        port.postMessage({
-          type: 'openNewTab',
-          url: chromeLinkElement.href
-        })
+        openNewBackgroundTab(chromeLinkElement.href)
         pointerEvent.preventDefault()
         pointerEvent.stopImmediatePropagation()
         break
@@ -105,4 +139,43 @@ function createPopover(content, element) {
     popoverElement
   )
   return buttonElement
+}
+
+/**
+ * Opens a new tab in background.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function openNewBackgroundTab(url) {
+  port.postMessage({
+    type: 'openNewBackgroundTab',
+    url
+  })
+}
+
+/**
+ * Opens and activates a new tab.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function openNewForegroundTab(url) {
+  port.postMessage({
+    type: 'openNewForegroundTab',
+    url
+  })
+}
+
+/**
+ * Opens a new window.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function openNewWindow(url) {
+  port.postMessage({
+    type: 'openNewWindow',
+    url
+  })
 }
