@@ -20,6 +20,8 @@ import CustomMenu from './components/CustomMenu.js'
 import MenuItem from './components/MenuItem.js'
 import SuggestionItem from './components/SuggestionItem.js'
 
+const MIDDLE_MOUSE_BUTTON = 1
+
 const SCRIPTING_SELECTOR = '[data-permissions~="scripting"]'
 
 const mainElement = document.querySelector('main')
@@ -104,13 +106,17 @@ function render({ commandBindings, isEnabled }) {
   for (const [commandName, menuItemElement] of menuCommands) {
     if (isDisabled(menuItemElement)) {
       menuItemElement.setAttribute('disabled', '')
-      menuItemElement.addEventListener('click', () => {
+      menuItemElement.onclick = (pointerEvent) => {
         browserExtensionsNotAllowedPopoverElement.togglePopover()
-      })
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      }
     } else {
-      menuItemElement.addEventListener('click', () => {
+      menuItemElement.onclick = (pointerEvent) => {
         onCommand(commandName)
-      })
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      }
     }
   }
 
@@ -157,13 +163,124 @@ function onSuggestionSync(suggestions, suggestionLabels) {
     suggestionElement.dataset.label = suggestionLabels[suggestion.type]
     suggestionElement.dataset.title = suggestion.title
     suggestionElement.dataset.domain = new URL(suggestion.url).hostname
-    menuItemElement.addEventListener('click', () => {
-      onSuggestionActivated(suggestion)
-    })
+    menuItemElement.onclick = (pointerEvent) => {
+      if (
+        pointerEvent.ctrlKey &&
+        !pointerEvent.altKey &&
+        !pointerEvent.shiftKey &&
+        !pointerEvent.metaKey ||
+
+        !pointerEvent.ctrlKey &&
+        !pointerEvent.altKey &&
+        !pointerEvent.shiftKey &&
+        pointerEvent.metaKey
+      ) {
+        openNewBackgroundTab(suggestion.url)
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      } else if (
+        pointerEvent.ctrlKey &&
+        !pointerEvent.altKey &&
+        pointerEvent.shiftKey &&
+        !pointerEvent.metaKey ||
+
+        !pointerEvent.ctrlKey &&
+        !pointerEvent.altKey &&
+        pointerEvent.shiftKey &&
+        pointerEvent.metaKey
+      ) {
+        openNewForegroundTab(suggestion.url)
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      } else if (
+        !pointerEvent.ctrlKey &&
+        !pointerEvent.altKey &&
+        pointerEvent.shiftKey &&
+        !pointerEvent.metaKey
+      ) {
+        openNewWindow(suggestion.url)
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      } else if (
+        !pointerEvent.ctrlKey &&
+        pointerEvent.altKey &&
+        !pointerEvent.shiftKey &&
+        !pointerEvent.metaKey
+      ) {
+        downloadURL(suggestion.url)
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      } else {
+        onSuggestionActivated(suggestion)
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+      }
+    }
+    menuItemElement.onauxclick = (pointerEvent) => {
+      switch (pointerEvent.button) {
+        case MIDDLE_MOUSE_BUTTON:
+          openNewBackgroundTab(suggestion.url)
+          pointerEvent.preventDefault()
+          pointerEvent.stopImmediatePropagation()
+          break
+      }
+    }
     menuItemElement.append(suggestionElement)
     return menuItemElement
   })
   menuElement.append(...menuItemElements)
+}
+
+/**
+ * Opens a new tab in background.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function openNewBackgroundTab(url) {
+  port.postMessage({
+    type: 'openNewBackgroundTab',
+    url
+  })
+}
+
+/**
+ * Opens and activates a new tab.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function openNewForegroundTab(url) {
+  port.postMessage({
+    type: 'openNewForegroundTab',
+    url
+  })
+}
+
+/**
+ * Opens a new window.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function openNewWindow(url) {
+  port.postMessage({
+    type: 'openNewWindow',
+    url
+  })
+}
+
+/**
+ * Downloads a URL.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function downloadURL(url) {
+  port.postMessage({
+    type: 'downloadURL',
+    url
+  })
 }
 
 /**

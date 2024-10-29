@@ -79,6 +79,98 @@ export function activateSelectedItem(cx) {
 }
 
 /**
+ * Opens selected item in a new background tab.
+ *
+ * @param {PaletteActionContext} cx
+ * @returns {void}
+ */
+export function openSelectedItemInNewBackgroundTab(cx) {
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
+  if (activeElement instanceof MenuItem) {
+    activeElement.dispatchEvent(
+      new PointerEvent('click', {
+        ctrlKey: true,
+        altKey: false,
+        shiftKey: false,
+        metaKey: false,
+      })
+    )
+  }
+}
+
+/**
+ * Opens selected item in a new foreground tab.
+ *
+ * @param {PaletteActionContext} cx
+ * @returns {void}
+ */
+export function openSelectedItemInNewForegroundTab(cx) {
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
+  if (activeElement instanceof MenuItem) {
+    activeElement.dispatchEvent(
+      new PointerEvent('click', {
+        ctrlKey: true,
+        altKey: false,
+        shiftKey: true,
+        metaKey: false,
+      })
+    )
+  }
+}
+
+/**
+ * Opens selected item in a new window.
+ *
+ * @param {PaletteActionContext} cx
+ * @returns {void}
+ */
+export function openSelectedItemInNewWindow(cx) {
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
+  if (activeElement instanceof MenuItem) {
+    activeElement.dispatchEvent(
+      new PointerEvent('click', {
+        ctrlKey: false,
+        altKey: false,
+        shiftKey: true,
+        metaKey: false,
+      })
+    )
+  }
+}
+
+/**
+ * Downloads selected item.
+ *
+ * @param {PaletteActionContext} cx
+ * @returns {void}
+ */
+export function downloadSelectedItem(cx) {
+  const activeElement = cx.paletteMenuElement.querySelector(`
+    menu-item.active
+  `)
+
+  if (activeElement instanceof MenuItem) {
+    activeElement.dispatchEvent(
+      new PointerEvent('click', {
+        ctrlKey: false,
+        altKey: true,
+        shiftKey: false,
+        metaKey: false,
+      })
+    )
+  }
+}
+
+/**
  * Moves page down.
  *
  * @param {PaletteActionContext} cx

@@ -106,10 +106,8 @@ function updateMatches(query, candidates, cx) {
       const menuItemElements = filteredCandidates.map((candidate) => {
         const commandElement = cx.menuItemElements[candidate.id]
         const menuItemElement = commandElement.cloneNode(true)
-        menuItemElement.addEventListener('click', () => {
-          commandElement.focus()
-          commandElement.click()
-        })
+        menuItemElement.addEventListener('click', commandElement.onclick)
+        menuItemElement.addEventListener('auxclick', commandElement.onauxclick)
         return menuItemElement
       })
       menuItemElements[0].classList.add('active')

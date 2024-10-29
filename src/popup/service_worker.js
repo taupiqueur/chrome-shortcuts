@@ -35,6 +35,8 @@ import * as commands from '../commands.js'
 
 const KEEP_ALIVE_INTERVAL = 29000
 
+const { TAB_GROUP_ID_NONE } = chrome.tabGroups
+
 const CHROME_DOMAINS = [
   new URLPattern({
     protocol: 'chrome'
@@ -122,7 +124,7 @@ async function onPopupScriptAdded(port) {
  * @param {PopupContext} cx
  * @returns {void}
  */
-function onMessage(message, port, cx) {
+async function onMessage(message, port, cx) {
   switch (message.type) {
     case 'command':
       onCommandMessage(message, port, cx)
@@ -136,11 +138,95 @@ function onMessage(message, port, cx) {
       onSuggestionSyncRequestMessage(message, port, cx)
       break
 
+    case 'openNewBackgroundTab': {
+      const tabs = await chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true
+      })
+      if (tabs.length > 0) {
+        await openNewTab({
+          active: false,
+          url: message.url,
+          openerTabId: tabs[0].id,
+        })
+      }
+      break
+    }
+
+    case 'openNewForegroundTab': {
+      const tabs = await chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true
+      })
+      if (tabs.length > 0) {
+        await openNewTab({
+          active: true,
+          url: message.url,
+          openerTabId: tabs[0].id,
+        })
+      }
+      break
+    }
+
+    case 'openNewWindow': {
+      const tabs = await chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true
+      })
+      if (tabs.length > 0) {
+        await chrome.windows.create({
+          focused: true,
+          incognito: tabs[0].incognito,
+          url: message.url,
+        })
+      }
+      break
+    }
+
+    case 'downloadURL':
+      await chrome.downloads.download({
+        url: message.url
+      })
+      break
+
     default:
       port.postMessage({
         type: 'error',
         message: 'Unknown request'
       })
+  }
+}
+
+/**
+ * Opens a new tab to the right.
+ *
+ * @param {object} createProperties
+ * @param {boolean} createProperties.active
+ * @param {string} createProperties.url
+ * @param {number} createProperties.openerTabId
+ * @returns {Promise<void>}
+ */
+async function openNewTab({
+  active,
+  url,
+  openerTabId,
+}) {
+  const openerTab = await chrome.tabs.get(openerTabId)
+  const createdTab = await chrome.tabs.create({
+    active,
+    url,
+    index: openerTab.index + 1,
+    openerTabId,
+    windowId: openerTab.windowId
+  })
+
+  if (openerTab.groupId !== TAB_GROUP_ID_NONE) {
+    await chrome.tabs.group({
+      groupId: openerTab.groupId,
+      tabIds: [
+        createdTab.id
+      ]
+    })
   }
 }
 
