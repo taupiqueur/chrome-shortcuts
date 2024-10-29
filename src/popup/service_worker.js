@@ -48,89 +48,6 @@ const CHROME_DOMAINS = [
 ]
 
 /**
- * Retrieves the popup config.
- *
- * @returns {Promise<object>}
- */
-async function getPopupDefaults() {
-  return (
-    fetch('popup/config.json')
-      .then((response) =>
-        response.json()
-      )
-  )
-}
-
-/**
- * Handles the initial setup when the extension is first installed or updated to a new version.
- *
- * @param {object} details
- * @returns {void}
- */
-function onInstalled(details) {
-  switch (details.reason) {
-    case 'install':
-      onInstall()
-      break
-
-    case 'update':
-      onUpdate(details.previousVersion)
-      break
-  }
-}
-
-/**
- * Handles the initial setup when the extension is first installed.
- *
- * @returns {Promise<void>}
- */
-async function onInstall() {
-  const popupConfig = await getPopupDefaults()
-  await chrome.storage.sync.set({
-    popupConfig
-  })
-}
-
-/**
- * Handles the setup when the extension is updated to a new version.
- *
- * @param {string} previousVersion
- * @returns {Promise<void>}
- */
-async function onUpdate(previousVersion) {
-  switch (previousVersion) {
-    case '0.1.0':
-    case '0.2.0':
-    case '0.2.1':
-    case '0.3.0':
-    case '0.3.1':
-    case '0.3.2':
-    case '0.3.3':
-    case '0.3.4':
-    case '0.3.5':
-    case '0.4.0':
-    case '0.5.0':
-    case '0.6.0':
-    case '0.7.0':
-    case '0.7.1':
-    case '0.7.2':
-    case '0.7.3':
-    case '0.7.4':
-    case '0.8.0':
-    case '0.8.1':
-    case '0.9.0':
-    case '0.9.1':
-    case '0.9.2': {
-      const popupConfig = await getPopupDefaults()
-      await chrome.storage.sync.set({
-        popupConfig
-      })
-      break
-    }
-  }
-}
-
-/**
  * Handles a new connection when the popup shows up.
  *
  * @param {chrome.runtime.Port} port
@@ -170,7 +87,10 @@ function onDisconnect(port, keepAliveIntervalId) {
  * @returns {Promise<void>}
  */
 async function onPopupScriptAdded(port) {
-  const localStorage = await chrome.storage.sync.get('popupConfig')
+  const localStorage = await chrome.storage.sync.get([
+    'commandBindings',
+    'paletteBindings',
+  ])
 
   const tabs = await chrome.tabs.query({
     active: true,
@@ -182,8 +102,8 @@ async function onPopupScriptAdded(port) {
 
     port.postMessage({
       type: 'init',
-      commandBindings: localStorage.popupConfig.commandBindings,
-      paletteBindings: localStorage.popupConfig.paletteBindings,
+      commandBindings: localStorage.commandBindings,
+      paletteBindings: localStorage.paletteBindings,
       isEnabled: !CHROME_DOMAINS.some((domain) =>
         domain.test(url)
       )
@@ -369,4 +289,4 @@ async function onSuggestionSyncRequestMessage(message, port, cx) {
   }
 }
 
-export default { onInstalled, onConnect }
+export default { onConnect }

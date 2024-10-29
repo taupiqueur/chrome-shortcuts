@@ -75,12 +75,12 @@ function onInstalled(details) {
     case 'install':
       onInstall()
       break
+
+    case 'update':
+      onUpdate(details.previousVersion)
+      break
   }
-
-  popupWorker.onInstalled(details)
   createMenuItems()
-
-  // Chrome only automatically loads content scripts into new tabs.
   runContentScripts()
 }
 
@@ -90,6 +90,8 @@ function onInstalled(details) {
  * @returns {Promise<void>}
  */
 async function onInstall() {
+  const defaults = await optionsWorker.getDefaults()
+  await chrome.storage.sync.set(defaults)
   await chrome.tabs.create({
     active: true,
     url: 'src/manual/manual.html'
@@ -97,7 +99,48 @@ async function onInstall() {
 }
 
 /**
+ * Handles the setup when the extension is updated to a new version.
+ *
+ * @param {string} previousVersion
+ * @returns {Promise<void>}
+ */
+async function onUpdate(previousVersion) {
+  switch (previousVersion) {
+    case '0.1.0':
+    case '0.2.0':
+    case '0.2.1':
+    case '0.3.0':
+    case '0.3.1':
+    case '0.3.2':
+    case '0.3.3':
+    case '0.3.4':
+    case '0.3.5':
+    case '0.4.0':
+    case '0.5.0':
+    case '0.6.0':
+    case '0.7.0':
+    case '0.7.1':
+    case '0.7.2':
+    case '0.7.3':
+    case '0.7.4':
+    case '0.8.0':
+    case '0.8.1':
+    case '0.9.0':
+    case '0.9.1':
+    case '0.9.2':
+    case '0.10.0':
+    case '0.10.1': {
+      const defaults = await optionsWorker.getDefaults()
+      await chrome.storage.sync.set(defaults)
+      break
+    }
+  }
+}
+
+/**
  * Runs content scripts.
+ *
+ * NOTE: Chrome only automatically loads content scripts into new tabs.
  *
  * https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#programmatic
  *

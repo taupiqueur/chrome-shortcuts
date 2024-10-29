@@ -7,13 +7,13 @@
 const KEEP_ALIVE_INTERVAL = 29000
 
 /**
- * Retrieves the popup config.
+ * Retrieves the default config.
  *
  * @returns {Promise<object>}
  */
-async function getPopupDefaults() {
+async function getDefaults() {
   return (
-    fetch('popup/config.json')
+    fetch('config.json')
       .then((response) =>
         response.json()
       )
@@ -93,11 +93,9 @@ async function saveOptions(partialOptions) {
  * @returns {Promise<void>}
  */
 async function resetOptions() {
-  const popupConfig = await getPopupDefaults()
+  const defaults = await getDefaults()
   await chrome.storage.sync.clear()
-  await chrome.storage.sync.set({
-    popupConfig
-  })
+  await chrome.storage.sync.set(defaults)
 }
 
-export default { onConnect }
+export default { getDefaults, onConnect }
