@@ -281,6 +281,15 @@ keyboard-shortcut + keyboard-shortcut::before {
   display: none;
 }
 
+#palette-menu menu-item:is(:hover, :focus, :active)::part(button) {
+  background-color: unset;
+  color: var(--label-color);
+}
+
+#palette-menu menu-item:is(:hover, :focus, :active)::part(shortcuts) {
+  color: var(--tertiary-label-color);
+}
+
 suggestion-item::part(label) {
   padding: 0.1em 0.2em;
   border-radius: 0.3em;
