@@ -10,6 +10,8 @@
 
 import MenuItem from '../components/MenuItem.js'
 
+const ACTIVE_MENU_ITEM_SELECTOR = 'menu-item.active'
+
 const scroller = new Scroller
 
 /**
@@ -19,9 +21,9 @@ const scroller = new Scroller
  * @returns {void}
  */
 export function selectNextItem(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (
     activeElement instanceof MenuItem &&
@@ -44,9 +46,9 @@ export function selectNextItem(cx) {
  * @returns {void}
  */
 export function selectPreviousItem(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (
     activeElement instanceof MenuItem &&
@@ -69,9 +71,9 @@ export function selectPreviousItem(cx) {
  * @returns {void}
  */
 export function activateSelectedItem(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (activeElement instanceof MenuItem) {
     activeElement.click()
@@ -85,9 +87,9 @@ export function activateSelectedItem(cx) {
  * @returns {void}
  */
 export function openSelectedItemInNewBackgroundTab(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
@@ -108,9 +110,9 @@ export function openSelectedItemInNewBackgroundTab(cx) {
  * @returns {void}
  */
 export function openSelectedItemInNewForegroundTab(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
@@ -131,9 +133,9 @@ export function openSelectedItemInNewForegroundTab(cx) {
  * @returns {void}
  */
 export function openSelectedItemInNewWindow(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
@@ -154,9 +156,9 @@ export function openSelectedItemInNewWindow(cx) {
  * @returns {void}
  */
 export function downloadSelectedItem(cx) {
-  const activeElement = cx.paletteMenuElement.querySelector(`
-    menu-item.active
-  `)
+  const activeElement = cx.paletteMenuElement.querySelector(
+    ACTIVE_MENU_ITEM_SELECTOR
+  )
 
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
