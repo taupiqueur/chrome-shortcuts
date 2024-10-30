@@ -167,12 +167,12 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "selectPreviousItem", "key": { "ctrlKey": true, "code": "KeyP" } },
     { "command": "selectPreviousItem", "key": { "shiftKey": true, "code": "Tab" } },
     { "command": "activateSelectedItem", "key": { "code": "Enter" } },
+    { "command": "openSelectedItemInCurrentTab", "key": { "altKey": true, "code": "Enter" } },
     { "command": "openSelectedItemInNewBackgroundTab", "key": { "ctrlKey": true, "code": "Enter" } },
     { "command": "openSelectedItemInNewBackgroundTab", "key": { "metaKey": true, "code": "Enter" } },
     { "command": "openSelectedItemInNewForegroundTab", "key": { "ctrlKey": true, "shiftKey": true, "code": "Enter" } },
     { "command": "openSelectedItemInNewForegroundTab", "key": { "shiftKey": true, "metaKey": true, "code": "Enter" } },
     { "command": "openSelectedItemInNewWindow", "key": { "shiftKey": true, "code": "Enter" } },
-    { "command": "downloadSelectedItem", "key": { "altKey": true, "code": "Enter" } },
     { "command": "movePageDown", "key": { "code": "PageDown" } },
     { "command": "movePageDown", "key": { "ctrlKey": true, "code": "KeyD" } },
     { "command": "movePageUp", "key": { "code": "PageUp" } },
@@ -240,10 +240,10 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 `selectNextItem` | Select the next item | | | `ArrowDown`, `Control+KeyN`, `Tab`
 `selectPreviousItem` | Select the previous item | | | `ArrowUp`, `Control+KeyP`, `Shift+Tab`
 `activateSelectedItem` | Activate selected item | | | `Enter`
+`openSelectedItemInCurrentTab` | Open selected item in the current tab | | | `Alt+Enter`
 `openSelectedItemInNewBackgroundTab` | Open selected item in a new background tab | | | `Control+Enter`, `Command+Enter`
 `openSelectedItemInNewForegroundTab` | Open selected item in a new foreground tab | | | `Control+Shift+Enter`, `Shift+Command+Enter`
 `openSelectedItemInNewWindow` | Open selected item in a new window | | | `Shift+Enter`
-`downloadSelectedItem` | Download selected item | | | `Alt+Enter`
 `movePageDown` | Move page down | | | `PageDown`, `Control+KeyD`
 `movePageUp` | Move page up | | | `PageUp`, `Control+KeyU`
 `closeCommandPalette` | Close the command palette | | | `Escape`, `Control+KeyC`

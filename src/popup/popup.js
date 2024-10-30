@@ -165,6 +165,16 @@ function onSuggestionSync(suggestions, suggestionLabels) {
     suggestionElement.dataset.domain = new URL(suggestion.url).hostname
     menuItemElement.onclick = (pointerEvent) => {
       if (
+        !pointerEvent.ctrlKey &&
+        pointerEvent.altKey &&
+        !pointerEvent.shiftKey &&
+        !pointerEvent.metaKey
+      ) {
+        open(suggestion.url)
+        pointerEvent.preventDefault()
+        pointerEvent.stopImmediatePropagation()
+        window.close()
+      } else if (
         pointerEvent.ctrlKey &&
         !pointerEvent.altKey &&
         !pointerEvent.shiftKey &&
@@ -201,15 +211,6 @@ function onSuggestionSync(suggestions, suggestionLabels) {
         openNewWindow(suggestion.url)
         pointerEvent.preventDefault()
         pointerEvent.stopImmediatePropagation()
-      } else if (
-        !pointerEvent.ctrlKey &&
-        pointerEvent.altKey &&
-        !pointerEvent.shiftKey &&
-        !pointerEvent.metaKey
-      ) {
-        downloadURL(suggestion.url)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       } else {
         onSuggestionActivated(suggestion)
         pointerEvent.preventDefault()
@@ -229,6 +230,19 @@ function onSuggestionSync(suggestions, suggestionLabels) {
     return menuItemElement
   })
   menuElement.append(...menuItemElements)
+}
+
+/**
+ * Opens a URL.
+ *
+ * @param {string} url
+ * @returns {void}
+ */
+function open(url) {
+  port.postMessage({
+    type: 'open',
+    url
+  })
 }
 
 /**
@@ -266,19 +280,6 @@ function openNewForegroundTab(url) {
 function openNewWindow(url) {
   port.postMessage({
     type: 'openNewWindow',
-    url
-  })
-}
-
-/**
- * Downloads a URL.
- *
- * @param {string} url
- * @returns {void}
- */
-function downloadURL(url) {
-  port.postMessage({
-    type: 'downloadURL',
     url
   })
 }

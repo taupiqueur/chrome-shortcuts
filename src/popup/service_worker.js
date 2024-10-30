@@ -138,6 +138,19 @@ async function onMessage(message, port, cx) {
       onSuggestionSyncRequestMessage(message, port, cx)
       break
 
+    case 'open': {
+      const tabs = await chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true
+      })
+      if (tabs.length > 0) {
+        await chrome.tabs.update(tabs[0].id, {
+          url: message.url
+        })
+      }
+      break
+    }
+
     case 'openNewBackgroundTab': {
       const tabs = await chrome.tabs.query({
         active: true,
@@ -182,12 +195,6 @@ async function onMessage(message, port, cx) {
       }
       break
     }
-
-    case 'downloadURL':
-      await chrome.downloads.download({
-        url: message.url
-      })
-      break
 
     default:
       port.postMessage({
