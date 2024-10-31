@@ -3,6 +3,14 @@
 
 const MIDDLE_MOUSE_BUTTON = 1
 
+const Modifier = {
+  None: 0,
+  Control: 1 << 0,
+  Alt: 1 << 1,
+  Shift: 1 << 2,
+  Meta: 1 << 3,
+}
+
 const buttonElements = document.querySelectorAll('button[data-action]')
 const chromeLinkElements = document.querySelectorAll('a[href^="chrome:"]')
 const keyCodeElements = document.querySelectorAll('kbd.code')
@@ -40,44 +48,29 @@ for (const buttonElement of buttonElements) {
 
 for (const chromeLinkElement of chromeLinkElements) {
   chromeLinkElement.addEventListener('click', (pointerEvent) => {
+    const pointerEventModifiers = (
+      (pointerEvent.ctrlKey ? Modifier.Control : Modifier.None) |
+      (pointerEvent.altKey ? Modifier.Alt : Modifier.None) |
+      (pointerEvent.shiftKey ? Modifier.Shift : Modifier.None) |
+      (pointerEvent.metaKey ? Modifier.Meta : Modifier.None)
+    )
     if (
-      pointerEvent.ctrlKey &&
-      !pointerEvent.altKey &&
-      !pointerEvent.shiftKey &&
-      !pointerEvent.metaKey ||
-
-      !pointerEvent.ctrlKey &&
-      !pointerEvent.altKey &&
-      !pointerEvent.shiftKey &&
-      pointerEvent.metaKey
+      pointerEventModifiers === Modifier.Control ||
+      pointerEventModifiers === Modifier.Meta
     ) {
       openNewBackgroundTab(chromeLinkElement.href)
       pointerEvent.preventDefault()
       pointerEvent.stopImmediatePropagation()
     } else if (
-      !pointerEvent.ctrlKey &&
-      !pointerEvent.altKey &&
-      !pointerEvent.shiftKey &&
-      !pointerEvent.metaKey ||
-
-      pointerEvent.ctrlKey &&
-      !pointerEvent.altKey &&
-      pointerEvent.shiftKey &&
-      !pointerEvent.metaKey ||
-
-      !pointerEvent.ctrlKey &&
-      !pointerEvent.altKey &&
-      pointerEvent.shiftKey &&
-      pointerEvent.metaKey
+      pointerEventModifiers === Modifier.None ||
+      pointerEventModifiers === (Modifier.Control | Modifier.Shift) ||
+      pointerEventModifiers === (Modifier.Shift | Modifier.Meta)
     ) {
       openNewForegroundTab(chromeLinkElement.href)
       pointerEvent.preventDefault()
       pointerEvent.stopImmediatePropagation()
     } else if (
-      !pointerEvent.ctrlKey &&
-      !pointerEvent.altKey &&
-      pointerEvent.shiftKey &&
-      !pointerEvent.metaKey
+      pointerEventModifiers === Modifier.Shift
     ) {
       openNewWindow(chromeLinkElement.href)
       pointerEvent.preventDefault()

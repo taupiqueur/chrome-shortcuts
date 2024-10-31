@@ -24,6 +24,14 @@ const MIDDLE_MOUSE_BUTTON = 1
 
 const SCRIPTING_SELECTOR = '[data-permissions~="scripting"]'
 
+const Modifier = {
+  None: 0,
+  Control: 1 << 0,
+  Alt: 1 << 1,
+  Shift: 1 << 2,
+  Meta: 1 << 3,
+}
+
 const mainElement = document.querySelector('main')
 const paletteInputElement = document.getElementById('palette-input')
 const paletteMenuElement = document.getElementById('palette-menu')
@@ -164,49 +172,35 @@ function onSuggestionSync(suggestions, suggestionLabels) {
     suggestionElement.dataset.title = suggestion.title
     suggestionElement.dataset.domain = new URL(suggestion.url).hostname
     menuItemElement.onclick = (pointerEvent) => {
+      const pointerEventModifiers = (
+        (pointerEvent.ctrlKey ? Modifier.Control : Modifier.None) |
+        (pointerEvent.altKey ? Modifier.Alt : Modifier.None) |
+        (pointerEvent.shiftKey ? Modifier.Shift : Modifier.None) |
+        (pointerEvent.metaKey ? Modifier.Meta : Modifier.None)
+      )
       if (
-        !pointerEvent.ctrlKey &&
-        pointerEvent.altKey &&
-        !pointerEvent.shiftKey &&
-        !pointerEvent.metaKey
+        pointerEventModifiers === Modifier.Alt
       ) {
         open(suggestion.url)
         pointerEvent.preventDefault()
         pointerEvent.stopImmediatePropagation()
         window.close()
       } else if (
-        pointerEvent.ctrlKey &&
-        !pointerEvent.altKey &&
-        !pointerEvent.shiftKey &&
-        !pointerEvent.metaKey ||
-
-        !pointerEvent.ctrlKey &&
-        !pointerEvent.altKey &&
-        !pointerEvent.shiftKey &&
-        pointerEvent.metaKey
+        pointerEventModifiers === Modifier.Control ||
+        pointerEventModifiers === Modifier.Meta
       ) {
         openNewBackgroundTab(suggestion.url)
         pointerEvent.preventDefault()
         pointerEvent.stopImmediatePropagation()
       } else if (
-        pointerEvent.ctrlKey &&
-        !pointerEvent.altKey &&
-        pointerEvent.shiftKey &&
-        !pointerEvent.metaKey ||
-
-        !pointerEvent.ctrlKey &&
-        !pointerEvent.altKey &&
-        pointerEvent.shiftKey &&
-        pointerEvent.metaKey
+        pointerEventModifiers === (Modifier.Control | Modifier.Shift) ||
+        pointerEventModifiers === (Modifier.Shift | Modifier.Meta)
       ) {
         openNewForegroundTab(suggestion.url)
         pointerEvent.preventDefault()
         pointerEvent.stopImmediatePropagation()
       } else if (
-        !pointerEvent.ctrlKey &&
-        !pointerEvent.altKey &&
-        pointerEvent.shiftKey &&
-        !pointerEvent.metaKey
+        pointerEventModifiers === Modifier.Shift
       ) {
         openNewWindow(suggestion.url)
         pointerEvent.preventDefault()
