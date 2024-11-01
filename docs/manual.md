@@ -187,7 +187,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
 
 ### In practice?
 
-`Alt+J` / `Alt+K` are the main keyboard shortcuts I use for navigating to open Shortcuts and click using [Link Hints].
+`Alt+J` / `Alt+K` are the main keyboard shortcuts I use for navigating to open the Shortcuts menu and click using [Link Hints].
 
 [Link Hints]: https://lydell.github.io/LinkHints/
 
