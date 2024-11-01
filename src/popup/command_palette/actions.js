@@ -94,10 +94,7 @@ export function openSelectedItemInCurrentTab(cx) {
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
       new PointerEvent('click', {
-        ctrlKey: false,
-        altKey: true,
-        shiftKey: false,
-        metaKey: false,
+        altKey: true
       })
     )
   }
@@ -117,10 +114,7 @@ export function openSelectedItemInNewBackgroundTab(cx) {
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
       new PointerEvent('click', {
-        ctrlKey: true,
-        altKey: false,
-        shiftKey: false,
-        metaKey: false,
+        ctrlKey: true
       })
     )
   }
@@ -141,9 +135,7 @@ export function openSelectedItemInNewForegroundTab(cx) {
     activeElement.dispatchEvent(
       new PointerEvent('click', {
         ctrlKey: true,
-        altKey: false,
-        shiftKey: true,
-        metaKey: false,
+        shiftKey: true
       })
     )
   }
@@ -163,10 +155,7 @@ export function openSelectedItemInNewWindow(cx) {
   if (activeElement instanceof MenuItem) {
     activeElement.dispatchEvent(
       new PointerEvent('click', {
-        ctrlKey: false,
-        altKey: false,
-        shiftKey: true,
-        metaKey: false,
+        shiftKey: true
       })
     )
   }
