@@ -224,7 +224,7 @@ menu-item::part(button) {
   display: flex;
   padding: 0.3rem 0.9rem;
   border-radius: 0.3rem;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 menu-item:is(:hover, :focus, :active)::part(button) {
