@@ -186,7 +186,7 @@ const sameGroup = compare(_groupId)
 // Shortcuts -------------------------------------------------------------------
 
 /**
- * Opens Shortcuts manual.
+ * Opens the Shortcuts manual.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -197,7 +197,7 @@ export async function openShortcutsManual(cx) {
 }
 
 /**
- * Opens Shortcuts “Options” page.
+ * Opens the Shortcuts “Options” page.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -2731,12 +2731,12 @@ async function openChromePage(cx, navigateURL) {
 }
 
 /**
- * Opens the “History” page.
+ * Opens the browsing history.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openHistoryPage(cx) {
+export async function openBrowsingHistory(cx) {
   await openChromePage(cx, 'chrome://history/')
 }
 
@@ -2751,42 +2751,42 @@ export async function openSyncedTabsPage(cx) {
 }
 
 /**
- * Opens the “Delete browsing data” page.
+ * Opens the “Delete browsing data” options.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openClearBrowserDataPage(cx) {
+export async function openClearBrowserDataOptions(cx) {
   await openChromePage(cx, 'chrome://settings/clearBrowserData')
 }
 
 /**
- * Opens the “Downloads” page.
+ * Opens the download history.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openDownloadsPage(cx) {
+export async function openDownloadHistory(cx) {
   await openChromePage(cx, 'chrome://downloads/')
 }
 
 /**
- * Opens the “Bookmarks” page.
+ * Opens the bookmark manager.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openBookmarksPage(cx) {
+export async function openBookmarkManager(cx) {
   await openChromePage(cx, 'chrome://bookmarks/')
 }
 
 /**
- * Opens the “Settings” page.
+ * Opens settings.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openSettingsPage(cx) {
+export async function openSettings(cx) {
   await openChromePage(cx, 'chrome://settings/')
 }
 
@@ -2801,42 +2801,42 @@ export async function openAppearanceSettings(cx) {
 }
 
 /**
- * Opens the “Password manager > Passwords” page.
+ * Opens the password manager.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openPasswordsPage(cx) {
+export async function openPasswordManager(cx) {
   await openChromePage(cx, 'chrome://password-manager/passwords')
 }
 
 /**
- * Opens the “Payment methods” page.
+ * Opens payment method settings.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openPaymentsPage(cx) {
+export async function openPaymentMethodSettings(cx) {
   await openChromePage(cx, 'chrome://settings/payments')
 }
 
 /**
- * Opens the “Addresses and more” page.
+ * Opens address settings.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openAddressesPage(cx) {
+export async function openAddressSettings(cx) {
   await openChromePage(cx, 'chrome://settings/addresses')
 }
 
 /**
- * Opens the “Search engines” page.
+ * Opens search engine settings.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openSearchEnginesPage(cx) {
+export async function openSearchEngineSettings(cx) {
   await openChromePage(cx, 'chrome://settings/searchEngines')
 }
 
@@ -2851,7 +2851,7 @@ export async function openExtensionsPage(cx) {
 }
 
 /**
- * Opens the “Extensions > Keyboard shortcuts” page.
+ * Opens the “Extension shortcuts” page.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -2861,12 +2861,12 @@ export async function openExtensionShortcutsPage(cx) {
 }
 
 /**
- * Opens the “Experiments” page.
+ * Opens experimental settings.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
-export async function openExperimentsPage(cx) {
+export async function openExperimentalSettings(cx) {
   await openChromePage(cx, 'chrome://flags/')
 }
 

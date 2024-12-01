@@ -341,47 +341,47 @@
     "095.openDownloadsFolder": {
       "description": "Folders · Open the “Downloads” folder"
     },
-    "096.openHistoryPage": {
-      "description": "Chrome URLs · Open the “History” page"
+    "096.openBrowsingHistory": {
+      "description": "Chrome URLs · Open the browsing history"
     },
     "097.openSyncedTabsPage": {
       "description": "Chrome URLs · Open the “Tabs from other devices” page"
     },
-    "098.openClearBrowserDataPage": {
-      "description": "Chrome URLs · Open the “Delete browsing data” page"
+    "098.openClearBrowserDataOptions": {
+      "description": "Chrome URLs · Open the “Delete browsing data” options"
     },
-    "099.openDownloadsPage": {
-      "description": "Chrome URLs · Open the “Downloads” page"
+    "099.openDownloadHistory": {
+      "description": "Chrome URLs · Open the download history"
     },
-    "100.openBookmarksPage": {
-      "description": "Chrome URLs · Open the “Bookmarks” page"
+    "100.openBookmarkManager": {
+      "description": "Chrome URLs · Open the bookmark manager"
     },
-    "101.openSettingsPage": {
-      "description": "Chrome URLs · Open the “Settings” page"
+    "101.openSettings": {
+      "description": "Chrome URLs · Open settings"
     },
     "102.openAppearanceSettings": {
       "description": "Chrome URLs · Open appearance settings"
     },
-    "103.openPasswordsPage": {
-      "description": "Chrome URLs · Open the “Password manager > Passwords” page"
+    "103.openPasswordManager": {
+      "description": "Chrome URLs · Open the password manager"
     },
-    "104.openPaymentsPage": {
-      "description": "Chrome URLs · Open the “Payment methods” page"
+    "104.openPaymentMethodSettings": {
+      "description": "Chrome URLs · Open payment method settings"
     },
-    "105.openAddressesPage": {
-      "description": "Chrome URLs · Open the “Addresses and more” page"
+    "105.openAddressSettings": {
+      "description": "Chrome URLs · Open address settings"
     },
-    "106.openSearchEnginesPage": {
-      "description": "Chrome URLs · Open the “Search engines” page"
+    "106.openSearchEngineSettings": {
+      "description": "Chrome URLs · Open search engine settings"
     },
     "107.openExtensionsPage": {
       "description": "Chrome URLs · Open the “Extensions” page"
     },
     "108.openExtensionShortcutsPage": {
-      "description": "Chrome URLs · Open the “Extensions > Keyboard shortcuts” page"
+      "description": "Chrome URLs · Open the “Extension shortcuts” page"
     },
-    "109.openExperimentsPage": {
-      "description": "Chrome URLs · Open the “Experiments” page"
+    "109.openExperimentalSettings": {
+      "description": "Chrome URLs · Open experimental settings"
     },
     "110.openAboutChromePage": {
       "description": "Chrome URLs · Open the “About Chrome” page"

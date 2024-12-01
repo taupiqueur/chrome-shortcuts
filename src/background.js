@@ -129,7 +129,8 @@ async function onUpdate(previousVersion) {
     case '0.9.1':
     case '0.9.2':
     case '0.10.0':
-    case '0.10.1': {
+    case '0.10.1':
+    case '0.11.0': {
       const defaults = await optionsWorker.getDefaults()
       await chrome.storage.sync.set(defaults)
       break

@@ -147,17 +147,17 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "bookmarkSession", "key": { "shiftKey": true, "code": "KeyB" } },
     { "command": "addTabToReadingList", "key": { "altKey": true, "code": "KeyD" } },
     { "command": "openDownloadsFolder", "key": { "ctrlKey": true, "code": "KeyK" } },
-    { "command": "openHistoryPage", "key": { "ctrlKey": true, "code": "KeyH" } },
+    { "command": "openBrowsingHistory", "key": { "ctrlKey": true, "code": "KeyH" } },
     { "command": "openSyncedTabsPage", "key": { "ctrlKey": true, "code": "KeyT" } },
-    { "command": "openClearBrowserDataPage", "key": { "ctrlKey": true, "code": "Delete" } },
-    { "command": "openDownloadsPage", "key": { "ctrlKey": true, "code": "KeyJ" } },
-    { "command": "openBookmarksPage", "key": { "ctrlKey": true, "code": "KeyO" } },
-    { "command": "openSettingsPage", "key": { "code": "Comma" } },
-    { "command": "openPasswordsPage", "key": { "ctrlKey": true, "code": "KeyY" } },
-    { "command": "openSearchEnginesPage", "key": { "ctrlKey": true, "code": "Slash" } },
+    { "command": "openClearBrowserDataOptions", "key": { "ctrlKey": true, "code": "Delete" } },
+    { "command": "openDownloadHistory", "key": { "ctrlKey": true, "code": "KeyJ" } },
+    { "command": "openBookmarkManager", "key": { "ctrlKey": true, "code": "KeyO" } },
+    { "command": "openSettings", "key": { "code": "Comma" } },
+    { "command": "openPasswordManager", "key": { "ctrlKey": true, "code": "KeyY" } },
+    { "command": "openSearchEngineSettings", "key": { "ctrlKey": true, "code": "Slash" } },
     { "command": "openExtensionsPage", "key": { "ctrlKey": true, "code": "KeyA" } },
     { "command": "openExtensionShortcutsPage", "key": { "shiftKey": true, "code": "Equal" } },
-    { "command": "openExperimentsPage", "key": { "ctrlKey": true, "code": "Comma" } }
+    { "command": "openExperimentalSettings", "key": { "ctrlKey": true, "code": "Comma" } }
   ],
   "paletteBindings": [
     { "command": "selectNextItem", "key": { "code": "ArrowDown" } },
@@ -226,8 +226,8 @@ These commands are only available in the extension’s popup.
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openShortcutsManual` | Open Shortcuts manual | | | `F1`
-`openShortcutsOptionsPage` | Open Shortcuts “Options” page | | | `F2`
+`openShortcutsManual` | Open the Shortcuts manual | | | `F1`
+`openShortcutsOptionsPage` | Open the Shortcuts “Options” page | | | `F2`
 `openCommandPalette` | Open the command palette | | | `Slash`, `Control+KeyF`
 `closePopup` | Close the popup window | | | `Escape`, `Control+KeyC`, `KeyQ`
 
@@ -452,20 +452,20 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`openHistoryPage` | Open the “History” page | `Control+H` | `Command+Y` | `Control+KeyH`
+`openBrowsingHistory` | Open the browsing history | `Control+H` | `Command+Y` | `Control+KeyH`
 `openSyncedTabsPage` | Open the “Tabs from other devices” page | | | `Control+KeyT`
-`openClearBrowserDataPage` | Open the “Delete browsing data” page | `Control+Shift+Delete` | `Command+Shift+Delete` | `Control+Delete`
-`openDownloadsPage` | Open the “Downloads” page | `Control+J` | `Option+Command+L` | `Control+KeyJ`
-`openBookmarksPage` | Open the “Bookmarks” page | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
-`openSettingsPage` | Open the “Settings” page | | `Command+Comma` | `Comma`
+`openClearBrowserDataOptions` | Open the “Delete browsing data” options | `Control+Shift+Delete` | `Command+Shift+Delete` | `Control+Delete`
+`openDownloadHistory` | Open the download history | `Control+J` | `Option+Command+L` | `Control+KeyJ`
+`openBookmarkManager` | Open the bookmark manager | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
+`openSettings` | Open settings | | `Command+Comma` | `Comma`
 `openAppearanceSettings` | Open appearance settings | | |
-`openPasswordsPage` | Open the “Password manager > Passwords” page | | | `Control+KeyY`
-`openPaymentsPage` | Open the “Payment methods” page | | |
-`openAddressesPage` | Open the “Addresses and more” page | | |
-`openSearchEnginesPage` | Open the “Search engines” page | | | `Control+Slash`
+`openPasswordManager` | Open the password manager | | | `Control+KeyY`
+`openPaymentMethodSettings` | Open payment method settings | | |
+`openAddressSettings` | Open address settings | | |
+`openSearchEngineSettings` | Open search engine settings | | | `Control+Slash`
 `openExtensionsPage` | Open the “Extensions” page | | | `Control+KeyA`
-`openExtensionShortcutsPage` | Open the “Extensions > Keyboard shortcuts” page | | | `Shift+Equal`
-`openExperimentsPage` | Open the “Experiments” page | | | `Control+Comma`
+`openExtensionShortcutsPage` | Open the “Extension shortcuts” page | | | `Shift+Equal`
+`openExperimentalSettings` | Open experimental settings | | | `Control+Comma`
 `openAboutChromePage` | Open the “About Chrome” page | | |
 `openAboutChromeVersionPage` | Open the “About Chrome version” page | | |
 `openWhatsNewPage` | Open the “What’s new in Chrome” page | | |
