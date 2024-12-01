@@ -458,6 +458,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openDownloadsPage` | Open the “Downloads” page | `Control+J` | `Option+Command+L` | `Control+KeyJ`
 `openBookmarksPage` | Open the “Bookmarks” page | `Control+Shift+O` | `Option+Command+B` | `Control+KeyO`
 `openSettingsPage` | Open the “Settings” page | | `Command+Comma` | `Comma`
+`openAppearanceSettings` | Open appearance settings | | |
 `openPasswordsPage` | Open the “Password manager > Passwords” page | | | `Control+KeyY`
 `openPaymentsPage` | Open the “Payment methods” page | | |
 `openAddressesPage` | Open the “Addresses and more” page | | |

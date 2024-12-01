@@ -2791,6 +2791,16 @@ export async function openSettingsPage(cx) {
 }
 
 /**
+ * Opens appearance settings.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function openAppearanceSettings(cx) {
+  await openChromePage(cx, 'chrome://settings/appearance')
+}
+
+/**
  * Opens the “Password manager > Passwords” page.
  *
  * @param {CommandContext} cx

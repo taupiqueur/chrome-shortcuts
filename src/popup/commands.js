@@ -208,6 +208,7 @@ export const openClearBrowserDataPage = message('openClearBrowserDataPage', fals
 export const openDownloadsPage = message('openDownloadsPage', false, true)
 export const openBookmarksPage = message('openBookmarksPage', false, true)
 export const openSettingsPage = message('openSettingsPage', false, true)
+export const openAppearanceSettings = message('openAppearanceSettings', false, true)
 export const openPasswordsPage = message('openPasswordsPage', false, true)
 export const openPaymentsPage = message('openPaymentsPage', false, true)
 export const openAddressesPage = message('openAddressesPage', false, true)
