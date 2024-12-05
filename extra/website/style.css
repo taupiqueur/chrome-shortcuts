@@ -1,0 +1,43 @@
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffffff;
+    --foreground-color: #202020;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #202020;
+    --foreground-color: #eaeaea;
+  }
+}
+
+body {
+  margin: auto;
+  max-width: 800px;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+main {
+  margin-block: 2rem;
+}
+
+nav {
+  text-transform: lowercase;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
