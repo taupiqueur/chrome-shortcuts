@@ -82,7 +82,7 @@
 
 body {
   margin: auto;
-  max-width: 800px;
+  max-width: 1000px;
   background-color: var(--background-color);
   color: var(--foreground-color);
   font-family: sans-serif;
@@ -141,6 +141,8 @@ p[role="important"] {
 }
 
 table {
+  display: block;
+  overflow: auto;
   border-collapse: collapse;
   width: 100%;
 }
@@ -168,7 +170,7 @@ th {
 }
 
 th, td {
-  padding: 0.4em 1em;
+  padding: 0.4em 0.8em;
 }
 
 td:nth-child(n+3):nth-child(-n+5) code {
@@ -193,6 +195,14 @@ kbd.code {
 kbd.code:hover {
   background-color: var(--keyboard-input-code-selected-background-color);
   color: var(--keyboard-input-code-selected-text-color);
+}
+
+figure {
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
 }
 
 figcaption {
