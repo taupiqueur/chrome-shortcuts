@@ -6,6 +6,8 @@
   :root {
     --background-color: #ffffff;
     --foreground-color: #202020;
+    --tag-pill-background-color: #e8f0fe66;
+    --tag-pill-text-color: #174ea6;
   }
 }
 
@@ -13,6 +15,14 @@
   :root {
     --background-color: #202020;
     --foreground-color: #eaeaea;
+    --tag-pill-background-color: #2d333b;
+    --tag-pill-text-color: #c5d1de;
+  }
+}
+
+@media (max-width: 800px) {
+  figure {
+    margin-inline: 0;
   }
 }
 
@@ -31,6 +41,22 @@ main {
   margin-block: 2rem;
 }
 
+main figure {
+  margin-block: 2.5rem;
+}
+
+main figure:nth-of-type(1) figcaption {
+  margin-block-start: -1.5rem;
+}
+
+main figure:nth-of-type(2) figcaption {
+  margin-block-start: -1.5rem;
+}
+
+main figure:nth-of-type(3) figcaption {
+  margin-block-start: 0.5rem;
+}
+
 nav {
   text-transform: lowercase;
 }
@@ -41,4 +67,33 @@ nav ul {
   justify-content: space-around;
   list-style: none;
   padding: 0;
+}
+
+figure {
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}
+
+ul.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  margin-block: 2rem;
+  padding: 0;
+}
+
+ul.actions li {
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  background-color: var(--tag-pill-background-color);
+  color: var(--tag-pill-text-color);
 }
