@@ -24,6 +24,10 @@
   figure {
     margin-inline: 0;
   }
+
+  nav ul {
+    gap: 2rem !important;
+  }
 }
 
 body {
