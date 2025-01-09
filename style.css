@@ -63,10 +63,9 @@ nav {
 
 nav ul {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   list-style: none;
   padding: 0;
+  gap: 3.5rem;
 }
 
 figure {
@@ -87,11 +86,11 @@ ul.actions {
   align-items: center;
   justify-content: space-around;
   list-style: none;
-  margin-block: 2rem;
   padding: 0;
 }
 
-ul.actions li {
+ul.actions li a {
+  display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
   background-color: var(--tag-pill-background-color);
