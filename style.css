@@ -26,7 +26,8 @@
   }
 
   nav ul {
-    gap: 2rem !important;
+    font-size: 0.9em;
+    gap: 1rem !important;
   }
 }
 
@@ -43,6 +44,7 @@ body {
 
 main {
   margin-block: 2rem;
+  overflow-wrap: anywhere;
 }
 
 main figure {
@@ -61,6 +63,11 @@ main figure:nth-of-type(3) figcaption {
   margin-block-start: 0.5rem;
 }
 
+main ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
 nav {
   text-transform: lowercase;
 }
@@ -70,6 +77,13 @@ nav ul {
   list-style: none;
   padding: 0;
   gap: 3.5rem;
+}
+
+time {
+  font-size: 0.9em;
+  padding: 0.1em 0.2em;
+  border-radius: 0.3em;
+  background-color: var(--tag-pill-background-color);
 }
 
 figure {
