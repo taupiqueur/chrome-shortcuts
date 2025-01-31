@@ -63,11 +63,6 @@ main figure:nth-of-type(3) figcaption {
   margin-block-start: 0.5rem;
 }
 
-main ul {
-  list-style: none;
-  padding-inline-start: 0;
-}
-
 nav {
   text-transform: lowercase;
 }
@@ -77,6 +72,11 @@ nav ul {
   list-style: none;
   padding: 0;
   gap: 3.5rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
 time {
