@@ -29,9 +29,9 @@ The command palette is the main way to search functionality in Shortcuts.
 ### Configure keyboard shortcuts
 
 Navigate to `chrome://extensions/shortcuts` to configure global keyboard shortcuts.
-
-You can for example bind `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate the current tab,
-or change the default shortcut—to open the popup—to `Alt+J`.
+For example, you can bind `Ctrl+Y` to open a new tab to the right.
+You can also bind shortcuts to duplicate tabs, copy page URLs and more.
+[See all available actions.](#commands)
 
 You can also configure the popup keys by importing and exporting settings
 in the “Options” page—Right-click the Shortcuts toolbar button and select “Options”.
@@ -187,12 +187,18 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
 
 ### In practice?
 
-`Alt+J` / `Alt+K` are the main keyboard shortcuts I use for navigating to open the Shortcuts menu and click using [Link Hints].
+`Alt+J` and `Alt+K` are the two shortcuts I’ve configured to
+open the Shortcuts menu—in the “Extension shortcuts” interface—and
+click using [Link Hints]—in the “Keyboard shortcuts” options.
 
 [Link Hints]: https://lydell.github.io/LinkHints/
 
-Finally, to complement the built-in keyboard shortcuts,
-I’ve configured `Ctrl+Y` to open a new tab to the right, `Ctrl+B` to duplicate the current tab, `Alt+W` to web search selected text, `Alt+Y` to copy URLs, and `Alt+I` to focus text fields.
+Finally, to complement the built-in keyboard shortcuts, I’ve assigned
+`Ctrl+Y` to open a new tab to the right,
+`Ctrl+B` to duplicate tabs,
+`Alt+W` to perform web searches,
+`Alt+Y` to copy page URLs, and
+`Alt+I` to focus text fields.
 
 ## Commands
 
@@ -492,7 +498,7 @@ These commands are only available in the command palette.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
-`activateSuggestion(syncedTabSuggestion)` | Open suggestion in a new tab | | | `Enter`
+`activateSuggestion(syncedTabSuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
 
 ### Bookmark suggestions
 
