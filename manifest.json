@@ -1,10 +1,11 @@
 {
-  "name": "Shortcuts",
+  "name": "__MSG_extensionName__",
   "version": "0.11.4",
-  "description": "Perform common tasks with your keyboard.",
+  "description": "__MSG_extensionDescription__",
   "homepage_url": "https://taupiqueur.github.io/chrome-shortcuts",
   "author": "Mathieu Ablasou <taupiqueur.kanto@gmail.com>",
   "manifest_version": 3,
+  "default_locale": "en",
   "background": {
     "type": "module",
     "service_worker": "src/background.js"
@@ -56,341 +57,341 @@
         "windows": "Ctrl+Space"
       }
     },
-    "001.goBack": {
-      "description": "Navigation · Go back to the previous page in tab’s history"
+    "001_goBack": {
+      "description": "__MSG_goBackCommandDescription__"
     },
-    "002.goForward": {
-      "description": "Navigation · Go forward to the next page in tab’s history"
+    "002_goForward": {
+      "description": "__MSG_goForwardCommandDescription__"
     },
-    "003.reloadTab": {
-      "description": "Navigation · Reload selected tabs"
+    "003_reloadTab": {
+      "description": "__MSG_reloadTabCommandDescription__"
     },
-    "004.reloadTabWithoutCache": {
-      "description": "Navigation · Reload selected tabs, ignoring cached content"
+    "004_reloadTabWithoutCache": {
+      "description": "__MSG_reloadTabWithoutCacheCommandDescription__"
     },
-    "005.goToNextPage": {
-      "description": "Navigation · Go to the next page in the series"
+    "005_goToNextPage": {
+      "description": "__MSG_goToNextPageCommandDescription__"
     },
-    "006.goToPreviousPage": {
-      "description": "Navigation · Go to the previous page in the series"
+    "006_goToPreviousPage": {
+      "description": "__MSG_goToPreviousPageCommandDescription__"
     },
-    "007.removeURLParams": {
-      "description": "Navigation · Remove any URL parameters"
+    "007_removeURLParams": {
+      "description": "__MSG_removeURLParamsCommandDescription__"
     },
-    "008.goUp": {
-      "description": "Navigation · Go up in the URL hierarchy"
+    "008_goUp": {
+      "description": "__MSG_goUpCommandDescription__"
     },
-    "009.goToRoot": {
-      "description": "Navigation · Go to the root URL"
+    "009_goToRoot": {
+      "description": "__MSG_goToRootCommandDescription__"
     },
-    "010.focusTextInput": {
-      "description": "Accessibility · Cycle through text fields"
+    "010_focusTextInput": {
+      "description": "__MSG_focusTextInputCommandDescription__"
     },
-    "011.focusMediaPlayer": {
-      "description": "Accessibility · Cycle through media players"
+    "011_focusMediaPlayer": {
+      "description": "__MSG_focusMediaPlayerCommandDescription__"
     },
-    "012.blurElement": {
-      "description": "Accessibility · Blur the active element"
+    "012_blurElement": {
+      "description": "__MSG_blurElementCommandDescription__"
     },
-    "013.copyURL": {
-      "description": "Clipboard · Copy URL of selected tabs"
+    "013_copyURL": {
+      "description": "__MSG_copyURLCommandDescription__"
     },
-    "014.copyTitle": {
-      "description": "Clipboard · Copy title of selected tabs"
+    "014_copyTitle": {
+      "description": "__MSG_copyTitleCommandDescription__"
     },
-    "015.copyTitleAndURL": {
-      "description": "Clipboard · Copy title and URL of selected tabs"
+    "015_copyTitleAndURL": {
+      "description": "__MSG_copyTitleAndURLCommandDescription__"
     },
-    "016.savePage": {
-      "description": "Save pages · Save the content of selected tabs"
+    "016_savePage": {
+      "description": "__MSG_savePageCommandDescription__"
     },
-    "017.savePageAsMHTML": {
-      "description": "Save pages · Save the content of selected tabs as MHTML"
+    "017_savePageAsMHTML": {
+      "description": "__MSG_savePageAsMHTMLCommandDescription__"
     },
-    "018.openWebSearchForSelectedText": {
-      "description": "Web search · Perform a web search for selected text"
+    "018_openWebSearchForSelectedText": {
+      "description": "__MSG_openWebSearchForSelectedTextCommandDescription__"
     },
-    "019.scrollDown": {
-      "description": "Scroll · Scroll down"
+    "019_scrollDown": {
+      "description": "__MSG_scrollDownCommandDescription__"
     },
-    "020.scrollUp": {
-      "description": "Scroll · Scroll up"
+    "020_scrollUp": {
+      "description": "__MSG_scrollUpCommandDescription__"
     },
-    "021.scrollLeft": {
-      "description": "Scroll · Scroll left"
+    "021_scrollLeft": {
+      "description": "__MSG_scrollLeftCommandDescription__"
     },
-    "022.scrollRight": {
-      "description": "Scroll · Scroll right"
+    "022_scrollRight": {
+      "description": "__MSG_scrollRightCommandDescription__"
     },
-    "023.scrollPageDown": {
-      "description": "Scroll · Scroll one page down"
+    "023_scrollPageDown": {
+      "description": "__MSG_scrollPageDownCommandDescription__"
     },
-    "024.scrollPageUp": {
-      "description": "Scroll · Scroll one page up"
+    "024_scrollPageUp": {
+      "description": "__MSG_scrollPageUpCommandDescription__"
     },
-    "025.scrollHalfPageDown": {
-      "description": "Scroll · Scroll half page down"
+    "025_scrollHalfPageDown": {
+      "description": "__MSG_scrollHalfPageDownCommandDescription__"
     },
-    "026.scrollHalfPageUp": {
-      "description": "Scroll · Scroll half page up"
+    "026_scrollHalfPageUp": {
+      "description": "__MSG_scrollHalfPageUpCommandDescription__"
     },
-    "027.scrollToTop": {
-      "description": "Scroll · Scroll to the top of the page"
+    "027_scrollToTop": {
+      "description": "__MSG_scrollToTopCommandDescription__"
     },
-    "028.scrollToBottom": {
-      "description": "Scroll · Scroll to the bottom of the page"
+    "028_scrollToBottom": {
+      "description": "__MSG_scrollToBottomCommandDescription__"
     },
-    "029.zoomIn": {
-      "description": "Zoom · Zoom in"
+    "029_zoomIn": {
+      "description": "__MSG_zoomInCommandDescription__"
     },
-    "030.zoomOut": {
-      "description": "Zoom · Zoom out"
+    "030_zoomOut": {
+      "description": "__MSG_zoomOutCommandDescription__"
     },
-    "031.zoomReset": {
-      "description": "Zoom · Reset the zoom factor"
+    "031_zoomReset": {
+      "description": "__MSG_zoomResetCommandDescription__"
     },
-    "032.toggleFullScreen": {
-      "description": "Zoom · Turn full-screen mode on or off"
+    "032_toggleFullScreen": {
+      "description": "__MSG_toggleFullScreenCommandDescription__"
     },
-    "033.openNewTab": {
-      "description": "Create tabs · Open and activate a new tab"
+    "033_openNewTab": {
+      "description": "__MSG_openNewTabCommandDescription__"
     },
-    "034.openNewTabRight": {
-      "description": "Create tabs · Open and activate a new tab to the right"
+    "034_openNewTabRight": {
+      "description": "__MSG_openNewTabRightCommandDescription__"
     },
-    "035.openNewWindow": {
-      "description": "Create tabs · Open a new window"
+    "035_openNewWindow": {
+      "description": "__MSG_openNewWindowCommandDescription__"
     },
-    "036.openNewIncognitoWindow": {
-      "description": "Create tabs · Open a new window in Incognito mode"
+    "036_openNewIncognitoWindow": {
+      "description": "__MSG_openNewIncognitoWindowCommandDescription__"
     },
-    "037.closeTab": {
-      "description": "Close tabs · Close selected tabs"
+    "037_closeTab": {
+      "description": "__MSG_closeTabCommandDescription__"
     },
-    "038.closeOtherTabs": {
-      "description": "Close tabs · Close other tabs"
+    "038_closeOtherTabs": {
+      "description": "__MSG_closeOtherTabsCommandDescription__"
     },
-    "039.closeRightTabs": {
-      "description": "Close tabs · Close tabs to the right"
+    "039_closeRightTabs": {
+      "description": "__MSG_closeRightTabsCommandDescription__"
     },
-    "040.closeWindow": {
-      "description": "Close tabs · Close the window that contains the tab"
+    "040_closeWindow": {
+      "description": "__MSG_closeWindowCommandDescription__"
     },
-    "041.restoreTab": {
-      "description": "Close tabs · Reopen previously closed tabs"
+    "041_restoreTab": {
+      "description": "__MSG_restoreTabCommandDescription__"
     },
-    "042.duplicateTab": {
-      "description": "Tab state · Duplicate selected tabs"
+    "042_duplicateTab": {
+      "description": "__MSG_duplicateTabCommandDescription__"
     },
-    "043.togglePinTab": {
-      "description": "Tab state · Pin or unpin selected tabs"
+    "043_togglePinTab": {
+      "description": "__MSG_togglePinTabCommandDescription__"
     },
-    "044.toggleGroupTab": {
-      "description": "Tab state · Group or ungroup selected tabs"
+    "044_toggleGroupTab": {
+      "description": "__MSG_toggleGroupTabCommandDescription__"
     },
-    "045.toggleCollapseTabGroups": {
-      "description": "Tab state · Collapse or uncollapse tab groups"
+    "045_toggleCollapseTabGroups": {
+      "description": "__MSG_toggleCollapseTabGroupsCommandDescription__"
     },
-    "046.toggleMuteTab": {
-      "description": "Tab state · Mute or unmute selected tabs"
+    "046_toggleMuteTab": {
+      "description": "__MSG_toggleMuteTabCommandDescription__"
     },
-    "047.discardTab": {
-      "description": "Tab state · Discard selected tabs"
+    "047_discardTab": {
+      "description": "__MSG_discardTabCommandDescription__"
     },
-    "048.sortTabsByURL": {
-      "description": "Organize tabs · Sort selected tabs by URL"
+    "048_sortTabsByURL": {
+      "description": "__MSG_sortTabsByURLCommandDescription__"
     },
-    "049.groupTabsByDomain": {
-      "description": "Organize tabs · Group selected tabs by domain"
+    "049_groupTabsByDomain": {
+      "description": "__MSG_groupTabsByDomainCommandDescription__"
     },
-    "050.renameTabGroup": {
-      "description": "Manage tab groups · Rename tab group"
+    "050_renameTabGroup": {
+      "description": "__MSG_renameTabGroupCommandDescription__"
     },
-    "051.cycleTabGroupColorForward": {
-      "description": "Manage tab groups · Cycle forward through tab group colors"
+    "051_cycleTabGroupColorForward": {
+      "description": "__MSG_cycleTabGroupColorForwardCommandDescription__"
     },
-    "052.cycleTabGroupColorBackward": {
-      "description": "Manage tab groups · Cycle backward through tab group colors"
+    "052_cycleTabGroupColorBackward": {
+      "description": "__MSG_cycleTabGroupColorBackwardCommandDescription__"
     },
-    "053.activateAudibleTab": {
-      "description": "Switch tabs · Cycle through audible tabs"
+    "053_activateAudibleTab": {
+      "description": "__MSG_activateAudibleTabCommandDescription__"
     },
-    "054.activateNextTab": {
-      "description": "Switch tabs · Activate the next open tab"
+    "054_activateNextTab": {
+      "description": "__MSG_activateNextTabCommandDescription__"
     },
-    "055.activatePreviousTab": {
-      "description": "Switch tabs · Activate the previous open tab"
+    "055_activatePreviousTab": {
+      "description": "__MSG_activatePreviousTabCommandDescription__"
     },
-    "056.activateFirstTab": {
-      "description": "Switch tabs · Activate the leftmost open tab"
+    "056_activateFirstTab": {
+      "description": "__MSG_activateFirstTabCommandDescription__"
     },
-    "057.activateSecondTab": {
-      "description": "Switch tabs · Activate the second leftmost open tab"
+    "057_activateSecondTab": {
+      "description": "__MSG_activateSecondTabCommandDescription__"
     },
-    "058.activateThirdTab": {
-      "description": "Switch tabs · Activate the third leftmost open tab"
+    "058_activateThirdTab": {
+      "description": "__MSG_activateThirdTabCommandDescription__"
     },
-    "059.activateFourthTab": {
-      "description": "Switch tabs · Activate the fourth leftmost open tab"
+    "059_activateFourthTab": {
+      "description": "__MSG_activateFourthTabCommandDescription__"
     },
-    "060.activateFifthTab": {
-      "description": "Switch tabs · Activate the fifth leftmost open tab"
+    "060_activateFifthTab": {
+      "description": "__MSG_activateFifthTabCommandDescription__"
     },
-    "061.activateSixthTab": {
-      "description": "Switch tabs · Activate the sixth leftmost open tab"
+    "061_activateSixthTab": {
+      "description": "__MSG_activateSixthTabCommandDescription__"
     },
-    "062.activateSeventhTab": {
-      "description": "Switch tabs · Activate the seventh leftmost open tab"
+    "062_activateSeventhTab": {
+      "description": "__MSG_activateSeventhTabCommandDescription__"
     },
-    "063.activateEighthTab": {
-      "description": "Switch tabs · Activate the eighth leftmost open tab"
+    "063_activateEighthTab": {
+      "description": "__MSG_activateEighthTabCommandDescription__"
     },
-    "064.activateLastTab": {
-      "description": "Switch tabs · Activate the rightmost open tab"
+    "064_activateLastTab": {
+      "description": "__MSG_activateLastTabCommandDescription__"
     },
-    "065.activateLastActiveTab": {
-      "description": "Switch tabs · Activate the last active tab"
+    "065_activateLastActiveTab": {
+      "description": "__MSG_activateLastActiveTabCommandDescription__"
     },
-    "066.activateSecondLastActiveTab": {
-      "description": "Switch tabs · Activate the second last active tab"
+    "066_activateSecondLastActiveTab": {
+      "description": "__MSG_activateSecondLastActiveTabCommandDescription__"
     },
-    "067.activateThirdLastActiveTab": {
-      "description": "Switch tabs · Activate the third last active tab"
+    "067_activateThirdLastActiveTab": {
+      "description": "__MSG_activateThirdLastActiveTabCommandDescription__"
     },
-    "068.activateFourthLastActiveTab": {
-      "description": "Switch tabs · Activate the fourth last active tab"
+    "068_activateFourthLastActiveTab": {
+      "description": "__MSG_activateFourthLastActiveTabCommandDescription__"
     },
-    "069.activateFifthLastActiveTab": {
-      "description": "Switch tabs · Activate the fifth last active tab"
+    "069_activateFifthLastActiveTab": {
+      "description": "__MSG_activateFifthLastActiveTabCommandDescription__"
     },
-    "070.activateSixthLastActiveTab": {
-      "description": "Switch tabs · Activate the sixth last active tab"
+    "070_activateSixthLastActiveTab": {
+      "description": "__MSG_activateSixthLastActiveTabCommandDescription__"
     },
-    "071.activateSeventhLastActiveTab": {
-      "description": "Switch tabs · Activate the seventh last active tab"
+    "071_activateSeventhLastActiveTab": {
+      "description": "__MSG_activateSeventhLastActiveTabCommandDescription__"
     },
-    "072.activateEighthLastActiveTab": {
-      "description": "Switch tabs · Activate the eighth last active tab"
+    "072_activateEighthLastActiveTab": {
+      "description": "__MSG_activateEighthLastActiveTabCommandDescription__"
     },
-    "073.activateNinthLastActiveTab": {
-      "description": "Switch tabs · Activate the ninth last active tab"
+    "073_activateNinthLastActiveTab": {
+      "description": "__MSG_activateNinthLastActiveTabCommandDescription__"
     },
-    "074.activateNextWindow": {
-      "description": "Switch tabs · Activate the next open window"
+    "074_activateNextWindow": {
+      "description": "__MSG_activateNextWindowCommandDescription__"
     },
-    "075.activatePreviousWindow": {
-      "description": "Switch tabs · Activate the previous open window"
+    "075_activatePreviousWindow": {
+      "description": "__MSG_activatePreviousWindowCommandDescription__"
     },
-    "076.grabTab": {
-      "description": "Move tabs · Grab selected tabs"
+    "076_grabTab": {
+      "description": "__MSG_grabTabCommandDescription__"
     },
-    "077.moveTabLeft": {
-      "description": "Move tabs · Move selected tabs left"
+    "077_moveTabLeft": {
+      "description": "__MSG_moveTabLeftCommandDescription__"
     },
-    "078.moveTabRight": {
-      "description": "Move tabs · Move selected tabs right"
+    "078_moveTabRight": {
+      "description": "__MSG_moveTabRightCommandDescription__"
     },
-    "079.moveTabFirst": {
-      "description": "Move tabs · Move selected tabs to the far left"
+    "079_moveTabFirst": {
+      "description": "__MSG_moveTabFirstCommandDescription__"
     },
-    "080.moveTabLast": {
-      "description": "Move tabs · Move selected tabs to the far right"
+    "080_moveTabLast": {
+      "description": "__MSG_moveTabLastCommandDescription__"
     },
-    "081.moveTabNewWindow": {
-      "description": "Move tabs · Move selected tabs to a new window"
+    "081_moveTabNewWindow": {
+      "description": "__MSG_moveTabNewWindowCommandDescription__"
     },
-    "082.moveTabPreviousWindow": {
-      "description": "Move tabs · Move selected tabs to the previous open window"
+    "082_moveTabPreviousWindow": {
+      "description": "__MSG_moveTabPreviousWindowCommandDescription__"
     },
-    "083.selectActiveTab": {
-      "description": "Select tabs · Deselect all other tabs"
+    "083_selectActiveTab": {
+      "description": "__MSG_selectActiveTabCommandDescription__"
     },
-    "084.selectPreviousTab": {
-      "description": "Select tabs · Select the previous tab"
+    "084_selectPreviousTab": {
+      "description": "__MSG_selectPreviousTabCommandDescription__"
     },
-    "085.selectNextTab": {
-      "description": "Select tabs · Select the next tab"
+    "085_selectNextTab": {
+      "description": "__MSG_selectNextTabCommandDescription__"
     },
-    "086.selectRelatedTabs": {
-      "description": "Select tabs · Select related tabs"
+    "086_selectRelatedTabs": {
+      "description": "__MSG_selectRelatedTabsCommandDescription__"
     },
-    "087.selectTabsInGroup": {
-      "description": "Select tabs · Select tabs in group"
+    "087_selectTabsInGroup": {
+      "description": "__MSG_selectTabsInGroupCommandDescription__"
     },
-    "088.selectAllTabs": {
-      "description": "Select tabs · Select all tabs"
+    "088_selectAllTabs": {
+      "description": "__MSG_selectAllTabsCommandDescription__"
     },
-    "089.selectRightTabs": {
-      "description": "Select tabs · Select tabs to the right"
+    "089_selectRightTabs": {
+      "description": "__MSG_selectRightTabsCommandDescription__"
     },
-    "090.moveTabSelectionFaceBackward": {
-      "description": "Select tabs · Move tab selection’s face backward"
+    "090_moveTabSelectionFaceBackward": {
+      "description": "__MSG_moveTabSelectionFaceBackwardCommandDescription__"
     },
-    "091.moveTabSelectionFaceForward": {
-      "description": "Select tabs · Move tab selection’s face forward"
+    "091_moveTabSelectionFaceForward": {
+      "description": "__MSG_moveTabSelectionFaceForwardCommandDescription__"
     },
-    "092.bookmarkTab": {
-      "description": "Bookmarks · Save selected tabs as bookmarks"
+    "092_bookmarkTab": {
+      "description": "__MSG_bookmarkTabCommandDescription__"
     },
-    "093.bookmarkSession": {
-      "description": "Bookmarks · Save the current session as bookmarks"
+    "093_bookmarkSession": {
+      "description": "__MSG_bookmarkSessionCommandDescription__"
     },
-    "094.addTabToReadingList": {
-      "description": "Reading list · Add selected tabs to your reading list"
+    "094_addTabToReadingList": {
+      "description": "__MSG_addTabToReadingListCommandDescription__"
     },
-    "095.openDownloadsFolder": {
-      "description": "Folders · Open the “Downloads” folder"
+    "095_openDownloadsFolder": {
+      "description": "__MSG_openDownloadsFolderCommandDescription__"
     },
-    "096.openBrowsingHistory": {
-      "description": "Chrome URLs · Open the browsing history"
+    "096_openBrowsingHistory": {
+      "description": "__MSG_openBrowsingHistoryCommandDescription__"
     },
-    "097.openSyncedTabsPage": {
-      "description": "Chrome URLs · Open the “Tabs from other devices” page"
+    "097_openSyncedTabsPage": {
+      "description": "__MSG_openSyncedTabsPageCommandDescription__"
     },
-    "098.openClearBrowserDataOptions": {
-      "description": "Chrome URLs · Open the “Delete browsing data” options"
+    "098_openClearBrowserDataOptions": {
+      "description": "__MSG_openClearBrowserDataOptionsCommandDescription__"
     },
-    "099.openDownloadHistory": {
-      "description": "Chrome URLs · Open the download history"
+    "099_openDownloadHistory": {
+      "description": "__MSG_openDownloadHistoryCommandDescription__"
     },
-    "100.openBookmarkManager": {
-      "description": "Chrome URLs · Open the bookmark manager"
+    "100_openBookmarkManager": {
+      "description": "__MSG_openBookmarkManagerCommandDescription__"
     },
-    "101.openSettings": {
-      "description": "Chrome URLs · Open settings"
+    "101_openSettings": {
+      "description": "__MSG_openSettingsCommandDescription__"
     },
-    "102.openAppearanceSettings": {
-      "description": "Chrome URLs · Open appearance settings"
+    "102_openAppearanceSettings": {
+      "description": "__MSG_openAppearanceSettingsCommandDescription__"
     },
-    "103.openPasswordManager": {
-      "description": "Chrome URLs · Open the password manager"
+    "103_openPasswordManager": {
+      "description": "__MSG_openPasswordManagerCommandDescription__"
     },
-    "104.openPaymentMethodSettings": {
-      "description": "Chrome URLs · Open payment method settings"
+    "104_openPaymentMethodSettings": {
+      "description": "__MSG_openPaymentMethodSettingsCommandDescription__"
     },
-    "105.openAddressSettings": {
-      "description": "Chrome URLs · Open address settings"
+    "105_openAddressSettings": {
+      "description": "__MSG_openAddressSettingsCommandDescription__"
     },
-    "106.openSearchEngineSettings": {
-      "description": "Chrome URLs · Open search engine settings"
+    "106_openSearchEngineSettings": {
+      "description": "__MSG_openSearchEngineSettingsCommandDescription__"
     },
-    "107.openExtensionsPage": {
-      "description": "Chrome URLs · Open the “Extensions” page"
+    "107_openExtensionsPage": {
+      "description": "__MSG_openExtensionsPageCommandDescription__"
     },
-    "108.openExtensionShortcutsPage": {
-      "description": "Chrome URLs · Open the “Extension shortcuts” page"
+    "108_openExtensionShortcutsPage": {
+      "description": "__MSG_openExtensionShortcutsPageCommandDescription__"
     },
-    "109.openExperimentalSettings": {
-      "description": "Chrome URLs · Open experimental settings"
+    "109_openExperimentalSettings": {
+      "description": "__MSG_openExperimentalSettingsCommandDescription__"
     },
-    "110.openAboutChromePage": {
-      "description": "Chrome URLs · Open the “About Chrome” page"
+    "110_openAboutChromePage": {
+      "description": "__MSG_openAboutChromePageCommandDescription__"
     },
-    "111.openAboutChromeVersionPage": {
-      "description": "Chrome URLs · Open the “About Chrome version” page"
+    "111_openAboutChromeVersionPage": {
+      "description": "__MSG_openAboutChromeVersionPageCommandDescription__"
     },
-    "112.openWhatsNewPage": {
-      "description": "Chrome URLs · Open the “What’s new in Chrome” page"
+    "112_openWhatsNewPage": {
+      "description": "__MSG_openWhatsNewPageCommandDescription__"
     }
   }
 }

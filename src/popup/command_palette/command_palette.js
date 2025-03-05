@@ -121,7 +121,7 @@ function updateMatches(query, candidates, cx) {
     } else {
       const menuItemElement = document.createElement('menu-item')
       menuItemElement.setAttribute('disabled', '')
-      menuItemElement.textContent = 'No results found'
+      menuItemElement.textContent = chrome.i18n.getMessage('noResultsCommandPaletteLabel')
 
       cx.paletteMenuElement.removeAttribute('hidden')
       cx.paletteMenuElement.replaceMenuItems([menuItemElement])

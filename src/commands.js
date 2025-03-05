@@ -12,6 +12,8 @@
  * @typedef {object} CommandContext
  * @property {chrome.tabs.Tab} tab
  * @property {RecentTabsManager} recentTabsManager
+ * @property {string} manualPage
+ * @property {string} optionsPage
  */
 
 import {
@@ -192,8 +194,7 @@ const sameGroup = compare(_groupId)
  * @returns {Promise<void>}
  */
 export async function openShortcutsManual(cx) {
-  const url = chrome.runtime.getURL('src/manual/manual.html')
-  await openChromePage(cx, url)
+  await openChromePage(cx, cx.manualPage)
 }
 
 /**
@@ -203,7 +204,7 @@ export async function openShortcutsManual(cx) {
  * @returns {Promise<void>}
  */
 export async function openShortcutsOptionsPage(cx) {
-  await chrome.runtime.openOptionsPage()
+  await openChromePage(cx, cx.optionsPage)
 }
 
 // Navigation ------------------------------------------------------------------
@@ -463,7 +464,10 @@ export async function copyURL(cx) {
     args: [text]
   })
 
-  await sendNotification('Text copied', `${tabs.length} URLs copied to clipboard`)
+  await sendNotification(
+    chrome.i18n.getMessage('copyURLNotificationTitle'),
+    chrome.i18n.getMessage('copyURLNotificationMessage', tabs.length.toString())
+  )
 }
 
 /**
@@ -491,7 +495,10 @@ export async function copyTitle(cx) {
     args: [text]
   })
 
-  await sendNotification('Text copied', `${tabs.length} titles copied to clipboard`)
+  await sendNotification(
+    chrome.i18n.getMessage('copyTitleNotificationTitle'),
+    chrome.i18n.getMessage('copyTitleNotificationMessage', tabs.length.toString())
+  )
 }
 
 /**
@@ -519,7 +526,10 @@ export async function copyTitleAndURL(cx) {
     args: [text]
   })
 
-  await sendNotification('Text copied', `${tabs.length} titles and URLs copied to clipboard`)
+  await sendNotification(
+    chrome.i18n.getMessage('copyTitleAndURLNotificationTitle'),
+    chrome.i18n.getMessage('copyTitleAndURLNotificationMessage', tabs.length.toString())
+  )
 }
 
 // Save pages ------------------------------------------------------------------
@@ -2558,7 +2568,10 @@ export async function bookmarkTab(cx) {
       )
   )
 
-  await sendNotification('Tabs bookmarked', `${createdBookmarks.length} bookmarks added`)
+  await sendNotification(
+    chrome.i18n.getMessage('bookmarkTabNotificationTitle'),
+    chrome.i18n.getMessage('bookmarkTabNotificationMessage', createdBookmarks.length.toString())
+  )
 }
 
 /**
@@ -2582,7 +2595,7 @@ export async function bookmarkSession(cx) {
   const dateString = getISODateString(new Date)
 
   const baseFolder = await chrome.bookmarks.create({
-    title: `Session ${dateString}`
+    title: chrome.i18n.getMessage('bookmarkSessionFolderTitle', dateString)
   })
 
   const createdFolders = await Promise.all(
@@ -2616,7 +2629,10 @@ export async function bookmarkSession(cx) {
   )
 
   await openChromePage(cx, `chrome://bookmarks/?id=${baseFolder.id}`)
-  await sendNotification('Session bookmarked', `${createdBookmarks.length} bookmarks added into “${baseFolder.title}”`)
+  await sendNotification(
+    chrome.i18n.getMessage('bookmarkSessionNotificationTitle'),
+    chrome.i18n.getMessage('bookmarkSessionNotificationMessage', [createdBookmarks.length.toString(), baseFolder.title])
+  )
 }
 
 // Reading list ----------------------------------------------------------------
@@ -2665,7 +2681,10 @@ export async function addTabToReadingList(cx) {
       )
   )
 
-  await sendNotification('Read later', `${createdItems.length} pages added to your reading list`)
+  await sendNotification(
+    chrome.i18n.getMessage('addTabToReadingListNotificationTitle'),
+    chrome.i18n.getMessage('addTabToReadingListNotificationMessage', createdItems.length.toString())
+  )
 }
 
 // Folders ---------------------------------------------------------------------

@@ -11,6 +11,8 @@ import manualWorker from './manual/service_worker.js'
 import RecentTabsManager from './recent_tabs_manager.js'
 import SuggestionEngine, { SuggestionType } from './suggestion_engine/suggestion_engine.js'
 
+const COMMAND_NAME_OFFSET = 4
+
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 
 const recentTabsManager = new RecentTabsManager
@@ -20,14 +22,54 @@ const suggestionEngine = new SuggestionEngine({
 })
 
 const suggestionLabels = new Map([
-  [SuggestionType.OpenTab, 'Open tab'],
-  [SuggestionType.ClosedTab, 'Recently closed'],
-  [SuggestionType.SyncedTab, 'Synced tab'],
-  [SuggestionType.Bookmark, 'Bookmark'],
-  [SuggestionType.ReadingList, 'Reading list'],
-  [SuggestionType.History, 'Recently visited'],
-  [SuggestionType.Download, 'Download'],
+  [SuggestionType.OpenTab, chrome.i18n.getMessage('openTabSuggestionLabel')],
+  [SuggestionType.ClosedTab, chrome.i18n.getMessage('closedTabSuggestionLabel')],
+  [SuggestionType.SyncedTab, chrome.i18n.getMessage('syncedTabSuggestionLabel')],
+  [SuggestionType.Bookmark, chrome.i18n.getMessage('bookmarkSuggestionLabel')],
+  [SuggestionType.ReadingList, chrome.i18n.getMessage('readingListSuggestionLabel')],
+  [SuggestionType.History, chrome.i18n.getMessage('historySuggestionLabel')],
+  [SuggestionType.Download, chrome.i18n.getMessage('downloadSuggestionLabel')],
 ])
+
+/**
+ * Cache where we will expose the data we retrieve from the storage.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/storage#asynchronous-preload-from-storage
+ *
+ * @type {{ homePage: string, manualPage: string, optionsPage: string }}
+ */
+const storageCache = {
+}
+
+/**
+ * Configures the extension’s internal pages.
+ *
+ * @returns {Promise<void>}
+ */
+async function setLocalizedPages() {
+  switch (chrome.i18n.getUILanguage()) {
+    case 'fr':
+      await chrome.action.setPopup({
+        popup: 'src/popup/popup.fr.html'
+      })
+      await chrome.storage.session.set({
+        homePage: 'https://taupiqueur.github.io/chrome-shortcuts/fr/',
+        manualPage: chrome.runtime.getURL('src/manual/manual.fr.html'),
+        optionsPage: chrome.runtime.getURL('src/options/options.fr.html'),
+      })
+      break
+
+    default:
+      await chrome.action.setPopup({
+        popup: 'src/popup/popup.html'
+      })
+      await chrome.storage.session.set({
+        homePage: 'https://taupiqueur.github.io/chrome-shortcuts',
+        manualPage: chrome.runtime.getURL('src/manual/manual.html'),
+        optionsPage: chrome.runtime.getURL('src/options/options.html'),
+      })
+  }
+}
 
 /**
  * Adds items to the browser’s context menu.
@@ -80,8 +122,6 @@ function onInstalled(details) {
       onUpdate(details.previousVersion)
       break
   }
-  createMenuItems()
-  runContentScripts()
 }
 
 /**
@@ -92,9 +132,12 @@ function onInstalled(details) {
 async function onInstall() {
   const defaults = await optionsWorker.getDefaults()
   await chrome.storage.sync.set(defaults)
+  await setLocalizedPages()
+  createMenuItems()
+  await runContentScripts()
   await chrome.tabs.create({
     active: true,
-    url: 'src/manual/manual.html'
+    url: storageCache.homePage
   })
 }
 
@@ -133,9 +176,29 @@ async function onUpdate(previousVersion) {
     case '0.11.0': {
       const defaults = await optionsWorker.getDefaults()
       await chrome.storage.sync.set(defaults)
+      await setLocalizedPages()
+      createMenuItems()
+      await runContentScripts()
       break
     }
+
+    default:
+      await setLocalizedPages()
+      createMenuItems()
+      await runContentScripts()
   }
+}
+
+/**
+ * Handles startup when a profile is started
+ * (e.g., when the browser first starts up).
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onStartup
+ *
+ * @returns {void}
+ */
+function onStartup() {
+  setLocalizedPages()
 }
 
 /**
@@ -173,6 +236,25 @@ async function runContentScripts() {
 }
 
 /**
+ * Handles option changes.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/storage#event-onChanged
+ *
+ * @param {object} changes
+ * @param {string} areaName
+ * @returns {void}
+ */
+function onOptionsChange(changes, areaName) {
+  switch (areaName) {
+    case 'session':
+      for (const key in changes) {
+        storageCache[key] = changes[key].newValue
+      }
+      break
+  }
+}
+
+/**
  * Handles keyboard shortcuts.
  *
  * https://developer.chrome.com/docs/extensions/reference/api/commands#event-onCommand
@@ -182,11 +264,13 @@ async function runContentScripts() {
  * @returns {Promise<void>}
  */
 async function onCommand(commandNameWithIndex, tab) {
-  const commandName = commandNameWithIndex.split('.')[1]
+  const commandName = commandNameWithIndex.substring(COMMAND_NAME_OFFSET)
 
   await commands[commandName]({
     tab,
-    recentTabsManager
+    recentTabsManager,
+    manualPage: storageCache.manualPage,
+    optionsPage: storageCache.optionsPage,
   })
 }
 
@@ -204,7 +288,7 @@ async function onMenuItemClicked(info, tab) {
     case 'open_documentation':
       openNewTab({
         active: true,
-        url: 'src/manual/manual.html',
+        url: storageCache.manualPage,
         openerTabId: tab.id,
       })
       break
@@ -348,6 +432,8 @@ function onConnect(port) {
         recentTabsManager,
         suggestionEngine,
         suggestionLabels,
+        manualPage: storageCache.manualPage,
+        optionsPage: storageCache.optionsPage,
       })
       break
 
@@ -422,9 +508,15 @@ function onWindowFocusChanged(windowId) {
   recentTabsManager.onWindowFocusChanged(windowId)
 }
 
+chrome.storage.session.get((sessionStorage) => {
+  Object.assign(storageCache, sessionStorage)
+})
+
 // Set up listeners.
 // https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/events
 chrome.runtime.onInstalled.addListener(onInstalled)
+chrome.runtime.onStartup.addListener(onStartup)
+chrome.storage.onChanged.addListener(onOptionsChange)
 chrome.commands.onCommand.addListener(onCommand)
 chrome.contextMenus.onClicked.addListener(onMenuItemClicked)
 chrome.runtime.onConnect.addListener(onConnect)

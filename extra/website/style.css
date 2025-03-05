@@ -29,6 +29,11 @@
     font-size: 0.9em;
     gap: 1rem !important;
   }
+
+  header nav ul {
+    font-size: 0.9em;
+    gap: 0 !important;
+  }
 }
 
 body {
@@ -61,6 +66,21 @@ main figure:nth-of-type(2) figcaption {
 
 main figure:nth-of-type(3) figcaption {
   margin-block-start: 0.5rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+header nav li + li::before {
+  content: ",";
 }
 
 nav {
