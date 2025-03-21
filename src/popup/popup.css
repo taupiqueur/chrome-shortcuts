@@ -225,6 +225,7 @@ menu-item::part(button) {
   padding: 0.3rem 0.9rem;
   border-radius: 0.3rem;
   overflow-wrap: anywhere;
+  gap: 0.1rem;
 }
 
 menu-item:is(:hover, :focus, :active)::part(button) {
