@@ -1,82 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shortcuts manual</title>
+    <title>Manuel Shortcuts</title>
     <link rel="stylesheet" href="manual.css">
   </head>
   <body>
     <main id="shortcuts_manual">
       <h1>
         <a href="#shortcuts_manual">
-          Shortcuts manual
+          Manuel Shortcuts
         </a>
       </h1>
       <p role="important">
-        Important: Requires either <button popovertarget="chrome_version_notice_popover" class="tag-pill">Chrome 127+</button>, <a href="https://google.com/chrome/dev/" target="_blank">Chrome Dev</a> or <a href="https://google.com/chrome/canary/" target="_blank">Chrome Canary</a>
-        for sticky popup—to keep the popup open after entering a command.
-        See <a href="https://issues.chromium.org/issues/40057101" target="_blank">https://issues.chromium.org/issues/40057101</a> and <a href="https://developer.chrome.com/docs/extensions/whats-new#chrome_127_new_actionopenpopup_api" target="_blank">Chrome 127: New <code>action.openPopup</code> API</a> for more information.
+        Important : Nécessite soit <button popovertarget="chrome_version_notice_popover" class="tag-pill">Chrome 127+</button>, soit <a href="https://google.com/chrome/dev/" target="_blank">Chrome Dev</a>, ou <a href="https://google.com/chrome/canary/" target="_blank">Chrome Canary</a>
+        pour maintenir la popup au premier plan.
+        Consultez le changelog <a href="https://developer.chrome.com/docs/extensions/whats-new#chrome_127_new_actionopenpopup_api" target="_blank">Chrome 127 : nouvelle API <code>action.openPopup</code></a> pour en savoir plus.
       </p>
       <div id="chrome_version_notice_popover" popover>
-        Available from this Chrome version and higher.
+        Disponible à partir de cette version de Chrome.
       </div>
       <section id="usage">
         <h2>
           <a href="#usage">
-            Usage
+            Guide d’utilisation
           </a>
         </h2>
         <p>
-          <kbd>Alt</kbd>+<kbd>Space</kbd> (<kbd>Ctrl</kbd>+<kbd>Space</kbd> on Windows) is the main keyboard shortcut.
-          Use it to open the extension’s popup—aka “Vim” mode.
-          Press <kbd class="code">Slash</kbd> to search commands and <kbd class="code">Escape</kbd> to cancel.
+          <kbd>Alt</kbd>+<kbd>Espace</kbd> (<kbd>Ctrl</kbd>+<kbd>Espace</kbd> sous Windows) est le raccourci principal.
+          Utilisez-le pour ouvrir le menu de l’extension—aka mode « Vim ».
+          Appuyez sur <kbd>Ctrl</kbd>+<kbd class="code">KeyF</kbd> pour rechercher des commandes ou la touche d’échappement « <kbd class="code">Escape</kbd> » pour quitter.
         </p>
         <p>
-          If you need explanations of the shortcuts—Right-click the Shortcuts toolbar button and select “Documentation”.
+          Si vous avez besoin d’explications sur les raccourcis—Faites un clic droit sur l’icône de l’extension et sélectionnez « Documentation ».
         </p>
         <p>
-          The keyboard shortcuts are fully customizable.
+          Les raccourcis clavier sont entièrement personnalisables.
         </p>
         <section id="command_palette">
           <h3>
             <a href="#command_palette">
-              Command palette
+              Palette de commandes
             </a>
           </h3>
           <p>
-            The command palette is the main way to search functionality in Shortcuts.
+            La palette de commandes est le principal moyen de rechercher des fonctionnalités dans Shortcuts.
           </p>
           <ol>
             <li>
-              To open the command palette—Press either <kbd class="code">Slash</kbd>, <kbd>Control</kbd>+<kbd class="code">KeyF</kbd> or click the search field in the extension’s popup.
+              Pour ouvrir la palette de commandes—Appuyez soit sur la touche <kbd class="code">Slash</kbd>, soit sur <kbd>Ctrl</kbd>+<kbd class="code">KeyF</kbd>, ou cliquez dans le champ de recherche du menu de l’extension.
             </li>
             <li>
-              In the search field, type what you’re looking for—results appear as you type.
+              Dans le champ de recherche, saisissez l’objet de votre recherche—les résultats s’affichent pendant votre saisie.
             </li>
             <li>
-              Choose a suggestion and press <kbd class="code">Enter</kbd> to activate the selection.
+              Choisissez une suggestion et appuyez sur la touche d’entrée « <kbd class="code">Enter</kbd> » pour activer la sélection.
             </li>
           </ol>
         </section>
         <section id="configure_keyboard_shortcuts">
           <h3>
             <a href="#configure_keyboard_shortcuts">
-              Configure keyboard shortcuts
+              Configurer les raccourcis clavier
             </a>
           </h3>
           <p>
-            Navigate to <a href="chrome://extensions/shortcuts" target="_blank">chrome://extensions/shortcuts</a> to configure global keyboard shortcuts.
-            For example, you can bind <kbd>Ctrl</kbd>+<kbd>Y</kbd> to open a new tab to the right.
-            You can also bind shortcuts to duplicate tabs, copy page URLs and more.
-            <a href="#commands">See all available actions.</a>
+            Accédez à <a href="chrome://extensions/shortcuts" target="_blank">chrome://extensions/shortcuts</a> pour configurer les raccourcis globaux.
+            Par exemple, vous pouvez assigner <kbd>Ctrl</kbd>+<kbd>Y</kbd> pour ouvrir un nouvel onglet à droite.
+            Vous pouvez également assigner des raccourcis pour dupliquer un onglet, copier le lien d’une page et plus encore.
+            <a href="#commands">Voir la liste des actions pour Chrome.</a>
           </p>
           <p>
-            You can also configure the popup keys by importing and exporting settings
-            in the “Options” page—Right-click the Shortcuts toolbar button and select “Options”.
+            Vous pouvez également configurer les raccourcis du menu de l’extension en important et exportant les paramètres
+            dans la page des options—Faites un clic droit sur l’icône de l’extension et sélectionnez « Options ».
           </p>
           <details>
-            <summary>Example configuration</summary>
+            <summary>Exemple de configuration</summary>
             <div class="code-block-container">
               <pre><code data-lang="json">{
   <span data-type="string">"commandBindings"</span>: [
@@ -221,8 +221,8 @@
 </code></pre>
               <div>
                 <button
-                  aria-label="Copy"
-                  data-copy-feedback="Copied!"
+                  aria-label="Copier"
+                  data-copy-feedback="Copié"
                   data-action="copyToClipboard"
                   value="{
   &quot;commandBindings&quot;: [
@@ -366,7 +366,7 @@
 }
 "
                 >
-                  Copy
+                  Copier
                 </button>
               </div>
             </div>
@@ -375,97 +375,97 @@
         <section id="in_practice">
           <h3>
             <a href="#in_practice">
-              In practice?
+              En pratique ?
             </a>
           </h3>
           <p>
-            <kbd>Alt</kbd>+<kbd>J</kbd> and <kbd>Alt</kbd>+<kbd>K</kbd> are the two shortcuts I’ve configured to
-            open the Shortcuts menu—in the “Extension shortcuts” interface—and
-            click using <a href="https://lydell.github.io/LinkHints/" target="_blank">Link Hints</a>—in the “Keyboard shortcuts” options.
+            <kbd>Alt</kbd>+<kbd>J</kbd> et <kbd>Alt</kbd>+<kbd>K</kbd> sont les deux raccourcis que j’ai configurés pour
+            accéder au menu Shortcuts—dans l’éditeur de raccourcis « Activer l’extension »—et
+            cliquer avec <a href="https://lydell.github.io/LinkHints/" target="_blank">Link Hints</a>—dans les options « Raccourcis clavier ».
           </p>
           <p>
-            Finally, to complement the built-in keyboard shortcuts, I’ve assigned
-            <kbd>Ctrl</kbd>+<kbd>Y</kbd> to open a new tab to the right,
-            <kbd>Ctrl</kbd>+<kbd>B</kbd> to duplicate tabs,
-            <kbd>Alt</kbd>+<kbd>W</kbd> to perform web searches,
-            <kbd>Alt</kbd>+<kbd>Y</kbd> to copy page URLs, and
-            <kbd>Alt</kbd>+<kbd>I</kbd> to focus text fields.
+            Pour compléter les raccourcis clavier par défaut, j’ai également assigné
+            <kbd>Ctrl</kbd>+<kbd>Y</kbd> pour ouvrir un nouvel onglet à droite,
+            <kbd>Ctrl</kbd>+<kbd>B</kbd> pour dupliquer un onglet,
+            <kbd>Alt</kbd>+<kbd>W</kbd> pour effectuer une recherche du terme sélectionné,
+            <kbd>Alt</kbd>+<kbd>Y</kbd> pour copier le lien d’une page, et
+            <kbd>Alt</kbd>+<kbd>I</kbd> pour passer au champ de saisie suivant.
           </p>
         </section>
       </section>
       <section id="commands">
         <h2>
           <a href="#commands">
-            Commands
+            Commandes
           </a>
         </h2>
         <p>
-          Commands are actions that can be performed with keyboard shortcuts or mouse clicks in the extension’s popup.
+          Les commandes sont des actions qui peuvent être effectuées via le clavier ou la souris—dans le menu de l’extension.
         </p>
         <section id="about_keyboard_shortcuts">
           <h3>
             <a href="#about_keyboard_shortcuts">
-              About keyboard shortcuts
+              À propos des raccourcis clavier
             </a>
           </h3>
           <ul>
             <li>
-              <kbd>⌃</kbd> is the <kbd>Control</kbd> key.
+              <kbd>⌃</kbd> représente la touche <kbd>Ctrl</kbd> sur votre clavier.
             </li>
             <li>
-              <kbd>⌥</kbd> is the <kbd>Alt</kbd> or <kbd>Option</kbd> key on macOS.
+              <kbd>⌥</kbd> représente la touche <kbd>Alt</kbd> ou <kbd>Opt</kbd> sur un clavier Mac.
             </li>
             <li>
-              <kbd>⇧</kbd> is the <kbd>Shift</kbd> key.
+              <kbd>⇧</kbd> représente la touche <kbd>Maj</kbd> sur votre clavier.
             </li>
             <li>
-              <kbd>⌘</kbd> is the <kbd>Windows</kbd> or <kbd>Command</kbd> key on macOS.
+              <kbd>⌘</kbd> représente la touche <kbd>Windows</kbd> ou <kbd>Cmd</kbd> sur un clavier Mac.
             </li>
           </ul>
           <p>
-            Keyboard shortcuts in the extension’s popup are defined with physical keys.
-            These keys are shown below.
-            Blue keys are present on all standard keyboards while green keys are only available on some keyboards.
+            Les raccourcis clavier du menu de l’extension sont définis avec des touches physiques.
+            Ces touches sont présentées ci-dessous.
+            Les touches bleues sont présentes sur tous les claviers standards, tandis que les touches vertes ne sont disponibles que sur certains claviers.
           </p>
           <figure>
-            <img src="/assets/keyboard_codes_alphanumeric.svg" alt="The writing system keys">
+            <img src="/assets/keyboard_codes_alphanumeric.svg" alt="Les touches du système d’écriture">
             <figcaption>
-              The writing system keys.
+              Les touches du système d’écriture.
             </figcaption>
           </figure>
           <p>
-            See <a href="https://w3c.github.io/uievents-code/#code-value-tables" target="_blank">Keyboard Event <code>code</code> Value Tables</a> for a complete reference.
-            You will find the list of code values and informative symbols.
+            Pour obtenir la liste complète des touches physiques, consultez l’article <a lang="en" href="https://w3c.github.io/uievents-code/#code-value-tables" target="_blank">Keyboard Event <code>code</code> Value Tables</a> (en anglais).
+            Vous y trouverez la liste des touches physiques et des symboles utilisés dans les raccourcis clavier—qui sont affichés dans les commandes du menu de l’extension.
           </p>
           <p role="tip">
-            Tip: You can click on the keys with code values to show the keys to press
-            (e.g., clicking on <kbd class="code">KeyJ</kbd> will show “j” on a US keyboard).
+            Astuce : Vous pouvez cliquer sur les touches roses—qui représentent une touche physique—pour voir la touche à appuyer
+            (p. ex., cliquer sur <kbd class="code">KeyQ</kbd> affichera « a » sur un clavier français).
           </p>
         </section>
         <section id="shortcuts_commands">
           <h3>
             <a href="#shortcuts_commands">
-              Shortcuts
+              Raccourcis spécifiques à Shortcuts
             </a>
           </h3>
           <p>
-            These commands are only available in the extension’s popup.
+            Ces commandes ne sont disponibles que dans le menu de l’extension.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>openShortcutsManual</code></td>
-                  <td>Open the Shortcuts manual</td>
+                  <td>Ouvrir la documentation de Shortcuts</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -474,7 +474,7 @@
                 </tr>
                 <tr>
                   <td><code>openShortcutsOptionsPage</code></td>
-                  <td>Open the Shortcuts “Options” page</td>
+                  <td>Ouvrir les options de Shortcuts</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -483,22 +483,22 @@
                 </tr>
                 <tr>
                   <td><code>openCommandPalette</code></td>
-                  <td>Open the command palette</td>
+                  <td>Ouvrir la palette de commandes</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">Slash</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyF</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyF</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>closePopup</code></td>
-                  <td>Close the popup window</td>
+                  <td>Fermer le menu</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">Escape</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyC</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyC</kbd>,
                     <kbd class="code">KeyQ</kbd>
                   </td>
                 </tr>
@@ -509,49 +509,49 @@
         <section id="command_palette_commands">
           <h3>
             <a href="#command_palette_commands">
-              Command palette
+              Raccourcis de la palette de commandes
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>selectNextItem</code></td>
-                  <td>Select the next item</td>
+                  <td>Passer au résultat suivant</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">ArrowDown</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyN</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyN</kbd>,
                     <kbd class="code">Tab</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>selectPreviousItem</code></td>
-                  <td>Select the previous item</td>
+                  <td>Passer au résultat précédent</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">ArrowUp</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyP</kbd>,
-                    <kbd>Shift</kbd>+<kbd class="code">Tab</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyP</kbd>,
+                    <kbd>Maj</kbd>+<kbd class="code">Tab</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>activateSelectedItem</code></td>
-                  <td>Activate selected item</td>
+                  <td>Ouvrir le résultat</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -560,7 +560,7 @@
                 </tr>
                 <tr>
                   <td><code>openSelectedItemInCurrentTab</code></td>
-                  <td>Open selected item in the current tab</td>
+                  <td>Ouvrir le résultat dans l’onglet actif</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -569,61 +569,61 @@
                 </tr>
                 <tr>
                   <td><code>openSelectedItemInNewBackgroundTab</code></td>
-                  <td>Open selected item in a new background tab</td>
+                  <td>Ouvrir le résultat dans un nouvel onglet en arrière-plan</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">Enter</kbd>,
-                    <kbd>Command</kbd>+<kbd class="code">Enter</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">Enter</kbd>,
+                    <kbd>Cmd</kbd>+<kbd class="code">Enter</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openSelectedItemInNewForegroundTab</code></td>
-                  <td>Open selected item in a new foreground tab</td>
+                  <td>Ouvrir le résultat dans un nouvel onglet</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd class="code">Enter</kbd>,
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd class="code">Enter</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd class="code">Enter</kbd>,
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd class="code">Enter</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openSelectedItemInNewWindow</code></td>
-                  <td>Open selected item in a new window</td>
+                  <td>Ouvrir le résultat dans une nouvelle fenêtre</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Enter</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Enter</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>movePageDown</code></td>
-                  <td>Move page down</td>
+                  <td>Faire défiler d’un écran vers le bas</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">PageDown</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyD</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyD</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>movePageUp</code></td>
-                  <td>Move page up</td>
+                  <td>Faire défiler d’un écran vers le haut</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">PageUp</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyU</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyU</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>closeCommandPalette</code></td>
-                  <td>Close the command palette</td>
+                  <td>Fermer la palette de commandes</td>
                   <td></td>
                   <td></td>
                   <td>
                     <kbd class="code">Escape</kbd>,
-                    <kbd>Control</kbd>+<kbd class="code">KeyC</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyC</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -633,30 +633,30 @@
         <section id="navigation_commands">
           <h3>
             <a href="#navigation_commands">
-              Navigation
+              Raccourcis liés à la navigation
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>goBack</code></td>
-                  <td>Go back to the previous page in tab’s history</td>
+                  <td>Accéder à la page précédente de l’historique de navigation</td>
                   <td>
-                    <kbd>Alt</kbd>+<kbd>ArrowLeft</kbd>
+                    <kbd>Alt</kbd>+<kbd>Flèche gauche</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>BracketLeft</kbd>,
-                    <kbd>Command</kbd>+<kbd>ArrowLeft</kbd>
+                    <kbd>Cmd</kbd>+<kbd>Accolade ouvrante</kbd>,
+                    <kbd>Cmd</kbd>+<kbd>Flèche gauche</kbd>
                   </td>
                   <td>
                     <kbd>Alt</kbd>+<kbd class="code">KeyH</kbd>
@@ -664,13 +664,13 @@
                 </tr>
                 <tr>
                   <td><code>goForward</code></td>
-                  <td>Go forward to the next page in tab’s history</td>
+                  <td>Accéder à la page suivante de l’historique de navigation</td>
                   <td>
-                    <kbd>Alt</kbd>+<kbd>ArrowRight</kbd>
+                    <kbd>Alt</kbd>+<kbd>Flèche droite</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>BracketRight</kbd>,
-                    <kbd>Command</kbd>+<kbd>ArrowRight</kbd>
+                    <kbd>Cmd</kbd>+<kbd>Accolade fermante</kbd>,
+                    <kbd>Cmd</kbd>+<kbd>Flèche droite</kbd>
                   </td>
                   <td>
                     <kbd>Alt</kbd>+<kbd class="code">KeyL</kbd>
@@ -678,13 +678,13 @@
                 </tr>
                 <tr>
                   <td><code>reloadTab</code></td>
-                  <td>Reload selected tabs</td>
+                  <td>Recharger la page</td>
                   <td>
                     <kbd>F5</kbd>,
-                    <kbd>Control</kbd>+<kbd>R</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>R</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>R</kbd>
+                    <kbd>Cmd</kbd>+<kbd>R</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyR</kbd>
@@ -692,48 +692,48 @@
                 </tr>
                 <tr>
                   <td><code>reloadTabWithoutCache</code></td>
-                  <td>Reload selected tabs, ignoring cached content</td>
+                  <td>Recharger la page depuis son origine</td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>F5</kbd>,
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>
+                    <kbd>Maj</kbd>+<kbd>F5</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>R</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>R</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>R</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyR</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyR</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>goToNextPage</code></td>
-                  <td>Go to the next page in the series</td>
+                  <td>Accéder au document suivant</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Period</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Period</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>goToPreviousPage</code></td>
-                  <td>Go to the previous page in the series</td>
+                  <td>Accéder au document précédent</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Comma</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Comma</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>removeURLParams</code></td>
-                  <td>Remove any URL parameters</td>
+                  <td>Supprimer les paramètres de l’URL</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyU</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyU</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>goUp</code></td>
-                  <td>Go up in the URL hierarchy</td>
+                  <td>Accéder au dossier parent du site web</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -742,11 +742,11 @@
                 </tr>
                 <tr>
                   <td><code>goToRoot</code></td>
-                  <td>Go to the root URL</td>
+                  <td>Accéder à la page d’accueil du site web</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyU</kbd>
+                    <kbd>Alt</kbd>+<kbd>Maj</kbd>+<kbd class="code">KeyU</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -756,24 +756,24 @@
         <section id="accessibility_commands">
           <h3>
             <a href="#accessibility_commands">
-              Accessibility
+              Raccourcis liés à l’accessibilité
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>focusTextInput</code></td>
-                  <td>Cycle through text fields</td>
+                  <td>Passer au champ de saisie suivant</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -782,7 +782,7 @@
                 </tr>
                 <tr>
                   <td><code>focusMediaPlayer</code></td>
-                  <td>Cycle through media players</td>
+                  <td>Passer au lecteur multimédia suivant</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -791,11 +791,11 @@
                 </tr>
                 <tr>
                   <td><code>blurElement</code></td>
-                  <td>Blur the active element</td>
+                  <td>Retirer le focus de l’élément actif</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Escape</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Escape</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -805,24 +805,24 @@
         <section id="clipboard_commands">
           <h3>
             <a href="#clipboard_commands">
-              Clipboard
+              Raccourcis liés au presse-papiers
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>copyURL</code></td>
-                  <td>Copy URL of selected tabs</td>
+                  <td>Copier le lien de la page</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -831,7 +831,7 @@
                 </tr>
                 <tr>
                   <td><code>copyTitle</code></td>
-                  <td>Copy title of selected tabs</td>
+                  <td>Copier le titre de la page</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -840,59 +840,59 @@
                 </tr>
                 <tr>
                   <td><code>copyTitleAndURL</code></td>
-                  <td>Copy title and URL of selected tabs</td>
+                  <td>Copier le titre et le lien de la page</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyY</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyY</kbd>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p role="note">
-            Note: If Chrome notifications are enabled,
-            Shortcuts will show you a message for copied text.
+            Remarque : Shortcuts utilise les notifications Chrome
+            pour vous informer des liens copiés.
           </p>
         </section>
         <section id="save_pages_commands">
           <h3>
             <a href="#save_pages_commands">
-              Save pages
+              Raccourcis pour enregistrer des pages
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>savePage</code></td>
-                  <td>Save the content of selected tabs</td>
+                  <td>Enregistrer le contenu de la page</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>S</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>S</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>S</kbd>
+                    <kbd>Cmd</kbd>+<kbd>S</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyS</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyS</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>savePageAsMHTML</code></td>
-                  <td>Save the content of selected tabs as MHTML</td>
+                  <td>Enregistrer la page au format MHTML</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyS</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd class="code">KeyS</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -902,24 +902,24 @@
         <section id="web_search_commands">
           <h3>
             <a href="#web_search_commands">
-              Web search
+              Raccourcis liés aux recherches sur le web
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>openWebSearchForSelectedText</code></td>
-                  <td>Perform a web search for selected text</td>
+                  <td>Effectuer une recherche de la sélection sur le web</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -933,29 +933,29 @@
         <section id="scroll_commands">
           <h3>
             <a href="#scroll_commands">
-              Scroll
+              Raccourcis pour faire défiler
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>scrollDown</code></td>
-                  <td>Scroll down</td>
+                  <td>Faire défiler vers le bas</td>
                   <td>
-                    <kbd>ArrowDown</kbd>
+                    <kbd>Flèche vers le bas</kbd>
                   </td>
                   <td>
-                    <kbd>ArrowDown</kbd>
+                    <kbd>Flèche vers le bas</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyJ</kbd>
@@ -963,12 +963,12 @@
                 </tr>
                 <tr>
                   <td><code>scrollUp</code></td>
-                  <td>Scroll up</td>
+                  <td>Faire défiler vers le haut</td>
                   <td>
-                    <kbd>ArrowUp</kbd>
+                    <kbd>Flèche vers le haut</kbd>
                   </td>
                   <td>
-                    <kbd>ArrowUp</kbd>
+                    <kbd>Flèche vers le haut</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyK</kbd>
@@ -976,12 +976,12 @@
                 </tr>
                 <tr>
                   <td><code>scrollLeft</code></td>
-                  <td>Scroll left</td>
+                  <td>Faire défiler vers la gauche</td>
                   <td>
-                    <kbd>ArrowLeft</kbd>
+                    <kbd>Flèche gauche</kbd>
                   </td>
                   <td>
-                    <kbd>ArrowLeft</kbd>
+                    <kbd>Flèche gauche</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyH</kbd>
@@ -989,12 +989,12 @@
                 </tr>
                 <tr>
                   <td><code>scrollRight</code></td>
-                  <td>Scroll right</td>
+                  <td>Faire défiler vers la droite</td>
                   <td>
-                    <kbd>ArrowRight</kbd>
+                    <kbd>Flèche droite</kbd>
                   </td>
                   <td>
-                    <kbd>ArrowRight</kbd>
+                    <kbd>Flèche droite</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyL</kbd>
@@ -1002,14 +1002,14 @@
                 </tr>
                 <tr>
                   <td><code>scrollPageDown</code></td>
-                  <td>Scroll one page down</td>
+                  <td>Faire défiler d’un écran vers le bas</td>
                   <td>
-                    <kbd>Space</kbd>,
-                    <kbd>PageDown</kbd>
+                    <kbd>Espace</kbd>,
+                    <kbd>Page suivante</kbd>
                   </td>
                   <td>
-                    <kbd>Space</kbd>,
-                    <kbd>PageDown</kbd>
+                    <kbd>Espace</kbd>,
+                    <kbd>Page suivante</kbd>
                   </td>
                   <td>
                     <kbd class="code">Space</kbd>
@@ -1017,47 +1017,47 @@
                 </tr>
                 <tr>
                   <td><code>scrollPageUp</code></td>
-                  <td>Scroll one page up</td>
+                  <td>Faire défiler d’un écran vers le haut</td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Space</kbd>,
-                    <kbd>PageUp</kbd>
+                    <kbd>Maj</kbd>+<kbd>Espace</kbd>,
+                    <kbd>Page précédente</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Space</kbd>,
-                    <kbd>PageUp</kbd>
+                    <kbd>Maj</kbd>+<kbd>Espace</kbd>,
+                    <kbd>Page précédente</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Space</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Space</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>scrollHalfPageDown</code></td>
-                  <td>Scroll half page down</td>
+                  <td>Faire défiler d’une moitié d’écran vers le bas</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyJ</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyJ</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>scrollHalfPageUp</code></td>
-                  <td>Scroll half page up</td>
+                  <td>Faire défiler d’une moitié d’écran vers le haut</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyK</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyK</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>scrollToTop</code></td>
-                  <td>Scroll to the top of the page</td>
+                  <td>Accéder au haut de la page</td>
                   <td>
-                    <kbd>Home</kbd>,
-                    <kbd>Control</kbd>+<kbd>ArrowUp</kbd>
+                    <kbd>Début</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>Flèche vers le haut</kbd>
                   </td>
                   <td>
-                    <kbd>Home</kbd>,
-                    <kbd>Command</kbd>+<kbd>ArrowUp</kbd>
+                    <kbd>Début</kbd>,
+                    <kbd>Cmd</kbd>+<kbd>Flèche vers le haut</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyG</kbd>
@@ -1065,14 +1065,14 @@
                 </tr>
                 <tr>
                   <td><code>scrollToBottom</code></td>
-                  <td>Scroll to the bottom of the page</td>
+                  <td>Accéder au bas de la page</td>
                   <td>
-                    <kbd>End</kbd>,
-                    <kbd>Control</kbd>+<kbd>ArrowDown</kbd>
+                    <kbd>Fin</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>Flèche vers le bas</kbd>
                   </td>
                   <td>
-                    <kbd>End</kbd>,
-                    <kbd>Command</kbd>+<kbd>ArrowDown</kbd>
+                    <kbd>Fin</kbd>,
+                    <kbd>Cmd</kbd>+<kbd>Flèche vers le bas</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyE</kbd>
@@ -1085,29 +1085,29 @@
         <section id="zoom_commands">
           <h3>
             <a href="#zoom_commands">
-              Zoom
+              Raccourcis liés au zoom
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>zoomIn</code></td>
-                  <td>Zoom in</td>
+                  <td>Augmenter la taille du texte</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Equal</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Signe égal</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>Equal</kbd>
+                    <kbd>Cmd</kbd>+<kbd>Signe égal</kbd>
                   </td>
                   <td>
                     <kbd class="code">Equal</kbd>
@@ -1115,12 +1115,12 @@
                 </tr>
                 <tr>
                   <td><code>zoomOut</code></td>
-                  <td>Zoom out</td>
+                  <td>Réduire la taille du texte</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Minus</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Signe moins</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>Minus</kbd>
+                    <kbd>Cmd</kbd>+<kbd>Signe moins</kbd>
                   </td>
                   <td>
                     <kbd class="code">Minus</kbd>
@@ -1128,12 +1128,12 @@
                 </tr>
                 <tr>
                   <td><code>zoomReset</code></td>
-                  <td>Reset the zoom factor</td>
+                  <td>Réinitialiser le niveau de zoom par défaut</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>0</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>0</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>0</kbd>
+                    <kbd>Cmd</kbd>+<kbd>0</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit0</kbd>
@@ -1141,13 +1141,13 @@
                 </tr>
                 <tr>
                   <td><code>toggleFullScreen</code></td>
-                  <td>Turn full-screen mode on or off</td>
+                  <td>Activer ou désactiver le mode plein écran</td>
                   <td>
                     <kbd>F11</kbd>
                   </td>
                   <td>
                     <kbd>Globe</kbd>+<kbd>F</kbd>,
-                    <kbd>Control</kbd>+<kbd>Command</kbd>+<kbd>F</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>F</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyF</kbd>
@@ -1160,29 +1160,29 @@
         <section id="create_tabs_commands">
           <h3>
             <a href="#create_tabs_commands">
-              Create tabs
+              Raccourcis pour créer des onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>openNewTab</code></td>
-                  <td>Open and activate a new tab</td>
+                  <td>Ouvrir un nouvel onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>T</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>T</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>T</kbd>
+                    <kbd>Cmd</kbd>+<kbd>T</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyT</kbd>
@@ -1190,7 +1190,7 @@
                 </tr>
                 <tr>
                   <td><code>openNewTabRight</code></td>
-                  <td>Open and activate a new tab to the right</td>
+                  <td>Ouvrir un nouvel onglet à droite</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1199,12 +1199,12 @@
                 </tr>
                 <tr>
                   <td><code>openNewWindow</code></td>
-                  <td>Open a new window</td>
+                  <td>Ouvrir une nouvelle fenêtre</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>N</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>N</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>N</kbd>
+                    <kbd>Cmd</kbd>+<kbd>N</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyN</kbd>
@@ -1212,15 +1212,15 @@
                 </tr>
                 <tr>
                   <td><code>openNewIncognitoWindow</code></td>
-                  <td>Open a new window in Incognito mode</td>
+                  <td>Ouvrir une nouvelle fenêtre de navigation privée</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>N</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>N</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>N</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyN</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyN</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -1230,30 +1230,30 @@
         <section id="close_tabs_commands">
           <h3>
             <a href="#close_tabs_commands">
-              Close tabs
+              Raccourcis pour fermer les onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>closeTab</code></td>
-                  <td>Close selected tabs</td>
+                  <td>Fermer l’onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>W</kbd>,
-                    <kbd>Control</kbd>+<kbd>F4</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>W</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>F4</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>W</kbd>
+                    <kbd>Cmd</kbd>+<kbd>W</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyX</kbd>
@@ -1261,7 +1261,7 @@
                 </tr>
                 <tr>
                   <td><code>closeOtherTabs</code></td>
-                  <td>Close other tabs</td>
+                  <td>Fermer les autres onglets</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1270,35 +1270,35 @@
                 </tr>
                 <tr>
                   <td><code>closeRightTabs</code></td>
-                  <td>Close tabs to the right</td>
+                  <td>Fermer les onglets sur la droite</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyX</kbd>
+                    <kbd>Alt</kbd>+<kbd>Maj</kbd>+<kbd class="code">KeyX</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>closeWindow</code></td>
-                  <td>Close the window that contains the tab</td>
+                  <td>Fermer la fenêtre</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>W</kbd>,
                     <kbd>Alt</kbd>+<kbd>F4</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>W</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>W</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyX</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyX</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>restoreTab</code></td>
-                  <td>Reopen previously closed tabs</td>
+                  <td>Rouvrir l’onglet fermé</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>T</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>T</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>T</kbd>
                   </td>
                   <td>
                     <kbd class="code">KeyU</kbd>
@@ -1311,24 +1311,24 @@
         <section id="tab_state_commands">
           <h3>
             <a href="#tab_state_commands">
-              Tab state
+              Raccourcis pour gérer les onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>duplicateTab</code></td>
-                  <td>Duplicate selected tabs</td>
+                  <td>Dupliquer l’onglet</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1337,7 +1337,7 @@
                 </tr>
                 <tr>
                   <td><code>togglePinTab</code></td>
-                  <td>Pin or unpin selected tabs</td>
+                  <td>Épingler ou retirer l’onglet</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1346,16 +1346,16 @@
                 </tr>
                 <tr>
                   <td><code>toggleGroupTab</code></td>
-                  <td>Group or ungroup selected tabs</td>
+                  <td>Regrouper ou dégrouper les onglets</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyP</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyP</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>toggleCollapseTabGroups</code></td>
-                  <td>Collapse or uncollapse tab groups</td>
+                  <td>Réduire ou développer les groupes d’onglets</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1364,7 +1364,7 @@
                 </tr>
                 <tr>
                   <td><code>toggleMuteTab</code></td>
-                  <td>Mute or unmute selected tabs</td>
+                  <td>Couper ou réactiver le son de l’onglet</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1373,7 +1373,7 @@
                 </tr>
                 <tr>
                   <td><code>discardTab</code></td>
-                  <td>Discard selected tabs</td>
+                  <td>Suspendre l’onglet</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1387,37 +1387,37 @@
         <section id="organize_tabs_commands">
           <h3>
             <a href="#organize_tabs_commands">
-              Organize tabs
+              Raccourcis pour organiser les onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>sortTabsByURL</code></td>
-                  <td>Sort selected tabs by URL</td>
+                  <td>Organiser les onglets par domaine</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Digit1</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Digit1</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>groupTabsByDomain</code></td>
-                  <td>Group selected tabs by domain</td>
+                  <td>Regrouper les onglets par domaine</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Digit2</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Digit2</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -1427,24 +1427,24 @@
         <section id="manage_tab_groups_commands">
           <h3>
             <a href="#manage_tab_groups_commands">
-              Manage tab groups
+              Raccourcis pour gérer les groupes d’onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>renameTabGroup</code></td>
-                  <td>Rename tab group</td>
+                  <td>Renommer le groupe d’onglets</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1453,7 +1453,7 @@
                 </tr>
                 <tr>
                   <td><code>cycleTabGroupColorForward</code></td>
-                  <td>Cycle forward through tab group colors</td>
+                  <td>Sélectionner la couleur suivante du groupe d’onglets</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1462,11 +1462,11 @@
                 </tr>
                 <tr>
                   <td><code>cycleTabGroupColorBackward</code></td>
-                  <td>Cycle backward through tab group colors</td>
+                  <td>Sélectionner la couleur précédente du groupe d’onglets</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyA</kbd>
+                    <kbd>Alt</kbd>+<kbd>Maj</kbd>+<kbd class="code">KeyA</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -1476,40 +1476,40 @@
         <section id="switch_tabs_commands">
           <h3>
             <a href="#switch_tabs_commands">
-              Switch tabs
+              Raccourcis pour accéder aux onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateAudibleTab</code></td>
-                  <td>Cycle through audible tabs</td>
+                  <td>Passer à l’onglet audible suivant</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Digit3</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Digit3</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>activateNextTab</code></td>
-                  <td>Activate the next open tab</td>
+                  <td>Passer à l’onglet suivant</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Tab</kbd>,
-                    <kbd>Control</kbd>+<kbd>PageDown</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Tab</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>Page suivante</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Tab</kbd>,
-                    <kbd>Option</kbd>+<kbd>Command</kbd>+<kbd>ArrowRight</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Tab</kbd>,
+                    <kbd>Opt</kbd>+<kbd>Cmd</kbd>+<kbd>Flèche droite</kbd>
                   </td>
                   <td>
                     <kbd class="code">Tab</kbd>,
@@ -1518,28 +1518,28 @@
                 </tr>
                 <tr>
                   <td><code>activatePreviousTab</code></td>
-                  <td>Activate the previous open tab</td>
+                  <td>Passer à l’onglet précédent</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd>,
-                    <kbd>Control</kbd>+<kbd>PageUp</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Tab</kbd>,
+                    <kbd>Ctrl</kbd>+<kbd>Page précédente</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd>,
-                    <kbd>Option</kbd>+<kbd>Command</kbd>+<kbd>ArrowLeft</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Tab</kbd>,
+                    <kbd>Opt</kbd>+<kbd>Cmd</kbd>+<kbd>Flèche gauche</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Tab</kbd>,
+                    <kbd>Maj</kbd>+<kbd class="code">Tab</kbd>,
                     <kbd>Alt</kbd>+<kbd class="code">KeyJ</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>activateFirstTab</code></td>
-                  <td>Activate the leftmost open tab</td>
+                  <td>Accéder au premier onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>1</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>1</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>1</kbd>
+                    <kbd>Cmd</kbd>+<kbd>1</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit1</kbd>
@@ -1547,12 +1547,12 @@
                 </tr>
                 <tr>
                   <td><code>activateSecondTab</code></td>
-                  <td>Activate the second leftmost open tab</td>
+                  <td>Accéder au deuxième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>2</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>2</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>2</kbd>
+                    <kbd>Cmd</kbd>+<kbd>2</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit2</kbd>
@@ -1560,12 +1560,12 @@
                 </tr>
                 <tr>
                   <td><code>activateThirdTab</code></td>
-                  <td>Activate the third leftmost open tab</td>
+                  <td>Accéder au troisième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>3</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>3</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>3</kbd>
+                    <kbd>Cmd</kbd>+<kbd>3</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit3</kbd>
@@ -1573,12 +1573,12 @@
                 </tr>
                 <tr>
                   <td><code>activateFourthTab</code></td>
-                  <td>Activate the fourth leftmost open tab</td>
+                  <td>Accéder au quatrième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>4</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>4</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>4</kbd>
+                    <kbd>Cmd</kbd>+<kbd>4</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit4</kbd>
@@ -1586,12 +1586,12 @@
                 </tr>
                 <tr>
                   <td><code>activateFifthTab</code></td>
-                  <td>Activate the fifth leftmost open tab</td>
+                  <td>Accéder au cinquième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>5</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>5</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>5</kbd>
+                    <kbd>Cmd</kbd>+<kbd>5</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit5</kbd>
@@ -1599,12 +1599,12 @@
                 </tr>
                 <tr>
                   <td><code>activateSixthTab</code></td>
-                  <td>Activate the sixth leftmost open tab</td>
+                  <td>Accéder au sixième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>6</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>6</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>6</kbd>
+                    <kbd>Cmd</kbd>+<kbd>6</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit6</kbd>
@@ -1612,12 +1612,12 @@
                 </tr>
                 <tr>
                   <td><code>activateSeventhTab</code></td>
-                  <td>Activate the seventh leftmost open tab</td>
+                  <td>Accéder au septième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>7</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>7</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>7</kbd>
+                    <kbd>Cmd</kbd>+<kbd>7</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit7</kbd>
@@ -1625,12 +1625,12 @@
                 </tr>
                 <tr>
                   <td><code>activateEighthTab</code></td>
-                  <td>Activate the eighth leftmost open tab</td>
+                  <td>Accéder au huitième onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>8</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>8</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>8</kbd>
+                    <kbd>Cmd</kbd>+<kbd>8</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit8</kbd>
@@ -1638,12 +1638,12 @@
                 </tr>
                 <tr>
                   <td><code>activateLastTab</code></td>
-                  <td>Activate the rightmost open tab</td>
+                  <td>Accéder au dernier onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>9</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>9</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>9</kbd>
+                    <kbd>Cmd</kbd>+<kbd>9</kbd>
                   </td>
                   <td>
                     <kbd class="code">Digit9</kbd>
@@ -1651,7 +1651,7 @@
                 </tr>
                 <tr>
                   <td><code>activateLastActiveTab</code></td>
-                  <td>Activate the last active tab</td>
+                  <td>Passer à l’onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1660,7 +1660,7 @@
                 </tr>
                 <tr>
                   <td><code>activateSecondLastActiveTab</code></td>
-                  <td>Activate the second last active tab</td>
+                  <td>Passer au deuxième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1669,7 +1669,7 @@
                 </tr>
                 <tr>
                   <td><code>activateThirdLastActiveTab</code></td>
-                  <td>Activate the third last active tab</td>
+                  <td>Passer au troisième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1678,7 +1678,7 @@
                 </tr>
                 <tr>
                   <td><code>activateFourthLastActiveTab</code></td>
-                  <td>Activate the fourth last active tab</td>
+                  <td>Passer au quatrième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1687,7 +1687,7 @@
                 </tr>
                 <tr>
                   <td><code>activateFifthLastActiveTab</code></td>
-                  <td>Activate the fifth last active tab</td>
+                  <td>Passer au cinquième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1696,7 +1696,7 @@
                 </tr>
                 <tr>
                   <td><code>activateSixthLastActiveTab</code></td>
-                  <td>Activate the sixth last active tab</td>
+                  <td>Passer au sixième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1705,7 +1705,7 @@
                 </tr>
                 <tr>
                   <td><code>activateSeventhLastActiveTab</code></td>
-                  <td>Activate the seventh last active tab</td>
+                  <td>Passer au septième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1714,7 +1714,7 @@
                 </tr>
                 <tr>
                   <td><code>activateEighthLastActiveTab</code></td>
-                  <td>Activate the eighth last active tab</td>
+                  <td>Passer au huitième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1723,7 +1723,7 @@
                 </tr>
                 <tr>
                   <td><code>activateNinthLastActiveTab</code></td>
-                  <td>Activate the ninth last active tab</td>
+                  <td>Passer au neuvième onglet le plus récent</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1732,7 +1732,7 @@
                 </tr>
                 <tr>
                   <td><code>activateNextWindow</code></td>
-                  <td>Activate the next open window</td>
+                  <td>Passer à la fenêtre suivante</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1741,11 +1741,11 @@
                 </tr>
                 <tr>
                   <td><code>activatePreviousWindow</code></td>
-                  <td>Activate the previous open window</td>
+                  <td>Passer à la fenêtre précédente</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyW</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyW</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -1755,24 +1755,24 @@
         <section id="move_tabs_commands">
           <h3>
             <a href="#move_tabs_commands">
-              Move tabs
+              Raccourcis pour déplacer les onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>grabTab</code></td>
-                  <td>Grab selected tabs</td>
+                  <td>Regrouper les onglets</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1781,12 +1781,12 @@
                 </tr>
                 <tr>
                   <td><code>moveTabLeft</code></td>
-                  <td>Move selected tabs left</td>
+                  <td>Déplacer l’onglet vers la gauche</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>PageUp</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Page précédente</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>PageUp</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Page précédente</kbd>
                   </td>
                   <td>
                     <kbd class="code">ArrowLeft</kbd>
@@ -1794,12 +1794,12 @@
                 </tr>
                 <tr>
                   <td><code>moveTabRight</code></td>
-                  <td>Move selected tabs right</td>
+                  <td>Déplacer l’onglet vers la droite</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>PageDown</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Page suivante</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>PageDown</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Page suivante</kbd>
                   </td>
                   <td>
                     <kbd class="code">ArrowRight</kbd>
@@ -1807,7 +1807,7 @@
                 </tr>
                 <tr>
                   <td><code>moveTabFirst</code></td>
-                  <td>Move selected tabs to the far left</td>
+                  <td>Déplacer l’onglet en première position</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1816,7 +1816,7 @@
                 </tr>
                 <tr>
                   <td><code>moveTabLast</code></td>
-                  <td>Move selected tabs to the far right</td>
+                  <td>Déplacer l’onglet en dernière position</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1825,7 +1825,7 @@
                 </tr>
                 <tr>
                   <td><code>moveTabNewWindow</code></td>
-                  <td>Move selected tabs to a new window</td>
+                  <td>Déplacer l’onglet dans une nouvelle fenêtre</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1834,7 +1834,7 @@
                 </tr>
                 <tr>
                   <td><code>moveTabPreviousWindow</code></td>
-                  <td>Move selected tabs to the previous open window</td>
+                  <td>Déplacer l’onglet vers la fenêtre précédente</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1848,24 +1848,24 @@
         <section id="select_tabs_commands">
           <h3>
             <a href="#select_tabs_commands">
-              Select tabs
+              Raccourcis liés à la sélection de plusieurs onglets
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>selectActiveTab</code></td>
-                  <td>Deselect all other tabs</td>
+                  <td>Désélectionner tous les autres onglets</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1874,7 +1874,7 @@
                 </tr>
                 <tr>
                   <td><code>selectPreviousTab</code></td>
-                  <td>Select the previous tab</td>
+                  <td>Sélectionner l’onglet situé à gauche</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1883,7 +1883,7 @@
                 </tr>
                 <tr>
                   <td><code>selectNextTab</code></td>
-                  <td>Select the next tab</td>
+                  <td>Sélectionner l’onglet situé à droite</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1892,7 +1892,7 @@
                 </tr>
                 <tr>
                   <td><code>selectRelatedTabs</code></td>
-                  <td>Select related tabs</td>
+                  <td>Sélectionner les onglets du même domaine</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1901,7 +1901,7 @@
                 </tr>
                 <tr>
                   <td><code>selectTabsInGroup</code></td>
-                  <td>Select tabs in group</td>
+                  <td>Sélectionner les onglets du même groupe</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -1910,120 +1910,121 @@
                 </tr>
                 <tr>
                   <td><code>selectAllTabs</code></td>
-                  <td>Select all tabs</td>
+                  <td>Sélectionner tous les onglets</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyA</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyA</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>selectRightTabs</code></td>
-                  <td>Select tabs to the right</td>
+                  <td>Sélectionner les onglets sur la droite</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyS</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyS</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>moveTabSelectionFaceBackward</code></td>
-                  <td>Move tab selection’s face backward</td>
+                  <td>Basculer la sélection d’onglets vers la gauche</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">BracketLeft</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">BracketLeft</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>moveTabSelectionFaceForward</code></td>
-                  <td>Move tab selection’s face forward</td>
+                  <td>Basculer la sélection d’onglets vers la droite</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">BracketRight</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">BracketRight</kbd>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p role="tip">
-            Tip: Selecting tabs in group can be used for ungrouped tabs.
+            Astuce : Vous pouvez sélectionner les onglets épinglés ou ne possédant pas de groupe
+            avec la commande « <code>selectTabsInGroup</code> ».
           </p>
         </section>
         <section id="bookmarks_commands">
           <h3>
             <a href="#bookmarks_commands">
-              Bookmarks
+              Raccourcis liés aux favoris
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>bookmarkTab</code></td>
-                  <td>Save selected tabs as bookmarks</td>
+                  <td>Ajouter l’onglet aux favoris</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>D</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>D</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>D</kbd>
+                    <kbd>Cmd</kbd>+<kbd>D</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyD</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyD</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>bookmarkSession</code></td>
-                  <td>Save the current session as bookmarks</td>
+                  <td>Ajouter tous les onglets aux favoris</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>D</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>D</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>D</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">KeyB</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">KeyB</kbd>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p role="note">
-            Note: If Chrome notifications are enabled,
-            Shortcuts will show you a message for created bookmarks.
+            Remarque : Shortcuts utilise les notifications Chrome
+            pour vous informer des sites web ajoutés à vos favoris.
           </p>
         </section>
         <section id="reading_list_commands">
           <h3>
             <a href="#reading_list_commands">
-              Reading list
+              Raccourcis liés à la liste de lecture
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>addTabToReadingList</code></td>
-                  <td>Add selected tabs to your reading list</td>
+                  <td>Ajouter l’onglet à la liste de lecture</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -2034,35 +2035,35 @@
             </table>
           </div>
           <p role="note">
-            Note: If Chrome notifications are enabled,
-            Shortcuts will show you a message for pages added to your reading list.
+            Remarque : Shortcuts utilise les notifications Chrome
+            pour vous informer des pages web ajoutées à votre liste de lecture.
           </p>
         </section>
         <section id="folders_commands">
           <h3>
             <a href="#folders_commands">
-              Folders
+              Raccourcis liés aux dossiers
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>openDownloadsFolder</code></td>
-                  <td>Open the “Downloads” folder</td>
+                  <td>Ouvrir le dossier de téléchargements</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyK</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyK</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -2072,88 +2073,88 @@
         <section id="chrome_urls_commands">
           <h3>
             <a href="#chrome_urls_commands">
-              Chrome URLs
+              Raccourcis liés aux pages Chrome
             </a>
           </h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Popup key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>openBrowsingHistory</code></td>
-                  <td>Open the browsing history</td>
+                  <td>Ouvrir l’historique de navigation</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>H</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>H</kbd>
                   </td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>Y</kbd>
+                    <kbd>Cmd</kbd>+<kbd>Y</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyH</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyH</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openSyncedTabsPage</code></td>
-                  <td>Open the “Tabs from other devices” page</td>
+                  <td>Ouvrir la page « Onglets d’autres appareils »</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyT</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyT</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openClearBrowserDataOptions</code></td>
-                  <td>Open the “Delete browsing data” options</td>
+                  <td>Ouvrir les options « Supprimer les données de navigation »</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>Delete</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>Suppr</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>Delete</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>Suppr</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">Delete</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">Delete</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openDownloadHistory</code></td>
-                  <td>Open the download history</td>
+                  <td>Ouvrir l’historique des téléchargements</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>J</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>J</kbd>
                   </td>
                   <td>
-                    <kbd>Option</kbd>+<kbd>Command</kbd>+<kbd>L</kbd>
+                    <kbd>Opt</kbd>+<kbd>Cmd</kbd>+<kbd>L</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyJ</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyJ</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openBookmarkManager</code></td>
-                  <td>Open the bookmark manager</td>
+                  <td>Ouvrir le gestionnaire de favoris</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>O</kbd>
                   </td>
                   <td>
-                    <kbd>Option</kbd>+<kbd>Command</kbd>+<kbd>B</kbd>
+                    <kbd>Opt</kbd>+<kbd>Cmd</kbd>+<kbd>B</kbd>
                   </td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyO</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyO</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openSettings</code></td>
-                  <td>Open settings</td>
+                  <td>Ouvrir les réglages</td>
                   <td></td>
                   <td>
-                    <kbd>Command</kbd>+<kbd>Comma</kbd>
+                    <kbd>Cmd</kbd>+<kbd>Virgule</kbd>
                   </td>
                   <td>
                     <kbd class="code">Comma</kbd>
@@ -2161,87 +2162,87 @@
                 </tr>
                 <tr>
                   <td><code>openAppearanceSettings</code></td>
-                  <td>Open appearance settings</td>
+                  <td>Ouvrir les réglages « Apparence »</td>
                   <td></td>
                   <td></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td><code>openPasswordManager</code></td>
-                  <td>Open the password manager</td>
+                  <td>Ouvrir le gestionnaire de mots de passe</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyY</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyY</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openPaymentMethodSettings</code></td>
-                  <td>Open payment method settings</td>
+                  <td>Ouvrir les réglages « Modes de paiement »</td>
                   <td></td>
                   <td></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td><code>openAddressSettings</code></td>
-                  <td>Open address settings</td>
+                  <td>Ouvrir les réglages « Adresses et autres »</td>
                   <td></td>
                   <td></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td><code>openSearchEngineSettings</code></td>
-                  <td>Open search engine settings</td>
+                  <td>Ouvrir les réglages « Moteur de recherche »</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">Slash</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">Slash</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openExtensionsPage</code></td>
-                  <td>Open the “Extensions” page</td>
+                  <td>Ouvrir le gestionnaire d’extensions</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">KeyA</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">KeyA</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openExtensionShortcutsPage</code></td>
-                  <td>Open the “Extension shortcuts” page</td>
+                  <td>Ouvrir l’éditeur de raccourcis des extensions</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Equal</kbd>
+                    <kbd>Maj</kbd>+<kbd class="code">Equal</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openExperimentalSettings</code></td>
-                  <td>Open experimental settings</td>
+                  <td>Ouvrir les options « Chrome flags »</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Control</kbd>+<kbd class="code">Comma</kbd>
+                    <kbd>Ctrl</kbd>+<kbd class="code">Comma</kbd>
                   </td>
                 </tr>
                 <tr>
                   <td><code>openAboutChromePage</code></td>
-                  <td>Open the “About Chrome” page</td>
+                  <td>Ouvrir la page « À propos de Chrome »</td>
                   <td></td>
                   <td></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td><code>openAboutChromeVersionPage</code></td>
-                  <td>Open the “About Chrome version” page</td>
+                  <td>Ouvrir la page « À propos de la version de Chrome »</td>
                   <td></td>
                   <td></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td><code>openWhatsNewPage</code></td>
-                  <td>Open the “What’s new in Chrome” page</td>
+                  <td>Ouvrir la page « Nouveautés sur Chrome »</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -2253,34 +2254,34 @@
         <section id="open_tab_suggestions">
           <h3>
             <a href="#open_tab_suggestions">
-              Open tab suggestions
+              Suggestions liées aux onglets ouverts
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(openTabSuggestion)</code></td>
-                  <td>Activate suggestion in the tab strip</td>
+                  <td>Accéder à l’onglet</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
-                    or <code>@tabs</code> in the address bar
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>A</kbd>
+                    ou <code>@tabs</code> dans la barre d’adresse
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>A</kbd>
-                    or <code>@tabs</code> in the address bar
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>A</kbd>
+                    ou <code>@tabs</code> dans la barre d’adresse
                   </td>
                   <td>
                     <kbd class="code">Enter</kbd>
@@ -2293,32 +2294,32 @@
         <section id="recently_closed_tab_suggestions">
           <h3>
             <a href="#recently_closed_tab_suggestions">
-              Recently closed tab suggestions
+              Suggestions liées aux onglets récemment fermés
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(closedTabSuggestion)</code></td>
-                  <td>Reopen suggestion in a new tab</td>
+                  <td>Rouvrir l’onglet fermé</td>
                   <td>
-                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+                    <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>A</kbd>
                   </td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>A</kbd>
+                    <kbd>Maj</kbd>+<kbd>Cmd</kbd>+<kbd>A</kbd>
                   </td>
                   <td>
                     <kbd class="code">Enter</kbd>
@@ -2331,27 +2332,27 @@
         <section id="synced_tab_suggestions">
           <h3>
             <a href="#synced_tab_suggestions">
-              Synced tab suggestions
+              Suggestions liées aux onglets d’autres appareils
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(syncedTabSuggestion)</code></td>
-                  <td>Open and activate suggestion in a new tab</td>
+                  <td>Ouvrir la suggestion dans un nouvel onglet</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -2365,32 +2366,32 @@
         <section id="bookmark_suggestions">
           <h3>
             <a href="#bookmark_suggestions">
-              Bookmark suggestions
+              Suggestions liées aux favoris
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(bookmarkSuggestion)</code></td>
-                  <td>Open and activate suggestion in a new tab</td>
+                  <td>Ouvrir la suggestion dans un nouvel onglet</td>
                   <td>
-                    <code>@bookmarks</code> in the address bar
+                    <code>@bookmarks</code> dans la barre d’adresse
                   </td>
                   <td>
-                    <code>@bookmarks</code> in the address bar
+                    <code>@bookmarks</code> dans la barre d’adresse
                   </td>
                   <td>
                     <kbd class="code">Enter</kbd>
@@ -2403,27 +2404,27 @@
         <section id="reading_list_suggestions">
           <h3>
             <a href="#reading_list_suggestions">
-              Reading list suggestions
+              Suggestions liées à la liste de lecture
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(readingListSuggestion)</code></td>
-                  <td>Open and activate suggestion in a new tab</td>
+                  <td>Ouvrir la suggestion dans un nouvel onglet</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -2437,32 +2438,32 @@
         <section id="recently_visited_page_suggestions">
           <h3>
             <a href="#recently_visited_page_suggestions">
-              Recently visited page suggestions
+              Suggestions liées aux sites web récemment consultés
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(historySuggestion)</code></td>
-                  <td>Open and activate suggestion in a new tab</td>
+                  <td>Ouvrir la suggestion dans un nouvel onglet</td>
                   <td>
-                    <code>@history</code> in the address bar
+                    <code>@history</code> dans la barre d’adresse
                   </td>
                   <td>
-                    <code>@history</code> in the address bar
+                    <code>@history</code> dans la barre d’adresse
                   </td>
                   <td>
                     <kbd class="code">Enter</kbd>
@@ -2475,27 +2476,27 @@
         <section id="download_suggestions">
           <h3>
             <a href="#download_suggestions">
-              Download suggestions
+              Suggestions liées aux téléchargements
             </a>
           </h3>
           <p>
-            These commands are only available in the command palette.
+            Ces commandes ne sont disponibles que dans la palette de commandes.
           </p>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Command</th>
+                  <th>Commande</th>
                   <th>Description</th>
-                  <th>Windows and Linux key</th>
-                  <th>macOS key</th>
-                  <th>Palette key</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la palette de commandes</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><code>activateSuggestion(downloadSuggestion)</code></td>
-                  <td>Show suggestion in its folder in a file manager</td>
+                  <td>Accéder au fichier téléchargé</td>
                   <td></td>
                   <td></td>
                   <td>
@@ -2507,43 +2508,43 @@
           </div>
         </section>
         <p>
-          For more keyboard shortcuts, see the <a href="https://support.google.com/chrome/answer/157179" target="_blank">Google Chrome documentation</a>.
+          Pour découvrir plus de raccourcis clavier, consultez l’article <a href="https://support.google.com/chrome/answer/157179" target="_blank">Raccourcis clavier pour Chrome</a>.
         </p>
       </section>
       <section id="tips_and_tricks">
         <h2>
           <a href="#tips_and_tricks">
-            Tips and tricks
+            Trucs et astuces
           </a>
         </h2>
         <ul>
           <li>
-            <strong>To close right tabs</strong>—Select tabs to the right with <kbd class="code">Tab</kbd>, <kbd>Shift</kbd>+<kbd class="code">KeyS</kbd>, then close selection with <kbd class="code">KeyX</kbd>.
+            <strong>Pour fermer les onglets sur la droite</strong>—Appuyez sur <kbd class="code">Tab</kbd>, suivi de <kbd>Maj</kbd>+<kbd class="code">KeyS</kbd> pour sélectionner les onglets sur la droite, puis <kbd class="code">KeyX</kbd> pour fermer la sélection.
           </li>
           <li>
-            <strong>To close other tabs</strong>—Move the tab you want to keep to the far left with the <kbd class="code">Home</kbd> key, then close tabs to the right.
+            <strong>Pour fermer les autres onglets</strong>—Appuyez sur la touche de début « <kbd class="code">Home</kbd> » pour déplacer l’onglet que vous souhaitez conserver en première position, puis fermez les onglets sur la droite.
           </li>
           <li>
-            <strong>To move tab groups</strong>—Select all tabs in group with <kbd class="code">KeyA</kbd>, then use a move action, such as <kbd class="code">ArrowLeft</kbd> / <kbd class="code">ArrowRight</kbd> for horizontal movements.
+            <strong>Pour déplacer un groupe d’onglets</strong>—Appuyez sur <kbd class="code">KeyA</kbd> pour sélectionner les onglets du même groupe, puis les touches fléchées « <kbd class="code">ArrowLeft</kbd> » ou « <kbd class="code">ArrowRight</kbd> » pour déplacer la sélection vers la gauche ou la droite.
           </li>
           <li>
-            <strong>To merge windows</strong>—Select all tabs with <kbd>Shift</kbd>+<kbd class="code">KeyA</kbd>, then press the <kbd class="code">Down</kbd> key to move selected tabs to the previous window.
+            <strong>Pour fusionner des fenêtres</strong>—Appuyez sur <kbd>Maj</kbd>+<kbd class="code">KeyA</kbd> pour sélectionner tous les onglets, puis la flèche vers le bas « <kbd class="code">Down</kbd> » pour déplacer la sélection vers la fenêtre précédente.
           </li>
         </ul>
         <p>
-          For more tips, see the <a href="https://google.com/chrome/tips/" target="_blank">Google Chrome documentation</a>.
+          Pour découvrir plus d’astuces, consultez l’article <a href="https://google.com/chrome/tips/" target="_blank">Astuces Chrome</a>.
         </p>
       </section>
       <section id="contributing">
         <h2>
           <a href="#contributing">
-            Contributing
+            Contribuer
           </a>
         </h2>
         <p>
-          Report bugs on the <a href="https://github.com/taupiqueur/chrome-shortcuts/issues" target="_blank">issue tracker</a>,
-          ask questions on the <a href="https://web.libera.chat/gamja/#taupiqueur" target="_blank">IRC channel</a>,
-          send patches on the <a href="https://github.com/taupiqueur/chrome-shortcuts/pulls" target="_blank">mailing list</a>.
+          Signalez un problème via <a href="https://github.com/taupiqueur/chrome-shortcuts/issues" target="_blank">l’outil de suivi</a>,
+          posez une question sur le <a href="https://web.libera.chat/gamja/#taupiqueur" target="_blank">canal IRC</a>,
+          envoyez des correctifs sur la <a href="https://github.com/taupiqueur/chrome-shortcuts/pulls" target="_blank">liste de diffusion</a>.
         </p>
       </section>
     </main>

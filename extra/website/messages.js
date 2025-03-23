@@ -9,10 +9,10 @@ export default {
   },
   "fr": {
     "keyCodeValuePopoverMessage": keyValue => (
-      `“${keyValue}” on your keyboard.`
+      `« ${keyValue} » sur votre clavier.`
     ),
     "noKeyCodeValuePopoverMessage": codeValue => (
-      `No value found for “${codeValue}”.`
+      `Aucune valeur trouvée pour « ${codeValue} ».`
     ),
   },
 }

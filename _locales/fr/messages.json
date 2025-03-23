@@ -3,411 +3,411 @@
     "message": "Shortcuts"
   },
   "extensionDescription": {
-    "message": "Perform common tasks with your keyboard."
+    "message": "Effectuer des tâches rapidement au clavier."
   },
   "goBackCommandDescription": {
-    "message": "Navigation · Go back to the previous page in tab’s history"
+    "message": "Navigation · Accéder à la page précédente de l’historique de navigation"
   },
   "goForwardCommandDescription": {
-    "message": "Navigation · Go forward to the next page in tab’s history"
+    "message": "Navigation · Accéder à la page suivante de l’historique de navigation"
   },
   "reloadTabCommandDescription": {
-    "message": "Navigation · Reload selected tabs"
+    "message": "Navigation · Recharger la page"
   },
   "reloadTabWithoutCacheCommandDescription": {
-    "message": "Navigation · Reload selected tabs, ignoring cached content"
+    "message": "Navigation · Recharger la page depuis son origine"
   },
   "goToNextPageCommandDescription": {
-    "message": "Navigation · Go to the next page in the series"
+    "message": "Navigation · Accéder au document suivant"
   },
   "goToPreviousPageCommandDescription": {
-    "message": "Navigation · Go to the previous page in the series"
+    "message": "Navigation · Accéder au document précédent"
   },
   "removeURLParamsCommandDescription": {
-    "message": "Navigation · Remove any URL parameters"
+    "message": "Navigation · Supprimer les paramètres de l’URL"
   },
   "goUpCommandDescription": {
-    "message": "Navigation · Go up in the URL hierarchy"
+    "message": "Navigation · Accéder au dossier parent du site web"
   },
   "goToRootCommandDescription": {
-    "message": "Navigation · Go to the root URL"
+    "message": "Navigation · Accéder à la page d’accueil du site web"
   },
   "focusTextInputCommandDescription": {
-    "message": "Accessibility · Cycle through text fields"
+    "message": "Accessibilité · Passer au champ de saisie suivant"
   },
   "focusMediaPlayerCommandDescription": {
-    "message": "Accessibility · Cycle through media players"
+    "message": "Accessibilité · Passer au lecteur multimédia suivant"
   },
   "blurElementCommandDescription": {
-    "message": "Accessibility · Blur the active element"
+    "message": "Accessibilité · Retirer le focus de l’élément actif"
   },
   "copyURLCommandDescription": {
-    "message": "Clipboard · Copy URL of selected tabs"
+    "message": "Presse-papiers · Copier le lien de la page"
   },
   "copyTitleCommandDescription": {
-    "message": "Clipboard · Copy title of selected tabs"
+    "message": "Presse-papiers · Copier le titre de la page"
   },
   "copyTitleAndURLCommandDescription": {
-    "message": "Clipboard · Copy title and URL of selected tabs"
+    "message": "Presse-papiers · Copier le titre et le lien de la page"
   },
   "savePageCommandDescription": {
-    "message": "Save pages · Save the content of selected tabs"
+    "message": "Enregistrer des pages · Enregistrer le contenu de la page"
   },
   "savePageAsMHTMLCommandDescription": {
-    "message": "Save pages · Save the content of selected tabs as MHTML"
+    "message": "Enregistrer des pages · Enregistrer la page au format MHTML"
   },
   "openWebSearchForSelectedTextCommandDescription": {
-    "message": "Web search · Perform a web search for selected text"
+    "message": "Recherche sur le web · Effectuer une recherche de la sélection sur le web"
   },
   "scrollDownCommandDescription": {
-    "message": "Scroll · Scroll down"
+    "message": "Faire défiler · Faire défiler vers le bas"
   },
   "scrollUpCommandDescription": {
-    "message": "Scroll · Scroll up"
+    "message": "Faire défiler · Faire défiler vers le haut"
   },
   "scrollLeftCommandDescription": {
-    "message": "Scroll · Scroll left"
+    "message": "Faire défiler · Faire défiler vers la gauche"
   },
   "scrollRightCommandDescription": {
-    "message": "Scroll · Scroll right"
+    "message": "Faire défiler · Faire défiler vers la droite"
   },
   "scrollPageDownCommandDescription": {
-    "message": "Scroll · Scroll one page down"
+    "message": "Faire défiler · Faire défiler d’un écran vers le bas"
   },
   "scrollPageUpCommandDescription": {
-    "message": "Scroll · Scroll one page up"
+    "message": "Faire défiler · Faire défiler d’un écran vers le haut"
   },
   "scrollHalfPageDownCommandDescription": {
-    "message": "Scroll · Scroll half page down"
+    "message": "Faire défiler · Faire défiler d’une moitié d’écran vers le bas"
   },
   "scrollHalfPageUpCommandDescription": {
-    "message": "Scroll · Scroll half page up"
+    "message": "Faire défiler · Faire défiler d’une moitié d’écran vers le haut"
   },
   "scrollToTopCommandDescription": {
-    "message": "Scroll · Scroll to the top of the page"
+    "message": "Faire défiler · Accéder au haut de la page"
   },
   "scrollToBottomCommandDescription": {
-    "message": "Scroll · Scroll to the bottom of the page"
+    "message": "Faire défiler · Accéder au bas de la page"
   },
   "zoomInCommandDescription": {
-    "message": "Zoom · Zoom in"
+    "message": "Zoom · Augmenter la taille du texte"
   },
   "zoomOutCommandDescription": {
-    "message": "Zoom · Zoom out"
+    "message": "Zoom · Réduire la taille du texte"
   },
   "zoomResetCommandDescription": {
-    "message": "Zoom · Reset the zoom factor"
+    "message": "Zoom · Réinitialiser le niveau de zoom par défaut"
   },
   "toggleFullScreenCommandDescription": {
-    "message": "Zoom · Turn full-screen mode on or off"
+    "message": "Zoom · Activer ou désactiver le mode plein écran"
   },
   "openNewTabCommandDescription": {
-    "message": "Create tabs · Open and activate a new tab"
+    "message": "Créer des onglets · Ouvrir un nouvel onglet"
   },
   "openNewTabRightCommandDescription": {
-    "message": "Create tabs · Open and activate a new tab to the right"
+    "message": "Créer des onglets · Ouvrir un nouvel onglet à droite"
   },
   "openNewWindowCommandDescription": {
-    "message": "Create tabs · Open a new window"
+    "message": "Créer des onglets · Ouvrir une nouvelle fenêtre"
   },
   "openNewIncognitoWindowCommandDescription": {
-    "message": "Create tabs · Open a new window in Incognito mode"
+    "message": "Créer des onglets · Ouvrir une nouvelle fenêtre de navigation privée"
   },
   "closeTabCommandDescription": {
-    "message": "Close tabs · Close selected tabs"
+    "message": "Fermer les onglets · Fermer l’onglet"
   },
   "closeOtherTabsCommandDescription": {
-    "message": "Close tabs · Close other tabs"
+    "message": "Fermer les onglets · Fermer les autres onglets"
   },
   "closeRightTabsCommandDescription": {
-    "message": "Close tabs · Close tabs to the right"
+    "message": "Fermer les onglets · Fermer les onglets sur la droite"
   },
   "closeWindowCommandDescription": {
-    "message": "Close tabs · Close the window that contains the tab"
+    "message": "Fermer les onglets · Fermer la fenêtre"
   },
   "restoreTabCommandDescription": {
-    "message": "Close tabs · Reopen previously closed tabs"
+    "message": "Fermer les onglets · Rouvrir l’onglet fermé"
   },
   "duplicateTabCommandDescription": {
-    "message": "Tab state · Duplicate selected tabs"
+    "message": "Gérer les onglets · Dupliquer l’onglet"
   },
   "togglePinTabCommandDescription": {
-    "message": "Tab state · Pin or unpin selected tabs"
+    "message": "Gérer les onglets · Épingler ou retirer l’onglet"
   },
   "toggleGroupTabCommandDescription": {
-    "message": "Tab state · Group or ungroup selected tabs"
+    "message": "Gérer les onglets · Regrouper ou dégrouper les onglets"
   },
   "toggleCollapseTabGroupsCommandDescription": {
-    "message": "Tab state · Collapse or uncollapse tab groups"
+    "message": "Gérer les onglets · Réduire ou développer les groupes d’onglets"
   },
   "toggleMuteTabCommandDescription": {
-    "message": "Tab state · Mute or unmute selected tabs"
+    "message": "Gérer les onglets · Couper ou réactiver le son de l’onglet"
   },
   "discardTabCommandDescription": {
-    "message": "Tab state · Discard selected tabs"
+    "message": "Gérer les onglets · Suspendre l’onglet"
   },
   "sortTabsByURLCommandDescription": {
-    "message": "Organize tabs · Sort selected tabs by URL"
+    "message": "Organiser les onglets · Organiser les onglets par domaine"
   },
   "groupTabsByDomainCommandDescription": {
-    "message": "Organize tabs · Group selected tabs by domain"
+    "message": "Organiser les onglets · Regrouper les onglets par domaine"
   },
   "renameTabGroupCommandDescription": {
-    "message": "Manage tab groups · Rename tab group"
+    "message": "Gérer les groupes d’onglets · Renommer le groupe d’onglets"
   },
   "cycleTabGroupColorForwardCommandDescription": {
-    "message": "Manage tab groups · Cycle forward through tab group colors"
+    "message": "Gérer les groupes d’onglets · Sélectionner la couleur suivante du groupe d’onglets"
   },
   "cycleTabGroupColorBackwardCommandDescription": {
-    "message": "Manage tab groups · Cycle backward through tab group colors"
+    "message": "Gérer les groupes d’onglets · Sélectionner la couleur précédente du groupe d’onglets"
   },
   "activateAudibleTabCommandDescription": {
-    "message": "Switch tabs · Cycle through audible tabs"
+    "message": "Accéder aux onglets · Passer à l’onglet audible suivant"
   },
   "activateNextTabCommandDescription": {
-    "message": "Switch tabs · Activate the next open tab"
+    "message": "Accéder aux onglets · Passer à l’onglet suivant"
   },
   "activatePreviousTabCommandDescription": {
-    "message": "Switch tabs · Activate the previous open tab"
+    "message": "Accéder aux onglets · Passer à l’onglet précédent"
   },
   "activateFirstTabCommandDescription": {
-    "message": "Switch tabs · Activate the leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au premier onglet"
   },
   "activateSecondTabCommandDescription": {
-    "message": "Switch tabs · Activate the second leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au deuxième onglet"
   },
   "activateThirdTabCommandDescription": {
-    "message": "Switch tabs · Activate the third leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au troisième onglet"
   },
   "activateFourthTabCommandDescription": {
-    "message": "Switch tabs · Activate the fourth leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au quatrième onglet"
   },
   "activateFifthTabCommandDescription": {
-    "message": "Switch tabs · Activate the fifth leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au cinquième onglet"
   },
   "activateSixthTabCommandDescription": {
-    "message": "Switch tabs · Activate the sixth leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au sixième onglet"
   },
   "activateSeventhTabCommandDescription": {
-    "message": "Switch tabs · Activate the seventh leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au septième onglet"
   },
   "activateEighthTabCommandDescription": {
-    "message": "Switch tabs · Activate the eighth leftmost open tab"
+    "message": "Accéder aux onglets · Accéder au huitième onglet"
   },
   "activateLastTabCommandDescription": {
-    "message": "Switch tabs · Activate the rightmost open tab"
+    "message": "Accéder aux onglets · Accéder au dernier onglet"
   },
   "activateLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the last active tab"
+    "message": "Accéder aux onglets · Passer à l’onglet le plus récent"
   },
   "activateSecondLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the second last active tab"
+    "message": "Accéder aux onglets · Passer au deuxième onglet le plus récent"
   },
   "activateThirdLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the third last active tab"
+    "message": "Accéder aux onglets · Passer au troisième onglet le plus récent"
   },
   "activateFourthLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the fourth last active tab"
+    "message": "Accéder aux onglets · Passer au quatrième onglet le plus récent"
   },
   "activateFifthLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the fifth last active tab"
+    "message": "Accéder aux onglets · Passer au cinquième onglet le plus récent"
   },
   "activateSixthLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the sixth last active tab"
+    "message": "Accéder aux onglets · Passer au sixième onglet le plus récent"
   },
   "activateSeventhLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the seventh last active tab"
+    "message": "Accéder aux onglets · Passer au septième onglet le plus récent"
   },
   "activateEighthLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the eighth last active tab"
+    "message": "Accéder aux onglets · Passer au huitième onglet le plus récent"
   },
   "activateNinthLastActiveTabCommandDescription": {
-    "message": "Switch tabs · Activate the ninth last active tab"
+    "message": "Accéder aux onglets · Passer au neuvième onglet le plus récent"
   },
   "activateNextWindowCommandDescription": {
-    "message": "Switch tabs · Activate the next open window"
+    "message": "Accéder aux onglets · Passer à la fenêtre suivante"
   },
   "activatePreviousWindowCommandDescription": {
-    "message": "Switch tabs · Activate the previous open window"
+    "message": "Accéder aux onglets · Passer à la fenêtre précédente"
   },
   "grabTabCommandDescription": {
-    "message": "Move tabs · Grab selected tabs"
+    "message": "Déplacer les onglets · Regrouper les onglets"
   },
   "moveTabLeftCommandDescription": {
-    "message": "Move tabs · Move selected tabs left"
+    "message": "Déplacer les onglets · Déplacer l’onglet vers la gauche"
   },
   "moveTabRightCommandDescription": {
-    "message": "Move tabs · Move selected tabs right"
+    "message": "Déplacer les onglets · Déplacer l’onglet vers la droite"
   },
   "moveTabFirstCommandDescription": {
-    "message": "Move tabs · Move selected tabs to the far left"
+    "message": "Déplacer les onglets · Déplacer l’onglet en première position"
   },
   "moveTabLastCommandDescription": {
-    "message": "Move tabs · Move selected tabs to the far right"
+    "message": "Déplacer les onglets · Déplacer l’onglet en dernière position"
   },
   "moveTabNewWindowCommandDescription": {
-    "message": "Move tabs · Move selected tabs to a new window"
+    "message": "Déplacer les onglets · Déplacer l’onglet dans une nouvelle fenêtre"
   },
   "moveTabPreviousWindowCommandDescription": {
-    "message": "Move tabs · Move selected tabs to the previous open window"
+    "message": "Déplacer les onglets · Déplacer l’onglet vers la fenêtre précédente"
   },
   "selectActiveTabCommandDescription": {
-    "message": "Select tabs · Deselect all other tabs"
+    "message": "Sélection de plusieurs onglets · Désélectionner tous les autres onglets"
   },
   "selectPreviousTabCommandDescription": {
-    "message": "Select tabs · Select the previous tab"
+    "message": "Sélection de plusieurs onglets · Sélectionner l’onglet situé à gauche"
   },
   "selectNextTabCommandDescription": {
-    "message": "Select tabs · Select the next tab"
+    "message": "Sélection de plusieurs onglets · Sélectionner l’onglet situé à droite"
   },
   "selectRelatedTabsCommandDescription": {
-    "message": "Select tabs · Select related tabs"
+    "message": "Sélection de plusieurs onglets · Sélectionner les onglets du même domaine"
   },
   "selectTabsInGroupCommandDescription": {
-    "message": "Select tabs · Select tabs in group"
+    "message": "Sélection de plusieurs onglets · Sélectionner les onglets du même groupe"
   },
   "selectAllTabsCommandDescription": {
-    "message": "Select tabs · Select all tabs"
+    "message": "Sélection de plusieurs onglets · Sélectionner tous les onglets"
   },
   "selectRightTabsCommandDescription": {
-    "message": "Select tabs · Select tabs to the right"
+    "message": "Sélection de plusieurs onglets · Sélectionner les onglets sur la droite"
   },
   "moveTabSelectionFaceBackwardCommandDescription": {
-    "message": "Select tabs · Move tab selection’s face backward"
+    "message": "Sélection de plusieurs onglets · Basculer la sélection d’onglets vers la gauche"
   },
   "moveTabSelectionFaceForwardCommandDescription": {
-    "message": "Select tabs · Move tab selection’s face forward"
+    "message": "Sélection de plusieurs onglets · Basculer la sélection d’onglets vers la droite"
   },
   "bookmarkTabCommandDescription": {
-    "message": "Bookmarks · Save selected tabs as bookmarks"
+    "message": "Favoris · Ajouter l’onglet aux favoris"
   },
   "bookmarkSessionCommandDescription": {
-    "message": "Bookmarks · Save the current session as bookmarks"
+    "message": "Favoris · Ajouter tous les onglets aux favoris"
   },
   "addTabToReadingListCommandDescription": {
-    "message": "Reading list · Add selected tabs to your reading list"
+    "message": "Liste de lecture · Ajouter l’onglet à la liste de lecture"
   },
   "openDownloadsFolderCommandDescription": {
-    "message": "Folders · Open the “Downloads” folder"
+    "message": "Dossiers · Ouvrir le dossier de téléchargements"
   },
   "openBrowsingHistoryCommandDescription": {
-    "message": "Chrome URLs · Open the browsing history"
+    "message": "Pages Chrome · Ouvrir l’historique de navigation"
   },
   "openSyncedTabsPageCommandDescription": {
-    "message": "Chrome URLs · Open the “Tabs from other devices” page"
+    "message": "Pages Chrome · Ouvrir la page « Onglets d’autres appareils »"
   },
   "openClearBrowserDataOptionsCommandDescription": {
-    "message": "Chrome URLs · Open the “Delete browsing data” options"
+    "message": "Pages Chrome · Ouvrir les options « Supprimer les données de navigation »"
   },
   "openDownloadHistoryCommandDescription": {
-    "message": "Chrome URLs · Open the download history"
+    "message": "Pages Chrome · Ouvrir l’historique des téléchargements"
   },
   "openBookmarkManagerCommandDescription": {
-    "message": "Chrome URLs · Open the bookmark manager"
+    "message": "Pages Chrome · Ouvrir le gestionnaire de favoris"
   },
   "openSettingsCommandDescription": {
-    "message": "Chrome URLs · Open settings"
+    "message": "Pages Chrome · Ouvrir les réglages"
   },
   "openAppearanceSettingsCommandDescription": {
-    "message": "Chrome URLs · Open appearance settings"
+    "message": "Pages Chrome · Ouvrir les réglages « Apparence »"
   },
   "openPasswordManagerCommandDescription": {
-    "message": "Chrome URLs · Open the password manager"
+    "message": "Pages Chrome · Ouvrir le gestionnaire de mots de passe"
   },
   "openPaymentMethodSettingsCommandDescription": {
-    "message": "Chrome URLs · Open payment method settings"
+    "message": "Pages Chrome · Ouvrir les réglages « Modes de paiement »"
   },
   "openAddressSettingsCommandDescription": {
-    "message": "Chrome URLs · Open address settings"
+    "message": "Pages Chrome · Ouvrir les réglages « Adresses et autres »"
   },
   "openSearchEngineSettingsCommandDescription": {
-    "message": "Chrome URLs · Open search engine settings"
+    "message": "Pages Chrome · Ouvrir les réglages « Moteur de recherche »"
   },
   "openExtensionsPageCommandDescription": {
-    "message": "Chrome URLs · Open the “Extensions” page"
+    "message": "Pages Chrome · Ouvrir le gestionnaire d’extensions"
   },
   "openExtensionShortcutsPageCommandDescription": {
-    "message": "Chrome URLs · Open the “Extension shortcuts” page"
+    "message": "Pages Chrome · Ouvrir l’éditeur de raccourcis des extensions"
   },
   "openExperimentalSettingsCommandDescription": {
-    "message": "Chrome URLs · Open experimental settings"
+    "message": "Pages Chrome · Ouvrir les options « Chrome flags »"
   },
   "openAboutChromePageCommandDescription": {
-    "message": "Chrome URLs · Open the “About Chrome” page"
+    "message": "Pages Chrome · Ouvrir la page « À propos de Chrome »"
   },
   "openAboutChromeVersionPageCommandDescription": {
-    "message": "Chrome URLs · Open the “About Chrome version” page"
+    "message": "Pages Chrome · Ouvrir la page « À propos de la version de Chrome »"
   },
   "openWhatsNewPageCommandDescription": {
-    "message": "Chrome URLs · Open the “What’s new in Chrome” page"
+    "message": "Pages Chrome · Ouvrir la page « Nouveautés sur Chrome »"
   },
   "copyURLNotificationTitle": {
-    "message": "Text copied"
+    "message": "Texte copié"
   },
   "copyURLNotificationMessage": {
-    "message": "$1 URLs copied to clipboard"
+    "message": "$1 adresses copiées dans le presse-papiers"
   },
   "copyTitleNotificationTitle": {
-    "message": "Text copied"
+    "message": "Texte copié"
   },
   "copyTitleNotificationMessage": {
-    "message": "$1 titles copied to clipboard"
+    "message": "$1 titres copiés dans le presse-papiers"
   },
   "copyTitleAndURLNotificationTitle": {
-    "message": "Text copied"
+    "message": "Texte copié"
   },
   "copyTitleAndURLNotificationMessage": {
-    "message": "$1 titles and URLs copied to clipboard"
+    "message": "$1 titres et adresses copiés dans le presse-papiers"
   },
   "bookmarkTabNotificationTitle": {
-    "message": "Tabs bookmarked"
+    "message": "Onglets ajoutés aux favoris"
   },
   "bookmarkTabNotificationMessage": {
-    "message": "$1 bookmarks added"
+    "message": "$1 sites web ajoutés à vos favoris"
   },
   "bookmarkSessionFolderTitle": {
     "message": "Session $1"
   },
   "bookmarkSessionNotificationTitle": {
-    "message": "Session bookmarked"
+    "message": "Onglets ajoutés aux favoris"
   },
   "bookmarkSessionNotificationMessage": {
-    "message": "$1 bookmarks added into “$2”"
+    "message": "$1 sites web ajoutés à vos favoris dans « $2 »"
   },
   "addTabToReadingListNotificationTitle": {
-    "message": "Read later"
+    "message": "Lire plus tard"
   },
   "addTabToReadingListNotificationMessage": {
-    "message": "$1 pages added to your reading list"
+    "message": "$1 pages web ajoutées à votre liste de lecture"
   },
   "openTabSuggestionLabel": {
-    "message": "Open tab"
+    "message": "Onglet ouvert"
   },
   "closedTabSuggestionLabel": {
-    "message": "Recently closed"
+    "message": "Récemment fermé"
   },
   "syncedTabSuggestionLabel": {
-    "message": "Synced tab"
+    "message": "Autre appareil"
   },
   "bookmarkSuggestionLabel": {
-    "message": "Bookmark"
+    "message": "Favori"
   },
   "readingListSuggestionLabel": {
-    "message": "Reading list"
+    "message": "Liste de lecture"
   },
   "historySuggestionLabel": {
-    "message": "Recently visited"
+    "message": "Récemment consulté"
   },
   "downloadSuggestionLabel": {
-    "message": "Download"
+    "message": "Téléchargement"
   },
   "noResultsCommandPaletteLabel": {
-    "message": "No results found"
+    "message": "Aucun résultat trouvé"
   },
   "keyCodeValuePopoverMessage": {
-    "message": "“$1” on your keyboard."
+    "message": "« $1 » sur votre clavier."
   },
   "noKeyCodeValuePopoverMessage": {
-    "message": "No value found for “$1”."
+    "message": "Aucune valeur trouvée pour « $1 »."
   }
 }
