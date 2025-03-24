@@ -1,6 +1,19 @@
 // This module contains the code to interpret the “manual.html” buttons,
 // and documenting physical keys.
 
+import messages from './messages.js'
+
+/**
+ * Gets the localized string for the specified message.
+ *
+ * @param {string} messageName
+ * @param {string[]} substitutions
+ * @returns {string}
+ */
+function getLocalizedMessage(messageName, substitutions) {
+  return messages[document.documentElement.lang][messageName].apply(null, substitutions)
+}
+
 const buttonElements = document.querySelectorAll('button[data-action]')
 const keyCodeElements = document.querySelectorAll('kbd.code')
 
@@ -40,7 +53,7 @@ for (const keyElement of keyCodeElements) {
     keyElement.replaceWith(
       createPopover(
         new Text(
-          `“${keyValue}” on your keyboard.`
+          getLocalizedMessage('keyCodeValuePopoverMessage', [keyValue])
         ),
         keyElement
       )
@@ -49,7 +62,7 @@ for (const keyElement of keyCodeElements) {
     keyElement.replaceWith(
       createPopover(
         new Text(
-          `No value found for “${codeValue}”.`
+          getLocalizedMessage('noKeyCodeValuePopoverMessage', [codeValue])
         ),
         keyElement
       )
