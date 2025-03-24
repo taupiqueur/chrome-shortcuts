@@ -23,7 +23,7 @@ build: all
 	npm install
 
 release: clean build
-	7z a releases/$(name)-$(version).zip manifest.json src assets
+	7z a releases/$(name)-$(version).zip manifest.json src assets _locales
 
 clean:
 	git clean -d -f -X
