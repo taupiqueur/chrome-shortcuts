@@ -380,6 +380,18 @@
   "addTabToReadingListNotificationMessage": {
     "message": "$1 pages added to your reading list"
   },
+  "openDocumentationMenuItemTitle": {
+    "message": "Documentation"
+  },
+  "openSupportChatMenuItemTitle": {
+    "message": "Support Chat"
+  },
+  "openSponsorshipPageMenuItemTitle": {
+    "message": "Sponsor this project"
+  },
+  "copyDebugInfoMenuItemTitle": {
+    "message": "Copy debug info"
+  },
   "openTabSuggestionLabel": {
     "message": "Open tab"
   },

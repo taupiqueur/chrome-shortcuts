@@ -81,25 +81,25 @@ async function setLocalizedPages() {
 function createMenuItems() {
   chrome.contextMenus.create({
     id: 'open_documentation',
-    title: 'Documentation',
+    title: chrome.i18n.getMessage('openDocumentationMenuItemTitle'),
     contexts: ['action']
   })
 
   chrome.contextMenus.create({
     id: 'open_support_chat',
-    title: 'Support Chat',
+    title: chrome.i18n.getMessage('openSupportChatMenuItemTitle'),
     contexts: ['action']
   })
 
   chrome.contextMenus.create({
     id: 'open_sponsorship_page',
-    title: 'Sponsor this project',
+    title: chrome.i18n.getMessage('openSponsorshipPageMenuItemTitle'),
     contexts: ['action']
   })
 
   chrome.contextMenus.create({
     id: 'copy_debug_info',
-    title: 'Copy debug info',
+    title: chrome.i18n.getMessage('copyDebugInfoMenuItemTitle'),
     contexts: ['action']
   })
 }

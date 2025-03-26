@@ -380,6 +380,18 @@
   "addTabToReadingListNotificationMessage": {
     "message": "$1 pages web ajoutées à votre liste de lecture"
   },
+  "openDocumentationMenuItemTitle": {
+    "message": "Documentation"
+  },
+  "openSupportChatMenuItemTitle": {
+    "message": "Salon de discussion"
+  },
+  "openSponsorshipPageMenuItemTitle": {
+    "message": "Devenir sponsor de taupiqueur"
+  },
+  "copyDebugInfoMenuItemTitle": {
+    "message": "Copier les infos de débogage"
+  },
   "openTabSuggestionLabel": {
     "message": "Onglet ouvert"
   },
