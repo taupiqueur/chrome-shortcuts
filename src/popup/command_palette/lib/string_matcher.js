@@ -5,6 +5,25 @@ const segmenter = new Intl.Segmenter([], {
 })
 
 /**
+ * Regular expression to match Unicode characters that should be normalized.
+ *
+ * @type {RegExp}
+ */
+const UNICODE_CHARS = /[“”‘’]/g
+
+/**
+ * Mapping of Unicode characters to their ASCII approximations.
+ *
+ * @type {Object<string, string>}
+ */
+const UNICODE_MAP = {
+  '“': '"',
+  '”': '"',
+  '‘': "'",
+  '’': "'",
+}
+
+/**
  * This class provides the functionality to match strings,
  * similarly to macOS menu search.
  *
@@ -37,7 +56,7 @@ class StringMatcher {
 }
 
 /**
- * Removes diacritics from string.
+ * Normalizes a string by replacing Unicode characters with their ASCII equivalents.
  *
  * @param {string} string
  * @returns {string}
@@ -46,6 +65,7 @@ function normalize(string) {
   return string
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
+    .replace(UNICODE_CHARS, char => UNICODE_MAP[char])
 }
 
 /**
