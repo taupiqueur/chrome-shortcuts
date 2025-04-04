@@ -332,6 +332,9 @@
   "openSearchEngineSettingsCommandDescription": {
     "message": "Chrome URLs · Open search engine settings"
   },
+  "openAppsPageCommandDescription": {
+    "message": "Chrome URLs · Open the “Apps” page"
+  },
   "openExtensionsPageCommandDescription": {
     "message": "Chrome URLs · Open the “Extensions” page"
   },

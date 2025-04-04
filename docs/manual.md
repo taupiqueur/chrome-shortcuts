@@ -158,6 +158,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "openSettings", "key": { "code": "Comma" } },
     { "command": "openPasswordManager", "key": { "ctrlKey": true, "code": "KeyY" } },
     { "command": "openSearchEngineSettings", "key": { "ctrlKey": true, "code": "Slash" } },
+    { "command": "openAppsPage", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyA" } },
     { "command": "openExtensionsPage", "key": { "ctrlKey": true, "code": "KeyA" } },
     { "command": "openExtensionShortcutsPage", "key": { "shiftKey": true, "code": "Equal" } },
     { "command": "openExperimentalSettings", "key": { "ctrlKey": true, "code": "Comma" } }
@@ -475,6 +476,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openPaymentMethodSettings` | Open payment method settings | | |
 `openAddressSettings` | Open address settings | | |
 `openSearchEngineSettings` | Open search engine settings | | | `Control+Slash`
+`openAppsPage` | Open the “Apps” page | | | `Control+Shift+KeyA`
 `openExtensionsPage` | Open the “Extensions” page | | | `Control+KeyA`
 `openExtensionShortcutsPage` | Open the “Extension shortcuts” page | | | `Shift+Equal`
 `openExperimentalSettings` | Open experimental settings | | | `Control+Comma`

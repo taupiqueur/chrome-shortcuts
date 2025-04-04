@@ -115,6 +115,7 @@
     { "command": "openSettings", "key": { "code": "Comma" } },
     { "command": "openPasswordManager", "key": { "ctrlKey": true, "code": "KeyY" } },
     { "command": "openSearchEngineSettings", "key": { "ctrlKey": true, "code": "Slash" } },
+    { "command": "openAppsPage", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyA" } },
     { "command": "openExtensionsPage", "key": { "ctrlKey": true, "code": "KeyA" } },
     { "command": "openExtensionShortcutsPage", "key": { "shiftKey": true, "code": "Equal" } },
     { "command": "openExperimentalSettings", "key": { "ctrlKey": true, "code": "Comma" } }

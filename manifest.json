@@ -385,22 +385,25 @@
     "109_openSearchEngineSettings": {
       "description": "__MSG_openSearchEngineSettingsCommandDescription__"
     },
-    "110_openExtensionsPage": {
+    "110_openAppsPage": {
+      "description": "__MSG_openAppsPageCommandDescription__"
+    },
+    "111_openExtensionsPage": {
       "description": "__MSG_openExtensionsPageCommandDescription__"
     },
-    "111_openExtensionShortcutsPage": {
+    "112_openExtensionShortcutsPage": {
       "description": "__MSG_openExtensionShortcutsPageCommandDescription__"
     },
-    "112_openExperimentalSettings": {
+    "113_openExperimentalSettings": {
       "description": "__MSG_openExperimentalSettingsCommandDescription__"
     },
-    "113_openAboutChromePage": {
+    "114_openAboutChromePage": {
       "description": "__MSG_openAboutChromePageCommandDescription__"
     },
-    "114_openAboutChromeVersionPage": {
+    "115_openAboutChromeVersionPage": {
       "description": "__MSG_openAboutChromeVersionPageCommandDescription__"
     },
-    "115_openWhatsNewPage": {
+    "116_openWhatsNewPage": {
       "description": "__MSG_openWhatsNewPageCommandDescription__"
     }
   }

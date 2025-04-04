@@ -2920,6 +2920,16 @@ export async function openSearchEngineSettings(cx) {
 }
 
 /**
+ * Opens the “Apps” page.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function openAppsPage(cx) {
+  await openChromePage(cx, 'chrome://apps/')
+}
+
+/**
  * Opens the “Extensions” page.
  *
  * @param {CommandContext} cx

@@ -332,6 +332,9 @@
   "openSearchEngineSettingsCommandDescription": {
     "message": "Pages Chrome · Ouvrir les réglages « Moteur de recherche »"
   },
+  "openAppsPageCommandDescription": {
+    "message": "Pages Chrome · Ouvrir le gestionnaire d’apps"
+  },
   "openExtensionsPageCommandDescription": {
     "message": "Pages Chrome · Ouvrir le gestionnaire d’extensions"
   },
