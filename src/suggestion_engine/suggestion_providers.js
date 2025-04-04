@@ -315,3 +315,39 @@ export async function getDownloadSuggestions(searchText) {
   })
   return downloadItems.map(newDownloadSuggestion)
 }
+
+// Extension suggestions -------------------------------------------------------
+
+/**
+ * @typedef {object} ExtensionSuggestion
+ * @property {"extension"} type
+ * @property {string} title
+ * @property {string} url
+ */
+
+/**
+ * Creates a new extension suggestion.
+ *
+ * @param {chrome.management.ExtensionInfo} extensionInfo
+ * @returns {ExtensionSuggestion}
+ */
+const newExtensionSuggestion = extensionInfo => ({
+  type: 'extension',
+  title: `${extensionInfo.name} ${extensionInfo.version}`,
+  url: `chrome://extensions/?id=${extensionInfo.id}`
+})
+
+/**
+ * Retrieves installed extension suggestions.
+ *
+ * NOTE: Search text is ignored for this suggestion type.
+ *
+ * @param {string} searchText
+ * @returns {Promise<ExtensionSuggestion[]>}
+ */
+export async function getInstalledExtensionSuggestions(searchText) {
+  const installedExtensions = await chrome.management.getAll()
+  return installedExtensions
+    .filter((extensionInfo) => extensionInfo.type === 'extension')
+    .map(newExtensionSuggestion)
+}

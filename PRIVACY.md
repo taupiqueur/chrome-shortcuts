@@ -14,6 +14,7 @@ Permission | Justification
 [`"contextMenus"`] | This permission is used to add the “Documentation” and “Support Chat” buttons to the Shortcuts toolbar.
 [`"downloads"`] | This permission is used to save your tabs, open the “Downloads” folder, get and activate download suggestions.
 [`"history"`] | This permission is used to get recently visited page suggestions.
+[`"management"`] | This permission is used to get installed extension suggestions.
 [`"notifications"`] | This permission is used to give users feedback after copying text and creating bookmarks.
 [`"pageCapture"`] | This permission is used to save pages as MHTML.
 [`"readingList"`] | This permission is used to add tabs to your reading list and get reading list suggestions.
@@ -32,6 +33,7 @@ Permission | Justification
 [`"contextMenus"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#contextMenus
 [`"downloads"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#downloads
 [`"history"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#history
+[`"management"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#management
 [`"notifications"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#notifications
 [`"pageCapture"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#pageCapture
 [`"readingList"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#readingList

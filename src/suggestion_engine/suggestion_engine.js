@@ -8,10 +8,11 @@ import {
   getReadingListSuggestions,
   getRecentlyVisitedPageSuggestions,
   getDownloadSuggestions,
+  getInstalledExtensionSuggestions,
 } from './suggestion_providers.js'
 
 /**
- * @typedef {OpenTabSuggestion | ClosedTabSuggestion | BookmarkSuggestion | ReadingListSuggestion | HistorySuggestion | DownloadSuggestion} Suggestion
+ * @typedef {OpenTabSuggestion | ClosedTabSuggestion | BookmarkSuggestion | ReadingListSuggestion | HistorySuggestion | DownloadSuggestion | ExtensionSuggestion} Suggestion
  */
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
@@ -25,6 +26,7 @@ export const SuggestionType = {
   ReadingList: 'readingList',
   History: 'history',
   Download: 'download',
+  Extension: 'extension',
   Combined: 'combined',
 }
 
@@ -84,6 +86,9 @@ class SuggestionEngine {
       case SuggestionType.Download:
         return getDownloadSuggestions(searchText)
 
+      case SuggestionType.Extension:
+        return getInstalledExtensionSuggestions(searchText)
+
       case SuggestionType.Combined: {
         const suggestionResults = await Promise.all([
           getOpenTabSuggestions(searchText, this.recentTabsManager),
@@ -93,6 +98,7 @@ class SuggestionEngine {
           getReadingListSuggestions(searchText),
           getRecentlyVisitedPageSuggestions(searchText),
           getDownloadSuggestions(searchText),
+          getInstalledExtensionSuggestions(searchText),
         ])
         return suggestionResults.flat()
       }
@@ -157,6 +163,26 @@ class SuggestionEngine {
       case SuggestionType.Download:
         await chrome.downloads.show(suggestion.downloadId)
         break
+
+      case SuggestionType.Extension: {
+        const tabs = await chrome.tabs.query({
+          windowId: tab.windowId,
+          url: 'chrome://extensions/*'
+        })
+        if (tabs.length > 0) {
+          await chrome.tabs.update(tabs[0].id, {
+            active: true,
+            url: suggestion.url,
+          })
+        } else {
+          await openNewTab({
+            active: true,
+            url: suggestion.url,
+            openerTabId: tab.id,
+          })
+        }
+        break
+      }
 
       default:
         console.error(

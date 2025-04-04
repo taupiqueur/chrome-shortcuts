@@ -422,6 +422,9 @@
   "downloadSuggestionLabel": {
     "message": "Téléchargement"
   },
+  "extensionSuggestionLabel": {
+    "message": "Extension"
+  },
   "noResultsCommandPaletteLabel": {
     "message": "Aucun résultat trouvé"
   },

@@ -29,6 +29,7 @@ const suggestionLabels = new Map([
   [SuggestionType.ReadingList, chrome.i18n.getMessage('readingListSuggestionLabel')],
   [SuggestionType.History, chrome.i18n.getMessage('historySuggestionLabel')],
   [SuggestionType.Download, chrome.i18n.getMessage('downloadSuggestionLabel')],
+  [SuggestionType.Extension, chrome.i18n.getMessage('extensionSuggestionLabel')],
 ])
 
 /**

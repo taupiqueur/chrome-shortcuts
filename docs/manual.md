@@ -538,6 +538,14 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
 `activateSuggestion(downloadSuggestion)` | Show suggestion in its folder in a file manager | | | `Enter`
 
+### Installed extension suggestions
+
+These commands are only available in the command palette.
+
+Command | Description | Windows and Linux key | macOS key | Palette key
+--- | --- | --- | --- | ---
+`activateSuggestion(extensionSuggestion)` | Open and activate suggestion in a new tab | | | `Enter`
+
 For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboard shortcuts].
 
 [Chrome keyboard shortcuts]: https://support.google.com/chrome/answer/157179
