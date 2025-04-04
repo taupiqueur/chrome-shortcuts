@@ -146,11 +146,20 @@
   "discardTabCommandDescription": {
     "message": "Gérer les onglets · Suspendre l’onglet"
   },
+  "sortTabsByNameCommandDescription": {
+    "message": "Organiser les onglets · Organiser les onglets sélectionnés par nom"
+  },
   "sortTabsByURLCommandDescription": {
-    "message": "Organiser les onglets · Organiser les onglets par domaine"
+    "message": "Organiser les onglets · Organiser les onglets sélectionnés par domaine"
+  },
+  "sortTabsByRecencyCommandDescription": {
+    "message": "Organiser les onglets · Organiser les onglets sélectionnés par date d’activité"
+  },
+  "reverseTabOrderCommandDescription": {
+    "message": "Organiser les onglets · Inverser l’ordre des onglets sélectionnés"
   },
   "groupTabsByDomainCommandDescription": {
-    "message": "Organiser les onglets · Regrouper les onglets par domaine"
+    "message": "Organiser les onglets · Regrouper les onglets sélectionnés par domaine"
   },
   "renameTabGroupCommandDescription": {
     "message": "Gérer les groupes d’onglets · Renommer le groupe d’onglets"

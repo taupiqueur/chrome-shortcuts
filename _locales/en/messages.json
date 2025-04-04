@@ -146,8 +146,17 @@
   "discardTabCommandDescription": {
     "message": "Tab state · Discard selected tabs"
   },
+  "sortTabsByNameCommandDescription": {
+    "message": "Organize tabs · Sort selected tabs by name"
+  },
   "sortTabsByURLCommandDescription": {
     "message": "Organize tabs · Sort selected tabs by URL"
+  },
+  "sortTabsByRecencyCommandDescription": {
+    "message": "Organize tabs · Sort selected tabs by recency"
+  },
+  "reverseTabOrderCommandDescription": {
+    "message": "Organize tabs · Reverse the order of selected tabs"
   },
   "groupTabsByDomainCommandDescription": {
     "message": "Organize tabs · Group selected tabs by domain"

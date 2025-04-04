@@ -130,7 +130,10 @@ export const discardTab = message('discardTab', false, true)
 
 // Organize tabs ---------------------------------------------------------------
 
+export const sortTabsByName = message('sortTabsByName')
 export const sortTabsByURL = message('sortTabsByURL')
+export const sortTabsByRecency = message('sortTabsByRecency')
+export const reverseTabOrder = message('reverseTabOrder')
 export const groupTabsByDomain = message('groupTabsByDomain')
 
 // Manage tab groups -----------------------------------------------------------

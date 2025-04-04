@@ -198,199 +198,208 @@
     "047_discardTab": {
       "description": "__MSG_discardTabCommandDescription__"
     },
-    "048_sortTabsByURL": {
+    "048_sortTabsByName": {
+      "description": "__MSG_sortTabsByNameCommandDescription__"
+    },
+    "049_sortTabsByURL": {
       "description": "__MSG_sortTabsByURLCommandDescription__"
     },
-    "049_groupTabsByDomain": {
+    "050_sortTabsByRecency": {
+      "description": "__MSG_sortTabsByRecencyCommandDescription__"
+    },
+    "051_reverseTabOrder": {
+      "description": "__MSG_reverseTabOrderCommandDescription__"
+    },
+    "052_groupTabsByDomain": {
       "description": "__MSG_groupTabsByDomainCommandDescription__"
     },
-    "050_renameTabGroup": {
+    "053_renameTabGroup": {
       "description": "__MSG_renameTabGroupCommandDescription__"
     },
-    "051_cycleTabGroupColorForward": {
+    "054_cycleTabGroupColorForward": {
       "description": "__MSG_cycleTabGroupColorForwardCommandDescription__"
     },
-    "052_cycleTabGroupColorBackward": {
+    "055_cycleTabGroupColorBackward": {
       "description": "__MSG_cycleTabGroupColorBackwardCommandDescription__"
     },
-    "053_activateAudibleTab": {
+    "056_activateAudibleTab": {
       "description": "__MSG_activateAudibleTabCommandDescription__"
     },
-    "054_activateNextTab": {
+    "057_activateNextTab": {
       "description": "__MSG_activateNextTabCommandDescription__"
     },
-    "055_activatePreviousTab": {
+    "058_activatePreviousTab": {
       "description": "__MSG_activatePreviousTabCommandDescription__"
     },
-    "056_activateFirstTab": {
+    "059_activateFirstTab": {
       "description": "__MSG_activateFirstTabCommandDescription__"
     },
-    "057_activateSecondTab": {
+    "060_activateSecondTab": {
       "description": "__MSG_activateSecondTabCommandDescription__"
     },
-    "058_activateThirdTab": {
+    "061_activateThirdTab": {
       "description": "__MSG_activateThirdTabCommandDescription__"
     },
-    "059_activateFourthTab": {
+    "062_activateFourthTab": {
       "description": "__MSG_activateFourthTabCommandDescription__"
     },
-    "060_activateFifthTab": {
+    "063_activateFifthTab": {
       "description": "__MSG_activateFifthTabCommandDescription__"
     },
-    "061_activateSixthTab": {
+    "064_activateSixthTab": {
       "description": "__MSG_activateSixthTabCommandDescription__"
     },
-    "062_activateSeventhTab": {
+    "065_activateSeventhTab": {
       "description": "__MSG_activateSeventhTabCommandDescription__"
     },
-    "063_activateEighthTab": {
+    "066_activateEighthTab": {
       "description": "__MSG_activateEighthTabCommandDescription__"
     },
-    "064_activateLastTab": {
+    "067_activateLastTab": {
       "description": "__MSG_activateLastTabCommandDescription__"
     },
-    "065_activateLastActiveTab": {
+    "068_activateLastActiveTab": {
       "description": "__MSG_activateLastActiveTabCommandDescription__"
     },
-    "066_activateSecondLastActiveTab": {
+    "069_activateSecondLastActiveTab": {
       "description": "__MSG_activateSecondLastActiveTabCommandDescription__"
     },
-    "067_activateThirdLastActiveTab": {
+    "070_activateThirdLastActiveTab": {
       "description": "__MSG_activateThirdLastActiveTabCommandDescription__"
     },
-    "068_activateFourthLastActiveTab": {
+    "071_activateFourthLastActiveTab": {
       "description": "__MSG_activateFourthLastActiveTabCommandDescription__"
     },
-    "069_activateFifthLastActiveTab": {
+    "072_activateFifthLastActiveTab": {
       "description": "__MSG_activateFifthLastActiveTabCommandDescription__"
     },
-    "070_activateSixthLastActiveTab": {
+    "073_activateSixthLastActiveTab": {
       "description": "__MSG_activateSixthLastActiveTabCommandDescription__"
     },
-    "071_activateSeventhLastActiveTab": {
+    "074_activateSeventhLastActiveTab": {
       "description": "__MSG_activateSeventhLastActiveTabCommandDescription__"
     },
-    "072_activateEighthLastActiveTab": {
+    "075_activateEighthLastActiveTab": {
       "description": "__MSG_activateEighthLastActiveTabCommandDescription__"
     },
-    "073_activateNinthLastActiveTab": {
+    "076_activateNinthLastActiveTab": {
       "description": "__MSG_activateNinthLastActiveTabCommandDescription__"
     },
-    "074_activateNextWindow": {
+    "077_activateNextWindow": {
       "description": "__MSG_activateNextWindowCommandDescription__"
     },
-    "075_activatePreviousWindow": {
+    "078_activatePreviousWindow": {
       "description": "__MSG_activatePreviousWindowCommandDescription__"
     },
-    "076_grabTab": {
+    "079_grabTab": {
       "description": "__MSG_grabTabCommandDescription__"
     },
-    "077_moveTabLeft": {
+    "080_moveTabLeft": {
       "description": "__MSG_moveTabLeftCommandDescription__"
     },
-    "078_moveTabRight": {
+    "081_moveTabRight": {
       "description": "__MSG_moveTabRightCommandDescription__"
     },
-    "079_moveTabFirst": {
+    "082_moveTabFirst": {
       "description": "__MSG_moveTabFirstCommandDescription__"
     },
-    "080_moveTabLast": {
+    "083_moveTabLast": {
       "description": "__MSG_moveTabLastCommandDescription__"
     },
-    "081_moveTabNewWindow": {
+    "084_moveTabNewWindow": {
       "description": "__MSG_moveTabNewWindowCommandDescription__"
     },
-    "082_moveTabPreviousWindow": {
+    "085_moveTabPreviousWindow": {
       "description": "__MSG_moveTabPreviousWindowCommandDescription__"
     },
-    "083_selectActiveTab": {
+    "086_selectActiveTab": {
       "description": "__MSG_selectActiveTabCommandDescription__"
     },
-    "084_selectPreviousTab": {
+    "087_selectPreviousTab": {
       "description": "__MSG_selectPreviousTabCommandDescription__"
     },
-    "085_selectNextTab": {
+    "088_selectNextTab": {
       "description": "__MSG_selectNextTabCommandDescription__"
     },
-    "086_selectRelatedTabs": {
+    "089_selectRelatedTabs": {
       "description": "__MSG_selectRelatedTabsCommandDescription__"
     },
-    "087_selectTabsInGroup": {
+    "090_selectTabsInGroup": {
       "description": "__MSG_selectTabsInGroupCommandDescription__"
     },
-    "088_selectAllTabs": {
+    "091_selectAllTabs": {
       "description": "__MSG_selectAllTabsCommandDescription__"
     },
-    "089_selectRightTabs": {
+    "092_selectRightTabs": {
       "description": "__MSG_selectRightTabsCommandDescription__"
     },
-    "090_moveTabSelectionFaceBackward": {
+    "093_moveTabSelectionFaceBackward": {
       "description": "__MSG_moveTabSelectionFaceBackwardCommandDescription__"
     },
-    "091_moveTabSelectionFaceForward": {
+    "094_moveTabSelectionFaceForward": {
       "description": "__MSG_moveTabSelectionFaceForwardCommandDescription__"
     },
-    "092_bookmarkTab": {
+    "095_bookmarkTab": {
       "description": "__MSG_bookmarkTabCommandDescription__"
     },
-    "093_bookmarkSession": {
+    "096_bookmarkSession": {
       "description": "__MSG_bookmarkSessionCommandDescription__"
     },
-    "094_addTabToReadingList": {
+    "097_addTabToReadingList": {
       "description": "__MSG_addTabToReadingListCommandDescription__"
     },
-    "095_openDownloadsFolder": {
+    "098_openDownloadsFolder": {
       "description": "__MSG_openDownloadsFolderCommandDescription__"
     },
-    "096_openBrowsingHistory": {
+    "099_openBrowsingHistory": {
       "description": "__MSG_openBrowsingHistoryCommandDescription__"
     },
-    "097_openSyncedTabsPage": {
+    "100_openSyncedTabsPage": {
       "description": "__MSG_openSyncedTabsPageCommandDescription__"
     },
-    "098_openClearBrowserDataOptions": {
+    "101_openClearBrowserDataOptions": {
       "description": "__MSG_openClearBrowserDataOptionsCommandDescription__"
     },
-    "099_openDownloadHistory": {
+    "102_openDownloadHistory": {
       "description": "__MSG_openDownloadHistoryCommandDescription__"
     },
-    "100_openBookmarkManager": {
+    "103_openBookmarkManager": {
       "description": "__MSG_openBookmarkManagerCommandDescription__"
     },
-    "101_openSettings": {
+    "104_openSettings": {
       "description": "__MSG_openSettingsCommandDescription__"
     },
-    "102_openAppearanceSettings": {
+    "105_openAppearanceSettings": {
       "description": "__MSG_openAppearanceSettingsCommandDescription__"
     },
-    "103_openPasswordManager": {
+    "106_openPasswordManager": {
       "description": "__MSG_openPasswordManagerCommandDescription__"
     },
-    "104_openPaymentMethodSettings": {
+    "107_openPaymentMethodSettings": {
       "description": "__MSG_openPaymentMethodSettingsCommandDescription__"
     },
-    "105_openAddressSettings": {
+    "108_openAddressSettings": {
       "description": "__MSG_openAddressSettingsCommandDescription__"
     },
-    "106_openSearchEngineSettings": {
+    "109_openSearchEngineSettings": {
       "description": "__MSG_openSearchEngineSettingsCommandDescription__"
     },
-    "107_openExtensionsPage": {
+    "110_openExtensionsPage": {
       "description": "__MSG_openExtensionsPageCommandDescription__"
     },
-    "108_openExtensionShortcutsPage": {
+    "111_openExtensionShortcutsPage": {
       "description": "__MSG_openExtensionShortcutsPageCommandDescription__"
     },
-    "109_openExperimentalSettings": {
+    "112_openExperimentalSettings": {
       "description": "__MSG_openExperimentalSettingsCommandDescription__"
     },
-    "110_openAboutChromePage": {
+    "113_openAboutChromePage": {
       "description": "__MSG_openAboutChromePageCommandDescription__"
     },
-    "111_openAboutChromeVersionPage": {
+    "114_openAboutChromeVersionPage": {
       "description": "__MSG_openAboutChromeVersionPageCommandDescription__"
     },
-    "112_openWhatsNewPage": {
+    "115_openWhatsNewPage": {
       "description": "__MSG_openWhatsNewPageCommandDescription__"
     }
   }

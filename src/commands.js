@@ -1239,12 +1239,13 @@ export async function discardTab(cx) {
 // Organize tabs ---------------------------------------------------------------
 
 /**
- * Sorts selected tabs by URL.
+ * Sorts selected tabs.
  *
  * @param {CommandContext} cx
+ * @param {(tab: chrome.tabs.Tab, otherTab: chrome.tabs.Tab) => number} compareTabs
  * @returns {Promise<void>}
  */
-export async function sortTabsByURL(cx) {
+async function sortTabs(cx, compareTabs) {
   const tabs = await chrome.tabs.query({
     highlighted: true,
     windowId: cx.tab.windowId
@@ -1252,14 +1253,73 @@ export async function sortTabsByURL(cx) {
 
   await Promise.all(
     chunk(tabs, _weakGroup).map(([, tabs]) => {
-      const sortedTabs = tabs.toSorted((tab, otherTab) =>
-        localeCompare(tab.url, otherTab.url)
-      )
+      const sortedTabs = tabs.toSorted(compareTabs)
 
       return Promise.all(
         sortedTabs.map((tab, index) =>
           chrome.tabs.move(tab.id, {
             index: tabs[index].index
+          })
+        )
+      )
+    })
+  )
+}
+
+/**
+ * Sorts selected tabs by name.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function sortTabsByName(cx) {
+  await sortTabs(cx, (tab, otherTab) =>
+    localeCompare(tab.title, otherTab.title)
+  )
+}
+
+/**
+ * Sorts selected tabs by URL.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function sortTabsByURL(cx) {
+  await sortTabs(cx, (tab, otherTab) =>
+    localeCompare(tab.url, otherTab.url)
+  )
+}
+
+/**
+ * Sorts selected tabs by recency.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function sortTabsByRecency(cx) {
+  await sortTabs(cx, (tab, otherTab) =>
+    tab.lastAccessed - otherTab.lastAccessed
+  )
+}
+
+/**
+ * Reverses the order of selected tabs.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function reverseTabOrder(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    windowId: cx.tab.windowId
+  })
+
+  await Promise.all(
+    chunk(tabs, _weakGroup).map(([, tabs]) => {
+      return Promise.all(
+        tabs.map((tab, index) =>
+          chrome.tabs.move(tab.id, {
+            index: tabs.at(-index - 1).index
           })
         )
       )

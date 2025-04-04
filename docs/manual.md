@@ -97,12 +97,15 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "toggleCollapseTabGroups", "key": { "code": "KeyC" } },
     { "command": "toggleMuteTab", "key": { "code": "KeyM" } },
     { "command": "discardTab", "key": { "code": "KeyD" } },
-    { "command": "sortTabsByURL", "key": { "shiftKey": true, "code": "Digit1" } },
-    { "command": "groupTabsByDomain", "key": { "shiftKey": true, "code": "Digit2" } },
+    { "command": "sortTabsByName", "key": { "shiftKey": true, "code": "Digit1" } },
+    { "command": "sortTabsByURL", "key": { "shiftKey": true, "code": "Digit2" } },
+    { "command": "sortTabsByRecency", "key": { "shiftKey": true, "code": "Digit3" } },
+    { "command": "reverseTabOrder", "key": { "shiftKey": true, "code": "Digit4" } },
+    { "command": "groupTabsByDomain", "key": { "shiftKey": true, "code": "Digit5" } },
     { "command": "renameTabGroup", "key": { "altKey": true, "code": "KeyR" } },
     { "command": "cycleTabGroupColorForward", "key": { "altKey": true, "code": "KeyA" } },
     { "command": "cycleTabGroupColorBackward", "key": { "altKey": true, "shiftKey": true, "code": "KeyA" } },
-    { "command": "activateAudibleTab", "key": { "shiftKey": true, "code": "Digit3" } },
+    { "command": "activateAudibleTab", "key": { "shiftKey": true, "code": "Digit6" } },
     { "command": "activateNextTab", "key": { "code": "Tab" } },
     { "command": "activateNextTab", "key": { "altKey": true, "code": "KeyK" } },
     { "command": "activatePreviousTab", "key": { "shiftKey": true, "code": "Tab" } },
@@ -359,8 +362,11 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`sortTabsByURL` | Sort selected tabs by URL | | | `Shift+Digit1`
-`groupTabsByDomain` | Group selected tabs by domain | | | `Shift+Digit2`
+`sortTabsByName` | Sort selected tabs by name | | | `Shift+Digit1`
+`sortTabsByURL` | Sort selected tabs by URL | | | `Shift+Digit2`
+`sortTabsByRecency` | Sort selected tabs by recency | | | `Shift+Digit3`
+`reverseTabOrder` | Reverse the order of selected tabs | | | `Shift+Digit4`
+`groupTabsByDomain` | Group selected tabs by domain | | | `Shift+Digit5`
 
 ### Manage tab groups
 
@@ -374,7 +380,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`activateAudibleTab` | Cycle through audible tabs | | | `Shift+Digit3`
+`activateAudibleTab` | Cycle through audible tabs | | | `Shift+Digit6`
 `activateNextTab` | Activate the next open tab | `Control+Tab`, `Control+PageDown` | `Control+Tab`, `Option+Command+ArrowRight` | `Tab`, `Alt+KeyK`
 `activatePreviousTab` | Activate the previous open tab | `Control+Shift+Tab`, `Control+PageUp` | `Control+Shift+Tab`, `Option+Command+ArrowLeft` | `Shift+Tab`, `Alt+KeyJ`
 `activateFirstTab` | Activate the leftmost open tab | `Control+1` | `Command+1` | `Digit1`
