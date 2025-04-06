@@ -29,7 +29,7 @@
           </a>
         </h2>
         <p>
-          <kbd>Alt</kbd>+<kbd>Space</kbd> (<kbd>Ctrl</kbd>+<kbd>Space</kbd> on Windows) is the main keyboard shortcut.
+          <kbd>Alt</kbd>+<kbd>Space</kbd> (<kbd>Control</kbd>+<kbd>Space</kbd> on Windows) is the main keyboard shortcut.
           Use it to open the extension’s popup—aka “Vim” mode.
           Press <kbd class="code">Slash</kbd> to search commands and <kbd class="code">Escape</kbd> to cancel.
         </p>
@@ -68,7 +68,7 @@
           </h3>
           <p>
             Navigate to <a href="chrome://extensions/shortcuts" target="_blank">chrome://extensions/shortcuts</a> to configure global keyboard shortcuts.
-            For example, you can bind <kbd>Ctrl</kbd>+<kbd>Y</kbd> to open a new tab to the right.
+            For example, you can bind <kbd>Control</kbd>+<kbd>Y</kbd> to open a new tab to the right.
             You can also bind shortcuts to duplicate tabs, copy page URLs and more.
             <a href="#commands">See all available actions.</a>
           </p>
@@ -135,12 +135,15 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"toggleCollapseTabGroups"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"toggleMuteTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"discardTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyD"</span> } },
-    { <span data-type="string">"command"</span>: <span data-type="string">"sortTabsByURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span> } },
-    { <span data-type="string">"command"</span>: <span data-type="string">"groupTabsByDomain"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"sortTabsByName"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit1"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"sortTabsByURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit2"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"sortTabsByRecency"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"reverseTabOrder"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"groupTabsByDomain"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"renameTabGroup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"cycleTabGroupColorForward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"cycleTabGroupColorBackward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
-    { <span data-type="string">"command"</span>: <span data-type="string">"activateAudibleTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"activateAudibleTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit6"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"activateNextTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"activateNextTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"activatePreviousTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Tab"</span> } },
@@ -193,6 +196,7 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"openSettings"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openPasswordManager"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openSearchEngineSettings"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Slash"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"openAppsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openExtensionsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openExtensionShortcutsPage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openExperimentalSettings"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Comma"</span> } }
@@ -281,12 +285,15 @@
     { &quot;command&quot;: &quot;toggleCollapseTabGroups&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyC&quot; } },
     { &quot;command&quot;: &quot;toggleMuteTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyM&quot; } },
     { &quot;command&quot;: &quot;discardTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyD&quot; } },
-    { &quot;command&quot;: &quot;sortTabsByURL&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit1&quot; } },
-    { &quot;command&quot;: &quot;groupTabsByDomain&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit2&quot; } },
+    { &quot;command&quot;: &quot;sortTabsByName&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit1&quot; } },
+    { &quot;command&quot;: &quot;sortTabsByURL&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit2&quot; } },
+    { &quot;command&quot;: &quot;sortTabsByRecency&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit3&quot; } },
+    { &quot;command&quot;: &quot;reverseTabOrder&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit4&quot; } },
+    { &quot;command&quot;: &quot;groupTabsByDomain&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit5&quot; } },
     { &quot;command&quot;: &quot;renameTabGroup&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyR&quot; } },
     { &quot;command&quot;: &quot;cycleTabGroupColorForward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
     { &quot;command&quot;: &quot;cycleTabGroupColorBackward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
-    { &quot;command&quot;: &quot;activateAudibleTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit3&quot; } },
+    { &quot;command&quot;: &quot;activateAudibleTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit6&quot; } },
     { &quot;command&quot;: &quot;activateNextTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Tab&quot; } },
     { &quot;command&quot;: &quot;activateNextTab&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyK&quot; } },
     { &quot;command&quot;: &quot;activatePreviousTab&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Tab&quot; } },
@@ -339,6 +346,7 @@
     { &quot;command&quot;: &quot;openSettings&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Comma&quot; } },
     { &quot;command&quot;: &quot;openPasswordManager&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyY&quot; } },
     { &quot;command&quot;: &quot;openSearchEngineSettings&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;Slash&quot; } },
+    { &quot;command&quot;: &quot;openAppsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
     { &quot;command&quot;: &quot;openExtensionsPage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
     { &quot;command&quot;: &quot;openExtensionShortcutsPage&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Equal&quot; } },
     { &quot;command&quot;: &quot;openExperimentalSettings&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;Comma&quot; } }
@@ -386,8 +394,8 @@
           </p>
           <p>
             Finally, to complement the built-in keyboard shortcuts, I’ve assigned
-            <kbd>Ctrl</kbd>+<kbd>Y</kbd> to open a new tab to the right,
-            <kbd>Ctrl</kbd>+<kbd>B</kbd> to duplicate tabs,
+            <kbd>Control</kbd>+<kbd>Y</kbd> to open a new tab to the right,
+            <kbd>Control</kbd>+<kbd>B</kbd> to duplicate tabs,
             <kbd>Alt</kbd>+<kbd>W</kbd> to perform web searches,
             <kbd>Alt</kbd>+<kbd>Y</kbd> to copy page URLs, and
             <kbd>Alt</kbd>+<kbd>I</kbd> to focus text fields.
@@ -1404,12 +1412,39 @@
               </thead>
               <tbody>
                 <tr>
+                  <td><code>sortTabsByName</code></td>
+                  <td>Sort selected tabs by name</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <kbd>Shift</kbd>+<kbd class="code">Digit1</kbd>
+                  </td>
+                </tr>
+                <tr>
                   <td><code>sortTabsByURL</code></td>
                   <td>Sort selected tabs by URL</td>
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Digit1</kbd>
+                    <kbd>Shift</kbd>+<kbd class="code">Digit2</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>sortTabsByRecency</code></td>
+                  <td>Sort selected tabs by recency</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <kbd>Shift</kbd>+<kbd class="code">Digit3</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>reverseTabOrder</code></td>
+                  <td>Reverse the order of selected tabs</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <kbd>Shift</kbd>+<kbd class="code">Digit4</kbd>
                   </td>
                 </tr>
                 <tr>
@@ -1418,7 +1453,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Digit2</kbd>
+                    <kbd>Shift</kbd>+<kbd class="code">Digit5</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -1498,7 +1533,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    <kbd>Shift</kbd>+<kbd class="code">Digit3</kbd>
+                    <kbd>Shift</kbd>+<kbd class="code">Digit6</kbd>
                   </td>
                 </tr>
                 <tr>
@@ -2200,6 +2235,15 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><code>openAppsPage</code></td>
+                  <td>Open the “Apps” page</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd class="code">KeyA</kbd>
+                  </td>
+                </tr>
+                <tr>
                   <td><code>openExtensionsPage</code></td>
                   <td>Open the “Extensions” page</td>
                   <td></td>
@@ -2507,6 +2551,40 @@
             </table>
           </div>
         </section>
+        <section id="installed_extension_suggestions">
+          <h3>
+            <a href="#installed_extension_suggestions">
+              Installed extension suggestions
+            </a>
+          </h3>
+          <p>
+            These commands are only available in the command palette.
+          </p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Command</th>
+                  <th>Description</th>
+                  <th>Windows and Linux key</th>
+                  <th>macOS key</th>
+                  <th>Palette key</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>activateSuggestion(extensionSuggestion)</code></td>
+                  <td>Open and activate suggestion in a new tab</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <kbd class="code">Enter</kbd>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
         <p>
           For more keyboard shortcuts, see the <a href="https://support.google.com/chrome/answer/157179" target="_blank">Google Chrome documentation</a>.
         </p>
@@ -2528,7 +2606,7 @@
             <strong>To move tab groups</strong>—Select all tabs in group with <kbd class="code">KeyA</kbd>, then use a move action, such as <kbd class="code">ArrowLeft</kbd> / <kbd class="code">ArrowRight</kbd> for horizontal movements.
           </li>
           <li>
-            <strong>To merge windows</strong>—Select all tabs with <kbd>Shift</kbd>+<kbd class="code">KeyA</kbd>, then press the <kbd class="code">Down</kbd> key to move selected tabs to the previous window.
+            <strong>To merge windows</strong>—Select all tabs with <kbd>Shift</kbd>+<kbd class="code">KeyA</kbd>, then press the <kbd class="code">ArrowDown</kbd> key to move selected tabs to the previous window.
           </li>
         </ul>
         <p>
