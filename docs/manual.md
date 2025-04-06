@@ -10,7 +10,7 @@
 
 ## Usage
 
-`Alt+Space` (`Ctrl+Space` on Windows) is the main keyboard shortcut.
+`Alt+Space` (`Control+Space` on Windows) is the main keyboard shortcut.
 Use it to open the extension’s popup—aka “Vim” mode.
 Press `Slash` to search commands and `Escape` to cancel.
 
@@ -29,7 +29,7 @@ The command palette is the main way to search functionality in Shortcuts.
 ### Configure keyboard shortcuts
 
 Navigate to `chrome://extensions/shortcuts` to configure global keyboard shortcuts.
-For example, you can bind `Ctrl+Y` to open a new tab to the right.
+For example, you can bind `Control+Y` to open a new tab to the right.
 You can also bind shortcuts to duplicate tabs, copy page URLs and more.
 [See all available actions.](#commands)
 
@@ -198,8 +198,8 @@ click using [Link Hints]—in the “Keyboard shortcuts” options.
 [Link Hints]: https://lydell.github.io/LinkHints/
 
 Finally, to complement the built-in keyboard shortcuts, I’ve assigned
-`Ctrl+Y` to open a new tab to the right,
-`Ctrl+B` to duplicate tabs,
+`Control+Y` to open a new tab to the right,
+`Control+B` to duplicate tabs,
 `Alt+W` to perform web searches,
 `Alt+Y` to copy page URLs, and
 `Alt+I` to focus text fields.
@@ -557,7 +557,7 @@ For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboa
 - **To close right tabs**—Select tabs to the right with `Tab`, `Shift+KeyS`, then close selection with `KeyX`.
 - **To close other tabs**—Move the tab you want to keep to the far left with the `Home` key, then close tabs to the right.
 - **To move tab groups**—Select all tabs in group with `KeyA`, then use a move action, such as `ArrowLeft` / `ArrowRight` for horizontal movements.
-- **To merge windows**—Select all tabs with `Shift+KeyA`, then press the `Down` key to move selected tabs to the previous window.
+- **To merge windows**—Select all tabs with `Shift+KeyA`, then press the `ArrowDown` key to move selected tabs to the previous window.
 
 For more tips, see the [Google Chrome documentation][Chrome tips].
 
