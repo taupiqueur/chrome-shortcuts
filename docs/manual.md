@@ -560,6 +560,7 @@ For more keyboard shortcuts, see the [Google Chrome documentation][Chrome keyboa
 - **To close other tabs**—Move the tab you want to keep to the far left with the `Home` key, then close tabs to the right.
 - **To move tab groups**—Select all tabs in group with `KeyA`, then use a move action, such as `ArrowLeft` / `ArrowRight` for horizontal movements.
 - **To merge windows**—Select all tabs with `Shift+KeyA`, then press the `ArrowDown` key to move selected tabs to the previous window.
+- **To copy all open tab URLs**—Select all tabs with `Shift+KeyA`, then press `KeyY` to copy the selected URLs.
 
 For more tips, see the [Google Chrome documentation][Chrome tips].
 
