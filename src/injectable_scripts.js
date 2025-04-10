@@ -62,6 +62,17 @@ export function blurActiveElement() {
 }
 
 /**
+ * Reads the textual contents of the system clipboard.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/readText
+ *
+ * @returns {Promise<string>}
+ */
+export async function readTextFromClipboard() {
+  return navigator.clipboard.readText()
+}
+
+/**
  * Writes the specified text to the system clipboard.
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText

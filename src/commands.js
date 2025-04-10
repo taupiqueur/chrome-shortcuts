@@ -33,6 +33,7 @@ import {
   cyclePageElements,
   getSelectedText,
   prompt,
+  readTextFromClipboard,
   scrollBy,
   scrollByPages,
   scrollTo,
@@ -532,6 +533,30 @@ export async function copyTitleAndURL(cx) {
   )
 }
 
+/**
+ * Opens and activates new tabs from the system clipboard.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function openNewTabsFromClipboard(cx) {
+  const [{ result: clipboardContents }] = await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id
+    },
+    func: readTextFromClipboard
+  })
+
+  await openNewTabs(
+    cx.tab.id,
+    clipboardContents
+      .split('\n')
+      .filter((url) =>
+        URL.canParse(url)
+      )
+  )
+}
+
 // Save pages ------------------------------------------------------------------
 
 /**
@@ -929,27 +954,48 @@ export async function openNewTab(cx) {
 }
 
 /**
+ * Opens a bunch of tabs to the right,
+ * and activates the first of them.
+ *
+ * @param {number} openerTabId
+ * @param {string[]} urls
+ * @returns {Promise<void>}
+ */
+async function openNewTabs(openerTabId, urls) {
+  const {
+    index: openerTabIndex,
+    groupId,
+    windowId,
+  } = await chrome.tabs.get(openerTabId)
+
+  const createdTabs = await Promise.all(
+    urls.map((url, index) =>
+      chrome.tabs.create({
+        active: index === 0,
+        url,
+        index: openerTabIndex + index + 1,
+        openerTabId,
+        windowId,
+      })
+    )
+  )
+
+  if (groupId !== TAB_GROUP_ID_NONE) {
+    await chrome.tabs.group({
+      groupId,
+      tabIds: createdTabs.map(_id)
+    })
+  }
+}
+
+/**
  * Opens and activates a new tab to the right.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
  */
 export async function openNewTabRight(cx) {
-  const createdTab = await chrome.tabs.create({
-    active: true,
-    index: cx.tab.index + 1,
-    openerTabId: cx.tab.id,
-    windowId: cx.tab.windowId
-  })
-
-  if (hasGroup(cx.tab)) {
-    await chrome.tabs.group({
-      groupId: cx.tab.groupId,
-      tabIds: [
-        createdTab.id
-      ]
-    })
-  }
+  await openNewTabs(cx.tab.id, ['chrome://newtab/'])
 }
 
 /**

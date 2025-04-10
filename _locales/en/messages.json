@@ -50,6 +50,9 @@
   "copyTitleAndURLCommandDescription": {
     "message": "Clipboard · Copy title and URL of selected tabs"
   },
+  "openNewTabsFromClipboardCommandDescription": {
+    "message": "Clipboard · Open and activate new tabs from the system clipboard"
+  },
   "savePageCommandDescription": {
     "message": "Save pages · Save the content of selected tabs"
   },

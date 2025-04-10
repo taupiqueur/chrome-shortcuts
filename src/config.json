@@ -22,6 +22,7 @@
     { "command": "copyURL", "key": { "code": "KeyY" } },
     { "command": "copyTitle", "key": { "altKey": true, "code": "KeyY" } },
     { "command": "copyTitleAndURL", "key": { "shiftKey": true, "code": "KeyY" } },
+    { "command": "openNewTabsFromClipboard", "key": { "shiftKey": true, "code": "KeyV" } },
     { "command": "savePage", "key": { "ctrlKey": true, "code": "KeyS" } },
     { "command": "savePageAsMHTML", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyS" } },
     { "command": "openWebSearchForSelectedText", "key": { "altKey": true, "code": "KeyW" } },

@@ -50,6 +50,9 @@
   "copyTitleAndURLCommandDescription": {
     "message": "Presse-papiers · Copier le titre et le lien de la page"
   },
+  "openNewTabsFromClipboardCommandDescription": {
+    "message": "Presse-papiers · Ouvrir de nouveaux onglets depuis le presse-papiers"
+  },
   "savePageCommandDescription": {
     "message": "Enregistrer des pages · Enregistrer le contenu de la page"
   },

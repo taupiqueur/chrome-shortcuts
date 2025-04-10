@@ -10,6 +10,7 @@ Permission | Justification
 --- | ---
 [`"activeTab"`] | This permission is used in conjunction with the `"scripting"` permission for commands interacting with web pages, and commands requiring some context about the current URL, such as opening Chrome pages, to fill the “New Tab” page slot.
 [`"bookmarks"`] | This permission is used to save your tabs and current session as bookmarks, and get bookmark suggestions.
+[`"clipboardRead"`] | This permission is used for opening new tabs from the system clipboard. Without this permission, a runtime permission is asked for every new site you use the command.
 [`"clipboardWrite"`] | This permission is used for the “Clipboard” commands. Without this permission, a runtime permission is asked for every new site you use the commands.
 [`"contextMenus"`] | This permission is used to add the “Documentation” and “Support Chat” buttons to the Shortcuts toolbar.
 [`"downloads"`] | This permission is used to save your tabs, open the “Downloads” folder, get and activate download suggestions.
@@ -29,6 +30,7 @@ Permission | Justification
 
 [`"activeTab"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#activeTab
 [`"bookmarks"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#bookmarks
+[`"clipboardRead"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#clipboardRead
 [`"clipboardWrite"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#clipboardWrite
 [`"contextMenus"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#contextMenus
 [`"downloads"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#downloads

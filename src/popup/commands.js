@@ -74,6 +74,7 @@ export const blurElement = message('blurElement')
 export const copyURL = message('copyURL', true, true)
 export const copyTitle = message('copyTitle', true, true)
 export const copyTitleAndURL = message('copyTitleAndURL', true, true)
+export const openNewTabsFromClipboard = message('openNewTabsFromClipboard', true, true)
 
 // Save pages ------------------------------------------------------------------
 

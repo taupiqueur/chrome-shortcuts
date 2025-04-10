@@ -65,6 +65,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "copyURL", "key": { "code": "KeyY" } },
     { "command": "copyTitle", "key": { "altKey": true, "code": "KeyY" } },
     { "command": "copyTitleAndURL", "key": { "shiftKey": true, "code": "KeyY" } },
+    { "command": "openNewTabsFromClipboard", "key": { "shiftKey": true, "code": "KeyV" } },
     { "command": "savePage", "key": { "ctrlKey": true, "code": "KeyS" } },
     { "command": "savePageAsMHTML", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyS" } },
     { "command": "openWebSearchForSelectedText", "key": { "altKey": true, "code": "KeyW" } },
@@ -287,6 +288,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `copyURL` | Copy URL of selected tabs | | | `KeyY`
 `copyTitle` | Copy title of selected tabs | | | `Alt+KeyY`
 `copyTitleAndURL` | Copy title and URL of selected tabs | | | `Shift+KeyY`
+`openNewTabsFromClipboard` | Open and activate new tabs from the system clipboard | | | `Shift+KeyV`
 
 > [!NOTE]
 > If Chrome notifications are enabled,
