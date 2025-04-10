@@ -118,6 +118,12 @@ const Direction = { Backward: -1, Forward: 1 }
 const _id = ({ id }) => id
 
 /**
+ * @param {{ index: number }} object
+ * @returns {number}
+ */
+const _index = ({ index }) => index
+
+/**
  * @param {{ highlighted: boolean }} object
  * @returns {boolean}
  */
@@ -547,7 +553,7 @@ export async function openNewTabsFromClipboard(cx) {
     func: readTextFromClipboard
   })
 
-  await openNewTabs(
+  const createdTabs = await openNewTabs(
     cx.tab.id,
     clipboardContents
       .split('\n')
@@ -555,6 +561,11 @@ export async function openNewTabsFromClipboard(cx) {
         URL.canParse(url)
       )
   )
+
+  await chrome.tabs.highlight({
+    windowId: cx.tab.windowId,
+    tabs: createdTabs.map(_index)
+  })
 }
 
 // Save pages ------------------------------------------------------------------
@@ -959,7 +970,7 @@ export async function openNewTab(cx) {
  *
  * @param {number} openerTabId
  * @param {string[]} urls
- * @returns {Promise<void>}
+ * @returns {Promise<chrome.tabs.Tab[]>}
  */
 async function openNewTabs(openerTabId, urls) {
   const {
@@ -986,6 +997,8 @@ async function openNewTabs(openerTabId, urls) {
       tabIds: createdTabs.map(_id)
     })
   }
+
+  return createdTabs
 }
 
 /**
