@@ -81,6 +81,10 @@
 }
 
 @media (max-width: 800px) {
+  .table-wrapper {
+    overflow: visible !important;
+  }
+
   table, thead, tbody, tr, th, td {
     display: block;
   }
