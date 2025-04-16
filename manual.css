@@ -80,6 +80,44 @@
   }
 }
 
+@media (max-width: 800px) {
+  table, thead, tbody, tr, th, td {
+    display: block;
+  }
+
+  table thead {
+    width: 1px;
+    height: 1px;
+    clip-path: inset(100%);
+  }
+
+  table tbody tr {
+    border-block-start: 4px solid var(--table-head-border-color);
+    border-block-end: none;
+    margin-block-end: 1rem;
+  }
+
+  table tbody tr:last-child {
+    border-block-end: 1px solid var(--table-body-border-color);
+    margin-block-end: 0;
+  }
+
+  table tbody td {
+    position: relative;
+    padding-inline-start: 50%;
+    min-height: 3rem;
+  }
+
+  table tbody td::before {
+    content: attr(data-label);
+    font-weight: lighter;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 45%;
+  }
+}
+
 body {
   margin: auto;
   padding: 0 0.5rem;
