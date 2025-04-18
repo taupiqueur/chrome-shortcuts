@@ -26,6 +26,24 @@ The command palette is the main way to search functionality in Shortcuts.
 2. In the search field, type what you’re looking for—results appear as you type.
 3. Choose a suggestion and press `Enter` to activate the selection.
 
+### Search by the type of items
+
+You can use keywords to specify the type of items you’re searching for, such as tabs or bookmarks.
+
+To specify the type of item, add the text “[_type of item_]” to your search.
+For example, to search for tabs that mention Shortcuts, enter “shortcuts tab”.
+
+Type of item | Keyword
+--- | ---
+`openTabSuggestion` | Open tab
+`closedTabSuggestion` | Recently closed
+`syncedTabSuggestion` | Synced tab
+`bookmarkSuggestion` | Bookmark
+`readingListSuggestion` | Reading list
+`historySuggestion` | Recently visited
+`downloadSuggestion` | Download
+`extensionSuggestion` | Extension
+
 ### Configure keyboard shortcuts
 
 Navigate to `chrome://extensions/shortcuts` to configure global keyboard shortcuts.
@@ -488,7 +506,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 ### Open tab suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Open tab” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -496,7 +514,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Recently closed tab suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Recently closed” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -504,7 +522,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Synced tab suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Synced tab” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -512,7 +530,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Bookmark suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Bookmark” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -520,7 +538,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Reading list suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Reading list” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -528,7 +546,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Recently visited page suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Recently visited” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -536,7 +554,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Download suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Download” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
@@ -544,7 +562,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 
 ### Installed extension suggestions
 
-These commands are only available in the command palette.
+These commands are only available in the command palette under the “Extension” label.
 
 Command | Description | Windows and Linux key | macOS key | Palette key
 --- | --- | --- | --- | ---
