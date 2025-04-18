@@ -35,14 +35,14 @@ For example, to search for tabs that mention Shortcuts, enter â€œshortcuts tabâ€
 
 Type of item | Keyword
 --- | ---
-`openTabSuggestion` | Open tab
-`closedTabSuggestion` | Recently closed
-`syncedTabSuggestion` | Synced tab
-`bookmarkSuggestion` | Bookmark
-`readingListSuggestion` | Reading list
-`historySuggestion` | Recently visited
-`downloadSuggestion` | Download
-`extensionSuggestion` | Extension
+`OpenTabSuggestion` | Open tab
+`ClosedTabSuggestion` | Recently closed
+`SyncedTabSuggestion` | Synced tab
+`BookmarkSuggestion` | Bookmark
+`ReadingListSuggestion` | Reading list
+`HistorySuggestion` | Recently visited
+`DownloadSuggestion` | Download
+`ExtensionSuggestion` | Extension
 
 ### Configure keyboard shortcuts
 
