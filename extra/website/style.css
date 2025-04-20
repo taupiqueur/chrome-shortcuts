@@ -34,10 +34,6 @@
     font-size: 0.9em;
     gap: 0 !important;
   }
-
-  ul.actions {
-    flex-direction: column;
-  }
 }
 
 body {
@@ -131,7 +127,7 @@ ul.actions {
   justify-content: center;
   list-style: none;
   padding: 0;
-  gap: 0.5rem 1rem;
+  gap: 1rem;
 }
 
 ul.actions li a {
