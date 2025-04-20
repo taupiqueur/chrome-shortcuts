@@ -27,12 +27,6 @@
 
   nav ul {
     font-size: 0.9em;
-    gap: 0 1rem !important;
-  }
-
-  header nav ul {
-    font-size: 0.9em;
-    gap: 0 !important;
   }
 }
 
@@ -73,17 +67,6 @@ header {
   justify-content: space-between;
 }
 
-header nav ul {
-  display: flex;
-  list-style: none;
-  gap: 0;
-  flex-wrap: wrap;
-}
-
-header nav li + li::before {
-  content: ",";
-}
-
 nav {
   text-transform: lowercase;
 }
@@ -92,7 +75,7 @@ nav ul {
   display: flex;
   list-style: none;
   padding: 0;
-  gap: 0 3.5rem;
+  gap: 0 5%;
   flex-wrap: wrap;
 }
 
@@ -121,11 +104,23 @@ figcaption {
   font-style: italic;
 }
 
+ul.languages {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+ul.languages li + li::before {
+  content: ",";
+}
+
 ul.actions {
   display: flex;
   align-items: center;
   justify-content: center;
   list-style: none;
+  margin-block: 2rem;
   padding: 0;
   gap: 1rem;
 }
