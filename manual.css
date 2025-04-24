@@ -219,7 +219,7 @@ th, td {
   padding: 0.4em 0.8em;
 }
 
-td:nth-child(n+3):nth-child(-n+5) code {
+code.highlight {
   color: var(--code-color);
 }
 
