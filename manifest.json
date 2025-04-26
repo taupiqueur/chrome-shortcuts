@@ -44,7 +44,7 @@
     "default_popup": "src/popup/popup.html"
   },
   "options_ui": {
-    "page": "src/options/options.html"
+    "page": "src/options_ui/options_ui.html"
   },
   "icons": {
     "16": "assets/shortcuts-logo@16px.png",

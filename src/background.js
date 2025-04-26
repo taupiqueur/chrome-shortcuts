@@ -6,6 +6,7 @@
 
 import * as commands from './commands.js'
 import popupWorker from './popup/service_worker.js'
+import optionsUIWorker from './options_ui/service_worker.js'
 import optionsWorker from './options/service_worker.js'
 import manualWorker from './manual/service_worker.js'
 import RecentTabsManager from './recent_tabs_manager.js'
@@ -271,7 +272,6 @@ async function onCommand(commandNameWithIndex, tab) {
     tab,
     recentTabsManager,
     manualPage: storageCache.manualPage,
-    optionsPage: storageCache.optionsPage,
   })
 }
 
@@ -434,6 +434,11 @@ function onConnect(port) {
         suggestionEngine,
         suggestionLabels,
         manualPage: storageCache.manualPage,
+      })
+      break
+
+    case 'options_ui':
+      optionsUIWorker.onConnect(port, {
         optionsPage: storageCache.optionsPage,
       })
       break

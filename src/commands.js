@@ -13,7 +13,6 @@
  * @property {chrome.tabs.Tab} tab
  * @property {RecentTabsManager} recentTabsManager
  * @property {string} manualPage
- * @property {string} optionsPage
  */
 
 import {
@@ -211,7 +210,7 @@ export async function openShortcutsManual(cx) {
  * @returns {Promise<void>}
  */
 export async function openShortcutsOptionsPage(cx) {
-  await openChromePage(cx, cx.optionsPage)
+  await chrome.runtime.openOptionsPage()
 }
 
 // Navigation ------------------------------------------------------------------

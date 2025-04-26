@@ -13,7 +13,6 @@
  * @property {SuggestionEngine} suggestionEngine
  * @property {Map<string, string>} suggestionLabels
  * @property {string} manualPage
- * @property {string} optionsPage
  */
 
 /**
@@ -278,7 +277,6 @@ async function onCommandMessage(message, port, cx) {
       tab: tabs[0],
       recentTabsManager: cx.recentTabsManager,
       manualPage: cx.manualPage,
-      optionsPage: cx.optionsPage,
     })
 
     if (
