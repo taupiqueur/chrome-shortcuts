@@ -124,6 +124,7 @@ function onInstalled(details) {
       onUpdate(details.previousVersion)
       break
   }
+  recentTabsManager.onInstalled(details)
 }
 
 /**
@@ -201,6 +202,7 @@ async function onUpdate(previousVersion) {
  */
 function onStartup() {
   setLocalizedPages()
+  recentTabsManager.onStartup()
 }
 
 /**
@@ -518,6 +520,8 @@ chrome.storage.session.get((sessionStorage) => {
   Object.assign(storageCache, sessionStorage)
 })
 
+recentTabsManager.restoreState()
+
 // Set up listeners.
 // https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/events
 chrome.runtime.onInstalled.addListener(onInstalled)
@@ -530,4 +534,3 @@ chrome.tabs.onActivated.addListener(onTabActivated)
 chrome.tabs.onRemoved.addListener(onTabRemoved)
 chrome.tabs.onReplaced.addListener(onTabReplaced)
 chrome.windows.onFocusChanged.addListener(onWindowFocusChanged)
-recentTabsManager.onStartup()

@@ -115,6 +115,16 @@ class MRU {
   }
 
   /**
+   * Clears the cache.
+   *
+   * @returns {void}
+   */
+  clear() {
+    this.hashMap.clear()
+    this.linkedList.head = null
+  }
+
+  /**
    * Returns an iterator for the items in the cache,
    * in the order of most recently used.
    *

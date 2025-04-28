@@ -89,13 +89,46 @@ class RecentTabsManager {
   }
 
   /**
-   * Handles the service worker initialization
-   * (e.g., upon the service worker’s wake-up).
+   * Populates the cache from currently open tabs.
+   *
+   * @returns {Promise<void>}
+   */
+  async populateCacheFromOpenTabs() {
+    const tabs = await chrome.tabs.query({})
+
+    const recentTabs = tabs.toSorted((tab, otherTab) =>
+      tab.lastAccessed - otherTab.lastAccessed
+    )
+
+    this.cache.clear()
+
+    for (const tab of recentTabs) {
+      this.cache.add(tab.id)
+    }
+  }
+
+  /**
+   * Handles the initial setup when the extension is first installed or updated to a new version.
+   *
+   * https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onInstalled
+   *
+   * @param {object} details
+   * @returns {Promise<void>}
+   */
+  async onInstalled(details) {
+    await this.populateCacheFromOpenTabs()
+  }
+
+  /**
+   * Handles startup when a profile is started
+   * (e.g., when the browser first starts up).
+   *
+   * https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onStartup
    *
    * @returns {Promise<void>}
    */
   async onStartup() {
-    await this.restoreState()
+    await this.populateCacheFromOpenTabs()
   }
 
   /**
