@@ -202,6 +202,8 @@ async function onUpdate(previousVersion) {
  */
 function onStartup() {
   setLocalizedPages()
+  chrome.contextMenus.removeAll()
+  createMenuItems()
   recentTabsManager.onStartup()
 }
 
