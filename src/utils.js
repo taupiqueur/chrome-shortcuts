@@ -33,7 +33,7 @@ export function takeWhile(array, predicate) {
   )
 
   return index === -1
-    ? []
+    ? array
     : array.slice(0, index)
 }
 
@@ -54,7 +54,7 @@ export function dropWhile(array, predicate) {
   )
 
   return index === -1
-    ? array
+    ? []
     : array.slice(index)
 }
 
