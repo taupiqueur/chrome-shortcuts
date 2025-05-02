@@ -13,6 +13,7 @@
  * @property {SuggestionEngine} suggestionEngine
  * @property {Map<string, string>} suggestionLabels
  * @property {string} manualPage
+ * @property {string} shortcutsPage
  */
 
 /**
@@ -277,6 +278,7 @@ async function onCommandMessage(message, port, cx) {
       tab: tabs[0],
       recentTabsManager: cx.recentTabsManager,
       manualPage: cx.manualPage,
+      shortcutsPage: cx.shortcutsPage,
     })
 
     if (

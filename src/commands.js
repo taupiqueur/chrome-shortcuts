@@ -13,6 +13,7 @@
  * @property {chrome.tabs.Tab} tab
  * @property {RecentTabsManager} recentTabsManager
  * @property {string} manualPage
+ * @property {string} shortcutsPage
  */
 
 import {
@@ -211,6 +212,16 @@ export async function openShortcutsManual(cx) {
  */
 export async function openShortcutsOptionsPage(cx) {
   await chrome.runtime.openOptionsPage()
+}
+
+/**
+ * Opens the Shortcuts “Keyboard shortcuts” page.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function openShortcutsShortcutsPage(cx) {
+  await openChromePage(cx, cx.shortcutsPage)
 }
 
 // Navigation ------------------------------------------------------------------

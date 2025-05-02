@@ -63,6 +63,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
   "commandBindings": [
     { "command": "openShortcutsManual", "key": { "code": "F1" } },
     { "command": "openShortcutsOptionsPage", "key": { "code": "F2" } },
+    { "command": "openShortcutsShortcutsPage", "key": { "code": "F3" } },
     { "command": "openCommandPalette", "key": { "code": "Slash" } },
     { "command": "openCommandPalette", "key": { "ctrlKey": true, "code": "KeyF" } },
     { "command": "closePopup", "key": { "code": "Escape" } },
@@ -257,6 +258,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openShortcutsManual` | Open the Shortcuts manual | | | `F1`
 `openShortcutsOptionsPage` | Open the Shortcuts “Options” page | | | `F2`
+`openShortcutsShortcutsPage` | Open the Shortcuts “Keyboard shortcuts” page | | | `F3`
 `openCommandPalette` | Open the command palette | | | `Slash`, `Control+KeyF`
 `closePopup` | Close the popup window | | | `Escape`, `Control+KeyC`, `KeyQ`
 

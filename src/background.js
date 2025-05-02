@@ -38,7 +38,7 @@ const suggestionLabels = new Map([
  *
  * https://developer.chrome.com/docs/extensions/reference/api/storage#asynchronous-preload-from-storage
  *
- * @type {{ homePage: string, manualPage: string, optionsPage: string }}
+ * @type {{ homePage: string, manualPage: string, optionsPage: string, shortcutsPage: string }}
  */
 const storageCache = {
 }
@@ -50,6 +50,21 @@ const storageCache = {
  */
 async function setLocalizedPages() {
   switch (chrome.i18n.getUILanguage()) {
+    case 'en':
+    case 'en-AU':
+    case 'en-GB':
+    case 'en-US':
+      await chrome.action.setPopup({
+        popup: 'src/popup/popup.html'
+      })
+      await chrome.storage.session.set({
+        homePage: 'https://taupiqueur.github.io/chrome-shortcuts',
+        manualPage: chrome.runtime.getURL('src/manual/manual.html'),
+        optionsPage: chrome.runtime.getURL('src/options/options.html'),
+        shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts,-Activate the extension',
+      })
+      break
+
     case 'fr':
       await chrome.action.setPopup({
         popup: 'src/popup/popup.fr.html'
@@ -58,6 +73,7 @@ async function setLocalizedPages() {
         homePage: 'https://taupiqueur.github.io/chrome-shortcuts/fr/',
         manualPage: chrome.runtime.getURL('src/manual/manual.fr.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.fr.html'),
+        shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts,-Activer l’extension',
       })
       break
 
@@ -69,6 +85,7 @@ async function setLocalizedPages() {
         homePage: 'https://taupiqueur.github.io/chrome-shortcuts',
         manualPage: chrome.runtime.getURL('src/manual/manual.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.html'),
+        shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts',
       })
   }
 }
@@ -276,6 +293,7 @@ async function onCommand(commandNameWithIndex, tab) {
     tab,
     recentTabsManager,
     manualPage: storageCache.manualPage,
+    shortcutsPage: storageCache.shortcutsPage,
   })
 }
 
@@ -438,6 +456,7 @@ function onConnect(port) {
         suggestionEngine,
         suggestionLabels,
         manualPage: storageCache.manualPage,
+        shortcutsPage: storageCache.shortcutsPage,
       })
       break
 

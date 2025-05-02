@@ -30,6 +30,7 @@ function message(commandName, passingMode, stickyWindow) {
 
 export const openShortcutsManual = message('openShortcutsManual', false, true)
 export const openShortcutsOptionsPage = message('openShortcutsOptionsPage', false, true)
+export const openShortcutsShortcutsPage = message('openShortcutsShortcutsPage', false, true)
 
 /**
  * Opens the command palette.
