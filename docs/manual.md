@@ -33,16 +33,16 @@ You can use keywords to specify the type of items you’re searching for, such a
 To specify the type of item, add the text “[_type of item_]” to your search.
 For example, to search for tabs that mention Shortcuts, enter “shortcuts tab”.
 
-Type of item | Keyword
---- | ---
-`OpenTabSuggestion` | Open tab
-`ClosedTabSuggestion` | Recently closed
-`SyncedTabSuggestion` | Synced tab
-`BookmarkSuggestion` | Bookmark
-`ReadingListSuggestion` | Reading list
-`HistorySuggestion` | Recently visited
-`DownloadSuggestion` | Download
-`ExtensionSuggestion` | Extension
+Type of item | Keyword | Action
+--- | --- | ---
+`OpenTabSuggestion` | Open tab | Activate suggestion in the tab strip
+`ClosedTabSuggestion` | Recently closed | Reopen suggestion in a new tab
+`SyncedTabSuggestion` | Synced tab | Open and activate suggestion in a new tab
+`BookmarkSuggestion` | Bookmark | Open and activate suggestion in a new tab
+`ReadingListSuggestion` | Reading list | Open and activate suggestion in a new tab
+`HistorySuggestion` | Recently visited | Open and activate suggestion in a new tab
+`DownloadSuggestion` | Download | Show suggestion in its folder in a file manager
+`ExtensionSuggestion` | Extension | Open and activate suggestion in a new tab
 
 ### Configure keyboard shortcuts
 
