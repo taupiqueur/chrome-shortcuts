@@ -146,6 +146,32 @@ section {
   content: "#";
 }
 
+ol.table-of-contents,
+ol.table-of-contents ol {
+  list-style: none;
+}
+
+ol.table-of-contents {
+  padding-inline-start: 0;
+}
+
+ol.table-of-contents ol {
+  padding-inline-start: 2ch;
+}
+
+ol.table-of-contents a:not(:hover, :focus, :active) {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+ol.table-of-contents > li:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+
+ol.table-of-contents > li > a {
+  font-weight: bold;
+}
+
 button[popovertarget] {
   margin: 0;
   padding: 0;
