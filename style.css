@@ -83,7 +83,7 @@ nav ul {
   display: flex;
   list-style: none;
   padding: 0;
-  gap: 0 5%;
+  gap: 0 2ch;
   flex-wrap: wrap;
 }
 
@@ -115,12 +115,8 @@ figcaption {
 ul.languages {
   display: flex;
   list-style: none;
-  gap: 0;
+  gap: 0 1ch;
   flex-wrap: wrap;
-}
-
-ul.languages li + li::before {
-  content: ",";
 }
 
 ul.actions {
