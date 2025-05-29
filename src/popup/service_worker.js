@@ -281,12 +281,7 @@ async function onCommandMessage(message, port, cx) {
       shortcutsPage: cx.shortcutsPage,
     })
 
-    if (
-      stickyWindow &&
-      // EXPERIMENTAL: Requires either Chrome 127+ or the dev channel.
-      // See https://issues.chromium.org/issues/40057101 for more information.
-      chrome.action.openPopup
-    ) {
+    if (stickyWindow) {
       const port = await openPopup(chrome.windows.WINDOW_ID_CURRENT)
       port.postMessage({
         type: 'stateSync',
