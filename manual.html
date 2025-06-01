@@ -402,6 +402,7 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"sortTabsByRecency"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit3"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"reverseTabOrder"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit4"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"groupTabsByDomain"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Digit5"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"collapseTabGroup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"renameTabGroup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyR"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"cycleTabGroupColorForward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"cycleTabGroupColorBackward"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyA"</span> } },
@@ -554,6 +555,7 @@
     { &quot;command&quot;: &quot;sortTabsByRecency&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit3&quot; } },
     { &quot;command&quot;: &quot;reverseTabOrder&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit4&quot; } },
     { &quot;command&quot;: &quot;groupTabsByDomain&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Digit5&quot; } },
+    { &quot;command&quot;: &quot;collapseTabGroup&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyC&quot; } },
     { &quot;command&quot;: &quot;renameTabGroup&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyR&quot; } },
     { &quot;command&quot;: &quot;cycleTabGroupColorForward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
     { &quot;command&quot;: &quot;cycleTabGroupColorBackward&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyA&quot; } },
@@ -1760,6 +1762,15 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td data-label="Command"><code>collapse<wbr>Tab<wbr>Group</code></td>
+                  <td data-label="Description">Collapse tab groups that contain highlighted tabs</td>
+                  <td data-label="Windows and Linux key"></td>
+                  <td data-label="macOS key"></td>
+                  <td data-label="Popup key">
+                    <kbd>Shift</kbd>+<wbr><kbd class="code">KeyC</kbd>
+                  </td>
+                </tr>
                 <tr>
                   <td data-label="Command"><code>rename<wbr>Tab<wbr>Group</code></td>
                   <td data-label="Description">Rename tab group</td>
