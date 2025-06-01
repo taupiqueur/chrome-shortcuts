@@ -164,6 +164,9 @@
   "groupTabsByDomainCommandDescription": {
     "message": "Organiser les onglets · Regrouper les onglets sélectionnés par domaine"
   },
+  "collapseTabGroupCommandDescription": {
+    "message": "Gérer les groupes d’onglets · Réduire le groupe d’onglets"
+  },
   "renameTabGroupCommandDescription": {
     "message": "Gérer les groupes d’onglets · Renommer le groupe d’onglets"
   },

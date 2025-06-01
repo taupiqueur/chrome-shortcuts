@@ -164,6 +164,9 @@
   "groupTabsByDomainCommandDescription": {
     "message": "Organize tabs · Group selected tabs by domain"
   },
+  "collapseTabGroupCommandDescription": {
+    "message": "Manage tab groups · Collapse tab groups that contain highlighted tabs"
+  },
   "renameTabGroupCommandDescription": {
     "message": "Manage tab groups · Rename tab group"
   },

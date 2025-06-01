@@ -114,6 +114,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "sortTabsByRecency", "key": { "shiftKey": true, "code": "Digit3" } },
     { "command": "reverseTabOrder", "key": { "shiftKey": true, "code": "Digit4" } },
     { "command": "groupTabsByDomain", "key": { "shiftKey": true, "code": "Digit5" } },
+    { "command": "collapseTabGroup", "key": { "shiftKey": true, "code": "KeyC" } },
     { "command": "renameTabGroup", "key": { "altKey": true, "code": "KeyR" } },
     { "command": "cycleTabGroupColorForward", "key": { "altKey": true, "code": "KeyA" } },
     { "command": "cycleTabGroupColorBackward", "key": { "altKey": true, "shiftKey": true, "code": "KeyA" } },
@@ -387,6 +388,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
+`collapseTabGroup` | Collapse tab groups that contain highlighted tabs | | | `Shift+KeyC`
 `renameTabGroup` | Rename tab group | | | `Alt+KeyR`
 `cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `Alt+KeyA`
 `cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `Alt+Shift+KeyA`

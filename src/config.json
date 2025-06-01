@@ -61,6 +61,7 @@
     { "command": "sortTabsByRecency", "key": { "shiftKey": true, "code": "Digit3" } },
     { "command": "reverseTabOrder", "key": { "shiftKey": true, "code": "Digit4" } },
     { "command": "groupTabsByDomain", "key": { "shiftKey": true, "code": "Digit5" } },
+    { "command": "collapseTabGroup", "key": { "shiftKey": true, "code": "KeyC" } },
     { "command": "renameTabGroup", "key": { "altKey": true, "code": "KeyR" } },
     { "command": "cycleTabGroupColorForward", "key": { "altKey": true, "code": "KeyA" } },
     { "command": "cycleTabGroupColorBackward", "key": { "altKey": true, "shiftKey": true, "code": "KeyA" } },

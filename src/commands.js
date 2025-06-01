@@ -1465,6 +1465,79 @@ export async function groupTabsByDomain(cx) {
 // Manage tab groups -----------------------------------------------------------
 
 /**
+ * Collapses tab groups that contain highlighted tabs.
+ *
+ * NOTE: If the current tab belongs to a group,
+ * switches to the nearest non hidden tab, or
+ * creates a new tab.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function collapseTabGroup(cx) {
+  const tabs = await chrome.tabs.query({
+    windowId: cx.tab.windowId
+  })
+
+  const activeGroups = new Set
+
+  for (const tab of tabs) {
+    if (tab.highlighted) {
+      activeGroups.add(tab.groupId)
+    }
+  }
+
+  activeGroups.delete(TAB_GROUP_ID_NONE)
+
+  await Promise.all(
+    Array.from(activeGroups, (groupId) =>
+      chrome.tabGroups.update(groupId, {
+        collapsed: true
+      })
+    )
+  )
+
+  if (cx.tab.groupId === TAB_GROUP_ID_NONE) {
+    await chrome.tabs.highlight({
+      windowId: cx.tab.windowId,
+      tabs: [
+        cx.tab.index
+      ]
+    })
+  } else {
+    const tabGroups = await chrome.tabGroups.query({
+      windowId: cx.tab.windowId
+    })
+
+    const collapseInfo = getCollapseInfo(tabGroups)
+
+    const nextActiveTab =
+      tabs
+        .slice(cx.tab.index + 1)
+        .find((tab) =>
+          !collapseInfo.get(tab.groupId)
+        ) ||
+      tabs
+        .slice(0, cx.tab.index)
+        .findLast((tab) =>
+          !collapseInfo.get(tab.groupId)
+        )
+
+    if (nextActiveTab) {
+      await chrome.tabs.update(nextActiveTab.id, {
+        active: true
+      })
+    } else {
+      await chrome.tabs.create({
+        active: true,
+        openerTabId: cx.tab.id,
+        windowId: cx.tab.windowId
+      })
+    }
+  }
+}
+
+/**
  * Renames tab group (prompts for a new name).
  *
  * @param {CommandContext} cx

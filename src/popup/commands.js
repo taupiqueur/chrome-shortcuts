@@ -140,6 +140,7 @@ export const groupTabsByDomain = message('groupTabsByDomain')
 
 // Manage tab groups -----------------------------------------------------------
 
+export const collapseTabGroup = message('collapseTabGroup', false, true)
 export const renameTabGroup = message('renameTabGroup', true, true)
 export const cycleTabGroupColorForward = message('cycleTabGroupColorForward')
 export const cycleTabGroupColorBackward = message('cycleTabGroupColorBackward')
