@@ -101,8 +101,14 @@
   "zoomResetCommandDescription": {
     "message": "Zoom · Réinitialiser le niveau de zoom par défaut"
   },
+  "minimizeWindowCommandDescription": {
+    "message": "Gérer les fenêtres · Réduire la fenêtre active"
+  },
+  "maximizeWindowCommandDescription": {
+    "message": "Gérer les fenêtres · Agrandir la fenêtre active"
+  },
   "toggleFullScreenCommandDescription": {
-    "message": "Zoom · Activer ou désactiver le mode plein écran"
+    "message": "Gérer les fenêtres · Activer ou désactiver le mode plein écran"
   },
   "openNewTabCommandDescription": {
     "message": "Créer des onglets · Ouvrir un nouvel onglet"

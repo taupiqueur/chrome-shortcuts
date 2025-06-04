@@ -93,6 +93,8 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "zoomIn", "key": { "code": "Equal" } },
     { "command": "zoomOut", "key": { "code": "Minus" } },
     { "command": "zoomReset", "key": { "code": "Digit0" } },
+    { "command": "minimizeWindow", "key": { "ctrlKey": true, "code": "KeyM" } },
+    { "command": "maximizeWindow", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyM" } },
     { "command": "toggleFullScreen", "key": { "code": "KeyF" } },
     { "command": "openNewTab", "key": { "code": "KeyT" } },
     { "command": "openNewTabRight", "key": { "code": "KeyO" } },
@@ -342,6 +344,13 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `zoomIn` | Zoom in | `Control+Equal` | `Command+Equal` | `Equal`
 `zoomOut` | Zoom out | `Control+Minus` | `Command+Minus` | `Minus`
 `zoomReset` | Reset the zoom factor | `Control+0` | `Command+0` | `Digit0`
+
+### Window state
+
+Command | Description | Windows and Linux key | macOS key | Popup key
+--- | --- | --- | --- | ---
+`minimizeWindow` | Minimize the current window | `Alt+Space` then `N` | `Command+M` | `Control+KeyM`
+`maximizeWindow` | Maximize the current window | `Alt+Space` then `X` | | `Control+Shift+KeyM`
 `toggleFullScreen` | Turn full-screen mode on or off | `F11` | `Globe+F`, `Control+Command+F` | `KeyF`
 
 ### Create tabs

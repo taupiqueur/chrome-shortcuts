@@ -101,6 +101,11 @@
                 </a>
               </li>
               <li>
+                <a href="#window_state_commands">
+                  Window state
+                </a>
+              </li>
+              <li>
                 <a href="#create_tabs_commands">
                   Create tabs
                 </a>
@@ -380,6 +385,8 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"zoomIn"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"zoomOut"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Minus"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"zoomReset"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit0"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"minimizeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"maximizeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"toggleFullScreen"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTabRight"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span> } },
@@ -533,6 +540,8 @@
     { &quot;command&quot;: &quot;zoomIn&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Equal&quot; } },
     { &quot;command&quot;: &quot;zoomOut&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Minus&quot; } },
     { &quot;command&quot;: &quot;zoomReset&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit0&quot; } },
+    { &quot;command&quot;: &quot;minimizeWindow&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyM&quot; } },
+    { &quot;command&quot;: &quot;maximizeWindow&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyM&quot; } },
     { &quot;command&quot;: &quot;toggleFullScreen&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyF&quot; } },
     { &quot;command&quot;: &quot;openNewTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyT&quot; } },
     { &quot;command&quot;: &quot;openNewTabRight&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyO&quot; } },
@@ -1429,6 +1438,52 @@
                   </td>
                   <td data-label="Popup key">
                     <kbd class="code">Digit0</kbd>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section id="window_state_commands">
+          <h3>
+            <a href="#window_state_commands">
+              Window state
+            </a>
+          </h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Command</th>
+                  <th>Description</th>
+                  <th>Windows and Linux key</th>
+                  <th>macOS key</th>
+                  <th>Popup key</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Command"><code>minimize<wbr>Window</code></td>
+                  <td data-label="Description">Minimize the current window</td>
+                  <td data-label="Windows and Linux key">
+                    <kbd>Alt</kbd>+<wbr><kbd>Space</kbd> then <kbd>N</kbd>
+                  </td>
+                  <td data-label="macOS key">
+                    <kbd>Command</kbd>+<wbr><kbd>M</kbd>
+                  </td>
+                  <td data-label="Popup key">
+                    <kbd>Control</kbd>+<wbr><kbd class="code">KeyM</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Command"><code>maximize<wbr>Window</code></td>
+                  <td data-label="Description">Maximize the current window</td>
+                  <td data-label="Windows and Linux key">
+                    <kbd>Alt</kbd>+<wbr><kbd>Space</kbd> then <kbd>X</kbd>
+                  </td>
+                  <td data-label="macOS key"></td>
+                  <td data-label="Popup key">
+                    <kbd>Control</kbd>+<wbr><kbd>Shift</kbd>+<wbr><kbd class="code">KeyM</kbd>
                   </td>
                 </tr>
                 <tr>

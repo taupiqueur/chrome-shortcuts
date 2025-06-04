@@ -40,6 +40,8 @@
     { "command": "zoomIn", "key": { "code": "Equal" } },
     { "command": "zoomOut", "key": { "code": "Minus" } },
     { "command": "zoomReset", "key": { "code": "Digit0" } },
+    { "command": "minimizeWindow", "key": { "ctrlKey": true, "code": "KeyM" } },
+    { "command": "maximizeWindow", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyM" } },
     { "command": "toggleFullScreen", "key": { "code": "KeyF" } },
     { "command": "openNewTab", "key": { "code": "KeyT" } },
     { "command": "openNewTabRight", "key": { "code": "KeyO" } },

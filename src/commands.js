@@ -944,6 +944,37 @@ export async function zoomReset(cx) {
   await chrome.tabs.setZoom(cx.tab.id, 0)
 }
 
+// Window state ----------------------------------------------------------------
+
+/**
+ * Minimizes the current window.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function minimizeWindow(cx) {
+  await chrome.windows.update(cx.tab.windowId, {
+    state: 'minimized'
+  })
+}
+
+/**
+ * Maximizes the current window.
+ *
+ * NOTE: If the window is already maximized,
+ * restores its normal state.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function maximizeWindow(cx) {
+  const windowInfo = await chrome.windows.get(cx.tab.windowId)
+
+  await chrome.windows.update(windowInfo.id, {
+    state: windowInfo.state === 'maximized' ? 'normal' : 'maximized'
+  })
+}
+
 /**
  * Turns full-screen mode on or off.
  *

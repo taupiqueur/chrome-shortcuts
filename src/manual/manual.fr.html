@@ -101,6 +101,11 @@
                 </a>
               </li>
               <li>
+                <a href="#window_state_commands">
+                  Raccourcis pour gérer les fenêtres
+                </a>
+              </li>
+              <li>
                 <a href="#create_tabs_commands">
                   Raccourcis pour créer des onglets
                 </a>
@@ -380,6 +385,8 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"zoomIn"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Equal"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"zoomOut"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Minus"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"zoomReset"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Digit0"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"minimizeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"maximizeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"toggleFullScreen"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTabRight"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span> } },
@@ -533,6 +540,8 @@
     { &quot;command&quot;: &quot;zoomIn&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Equal&quot; } },
     { &quot;command&quot;: &quot;zoomOut&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Minus&quot; } },
     { &quot;command&quot;: &quot;zoomReset&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Digit0&quot; } },
+    { &quot;command&quot;: &quot;minimizeWindow&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyM&quot; } },
+    { &quot;command&quot;: &quot;maximizeWindow&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyM&quot; } },
     { &quot;command&quot;: &quot;toggleFullScreen&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyF&quot; } },
     { &quot;command&quot;: &quot;openNewTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyT&quot; } },
     { &quot;command&quot;: &quot;openNewTabRight&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyO&quot; } },
@@ -1429,6 +1438,52 @@
                   </td>
                   <td data-label="Raccourci du menu Shortcuts">
                     <kbd class="code">Digit0</kbd>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section id="window_state_commands">
+          <h3>
+            <a href="#window_state_commands">
+              Raccourcis pour gérer les fenêtres
+            </a>
+          </h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Commande</th>
+                  <th>Description</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci du menu Shortcuts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Commande"><code>minimize<wbr>Window</code></td>
+                  <td data-label="Description">Réduire la fenêtre active</td>
+                  <td data-label="Raccourci Windows et Linux">
+                    <kbd>Alt</kbd>+<wbr><kbd>Espace</kbd> puis <kbd>N</kbd>
+                  </td>
+                  <td data-label="Raccourci macOS">
+                    <kbd>Cmd</kbd>+<wbr><kbd>M</kbd>
+                  </td>
+                  <td data-label="Raccourci du menu Shortcuts">
+                    <kbd>Ctrl</kbd>+<wbr><kbd class="code">KeyM</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Commande"><code>maximize<wbr>Window</code></td>
+                  <td data-label="Description">Agrandir la fenêtre active</td>
+                  <td data-label="Raccourci Windows et Linux">
+                    <kbd>Alt</kbd>+<wbr><kbd>Espace</kbd> puis <kbd>X</kbd>
+                  </td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci du menu Shortcuts">
+                    <kbd>Ctrl</kbd>+<wbr><kbd>Maj</kbd>+<wbr><kbd class="code">KeyM</kbd>
                   </td>
                 </tr>
                 <tr>

@@ -101,8 +101,14 @@
   "zoomResetCommandDescription": {
     "message": "Zoom · Reset the zoom factor"
   },
+  "minimizeWindowCommandDescription": {
+    "message": "Window state · Minimize the current window"
+  },
+  "maximizeWindowCommandDescription": {
+    "message": "Window state · Maximize the current window"
+  },
   "toggleFullScreenCommandDescription": {
-    "message": "Zoom · Turn full-screen mode on or off"
+    "message": "Window state · Turn full-screen mode on or off"
   },
   "openNewTabCommandDescription": {
     "message": "Create tabs · Open and activate a new tab"
