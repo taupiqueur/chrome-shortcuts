@@ -22,8 +22,6 @@
  * @typedef {object} CommandMessage
  * @property {"command"} type
  * @property {string} commandName
- * @property {boolean} passingMode
- * @property {boolean} stickyWindow
  *
  * @typedef {object} SuggestionMessage
  * @property {"suggestion"} type
@@ -33,7 +31,7 @@
  * @property {"suggestionSyncRequest"} type
  */
 
-import * as commands from '../commands.js'
+import * as commands from './service_worker_commands.js'
 
 const KEEP_ALIVE_INTERVAL = 29000
 
@@ -52,6 +50,13 @@ const CHROME_DOMAINS = [
 ]
 
 /**
+ * List of active ports.
+ *
+ * @type {Set<chrome.runtime.Port>}
+ */
+const activePorts = new Set
+
+/**
  * Handles a new connection when the popup shows up.
  *
  * @param {chrome.runtime.Port} port
@@ -59,6 +64,7 @@ const CHROME_DOMAINS = [
  * @returns {void}
  */
 function onConnect(port, cx) {
+  activePorts.add(port)
   const keepAliveIntervalId = setInterval(() => {
     port.postMessage({
       type: 'keepAlive'
@@ -81,6 +87,7 @@ function onConnect(port, cx) {
  * @returns {void}
  */
 function onDisconnect(port, keepAliveIntervalId) {
+  activePorts.delete(port)
   clearInterval(keepAliveIntervalId)
 }
 
@@ -242,27 +249,13 @@ async function openNewTab({
 /**
  * Handles a command message.
  *
- * The options are as follows:
- *
- * ###### passingMode
- *
- * Specifies whether to close the popup window before executing the command.
- *
- * Default is `false`.
- *
- * ###### stickyWindow
- *
- * Specifies whether to reopen the popup window after executing the command.
- *
- * Default is `false`.
- *
  * @param {CommandMessage} message
  * @param {chrome.runtime.Port} port
  * @param {PopupContext} cx
  * @returns {Promise<void>}
  */
 async function onCommandMessage(message, port, cx) {
-  const { commandName, passingMode, stickyWindow } = message
+  const { commandName } = message
 
   const tabs = await chrome.tabs.query({
     active: true,
@@ -270,63 +263,13 @@ async function onCommandMessage(message, port, cx) {
   })
 
   if (tabs.length > 0) {
-    if (passingMode) {
-      await closePopup(port)
-    }
-
-    await commands[commandName]({
+    await commands[commandName](port, activePorts, {
       tab: tabs[0],
       recentTabsManager: cx.recentTabsManager,
       manualPage: cx.manualPage,
       shortcutsPage: cx.shortcutsPage,
     })
-
-    if (stickyWindow) {
-      const port = await openPopup(chrome.windows.WINDOW_ID_CURRENT)
-      port.postMessage({
-        type: 'stateSync',
-        command: commandName
-      })
-    }
   }
-}
-
-/**
- * Opens the extension’s popup.
- *
- * @param {number} windowId
- * @returns {Promise<chrome.runtime.Port>}
- */
-async function openPopup(windowId) {
-  return new Promise((resolve, reject) => {
-    chrome.runtime.onConnect.addListener(
-      function fireAndForget(port) {
-        if (port.name === 'popup') {
-          chrome.runtime.onConnect.removeListener(fireAndForget)
-          resolve(port)
-        }
-      }
-    )
-    chrome.action.openPopup({
-      windowId
-    }).catch(reject)
-  })
-}
-
-/**
- * Closes the extension’s popup.
- *
- * @param {chrome.runtime.Port} port
- * @returns {Promise<void>}
- */
-async function closePopup(port) {
-  return new Promise((resolve) => {
-    port.onDisconnect.addListener(resolve)
-    port.postMessage({
-      type: 'command',
-      command: 'closePopup'
-    })
-  })
 }
 
 /**
