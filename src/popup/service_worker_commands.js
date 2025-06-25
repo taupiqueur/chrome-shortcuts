@@ -11,7 +11,7 @@ import * as commands from '../commands.js'
 function execCommand(commandName) {
   return async (port, activePorts, cx) => {
     await commands[commandName](cx)
-    const currentWindow = await chrome.windows.getCurrent()
+    const currentWindow = await chrome.windows.getLastFocused()
     if (
       cx.tab.windowId === currentWindow.id &&
       !activePorts.has(port)
