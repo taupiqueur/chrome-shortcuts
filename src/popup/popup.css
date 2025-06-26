@@ -1,6 +1,5 @@
 :root {
   color-scheme: light dark;
-  --font-family: system-ui;
 
   /*
    * macOS color palette
@@ -126,7 +125,7 @@ body {
   max-height: 600px;
   background: var(--background-color);
   color: var(--foreground-color);
-  font-family: var(--font-family);
+  font-family: system-ui;
   display: flex;
   flex-direction: column;
 }
