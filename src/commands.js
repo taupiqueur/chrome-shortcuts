@@ -234,7 +234,6 @@ export async function openShortcutsShortcutsPage(cx) {
  */
 export async function goBack(cx) {
   await chrome.tabs.goBack(cx.tab.id)
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 /**
@@ -245,7 +244,6 @@ export async function goBack(cx) {
  */
 export async function goForward(cx) {
   await chrome.tabs.goForward(cx.tab.id)
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 /**
@@ -304,7 +302,6 @@ export async function goToNextPage(cx) {
     func: clickPageElement,
     args: ['[rel="next"]']
   })
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 /**
@@ -323,7 +320,6 @@ export async function goToPreviousPage(cx) {
     func: clickPageElement,
     args: ['[rel="prev"]']
   })
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 /**
@@ -352,7 +348,6 @@ async function assignURL(cx, func) {
  */
 export async function removeURLParams(cx) {
   await assignURL(cx, (url) => url.pathname)
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 /**
@@ -363,7 +358,6 @@ export async function removeURLParams(cx) {
  */
 export async function goUp(cx) {
   await assignURL(cx, (url) => url.pathname.endsWith('/') ? '..' : '.')
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 /**
@@ -374,7 +368,6 @@ export async function goUp(cx) {
  */
 export async function goToRoot(cx) {
   await assignURL(cx, (url) => '/')
-  await waitForNavigation(cx.tab.id, 'onCommitted')
 }
 
 // Accessibility ---------------------------------------------------------------
@@ -699,8 +692,6 @@ export async function openWebSearchForSelectedText(cx) {
     chrome.tabs.move(createdTab.id, {
       index: cx.tab.index + 1
     }),
-
-    waitForNavigation(createdTab.id, 'onCommitted')
   ])
 
   if (hasGroup(cx.tab)) {
@@ -3254,28 +3245,5 @@ async function sendNotification(title, message) {
     iconUrl: '/assets/shortcuts-logo@128px.png',
     title,
     message
-  })
-}
-
-/**
- * Waits for a specific navigation event.
- * See “webNavigation events” for details.
- *
- * https://developer.chrome.com/docs/extensions/reference/api/webNavigation#event
- *
- * @param {number} tabId
- * @param {string} eventType
- * @returns {Promise<object>}
- */
-async function waitForNavigation(tabId, eventType) {
-  return new Promise((resolve) => {
-    chrome.webNavigation[eventType].addListener(
-      function fireAndForget(details) {
-        if (details.tabId === tabId) {
-          chrome.webNavigation[eventType].removeListener(fireAndForget)
-          resolve(details)
-        }
-      }
-    )
   })
 }

@@ -45,6 +45,53 @@ function execCommand(commandName) {
 }
 
 /**
+ * Creates a new function that, when called, executes a command
+ * causing a web navigation.
+ *
+ * @param {string} commandName
+ * @returns {(port: chrome.runtime.Port, activePorts: Set<chrome.runtime.Port>, cx: CommandContext) => Promise<void>}
+ */
+function execCommandWithNavigation(commandName) {
+  return async (port, activePorts, cx) => {
+    await commands[commandName](cx)
+    const [currentTab] = await chrome.tabs.query({
+      active: true,
+      lastFocusedWindow: true
+    })
+    await waitForNavigation(currentTab.id, 'onCommitted')
+    if (
+      cx.tab.windowId === currentTab.windowId &&
+      !activePorts.has(port)
+    ) {
+      const newPort = await openPopup(cx.tab.windowId)
+      newPort.postMessage({
+        type: 'stateSync',
+        command: commandName
+      })
+    } else if (
+      cx.tab.windowId !== currentTab.windowId &&
+      activePorts.has(port)
+    ) {
+      await closePopup(port)
+      const newPort = await openPopup(currentTab.windowId)
+      newPort.postMessage({
+        type: 'stateSync',
+        command: commandName
+      })
+    } else if (
+      cx.tab.windowId !== currentTab.windowId &&
+      !activePorts.has(port)
+    ) {
+      const newPort = await openPopup(currentTab.windowId)
+      newPort.postMessage({
+        type: 'stateSync',
+        command: commandName
+      })
+    }
+  }
+}
+
+/**
  * Creates a new function that, when called, closes the extension’s popup, then
  * executes a command.
  *
@@ -66,15 +113,15 @@ export const openShortcutsShortcutsPage = execCommandAndClosePopup('openShortcut
 
 // Navigation ------------------------------------------------------------------
 
-export const goBack = execCommand('goBack')
-export const goForward = execCommand('goForward')
+export const goBack = execCommandWithNavigation('goBack')
+export const goForward = execCommandWithNavigation('goForward')
 export const reloadTab = execCommand('reloadTab')
 export const reloadTabWithoutCache = execCommand('reloadTabWithoutCache')
-export const goToNextPage = execCommand('goToNextPage')
-export const goToPreviousPage = execCommand('goToPreviousPage')
-export const removeURLParams = execCommand('removeURLParams')
-export const goUp = execCommand('goUp')
-export const goToRoot = execCommand('goToRoot')
+export const goToNextPage = execCommandWithNavigation('goToNextPage')
+export const goToPreviousPage = execCommandWithNavigation('goToPreviousPage')
+export const removeURLParams = execCommandWithNavigation('removeURLParams')
+export const goUp = execCommandWithNavigation('goUp')
+export const goToRoot = execCommandWithNavigation('goToRoot')
 
 // Accessibility ---------------------------------------------------------------
 
@@ -140,7 +187,7 @@ export const restoreTab = execCommand('restoreTab')
 
 // Tab state -------------------------------------------------------------------
 
-export const duplicateTab = execCommand('duplicateTab')
+export const duplicateTab = execCommandWithNavigation('duplicateTab')
 export const togglePinTab = execCommand('togglePinTab')
 export const toggleGroupTab = execCommand('toggleGroupTab')
 export const toggleCollapseTabGroups = execCommand('toggleCollapseTabGroups')
@@ -279,5 +326,28 @@ async function closePopup(port) {
       type: 'command',
       command: 'closePopup'
     })
+  })
+}
+
+/**
+ * Waits for a specific navigation event.
+ * See “webNavigation events” for details.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/webNavigation#event
+ *
+ * @param {number} tabId
+ * @param {string} eventType
+ * @returns {Promise<object>}
+ */
+async function waitForNavigation(tabId, eventType) {
+  return new Promise((resolve) => {
+    chrome.webNavigation[eventType].addListener(
+      function fireAndForget(details) {
+        if (details.tabId === tabId) {
+          chrome.webNavigation[eventType].removeListener(fireAndForget)
+          resolve(details)
+        }
+      }
+    )
   })
 }
