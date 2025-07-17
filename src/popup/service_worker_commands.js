@@ -2,6 +2,12 @@
 
 import * as commands from '../commands.js'
 
+import {
+  scrollBy,
+} from '../injectable_scripts.js'
+
+const CONTINUOUS_SCROLL_FRAME_CALIBRATION = Array(30).fill(0.2)
+
 /**
  * Creates a new function that, when called, executes a command.
  *
@@ -147,10 +153,98 @@ export const openWebSearchForSelectedText = execCommandAndClosePopup('openWebSea
 
 // Scroll ----------------------------------------------------------------------
 
-export const scrollDown = execCommand('scrollDown')
-export const scrollUp = execCommand('scrollUp')
-export const scrollLeft = execCommand('scrollLeft')
-export const scrollRight = execCommand('scrollRight')
+/**
+ * Scrolls down continuously.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {Set<chrome.runtime.Port>} activePorts
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function scrollDown(port, activePorts, cx) {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id
+    },
+    func: scrollBy,
+    args: [{
+      deltaX: 0,
+      deltaY: 70,
+      frameCalibration: CONTINUOUS_SCROLL_FRAME_CALIBRATION,
+      cancelable: true,
+    }]
+  })
+}
+
+/**
+ * Scrolls up continuously.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {Set<chrome.runtime.Port>} activePorts
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function scrollUp(port, activePorts, cx) {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id
+    },
+    func: scrollBy,
+    args: [{
+      deltaX: 0,
+      deltaY: -70,
+      frameCalibration: CONTINUOUS_SCROLL_FRAME_CALIBRATION,
+      cancelable: true,
+    }]
+  })
+}
+
+/**
+ * Scrolls left continuously.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {Set<chrome.runtime.Port>} activePorts
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function scrollLeft(port, activePorts, cx) {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id
+    },
+    func: scrollBy,
+    args: [{
+      deltaX: -70,
+      deltaY: 0,
+      frameCalibration: CONTINUOUS_SCROLL_FRAME_CALIBRATION,
+      cancelable: true,
+    }]
+  })
+}
+
+/**
+ * Scrolls right continuously.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {Set<chrome.runtime.Port>} activePorts
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function scrollRight(port, activePorts, cx) {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id
+    },
+    func: scrollBy,
+    args: [{
+      deltaX: 70,
+      deltaY: 0,
+      frameCalibration: CONTINUOUS_SCROLL_FRAME_CALIBRATION,
+      cancelable: true,
+    }]
+  })
+}
+
 export const scrollPageDown = execCommand('scrollPageDown')
 export const scrollPageUp = execCommand('scrollPageUp')
 export const scrollHalfPageDown = execCommand('scrollHalfPageDown')

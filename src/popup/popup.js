@@ -24,6 +24,13 @@ const MIDDLE_MOUSE_BUTTON = 1
 
 const SCRIPTING_SELECTOR = '[data-permissions~="scripting"]'
 
+const MODIFIER_KEYS = new Set([
+  'Control',
+  'Alt',
+  'Shift',
+  'Meta',
+])
+
 const Modifier = {
   None: 0,
   Control: 1 << 0,
@@ -135,6 +142,14 @@ function render({ commandBindings, isEnabled }) {
         keyboardEvent.preventDefault()
         keyboardEvent.stopImmediatePropagation()
         break
+    }
+  })
+
+  menuElement.addEventListener('keyup', (keyboardEvent) => {
+    if (!isModifierKey(keyboardEvent.key)) {
+      port.postMessage({
+        type: 'cancelAnimationFrameRequest'
+      })
     }
   })
 
@@ -303,4 +318,14 @@ function onSuggestionActivated(suggestion) {
     type: 'suggestion',
     suggestion
   })
+}
+
+/**
+ * Determines whether the given key is a modifier key.
+ *
+ * @param {string} key
+ * @returns {boolean}
+ */
+function isModifierKey(key) {
+  return MODIFIER_KEYS.has(key)
 }

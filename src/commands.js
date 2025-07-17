@@ -104,6 +104,9 @@ const PRESET_ZOOM_FACTORS = [
  */
 const PAGE_ZOOM_EPSILON = 0.001
 
+const SHORT_THROW_FRAME_CALIBRATION = [0.2, 0.2, 0.2, 0.2, 0.2]
+const LONG_THROW_FRAME_CALIBRATION = [0.001, 0.002, 0.003, 0.004, 0.99]
+
 // Enums -----------------------------------------------------------------------
 
 // Enum representing a direction.
@@ -718,7 +721,12 @@ export async function scrollDown(cx) {
       tabId: cx.tab.id
     },
     func: scrollBy,
-    args: [0, 70]
+    args: [{
+      deltaX: 0,
+      deltaY: 70,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -734,7 +742,12 @@ export async function scrollUp(cx) {
       tabId: cx.tab.id
     },
     func: scrollBy,
-    args: [0, -70]
+    args: [{
+      deltaX: 0,
+      deltaY: -70,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -750,7 +763,12 @@ export async function scrollLeft(cx) {
       tabId: cx.tab.id
     },
     func: scrollBy,
-    args: [-70, 0]
+    args: [{
+      deltaX: -70,
+      deltaY: 0,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -766,7 +784,12 @@ export async function scrollRight(cx) {
       tabId: cx.tab.id
     },
     func: scrollBy,
-    args: [70, 0]
+    args: [{
+      deltaX: 70,
+      deltaY: 0,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -782,7 +805,11 @@ export async function scrollPageDown(cx) {
       tabId: cx.tab.id
     },
     func: scrollByPages,
-    args: [0.9]
+    args: [{
+      pageFactor: 0.9,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -798,7 +825,11 @@ export async function scrollPageUp(cx) {
       tabId: cx.tab.id
     },
     func: scrollByPages,
-    args: [-0.9]
+    args: [{
+      pageFactor: -0.9,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -814,7 +845,11 @@ export async function scrollHalfPageDown(cx) {
       tabId: cx.tab.id
     },
     func: scrollByPages,
-    args: [0.5]
+    args: [{
+      pageFactor: 0.5,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -830,7 +865,11 @@ export async function scrollHalfPageUp(cx) {
       tabId: cx.tab.id
     },
     func: scrollByPages,
-    args: [-0.5]
+    args: [{
+      pageFactor: -0.5,
+      frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -846,7 +885,12 @@ export async function scrollToTop(cx) {
       tabId: cx.tab.id
     },
     func: scrollTo,
-    args: [0, 0]
+    args: [{
+      scrollLeft: 0,
+      scrollTop: 0,
+      frameCalibration: LONG_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 
@@ -862,7 +906,11 @@ export async function scrollToBottom(cx) {
       tabId: cx.tab.id
     },
     func: scrollToMax,
-    args: [0]
+    args: [{
+      scrollLeft: 0,
+      frameCalibration: LONG_THROW_FRAME_CALIBRATION,
+      cancelable: false,
+    }]
   })
 }
 

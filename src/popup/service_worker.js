@@ -17,7 +17,7 @@
  */
 
 /**
- * @typedef {CommandMessage | SuggestionMessage | SuggestionSyncRequestMessage} Message
+ * @typedef {CommandMessage | SuggestionMessage | SuggestionSyncRequestMessage | CancelAnimationFrameRequestMessage} Message
  *
  * @typedef {object} CommandMessage
  * @property {"command"} type
@@ -29,9 +29,16 @@
  *
  * @typedef {object} SuggestionSyncRequestMessage
  * @property {"suggestionSyncRequest"} type
+ *
+ * @typedef {object} CancelAnimationFrameRequestMessage
+ * @property {"cancelAnimationFrameRequest"} type
  */
 
 import * as commands from './service_worker_commands.js'
+
+import {
+  cancelAnimationFrames,
+} from '../injectable_scripts.js'
 
 const KEEP_ALIVE_INTERVAL = 29000
 
@@ -84,11 +91,28 @@ function onConnect(port, cx) {
  *
  * @param {chrome.runtime.Port} port
  * @param {number} keepAliveIntervalId
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function onDisconnect(port, keepAliveIntervalId) {
+async function onDisconnect(port, keepAliveIntervalId) {
   activePorts.delete(port)
   clearInterval(keepAliveIntervalId)
+
+  const tabs = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true
+  })
+
+  if (
+    tabs.length > 0 &&
+    !isChromeDomain(tabs[0].url)
+  ) {
+    await chrome.scripting.executeScript({
+      target: {
+        tabId: tabs[0].id
+      },
+      func: cancelAnimationFrames
+    })
+  }
 }
 
 /**
@@ -109,15 +133,11 @@ async function onPopupScriptAdded(port) {
   })
 
   if (tabs.length > 0) {
-    const { url } = tabs[0]
-
     port.postMessage({
       type: 'init',
       commandBindings: localStorage.commandBindings,
       paletteBindings: localStorage.paletteBindings,
-      isEnabled: !CHROME_DOMAINS.some((domain) =>
-        domain.test(url)
-      )
+      isEnabled: !isChromeDomain(tabs[0].url)
     })
   }
 }
@@ -145,6 +165,10 @@ async function onMessage(message, port, cx) {
 
     case 'suggestionSyncRequest':
       onSuggestionSyncRequestMessage(message, port, cx)
+      break
+
+    case 'cancelAnimationFrameRequest':
+      onCancelAnimationFrameRequestMessage(message, port, cx)
       break
 
     case 'open': {
@@ -322,6 +346,45 @@ async function onSuggestionSyncRequestMessage(message, port, cx) {
       )
     })
   }
+}
+
+/**
+ * Handles a cancel animation frame request message.
+ *
+ * @param {CancelAnimationFrameRequestMessage} message
+ * @param {chrome.runtime.Port} port
+ * @param {PopupContext} cx
+ * @returns {Promise<void>}
+ */
+async function onCancelAnimationFrameRequestMessage(message, port, cx) {
+  const tabs = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true
+  })
+
+  if (
+    tabs.length > 0 &&
+    !isChromeDomain(tabs[0].url)
+  ) {
+    await chrome.scripting.executeScript({
+      target: {
+        tabId: tabs[0].id
+      },
+      func: cancelAnimationFrames
+    })
+  }
+}
+
+/**
+ * Determines whether the given URL is a Chrome domain.
+ *
+ * @param {string} url
+ * @returns {boolean}
+ */
+function isChromeDomain(url) {
+  return CHROME_DOMAINS.some((domain) =>
+    domain.test(url)
+  )
 }
 
 export default { onConnect }

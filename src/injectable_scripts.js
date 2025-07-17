@@ -109,13 +109,27 @@ export async function getSelectedText() {
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy
  *
- * @param {number} deltaX
- * @param {number} deltaY
+ * @param {object} scrollProperties
+ * @param {number} scrollProperties.deltaX
+ * @param {number} scrollProperties.deltaY
+ * @param {number[]} scrollProperties.frameCalibration
+ * @param {boolean} scrollProperties.cancelable
  * @returns {void}
  */
-export function scrollBy(deltaX, deltaY) {
+export function scrollBy({
+  deltaX,
+  deltaY,
+  frameCalibration,
+  cancelable,
+}) {
   performScroll((scrollingElement) => {
-    scroller.scrollBy(scrollingElement, deltaX, deltaY)
+    scroller.scrollBy({
+      scrollingElement,
+      deltaX,
+      deltaY,
+      frameCalibration,
+      cancelable,
+    })
   })
 }
 
@@ -124,12 +138,25 @@ export function scrollBy(deltaX, deltaY) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollByPages
  *
- * @param {number} pageFactor
+ * @param {object} scrollProperties
+ * @param {number} scrollProperties.pageFactor
+ * @param {number[]} scrollProperties.frameCalibration
+ * @param {boolean} scrollProperties.cancelable
  * @returns {void}
  */
-export function scrollByPages(pageFactor) {
+export function scrollByPages({
+  pageFactor,
+  frameCalibration,
+  cancelable,
+}) {
   performScroll((scrollingElement) => {
-    scroller.scrollBy(scrollingElement, 0, window.innerHeight * pageFactor)
+    scroller.scrollBy({
+      scrollingElement,
+      deltaX: 0,
+      deltaY: window.innerHeight * pageFactor,
+      frameCalibration,
+      cancelable,
+    })
   })
 }
 
@@ -138,13 +165,27 @@ export function scrollByPages(pageFactor) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
  *
- * @param {number} scrollLeft
- * @param {number} scrollTop
+ * @param {object} scrollProperties
+ * @param {number} scrollProperties.scrollLeft
+ * @param {number} scrollProperties.scrollTop
+ * @param {number[]} scrollProperties.frameCalibration
+ * @param {boolean} scrollProperties.cancelable
  * @returns {void}
  */
-export function scrollTo(scrollLeft, scrollTop) {
+export function scrollTo({
+  scrollLeft,
+  scrollTop,
+  frameCalibration,
+  cancelable,
+}) {
   performScroll((scrollingElement) => {
-    scroller.scrollTo(scrollingElement, scrollLeft, scrollTop)
+    scroller.scrollTo({
+      scrollingElement,
+      scrollLeft,
+      scrollTop,
+      frameCalibration,
+      cancelable,
+    })
   })
 }
 
@@ -154,18 +195,39 @@ export function scrollTo(scrollLeft, scrollTop) {
  * - https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTopMax
  * - https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeftMax
  *
- * @param {number} [scrollLeft]
- * @param {number} [scrollTop]
+ * @param {object} scrollProperties
+ * @param {number} [scrollProperties.scrollLeft]
+ * @param {number} [scrollProperties.scrollTop]
+ * @param {number[]} scrollProperties.frameCalibration
+ * @param {boolean} scrollProperties.cancelable
  * @returns {void}
  */
-export function scrollToMax(scrollLeft, scrollTop) {
+export function scrollToMax({
+  scrollLeft,
+  scrollTop,
+  frameCalibration,
+  cancelable,
+}) {
   performScroll((scrollingElement) => {
-    scroller.scrollTo(
+    scroller.scrollTo({
       scrollingElement,
-      scrollLeft ?? scrollingElement.scrollWidth,
-      scrollTop ?? scrollingElement.scrollHeight
-    )
+      scrollLeft: scrollLeft ?? scrollingElement.scrollWidth,
+      scrollTop: scrollTop ?? scrollingElement.scrollHeight,
+      frameCalibration,
+      cancelable,
+    })
   })
+}
+
+/**
+ * Cancels all cancelable animation frames.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelAnimationFrame
+ *
+ * @returns {void}
+ */
+export function cancelAnimationFrames() {
+  scroller.cancelAnimationFrames()
 }
 
 /**

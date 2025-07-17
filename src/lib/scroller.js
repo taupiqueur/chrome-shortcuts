@@ -1,20 +1,23 @@
 /**
+ * @typedef {object} AnimationFrameEntry
+ * @property {number} animationFrameId
+ * @property {boolean} cancelable
+ */
+
+/**
  * This class provides the functionality to scroll elements smoothly.
  *
  * Its main use is to work around the quirks of the smooth scroll behavior.
  */
 class Scroller {
-  static SHORT_THROW_FRAME_CALIBRATION = [0.2, 0.2, 0.2, 0.2, 0.2]
-  static LONG_THROW_FRAME_CALIBRATION = [0.001, 0.002, 0.003, 0.004, 0.99]
-
   /**
    * Creates a new scroller.
    */
   constructor() {
     /**
-     * A hash map that stores HTML elements as keys and animation request IDs as values.
+     * A hash map that stores HTML elements as keys and animation frame entries as values.
      *
-     * @type {Map<HTMLElement, number>}
+     * @type {Map<HTMLElement, AnimationFrameEntry>}
      */
     this.animationFrameMap = new Map
   }
@@ -24,22 +27,26 @@ class Scroller {
    *
    * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy
    *
-   * @param {HTMLElement} scrollingElement
-   * @param {number} deltaX
-   * @param {number} deltaY
+   * @param {object} scrollProperties
+   * @param {HTMLElement} scrollProperties.scrollingElement
+   * @param {number} scrollProperties.deltaX
+   * @param {number} scrollProperties.deltaY
+   * @param {number[]} scrollProperties.frameCalibration
+   * @param {boolean} scrollProperties.cancelable
    * @returns {void}
    */
-  scrollBy(scrollingElement, deltaX, deltaY) {
-    const frameCalibration = (
-      Math.abs(deltaX) > window.innerWidth ||
-      Math.abs(deltaY) > window.innerHeight
-    )
-      ? Scroller.LONG_THROW_FRAME_CALIBRATION
-      : Scroller.SHORT_THROW_FRAME_CALIBRATION
-
+  scrollBy({
+    scrollingElement,
+    deltaX,
+    deltaY,
+    frameCalibration,
+    cancelable,
+  }) {
     if (this.animationFrameMap.has(scrollingElement)) {
-      const animationFrame = this.animationFrameMap.get(scrollingElement)
-      window.cancelAnimationFrame(animationFrame)
+      const animationFrameEntry = this.animationFrameMap.get(scrollingElement)
+      window.cancelAnimationFrame(
+        animationFrameEntry.animationFrameId
+      )
     }
 
     // Initiate a new scroll in order to be detected by scroll performers.
@@ -57,15 +64,26 @@ class Scroller {
     const scrollPerformer = (frameCount, frameLimit) => {
       if (frameCount < frameLimit) {
         const calibration = frameCalibration[frameCount]
+        const { scrollLeft, scrollTop } = scrollingElement
         scrollingElement.scrollBy({
           left: Math.sign(deltaX) * Math.ceil(Math.abs(deltaX) * calibration),
           top: Math.sign(deltaY) * Math.ceil(Math.abs(deltaY) * calibration),
           behavior: 'instant'
         })
-        const animationFrame = window.requestAnimationFrame(() => {
-          scrollPerformer(frameCount + 1, frameLimit)
-        })
-        this.animationFrameMap.set(scrollingElement, animationFrame)
+        if (
+          scrollingElement.scrollLeft !== scrollLeft ||
+          scrollingElement.scrollTop !== scrollTop
+        ) {
+          const animationFrameId = window.requestAnimationFrame(() => {
+            scrollPerformer(frameCount + 1, frameLimit)
+          })
+          this.animationFrameMap.set(scrollingElement, {
+            animationFrameId,
+            cancelable,
+          })
+        } else {
+          this.animationFrameMap.delete(scrollingElement)
+        }
       } else {
         this.animationFrameMap.delete(scrollingElement)
       }
@@ -81,16 +99,45 @@ class Scroller {
    *
    * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
    *
-   * @param {HTMLElement} scrollingElement
-   * @param {number} scrollLeft
-   * @param {number} scrollTop
+   * @param {object} scrollProperties
+   * @param {HTMLElement} scrollProperties.scrollingElement
+   * @param {number} scrollProperties.scrollLeft
+   * @param {number} scrollProperties.scrollTop
+   * @param {number[]} scrollProperties.frameCalibration
+   * @param {boolean} scrollProperties.cancelable
    * @returns {void}
    */
-  scrollTo(scrollingElement, scrollLeft, scrollTop) {
-    this.scrollBy(
+  scrollTo({
+    scrollingElement,
+    scrollLeft,
+    scrollTop,
+    frameCalibration,
+    cancelable,
+  }) {
+    this.scrollBy({
       scrollingElement,
-      scrollLeft - scrollingElement.scrollLeft,
-      scrollTop - scrollingElement.scrollTop
-    )
+      deltaX: scrollLeft - scrollingElement.scrollLeft,
+      deltaY: scrollTop - scrollingElement.scrollTop,
+      frameCalibration,
+      cancelable,
+    })
+  }
+
+  /**
+   * Cancels all cancelable animation frames.
+   *
+   * https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelAnimationFrame
+   *
+   * @returns {void}
+   */
+  cancelAnimationFrames() {
+    for (const [scrollingElement, animationFrameEntry] of this.animationFrameMap) {
+      if (animationFrameEntry.cancelable) {
+        window.cancelAnimationFrame(
+          animationFrameEntry.animationFrameId
+        )
+        this.animationFrameMap.delete(scrollingElement)
+      }
+    }
   }
 }
