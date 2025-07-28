@@ -38,7 +38,16 @@ const suggestionLabels = new Map([
  *
  * https://developer.chrome.com/docs/extensions/reference/api/storage#asynchronous-preload-from-storage
  *
- * @type {{ homePage: string, manualPage: string, optionsPage: string, shortcutsPage: string }}
+ * @typedef {object} StorageCache
+ * @property {KeyboardMapping[]} commandBindings
+ * @property {KeyboardMapping[]} paletteBindings
+ * @property {KeyboardMapping[]} pageBindings
+ * @property {string} homePage
+ * @property {string} manualPage
+ * @property {string} optionsPage
+ * @property {string} shortcutsPage
+ *
+ * @type {StorageCache}
  */
 const storageCache = {
 }
@@ -193,7 +202,23 @@ async function onUpdate(previousVersion) {
     case '0.9.2':
     case '0.10.0':
     case '0.10.1':
-    case '0.11.0': {
+    case '0.11.0':
+    case '0.11.1':
+    case '0.11.2':
+    case '0.11.3':
+    case '0.11.4':
+    case '0.12.0':
+    case '0.12.1':
+    case '0.12.2':
+    case '0.13.0':
+    case '0.14.0':
+    case '0.14.1':
+    case '0.14.2':
+    case '0.14.3':
+    case '0.14.4':
+    case '0.14.5':
+    case '0.15.0':
+    case '0.16.0': {
       const defaults = await optionsWorker.getDefaults()
       await chrome.storage.sync.set(defaults)
       await setLocalizedPages()
@@ -250,9 +275,36 @@ async function runContentScripts() {
           tabId: tab.id
         },
         files: [
+          'src/lib/keymap.js',
+          'src/lib/input_handler.js',
           'src/lib/scroller.js',
           'src/content_script.js'
         ]
+      })
+    )
+  )
+}
+
+/**
+ * Updates tabs after option changes.
+ *
+ * @returns {Promise<void>}
+ */
+async function updateTabsAfterOptionsChange() {
+  const tabs = await chrome.tabs.query({
+    url: [
+      'file:///*',
+      'http://*/*',
+      'https://*/*'
+    ],
+    status: 'complete'
+  })
+
+  await Promise.allSettled(
+    tabs.map((tab) =>
+      chrome.tabs.sendMessage(tab.id, {
+        type: 'stateSync',
+        pageBindings: storageCache.pageBindings,
       })
     )
   )
@@ -269,6 +321,20 @@ async function runContentScripts() {
  */
 function onOptionsChange(changes, areaName) {
   switch (areaName) {
+    case 'sync':
+      for (const key in changes) {
+        storageCache[key] = changes[key].newValue
+      }
+      updateTabsAfterOptionsChange()
+      break
+
+    case 'local':
+      for (const key in changes) {
+        storageCache[key] = changes[key].newValue
+      }
+      updateTabsAfterOptionsChange()
+      break
+
     case 'session':
       for (const key in changes) {
         storageCache[key] = changes[key].newValue
@@ -440,6 +506,42 @@ async function getDebugInfo(tabId) {
 }
 
 /**
+ * Handles one-time requests.
+ *
+ * https://developer.chrome.com/docs/extensions/develop/concepts/messaging#simple
+ *
+ * @param {object} message
+ * @param {chrome.runtime.MessageSender} sender
+ * @returns {void}
+ */
+function onMessage(message, sender) {
+  switch (message.type) {
+    case 'contentScriptAdded':
+      chrome.tabs.sendMessage(sender.tab.id, {
+        type: 'stateSync',
+        pageBindings: storageCache.pageBindings,
+      })
+      break
+
+    case 'openPopup':
+      openPopup(sender.tab.windowId)
+      break
+  }
+}
+
+/**
+ * Opens the extension’s popup.
+ *
+ * @param {number} windowId
+ * @returns {Promise<void>}
+ */
+async function openPopup(windowId) {
+  await chrome.action.openPopup({
+    windowId
+  })
+}
+
+/**
  * Handles long-lived connections.
  * Uses the channel name to distinguish different types of connections.
  *
@@ -455,6 +557,8 @@ function onConnect(port) {
         recentTabsManager,
         suggestionEngine,
         suggestionLabels,
+        commandBindings: storageCache.commandBindings,
+        paletteBindings: storageCache.paletteBindings,
         manualPage: storageCache.manualPage,
         shortcutsPage: storageCache.shortcutsPage,
       })
@@ -537,21 +641,82 @@ function onWindowFocusChanged(windowId) {
   recentTabsManager.onWindowFocusChanged(windowId)
 }
 
-chrome.storage.session.get((sessionStorage) => {
-  Object.assign(storageCache, sessionStorage)
-})
+const allStorageLoaded = Promise.all([
+  chrome.storage.sync.get().then((syncStorage) => {
+    Object.assign(storageCache, syncStorage)
+  }),
 
-recentTabsManager.restoreState()
+  chrome.storage.session.get().then((sessionStorage) => {
+    Object.assign(storageCache, sessionStorage)
+  }),
+
+  recentTabsManager.restoreState(),
+])
 
 // Set up listeners.
 // https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/events
-chrome.runtime.onInstalled.addListener(onInstalled)
-chrome.runtime.onStartup.addListener(onStartup)
-chrome.storage.onChanged.addListener(onOptionsChange)
-chrome.commands.onCommand.addListener(onCommand)
-chrome.contextMenus.onClicked.addListener(onMenuItemClicked)
-chrome.runtime.onConnect.addListener(onConnect)
-chrome.tabs.onActivated.addListener(onTabActivated)
-chrome.tabs.onRemoved.addListener(onTabRemoved)
-chrome.tabs.onReplaced.addListener(onTabReplaced)
-chrome.windows.onFocusChanged.addListener(onWindowFocusChanged)
+chrome.runtime.onInstalled.addListener((details) => {
+  allStorageLoaded.then(() => {
+    onInstalled(details)
+  })
+})
+
+chrome.runtime.onStartup.addListener(() => {
+  allStorageLoaded.then(() => {
+    onStartup()
+  })
+})
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  allStorageLoaded.then(() => {
+    onOptionsChange(changes, areaName)
+  })
+})
+
+chrome.commands.onCommand.addListener((commandName, tab) => {
+  allStorageLoaded.then(() => {
+    onCommand(commandName, tab)
+  })
+})
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  allStorageLoaded.then(() => {
+    onMenuItemClicked(info, tab)
+  })
+})
+
+chrome.runtime.onMessage.addListener((message, sender) => {
+  allStorageLoaded.then(() => {
+    onMessage(message, sender)
+  })
+})
+
+chrome.runtime.onConnect.addListener((port) => {
+  allStorageLoaded.then(() => {
+    onConnect(port)
+  })
+})
+
+chrome.tabs.onActivated.addListener((activeInfo) => {
+  allStorageLoaded.then(() => {
+    onTabActivated(activeInfo)
+  })
+})
+
+chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
+  allStorageLoaded.then(() => {
+    onTabRemoved(tabId, removeInfo)
+  })
+})
+
+chrome.tabs.onReplaced.addListener((addedTabId, removedTabId) => {
+  allStorageLoaded.then(() => {
+    onTabReplaced(addedTabId, removedTabId)
+  })
+})
+
+chrome.windows.onFocusChanged.addListener((windowId) => {
+  allStorageLoaded.then(() => {
+    onWindowFocusChanged(windowId)
+  })
+})

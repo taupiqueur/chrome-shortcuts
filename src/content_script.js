@@ -10,7 +10,65 @@ const SCROLLABLE_OVERFLOW_VALUES = new Set([
   'auto'
 ])
 
+const PAGE_ACTIONS = [
+  { name: 'openPopup', fun: openPopup },
+  { name: 'sendEscapeKey', fun: sendEscapeKey },
+]
+
 const scroller = new Scroller
+
+const inputHandler = new InputHandler(
+  window
+)
+
+chrome.runtime.onMessage.addListener((message, sender) => {
+  switch (message.type) {
+    case 'stateSync':
+      inputHandler.onStateSync({
+        actions: PAGE_ACTIONS,
+        shortcuts: message.pageBindings,
+      })
+      break
+  }
+})
+
+chrome.runtime.sendMessage({
+  type: 'contentScriptAdded'
+})
+
+inputHandler.start()
+
+/**
+ * Opens the extension’s popup.
+ *
+ * @param {KeyboardEvent} keyboardEvent
+ * @returns {void}
+ */
+function openPopup(keyboardEvent) {
+  chrome.runtime.sendMessage({
+    type: 'openPopup'
+  })
+}
+
+/**
+ * Simulates pressing the `Escape` key.
+ *
+ * @param {KeyboardEvent} keyboardEvent
+ * @returns {void}
+ */
+function sendEscapeKey(keyboardEvent) {
+  keyboardEvent.target.dispatchEvent(
+    new KeyboardEvent('keydown', {
+      code: 'Escape',
+      key: 'Escape',
+      keyCode: 27,
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      view: window,
+    })
+  )
+}
 
 /**
  * Returns the element within the DOM—including “open” shadow roots—that currently has focus.

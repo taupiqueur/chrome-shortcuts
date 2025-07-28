@@ -32,7 +32,7 @@ class CustomMenu extends HTMLElement {
     this.slotElement = this.shadowRoot.querySelector('slot:not([name])')
 
     /**
-     * @type {Keymap<KeyboardEvent, MenuItem>}
+     * @type {Keymap<symbol, MenuItem>}
      */
     this.keymap = new Keymap
 
@@ -74,12 +74,12 @@ class CustomMenu extends HTMLElement {
   /**
    * Adds keyboard shortcut.
    *
-   * @param {KeyboardEvent} keyboardEvent
+   * @param {Keypress} keypress
    * @param {MenuItem} menuItem
    * @returns {void}
    */
-  addKeyboardShortcut(keyboardEvent, menuItem) {
-    this.keymap.set(keyboardEvent, menuItem)
+  addKeyboardShortcut(keypress, menuItem) {
+    this.keymap.set(keypress, menuItem)
   }
 
   /**

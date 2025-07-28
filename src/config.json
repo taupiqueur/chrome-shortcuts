@@ -145,5 +145,7 @@
     { "command": "movePageUp", "key": { "ctrlKey": true, "code": "KeyU" } },
     { "command": "closeCommandPalette", "key": { "code": "Escape" } },
     { "command": "closeCommandPalette", "key": { "ctrlKey": true, "code": "KeyC" } }
+  ],
+  "pageBindings": [
   ]
 }

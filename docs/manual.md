@@ -198,6 +198,25 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "movePageUp", "key": { "ctrlKey": true, "code": "KeyU" } },
     { "command": "closeCommandPalette", "key": { "code": "Escape" } },
     { "command": "closeCommandPalette", "key": { "ctrlKey": true, "code": "KeyC" } }
+  ],
+  "pageBindings": [
+  ]
+}
+```
+
+</details>
+
+### Single-key keyboard shortcuts
+
+<details>
+
+<summary>Example configuration</summary>
+
+``` json
+{
+  "pageBindings": [
+    { "command": "openPopup", "key": { "code": "Escape" } },
+    { "command": "sendEscapeKey", "key": { "shiftKey": true, "code": "Escape" } }
   ]
 }
 ```
@@ -273,6 +292,16 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 `movePageDown` | Move page down | | | `PageDown`, `Control+KeyD`
 `movePageUp` | Move page up | | | `PageUp`, `Control+KeyU`
 `closeCommandPalette` | Close the command palette | | | `Escape`, `Control+KeyC`
+
+### Web pages
+
+These commands are only available in the context of web pages
+where browser extensions are allowed.
+
+Command | Description | Windows and Linux key | macOS key | Page key
+--- | --- | --- | --- | ---
+`openPopup` | Open the extension’s popup | | | Suggested key: `Escape`
+`sendEscapeKey` | Simulate pressing the `Escape` key | | | Suggested key: `Shift+Escape`
 
 ### Navigation
 

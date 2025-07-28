@@ -20,7 +20,7 @@ const INPUT_DEBOUNCE_DELAY = 50
 const MAX_CANDIDATE_RESULTS = 25
 
 /**
- * @type {Keymap<KeyboardEvent, string>}
+ * @type {Keymap<symbol, string>}
  */
 const inputKeymap = new Keymap
 

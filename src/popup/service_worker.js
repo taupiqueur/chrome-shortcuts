@@ -12,6 +12,8 @@
  * @property {RecentTabsManager} recentTabsManager
  * @property {SuggestionEngine} suggestionEngine
  * @property {Map<string, string>} suggestionLabels
+ * @property {KeyboardMapping[]} commandBindings
+ * @property {KeyboardMapping[]} paletteBindings
  * @property {string} manualPage
  * @property {string} shortcutsPage
  */
@@ -83,7 +85,7 @@ function onConnect(port, cx) {
   port.onMessage.addListener((message, port) => {
     onMessage(message, port, cx)
   })
-  onPopupScriptAdded(port)
+  onPopupScriptAdded(port, cx)
 }
 
 /**
@@ -119,14 +121,10 @@ async function onDisconnect(port, keepAliveIntervalId) {
  * Handles the popup initialization.
  *
  * @param {chrome.runtime.Port} port
+ * @param {PopupContext} cx
  * @returns {Promise<void>}
  */
-async function onPopupScriptAdded(port) {
-  const localStorage = await chrome.storage.sync.get([
-    'commandBindings',
-    'paletteBindings',
-  ])
-
+async function onPopupScriptAdded(port, cx) {
   const tabs = await chrome.tabs.query({
     active: true,
     lastFocusedWindow: true
@@ -135,8 +133,8 @@ async function onPopupScriptAdded(port) {
   if (tabs.length > 0) {
     port.postMessage({
       type: 'init',
-      commandBindings: localStorage.commandBindings,
-      paletteBindings: localStorage.paletteBindings,
+      commandBindings: cx.commandBindings,
+      paletteBindings: cx.paletteBindings,
       isEnabled: !isChromeDomain(tabs[0].url)
     })
   }

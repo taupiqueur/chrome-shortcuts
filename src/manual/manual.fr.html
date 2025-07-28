@@ -39,6 +39,11 @@
                 </a>
               </li>
               <li>
+                <a href="#single_key_keyboard_shortcuts">
+                  Raccourcis clavier à une seule touche
+                </a>
+              </li>
+              <li>
                 <a href="#in_practice">
                   En pratique ?
                 </a>
@@ -63,6 +68,11 @@
               <li>
                 <a href="#command_palette_commands">
                   Raccourcis de la palette de commandes
+                </a>
+              </li>
+              <li>
+                <a href="#web_page_commands">
+                  Raccourcis liés aux pages web
                 </a>
               </li>
               <li>
@@ -490,6 +500,8 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"movePageUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyU"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"closeCommandPalette"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"closeCommandPalette"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyC"</span> } }
+  ],
+  <span data-type="string">"pageBindings"</span>: [
   ]
 }
 </code></pre>
@@ -645,6 +657,43 @@
     { &quot;command&quot;: &quot;movePageUp&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyU&quot; } },
     { &quot;command&quot;: &quot;closeCommandPalette&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Escape&quot; } },
     { &quot;command&quot;: &quot;closeCommandPalette&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyC&quot; } }
+  ],
+  &quot;pageBindings&quot;: [
+  ]
+}
+"
+                >
+                  Copier
+                </button>
+              </div>
+            </div>
+          </details>
+        </section>
+        <section id="single_key_keyboard_shortcuts">
+          <h3>
+            <a href="#single_key_keyboard_shortcuts">
+              Raccourcis clavier à une seule touche
+            </a>
+          </h3>
+          <details>
+            <summary>Exemple de configuration</summary>
+            <div class="code-block-container">
+              <pre><code data-lang="json">{
+  <span data-type="string">"pageBindings"</span>: [
+    { <span data-type="string">"command"</span>: <span data-type="string">"openPopup"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"sendEscapeKey"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } }
+  ]
+}
+</code></pre>
+              <div>
+                <button
+                  aria-label="Copier"
+                  data-copy-feedback="Copié"
+                  data-action="copyToClipboard"
+                  value="{
+  &quot;pageBindings&quot;: [
+    { &quot;command&quot;: &quot;openPopup&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Escape&quot; } },
+    { &quot;command&quot;: &quot;sendEscapeKey&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Escape&quot; } }
   ]
 }
 "
@@ -916,6 +965,52 @@
                   <td data-label="Raccourci de la palette de commandes">
                     <kbd class="code">Escape</kbd>,
                     <kbd>Ctrl</kbd>+<wbr><kbd class="code">KeyC</kbd>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section id="web_page_commands">
+          <h3>
+            <a href="#web_page_commands">
+              Raccourcis liés aux pages web
+            </a>
+          </h3>
+          <p>
+            Ces commandes ne sont disponibles que dans le contexte des pages web
+            où les extensions Chrome sont autorisées.
+          </p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Commande</th>
+                  <th>Description</th>
+                  <th>Raccourci Windows et Linux</th>
+                  <th>Raccourci macOS</th>
+                  <th>Raccourci de la page web</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Commande"><code>open<wbr>Popup</code></td>
+                  <td data-label="Description">Ouvrir le menu de l’extension</td>
+                  <td data-label="Raccourci Windows et Linux"></td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci de la page web">
+                    Raccourci suggéré :
+                    <kbd class="code">Escape</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Commande"><code>send<wbr>Escape<wbr>Key</code></td>
+                  <td data-label="Description">Simuler l’appui sur la touche <kbd>Échap</kbd></td>
+                  <td data-label="Raccourci Windows et Linux"></td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci de la page web">
+                    Raccourci suggéré :
+                    <kbd>Maj</kbd>+<wbr><kbd class="code">Escape</kbd>
                   </td>
                 </tr>
               </tbody>
@@ -1822,7 +1917,7 @@
                   <td data-label="Raccourci Windows et Linux"></td>
                   <td data-label="Raccourci macOS"></td>
                   <td data-label="Raccourci du menu Shortcuts">
-                    <kbd>Shift</kbd>+<wbr><kbd class="code">KeyC</kbd>
+                    <kbd>Maj</kbd>+<wbr><kbd class="code">KeyC</kbd>
                   </td>
                 </tr>
                 <tr>

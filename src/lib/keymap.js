@@ -78,5 +78,3 @@ const keySequence = ({
   metaKey,
   code
 ])
-
-export default Keymap

@@ -2,10 +2,10 @@
 
 /**
  * @typedef {object} KeyboardMapping
- * @property {Shortcut} key
+ * @property {Keypress} key
  * @property {string} command
  *
- * @typedef {object} Shortcut
+ * @typedef {object} Keypress
  * @property {boolean} ctrlKey
  * @property {boolean} altKey
  * @property {boolean} shiftKey

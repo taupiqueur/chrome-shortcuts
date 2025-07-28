@@ -61,15 +61,15 @@ class MenuItem extends HTMLElement {
   /**
    * Adds keyboard shortcut.
    *
-   * @param {KeyboardEvent} keyboardEvent
+   * @param {Keypress} keypress
    * @returns {void}
    */
-  addKeyboardShortcut(keyboardEvent) {
+  addKeyboardShortcut(keypress) {
     const keyboardShortcutElement = document.createElement('keyboard-shortcut')
     keyboardShortcutElement.slot = 'shortcut'
-    Object.assign(keyboardShortcutElement.dataset, keyboardEvent)
+    Object.assign(keyboardShortcutElement.dataset, keypress)
     this.append(keyboardShortcutElement)
-    this.parentElement.addKeyboardShortcut(keyboardEvent, this)
+    this.parentElement.addKeyboardShortcut(keypress, this)
   }
 }
 
