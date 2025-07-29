@@ -122,15 +122,13 @@ function render({ commandBindings, isEnabled }) {
     if (isDisabled(menuItemElement)) {
       menuItemElement.setAttribute('disabled', '')
       menuItemElement.onclick = (pointerEvent) => {
+        suppressEvent(pointerEvent)
         browserExtensionsNotAllowedPopoverElement.togglePopover()
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       }
     } else {
       menuItemElement.onclick = (pointerEvent) => {
+        suppressEvent(pointerEvent)
         onCommand(commandName)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       }
     }
   }
@@ -138,9 +136,8 @@ function render({ commandBindings, isEnabled }) {
   browserExtensionsNotAllowedPopoverElement.addEventListener('keydown', (keyboardEvent) => {
     switch (keyboardEvent.code) {
       case 'Escape':
+        suppressEvent(keyboardEvent)
         browserExtensionsNotAllowedPopoverElement.hidePopover()
-        keyboardEvent.preventDefault()
-        keyboardEvent.stopImmediatePropagation()
         break
     }
   })
@@ -196,42 +193,36 @@ function onSuggestionSync(suggestions, suggestionLabels) {
       if (
         pointerEventModifiers === Modifier.Alt
       ) {
+        suppressEvent(pointerEvent)
         open(suggestion.url)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
         window.close()
       } else if (
         pointerEventModifiers === Modifier.Control ||
         pointerEventModifiers === Modifier.Meta
       ) {
+        suppressEvent(pointerEvent)
         openNewBackgroundTab(suggestion.url)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       } else if (
         pointerEventModifiers === (Modifier.Control | Modifier.Shift) ||
         pointerEventModifiers === (Modifier.Shift | Modifier.Meta)
       ) {
+        suppressEvent(pointerEvent)
         openNewForegroundTab(suggestion.url)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       } else if (
         pointerEventModifiers === Modifier.Shift
       ) {
+        suppressEvent(pointerEvent)
         openNewWindow(suggestion.url)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       } else {
+        suppressEvent(pointerEvent)
         onSuggestionActivated(suggestion)
-        pointerEvent.preventDefault()
-        pointerEvent.stopImmediatePropagation()
       }
     }
     menuItemElement.onauxclick = (pointerEvent) => {
       switch (pointerEvent.button) {
         case MIDDLE_MOUSE_BUTTON:
+          suppressEvent(pointerEvent)
           openNewBackgroundTab(suggestion.url)
-          pointerEvent.preventDefault()
-          pointerEvent.stopImmediatePropagation()
           break
       }
     }
@@ -328,4 +319,15 @@ function onSuggestionActivated(suggestion) {
  */
 function isModifierKey(key) {
   return MODIFIER_KEYS.has(key)
+}
+
+/**
+ * Prevents the browser’s default handling of the event and stops propagation.
+ *
+ * @param {Event} event
+ * @returns {void}
+ */
+function suppressEvent(event) {
+  event.preventDefault()
+  event.stopImmediatePropagation()
 }

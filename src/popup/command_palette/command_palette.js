@@ -162,6 +162,7 @@ function onPointerOver(pointerEvent, cx) {
  */
 function onKeyDown(keyboardEvent, cx) {
   if (inputKeymap.has(keyboardEvent)) {
+    suppressEvent(keyboardEvent)
     const actionName = inputKeymap.get(keyboardEvent)
     if (actionName in paletteActions) {
       paletteActions[actionName]({
@@ -171,8 +172,6 @@ function onKeyDown(keyboardEvent, cx) {
         mainElement: cx.mainElement,
       })
     }
-    keyboardEvent.preventDefault()
-    keyboardEvent.stopImmediatePropagation()
   }
 }
 
@@ -191,6 +190,17 @@ function debounce(callback, delay) {
       callback(...params)
     }, delay)
   }
+}
+
+/**
+ * Prevents the browser’s default handling of the event and stops propagation.
+ *
+ * @param {Event} event
+ * @returns {void}
+ */
+function suppressEvent(event) {
+  event.preventDefault()
+  event.stopImmediatePropagation()
 }
 
 export default { render }

@@ -90,13 +90,23 @@ class CustomMenu extends HTMLElement {
    */
   onKeyDown(keyboardEvent) {
     if (this.keymap.has(keyboardEvent)) {
+      suppressEvent(keyboardEvent)
       const menuItem = this.keymap.get(keyboardEvent)
       menuItem.focus()
       menuItem.click()
-      keyboardEvent.preventDefault()
-      keyboardEvent.stopImmediatePropagation()
     }
   }
+}
+
+/**
+ * Prevents the browser’s default handling of the event and stops propagation.
+ *
+ * @param {Event} event
+ * @returns {void}
+ */
+function suppressEvent(event) {
+  event.preventDefault()
+  event.stopImmediatePropagation()
 }
 
 customElements.define('custom-menu', CustomMenu)
