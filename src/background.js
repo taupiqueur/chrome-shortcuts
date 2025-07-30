@@ -520,6 +520,9 @@ function onMessage(message, sender) {
       chrome.tabs.sendMessage(sender.tab.id, {
         type: 'stateSync',
         pageBindings: storageCache.pageBindings,
+      }, {
+        frameId: sender.frameId,
+        documentId: sender.documentId,
       })
       break
 

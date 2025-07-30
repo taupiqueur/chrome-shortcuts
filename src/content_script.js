@@ -32,6 +32,22 @@ chrome.runtime.onMessage.addListener((message, sender) => {
   }
 })
 
+window.dispatchEvent(
+  new Event(
+    'scriptinjection'
+  )
+)
+
+window.addEventListener(
+  'scriptinjection',
+  () => {
+    inputHandler.stop()
+  },
+  {
+    once: true,
+  },
+)
+
 chrome.runtime.sendMessage({
   type: 'contentScriptAdded'
 })

@@ -41,7 +41,19 @@ class InputHandler {
    * @returns {void}
    */
   start() {
-    this.eventTarget.addEventListener('keydown', this.onKeyDown.bind(this), {
+    this.eventTarget.addEventListener('keydown', this.onKeyDown, {
+      capture: true,
+      passive: false,
+    })
+  }
+
+  /**
+   * Stops listening for keyboard events.
+   *
+   * @returns {void}
+   */
+  stop() {
+    this.eventTarget.removeEventListener('keydown', this.onKeyDown, {
       capture: true,
       passive: false,
     })
@@ -53,7 +65,7 @@ class InputHandler {
    * @param {KeyboardEvent} keyboardEvent
    * @returns {void}
    */
-  onKeyDown(keyboardEvent) {
+  onKeyDown = (keyboardEvent) => {
     if (
       keyboardEvent.isTrusted &&
       this.keymap.has(keyboardEvent)
