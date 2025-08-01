@@ -265,7 +265,7 @@ async function runContentScripts() {
       'http://*/*',
       'https://*/*'
     ],
-    status: 'complete'
+    discarded: false,
   })
 
   await Promise.allSettled(
@@ -279,7 +279,8 @@ async function runContentScripts() {
           'src/lib/input_handler.js',
           'src/lib/scroller.js',
           'src/content_script.js'
-        ]
+        ],
+        injectImmediately: true,
       })
     )
   )
@@ -297,7 +298,7 @@ async function updateTabsAfterOptionsChange() {
       'http://*/*',
       'https://*/*'
     ],
-    status: 'complete'
+    discarded: false,
   })
 
   await Promise.allSettled(
