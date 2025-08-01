@@ -281,7 +281,7 @@ export const restoreTab = execCommand('restoreTab')
 
 // Tab state -------------------------------------------------------------------
 
-export const duplicateTab = execCommandWithNavigation('duplicateTab')
+export const duplicateTab = execCommandAndClosePopup('duplicateTab')
 export const togglePinTab = execCommand('togglePinTab')
 export const toggleGroupTab = execCommand('toggleGroupTab')
 export const toggleCollapseTabGroups = execCommand('toggleCollapseTabGroups')

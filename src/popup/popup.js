@@ -216,6 +216,7 @@ function onSuggestionSync(suggestions, suggestionLabels) {
       } else {
         suppressEvent(pointerEvent)
         onSuggestionActivated(suggestion)
+        window.close()
       }
     }
     menuItemElement.onauxclick = (pointerEvent) => {
