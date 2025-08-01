@@ -272,7 +272,8 @@ async function runContentScripts() {
     tabs.map((tab) =>
       chrome.scripting.executeScript({
         target: {
-          tabId: tab.id
+          tabId: tab.id,
+          allFrames: true,
         },
         files: [
           'src/lib/keymap.js',
