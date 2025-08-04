@@ -208,6 +208,12 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
 
 ### Single-key keyboard shortcuts
 
+Single-key keyboard shortcuts are only available in the context of web pages
+where browser extensions are allowed.
+
+You can bind `Escape` to open the extension’s popup
+and `Shift+Escape` to simulate pressing the `Escape` key.
+
 <details>
 
 <summary>Example configuration</summary>
