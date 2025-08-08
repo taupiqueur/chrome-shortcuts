@@ -3,12 +3,31 @@
 // See lydell’s work for reference:
 // https://github.com/lydell/LinkHints/blob/main/src/options/Program.tsx
 
+const buttonElements = document.querySelectorAll('button')
+const inputElements = document.querySelectorAll('input')
+const vimModeCheckbox = document.querySelector('input[type="checkbox"][data-action="enableVimMode"]')
+
 // Open a channel to communicate with the service worker.
 const port = chrome.runtime.connect({
   name: 'options'
 })
 
-const buttonElements = document.querySelectorAll('button')
+port.onMessage.addListener((message) => {
+  switch (message.type) {
+    case 'stateSync':
+      onStateSync(message.vimModeEnabled)
+      break
+
+    case 'keepAlive':
+      break
+
+    default:
+      port.postMessage({
+        type: 'error',
+        message: 'Unknown request'
+      })
+  }
+})
 
 // Add action to buttons.
 for (const buttonElement of buttonElements) {
@@ -33,6 +52,38 @@ for (const buttonElement of buttonElements) {
         actionName
       )
   }
+}
+
+for (const inputElement of inputElements) {
+  const actionName = inputElement.dataset.action
+
+  switch (actionName) {
+    case 'enableVimMode':
+      inputElement.addEventListener('change', () => {
+        if (inputElement.checked) {
+          enableVimMode()
+        } else {
+          disableVimMode()
+        }
+      })
+      break
+
+    default:
+      console.error(
+        'Unknown action: "%s"',
+        actionName
+      )
+  }
+}
+
+/**
+ * Handles state syncing.
+ *
+ * @param {boolean} vimModeEnabled
+ * @returns {void}
+ */
+function onStateSync(vimModeEnabled) {
+  vimModeCheckbox.checked = vimModeEnabled
 }
 
 /**
@@ -75,6 +126,28 @@ function saveOptions(partialOptions) {
 function resetOptions() {
   sendMessage({
     type: 'resetOptions'
+  })
+}
+
+/**
+ * Enables Vim mode.
+ *
+ * @returns {void}
+ */
+function enableVimMode() {
+  sendMessage({
+    type: 'enableVimMode'
+  })
+}
+
+/**
+ * Disables Vim mode.
+ *
+ * @returns {void}
+ */
+function disableVimMode() {
+  sendMessage({
+    type: 'disableVimMode'
   })
 }
 

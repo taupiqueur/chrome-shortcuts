@@ -1,0 +1,6 @@
+{
+  "pageBindings": [
+    { "command": "openPopup", "key": { "code": "Escape" } },
+    { "command": "sendEscapeKey", "key": { "shiftKey": true, "code": "Escape" } }
+  ]
+}

@@ -21,6 +21,7 @@ body {
   color: var(--foreground-color);
   font-family: system-ui;
   overflow: hidden;
+  text-wrap: nowrap;
 }
 
 h2 {

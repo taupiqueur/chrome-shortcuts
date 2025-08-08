@@ -214,6 +214,9 @@ where browser extensions are allowed.
 You can bind `Escape` to open the extension’s popup
 and `Shift+Escape` to simulate pressing the `Escape` key.
 
+To enable these keyboard shortcuts—Right-click the Shortcuts toolbar button and select “Options”.
+There, you’ll see a checkbox that allows you to enable “Vim mode”.
+
 <details>
 
 <summary>Example configuration</summary>

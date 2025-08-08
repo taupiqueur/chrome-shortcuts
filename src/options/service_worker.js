@@ -21,12 +21,34 @@ async function getDefaults() {
 }
 
 /**
+ * Retrieves Vim’s defaults.
+ *
+ * @returns {Promise<object>}
+ */
+async function getVimDefaults() {
+  return (
+    fetch('vim_config.json')
+      .then((response) =>
+        response.json()
+      )
+  )
+}
+
+/**
+ * List of active ports.
+ *
+ * @type {Set<chrome.runtime.Port>}
+ */
+const activePorts = new Set
+
+/**
  * Handles a new connection when opening the “Options” page.
  *
  * @param {chrome.runtime.Port} port
  * @returns {void}
  */
 function onConnect(port) {
+  activePorts.add(port)
   const keepAliveIntervalId = setInterval(() => {
     port.postMessage({
       type: 'keepAlive'
@@ -36,6 +58,7 @@ function onConnect(port) {
     onDisconnect(port, keepAliveIntervalId)
   })
   port.onMessage.addListener(onMessage)
+  onOptionsScriptAdded(port)
 }
 
 /**
@@ -46,7 +69,25 @@ function onConnect(port) {
  * @returns {void}
  */
 function onDisconnect(port, keepAliveIntervalId) {
+  activePorts.delete(port)
   clearInterval(keepAliveIntervalId)
+}
+
+/**
+ * Handles the Options page initialization.
+ *
+ * @param {chrome.runtime.Port} port
+ * @returns {Promise<void>}
+ */
+async function onOptionsScriptAdded(port) {
+  const { pageBindings } = await chrome.storage.sync.get('pageBindings')
+
+  if (pageBindings.length > 0) {
+    port.postMessage({
+      type: 'stateSync',
+      vimModeEnabled: true
+    })
+  }
 }
 
 /**
@@ -57,16 +98,28 @@ function onDisconnect(port, keepAliveIntervalId) {
  *
  * @param {object} message
  * @param {chrome.runtime.Port} port
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function onMessage(message, port) {
+async function onMessage(message, port) {
   switch (message.type) {
     case 'saveOptions':
-      saveOptions(message.partialOptions)
+      await saveOptions(message.partialOptions)
+      await updateOptionsPagesAfterOptionsChange()
       break
 
     case 'resetOptions':
-      resetOptions()
+      await resetOptions()
+      await updateOptionsPagesAfterOptionsChange()
+      break
+
+    case 'enableVimMode':
+      await enableVimMode()
+      await updateOptionsPagesAfterOptionsChange()
+      break
+
+    case 'disableVimMode':
+      await disableVimMode()
+      await updateOptionsPagesAfterOptionsChange()
       break
 
     default:
@@ -96,6 +149,43 @@ async function resetOptions() {
   const defaults = await getDefaults()
   await chrome.storage.sync.clear()
   await chrome.storage.sync.set(defaults)
+}
+
+/**
+ * Enables Vim mode.
+ *
+ * @returns {Promise<void>}
+ */
+async function enableVimMode() {
+  const vimDefaults = await getVimDefaults()
+  await chrome.storage.sync.set(vimDefaults)
+}
+
+/**
+ * Disables Vim mode.
+ *
+ * @returns {Promise<void>}
+ */
+async function disableVimMode() {
+  await chrome.storage.sync.set({
+    pageBindings: []
+  })
+}
+
+/**
+ * Updates Options pages after option changes.
+ *
+ * @returns {Promise<void>}
+ */
+async function updateOptionsPagesAfterOptionsChange() {
+  const { pageBindings } = await chrome.storage.sync.get('pageBindings')
+
+  for (const port of activePorts) {
+    port.postMessage({
+      type: 'stateSync',
+      vimModeEnabled: pageBindings.length > 0
+    })
+  }
 }
 
 export default { getDefaults, onConnect }
