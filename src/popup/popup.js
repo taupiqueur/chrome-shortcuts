@@ -52,12 +52,10 @@ const menuCommands = new Map(
   ])
 )
 
-// Open a channel to communicate with the service worker.
 const port = chrome.runtime.connect({
   name: 'popup'
 })
 
-// Listen for messages.
 port.onMessage.addListener((message) => {
   switch (message.type) {
     case 'init':

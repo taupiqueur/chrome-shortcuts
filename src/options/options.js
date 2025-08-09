@@ -7,7 +7,6 @@ const buttonElements = document.querySelectorAll('button')
 const inputElements = document.querySelectorAll('input')
 const vimModeCheckbox = document.querySelector('input[type="checkbox"][data-action="enableVimMode"]')
 
-// Open a channel to communicate with the service worker.
 const port = chrome.runtime.connect({
   name: 'options'
 })
@@ -29,7 +28,6 @@ port.onMessage.addListener((message) => {
   }
 })
 
-// Add action to buttons.
 for (const buttonElement of buttonElements) {
   const actionName = buttonElement.dataset.action
 
