@@ -12,6 +12,8 @@ import MenuItem from '../components/MenuItem.js'
 
 const ACTIVE_MENU_ITEM_SELECTOR = 'menu-item.active'
 
+const SHORT_THROW_FRAME_CALIBRATION = [0.2, 0.2, 0.2, 0.2, 0.2]
+
 const scroller = new Scroller
 
 /**
@@ -168,11 +170,13 @@ export function openSelectedItemInNewWindow(cx) {
  * @returns {void}
  */
 export function movePageDown(cx) {
-  scroller.scrollBy(
-    cx.mainElement,
-    0,
-    window.innerHeight * 0.9
-  )
+  scroller.scrollBy({
+    scrollingElement: cx.mainElement,
+    deltaX: 0,
+    deltaY: window.innerHeight * 0.9,
+    frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+    cancelable: false,
+  })
 }
 
 /**
@@ -182,11 +186,13 @@ export function movePageDown(cx) {
  * @returns {void}
  */
 export function movePageUp(cx) {
-  scroller.scrollBy(
-    cx.mainElement,
-    0,
-    window.innerHeight * -0.9
-  )
+  scroller.scrollBy({
+    scrollingElement: cx.mainElement,
+    deltaX: 0,
+    deltaY: window.innerHeight * -0.9,
+    frameCalibration: SHORT_THROW_FRAME_CALIBRATION,
+    cancelable: false,
+  })
 }
 
 /**
