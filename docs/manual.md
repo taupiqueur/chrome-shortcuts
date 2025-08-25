@@ -18,6 +18,13 @@ The command palette is the main way to search functionality in Shortcuts.
 2. In the search field, type what you’re looking for—results appear as you type.
 3. Choose a suggestion and press `Enter` to activate the selection.
 
+### Search keyboard shortcuts
+
+The command palette includes both the shortcuts you configure in Shortcuts
+and the keyboard shortcuts defined in Chrome’s “Extension shortcuts” interface.
+These shortcuts are synced and translated to key codes
+when the extension first starts up.
+
 ### Search by the type of items
 
 You can use keywords to specify the type of items you’re searching for, such as tabs or bookmarks.

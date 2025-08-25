@@ -48,19 +48,31 @@ class KeyboardShortcut extends HTMLElement {
       }
     }
 
-    if (this.dataset.ctrlKey) {
+    if (
+      this.dataset.ctrlKey === 'true' ||
+      this.dataset.ctrlKey === ''
+    ) {
       this.addKey('ctrlKey', 'Control', keyDisplay.ctrlKey)
     }
 
-    if (this.dataset.altKey) {
+    if (
+      this.dataset.altKey === 'true' ||
+      this.dataset.altKey === ''
+    ) {
       this.addKey('altKey', 'Alt', keyDisplay.altKey)
     }
 
-    if (this.dataset.shiftKey) {
+    if (
+      this.dataset.shiftKey === 'true' ||
+      this.dataset.shiftKey === ''
+    ) {
       this.addKey('shiftKey', 'Shift', keyDisplay.shiftKey)
     }
 
-    if (this.dataset.metaKey) {
+    if (
+      this.dataset.metaKey === 'true' ||
+      this.dataset.metaKey === ''
+    ) {
       this.addKey('metaKey', 'Meta', keyDisplay.metaKey)
     }
 

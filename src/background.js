@@ -16,6 +16,129 @@ const COMMAND_NAME_OFFSET = 4
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 
+const {
+  WIN: WIN_PLATFORM_OS,
+  LINUX: LINUX_PLATFORM_OS,
+  MAC: MAC_PLATFORM_OS,
+} = chrome.runtime.PlatformOs
+
+const {
+  OFFSCREEN_DOCUMENT: OFFSCREEN_DOCUMENT_CONTEXT_TYPE,
+} = chrome.runtime.ContextType
+
+const {
+  WORKERS: KEYBOARD_OFFSCREEN_REASON,
+} = chrome.offscreen.Reason
+
+const OFFSCREEN_DOCUMENT_PATH = 'src/offscreen/offscreen.html'
+
+const WIN_LINUX_CHROME_COMMAND_KEY_TRANSLATIONS = {
+  'A': 'a',
+  'B': 'b',
+  'C': 'c',
+  'D': 'd',
+  'E': 'e',
+  'F': 'f',
+  'G': 'g',
+  'H': 'h',
+  'I': 'i',
+  'J': 'j',
+  'K': 'k',
+  'L': 'l',
+  'M': 'm',
+  'N': 'n',
+  'O': 'o',
+  'P': 'p',
+  'Q': 'q',
+  'R': 'r',
+  'S': 's',
+  'T': 't',
+  'U': 'u',
+  'V': 'v',
+  'W': 'w',
+  'X': 'x',
+  'Y': 'y',
+  'Z': 'z',
+  '0': '0',
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4': '4',
+  '5': '5',
+  '6': '6',
+  '7': '7',
+  '8': '8',
+  '9': '9',
+  'Comma': ',',
+  'Period': '.',
+  'Home': 'Home',
+  'End': 'End',
+  'Page Up': 'PageUp',
+  'Page Down': 'PageDown',
+  'Space': 'Space',
+  'Ins': 'Insert',
+  'Del': 'Delete',
+  'Up Arrow': 'ArrowUp',
+  'Down Arrow': 'ArrowDown',
+  'Left Arrow': 'ArrowLeft',
+  'Right Arrow': 'ArrowRight',
+}
+
+const MACOS_CHROME_COMMAND_KEY_TRANSLATIONS = {
+  'A': 'a',
+  'B': 'b',
+  'C': 'c',
+  'D': 'd',
+  'E': 'e',
+  'F': 'f',
+  'G': 'g',
+  'H': 'h',
+  'I': 'i',
+  'J': 'j',
+  'K': 'k',
+  'L': 'l',
+  'M': 'm',
+  'N': 'n',
+  'O': 'o',
+  'P': 'p',
+  'Q': 'q',
+  'R': 'r',
+  'S': 's',
+  'T': 't',
+  'U': 'u',
+  'V': 'v',
+  'W': 'w',
+  'X': 'x',
+  'Y': 'y',
+  'Z': 'z',
+  '0': '0',
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4': '4',
+  '5': '5',
+  '6': '6',
+  '7': '7',
+  '8': '8',
+  '9': '9',
+  ',': ',',
+  '.': '.',
+  '↖': 'Home',
+  '↘': 'End',
+  '⇞': 'PageUp',
+  '⇟': 'PageDown',
+  'Space': 'Space',
+  'Ins': 'Insert',
+  'Del': 'Delete',
+  '↑': 'ArrowUp',
+  '↓': 'ArrowDown',
+  '←': 'ArrowLeft',
+  '→': 'ArrowRight',
+}
+
+const WIN_LINUX_CHROME_COMMAND_SHORTCUT_REGEX = /^(?<ctrlKey>Ctrl\+)?(?<altKey>Alt\+)?(?<shiftKey>Shift\+)?(?<key>(A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|0|1|2|3|4|5|6|7|8|9|Comma|Period|Home|End|Page\sUp|Page\sDown|Space|Ins|Del|Up\sArrow|Down\sArrow|Left\sArrow|Right\sArrow))$/
+const MACOS_CHROME_COMMAND_SHORTCUT_REGEX = /^(?<ctrlKey>⌃)?(?<altKey>⌥)?(?<shiftKey>⇧)?(?<metaKey>⌘)?(?<key>(A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|0|1|2|3|4|5|6|7|8|9|,|\.|↖|↘|⇞|⇟|Space|Ins|Del|↑|↓|←|→))$/
+
 const recentTabsManager = new RecentTabsManager
 
 const suggestionEngine = new SuggestionEngine({
@@ -42,6 +165,7 @@ const suggestionLabels = new Map([
  * @property {KeyboardMapping[]} commandBindings
  * @property {KeyboardMapping[]} paletteBindings
  * @property {KeyboardMapping[]} pageBindings
+ * @property {KeyboardMapping[]} chromeCommandBindings
  * @property {string} homePage
  * @property {string} manualPage
  * @property {string} optionsPage
@@ -97,6 +221,137 @@ async function setLocalizedPages() {
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts',
       })
   }
+}
+
+/**
+ * Configures Chrome command bindings.
+ *
+ * Keyboard shortcuts from the “Extension shortcuts” interface are translated
+ * into their corresponding `KeyboardEvent.code` values.
+ *
+ * @returns {Promise<void>}
+ */
+async function setChromeCommandBindings() {
+  const offscreenDocumentURL = chrome.runtime.getURL(
+    OFFSCREEN_DOCUMENT_PATH
+  )
+
+  const platformInfo = await chrome.runtime.getPlatformInfo()
+
+  /**
+   * @type {Object<string, string>}
+   */
+  let keyTranslations
+
+  /**
+   * @type {RegExp}
+   */
+  let shortcutRegex
+
+  switch (platformInfo.os) {
+    case WIN_PLATFORM_OS:
+    case LINUX_PLATFORM_OS:
+      keyTranslations = WIN_LINUX_CHROME_COMMAND_KEY_TRANSLATIONS
+      shortcutRegex = WIN_LINUX_CHROME_COMMAND_SHORTCUT_REGEX
+      break
+
+    case MAC_PLATFORM_OS:
+      keyTranslations = MACOS_CHROME_COMMAND_KEY_TRANSLATIONS
+      shortcutRegex = MACOS_CHROME_COMMAND_SHORTCUT_REGEX
+      break
+
+    default:
+      keyTranslations = WIN_LINUX_CHROME_COMMAND_KEY_TRANSLATIONS
+      shortcutRegex = WIN_LINUX_CHROME_COMMAND_SHORTCUT_REGEX
+  }
+
+  const existingContexts = await chrome.runtime.getContexts({
+    contextTypes: [
+      OFFSCREEN_DOCUMENT_CONTEXT_TYPE
+    ],
+    documentUrls: [
+      offscreenDocumentURL
+    ],
+  })
+
+  if (existingContexts.length === 0) {
+    await chrome.offscreen.createDocument({
+      url: offscreenDocumentURL,
+      reasons: [
+        KEYBOARD_OFFSCREEN_REASON
+      ],
+      justification: chrome.i18n.getMessage(
+        'offscreenPermissionJustification'
+      ),
+    })
+  }
+
+  /**
+   * @type {Object<string, string>}
+   */
+  const keyboardLayout = await chrome.runtime.sendMessage({
+    type: 'keyboardLayout'
+  })
+
+  /**
+   * @type {Object<string, string>}
+   */
+  const transposedLayout = {}
+
+  for (const [code, key] of Object.entries(keyboardLayout)) {
+    transposedLayout[key] = code
+  }
+
+  const commands = await chrome.commands.getAll()
+
+  /**
+   * @param {string} commandShortcut
+   * @returns {Keypress}
+   */
+  function deserializeShortcut(commandShortcut) {
+    const matches =
+      commandShortcut.match(shortcutRegex)
+
+    return {
+      ctrlKey: matches.groups.ctrlKey !== undefined,
+      altKey: matches.groups.altKey !== undefined,
+      shiftKey: matches.groups.shiftKey !== undefined,
+      metaKey: matches.groups.metaKey !== undefined,
+      key: keyTranslations[matches.groups.key],
+    }
+  }
+
+  /**
+   * @type {KeyboardMapping[]}
+   */
+  const chromeCommandBindings = Iterator.from(commands)
+    .drop(1)
+    .filter((command) =>
+      command.shortcut !== '' &&
+      shortcutRegex.test(command.shortcut)
+    )
+    .map((command) => {
+      const shortcut =
+        deserializeShortcut(command.shortcut)
+
+      return {
+        command: command.name.substring(COMMAND_NAME_OFFSET),
+        key: {
+          ctrlKey: shortcut.ctrlKey,
+          altKey: shortcut.altKey,
+          shiftKey: shortcut.shiftKey,
+          metaKey: shortcut.metaKey,
+          code: transposedLayout[shortcut.key] ?? shortcut.key,
+        }
+      }
+    })
+    .toArray()
+
+  await chrome.storage.session.set({
+    chromeCommandBindings
+  })
+
+  await chrome.offscreen.closeDocument()
 }
 
 /**
@@ -161,9 +416,12 @@ function onInstalled(details) {
 async function onInstall() {
   const defaults = await optionsWorker.getDefaults()
   await chrome.storage.sync.set(defaults)
-  await setLocalizedPages()
   createMenuItems()
-  await runContentScripts()
+  await Promise.all([
+    setChromeCommandBindings(),
+    setLocalizedPages(),
+    runContentScripts(),
+  ])
   await chrome.tabs.create({
     active: true,
     url: storageCache.homePage
@@ -221,16 +479,22 @@ async function onUpdate(previousVersion) {
     case '0.16.0': {
       const defaults = await optionsWorker.getDefaults()
       await chrome.storage.sync.set(defaults)
-      await setLocalizedPages()
       createMenuItems()
-      await runContentScripts()
+      await Promise.all([
+        setChromeCommandBindings(),
+        setLocalizedPages(),
+        runContentScripts(),
+      ])
       break
     }
 
     default:
-      await setLocalizedPages()
       createMenuItems()
-      await runContentScripts()
+      await Promise.all([
+        setChromeCommandBindings(),
+        setLocalizedPages(),
+        runContentScripts(),
+      ])
   }
 }
 
@@ -240,13 +504,17 @@ async function onUpdate(previousVersion) {
  *
  * https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onStartup
  *
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function onStartup() {
-  setLocalizedPages()
-  chrome.contextMenus.removeAll()
-  createMenuItems()
-  recentTabsManager.onStartup()
+async function onStartup() {
+  await Promise.all([
+    setChromeCommandBindings(),
+    setLocalizedPages(),
+    chrome.contextMenus.removeAll().then(
+      createMenuItems
+    ),
+    recentTabsManager.onStartup(),
+  ])
 }
 
 /**
@@ -562,7 +830,7 @@ function onConnect(port) {
         recentTabsManager,
         suggestionEngine,
         suggestionLabels,
-        commandBindings: storageCache.commandBindings,
+        commandBindings: storageCache.commandBindings.concat(storageCache.chromeCommandBindings),
         paletteBindings: storageCache.paletteBindings,
         manualPage: storageCache.manualPage,
         shortcutsPage: storageCache.shortcutsPage,

@@ -5,6 +5,9 @@
   "extensionDescription": {
     "message": "Perform common tasks with your keyboard."
   },
+  "offscreenPermissionJustification": {
+    "message": "This permission is used to retrieve keyboard layout maps to augment command bindings with shortcuts in the “Extension shortcuts” interface."
+  },
   "goBackCommandDescription": {
     "message": "Navigation · Go back to the previous page in tab’s history"
   },

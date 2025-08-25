@@ -17,6 +17,7 @@ Permission | Justification
 [`"history"`] | This permission is used to get recently visited page suggestions.
 [`"management"`] | This permission is used to get installed extension suggestions.
 [`"notifications"`] | This permission is used to give users feedback after copying text and creating bookmarks.
+[`"offscreen"`] | This permission is used to retrieve keyboard layout maps to augment command bindings with shortcuts in the “Extension shortcuts” interface.
 [`"pageCapture"`] | This permission is used to save pages as MHTML.
 [`"readingList"`] | This permission is used to add tabs to your reading list and get reading list suggestions.
 [`"scripting"`] | This permission is used to interact with web pages and write text to the system clipboard.
@@ -37,6 +38,7 @@ Permission | Justification
 [`"history"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#history
 [`"management"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#management
 [`"notifications"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#notifications
+[`"offscreen"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#offscreen
 [`"pageCapture"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#pageCapture
 [`"readingList"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#readingList
 [`"scripting"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#scripting

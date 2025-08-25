@@ -5,6 +5,9 @@
   "extensionDescription": {
     "message": "Effectuer des tâches rapidement au clavier."
   },
+  "offscreenPermissionJustification": {
+    "message": "Cette permission est utilisée pour récupérer les mappages de disposition du clavier afin d’augmenter les raccourcis du menu de l’extension avec ceux des options « Raccourcis clavier »."
+  },
   "goBackCommandDescription": {
     "message": "Navigation · Accéder à la page précédente de l’historique de navigation"
   },
