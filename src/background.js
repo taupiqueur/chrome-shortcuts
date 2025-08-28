@@ -388,6 +388,33 @@ function createMenuItems() {
 }
 
 /**
+ * Updates items of the browser’s context menu.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/contextMenus
+ *
+ * @returns {Promise<void>}
+ */
+async function updateMenuItems() {
+  await Promise.all([
+    chrome.contextMenus.update('open_documentation', {
+      title: chrome.i18n.getMessage('openDocumentationMenuItemTitle')
+    }),
+
+    chrome.contextMenus.update('open_support_chat', {
+      title: chrome.i18n.getMessage('openSupportChatMenuItemTitle')
+    }),
+
+    chrome.contextMenus.update('open_sponsorship_page', {
+      title: chrome.i18n.getMessage('openSponsorshipPageMenuItemTitle')
+    }),
+
+    chrome.contextMenus.update('copy_debug_info', {
+      title: chrome.i18n.getMessage('copyDebugInfoMenuItemTitle')
+    }),
+  ])
+}
+
+/**
  * Handles the initial setup when the extension is first installed or updated to a new version.
  *
  * https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onInstalled
@@ -510,9 +537,7 @@ async function onStartup() {
   await Promise.all([
     setChromeCommandBindings(),
     setLocalizedPages(),
-    chrome.contextMenus.removeAll().then(
-      createMenuItems
-    ),
+    updateMenuItems(),
     recentTabsManager.onStartup(),
   ])
 }
