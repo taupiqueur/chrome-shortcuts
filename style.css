@@ -6,6 +6,7 @@
   :root {
     --background-color: #ffffff;
     --foreground-color: #202020;
+    --separator-color: #e8f0fe66;
     --tag-pill-background-color: #e8f0fe66;
     --tag-pill-text-color: #174ea6;
   }
@@ -15,6 +16,7 @@
   :root {
     --background-color: #202020;
     --foreground-color: #eaeaea;
+    --separator-color: #2d333b;
     --tag-pill-background-color: #2d333b;
     --tag-pill-text-color: #c5d1de;
   }
@@ -85,6 +87,14 @@ nav ul {
   padding: 0;
   gap: 0 2ch;
   flex-wrap: wrap;
+}
+
+footer {
+  display: flex;
+  justify-content: safe center;
+  font-size: 0.9em;
+  padding: 1rem 0.5rem;
+  border-top: 1px solid var(--separator-color);
 }
 
 table {
