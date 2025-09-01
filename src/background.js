@@ -12,6 +12,10 @@ import manualWorker from './manual/service_worker.js'
 import RecentTabsManager from './recent_tabs_manager.js'
 import SuggestionEngine, { SuggestionType } from './suggestion_engine/suggestion_engine.js'
 
+const { compare: versionCompare } = new Intl.Collator('en-US', {
+  numeric: true
+})
+
 const COMMAND_NAME_OFFSET = 4
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
@@ -462,66 +466,24 @@ async function onInstall() {
  * @returns {Promise<void>}
  */
 async function onUpdate(previousVersion) {
-  switch (previousVersion) {
-    case '0.1.0':
-    case '0.2.0':
-    case '0.2.1':
-    case '0.3.0':
-    case '0.3.1':
-    case '0.3.2':
-    case '0.3.3':
-    case '0.3.4':
-    case '0.3.5':
-    case '0.4.0':
-    case '0.5.0':
-    case '0.6.0':
-    case '0.7.0':
-    case '0.7.1':
-    case '0.7.2':
-    case '0.7.3':
-    case '0.7.4':
-    case '0.8.0':
-    case '0.8.1':
-    case '0.9.0':
-    case '0.9.1':
-    case '0.9.2':
-    case '0.10.0':
-    case '0.10.1':
-    case '0.11.0':
-    case '0.11.1':
-    case '0.11.2':
-    case '0.11.3':
-    case '0.11.4':
-    case '0.12.0':
-    case '0.12.1':
-    case '0.12.2':
-    case '0.13.0':
-    case '0.14.0':
-    case '0.14.1':
-    case '0.14.2':
-    case '0.14.3':
-    case '0.14.4':
-    case '0.14.5':
-    case '0.15.0':
-    case '0.16.0': {
-      const defaults = await optionsWorker.getDefaults()
-      await chrome.storage.sync.set(defaults)
-      createMenuItems()
-      await Promise.all([
-        setChromeCommandBindings(),
-        setLocalizedPages(),
-        runContentScripts(),
-      ])
-      break
-    }
-
-    default:
-      createMenuItems()
-      await Promise.all([
-        setChromeCommandBindings(),
-        setLocalizedPages(),
-        runContentScripts(),
-      ])
+  if (
+    versionCompare(previousVersion, '0.18.0') < 0
+  ) {
+    const defaults = await optionsWorker.getDefaults()
+    await chrome.storage.sync.set(defaults)
+    createMenuItems()
+    await Promise.all([
+      setChromeCommandBindings(),
+      setLocalizedPages(),
+      runContentScripts(),
+    ])
+  } else {
+    createMenuItems()
+    await Promise.all([
+      setChromeCommandBindings(),
+      setLocalizedPages(),
+      runContentScripts(),
+    ])
   }
 }
 
