@@ -416,6 +416,7 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"minimizeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"maximizeWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyM"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"toggleFullScreen"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyF"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"togglePictureInPicture"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyV"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTab"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyT"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTabRight"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyO"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewWindow"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyN"</span> } },
@@ -573,6 +574,7 @@
     { &quot;command&quot;: &quot;minimizeWindow&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyM&quot; } },
     { &quot;command&quot;: &quot;maximizeWindow&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyM&quot; } },
     { &quot;command&quot;: &quot;toggleFullScreen&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyF&quot; } },
+    { &quot;command&quot;: &quot;togglePictureInPicture&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyV&quot; } },
     { &quot;command&quot;: &quot;openNewTab&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyT&quot; } },
     { &quot;command&quot;: &quot;openNewTabRight&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyO&quot; } },
     { &quot;command&quot;: &quot;openNewWindow&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyN&quot; } },
@@ -1625,9 +1627,21 @@
                     <kbd class="code">KeyF</kbd>
                   </td>
                 </tr>
+                <tr>
+                  <td data-label="Commande"><code>toggle<wbr>Picture<wbr>In<wbr>Picture</code></td>
+                  <td data-label="Description">Activer ou désactiver le mode picture-in-picture</td>
+                  <td data-label="Raccourci Windows et Linux"></td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci du menu Shortcuts">
+                    <kbd>Alt</kbd>+<wbr><kbd class="code">KeyV</kbd>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
+          <p role="important">
+            Important : L’activation du mode picture-in-picture nécessite une action utilisateur.
+          </p>
         </section>
         <section id="create_tabs_commands">
           <h3>

@@ -106,6 +106,7 @@ export const zoomReset = message('zoomReset')
 export const minimizeWindow = message('minimizeWindow')
 export const maximizeWindow = message('maximizeWindow')
 export const toggleFullScreen = message('toggleFullScreen')
+export const togglePictureInPicture = message('togglePictureInPicture')
 
 // Create tabs -----------------------------------------------------------------
 

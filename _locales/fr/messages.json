@@ -113,6 +113,9 @@
   "toggleFullScreenCommandDescription": {
     "message": "Gérer les fenêtres · Activer ou désactiver le mode plein écran"
   },
+  "togglePictureInPictureCommandDescription": {
+    "message": "Gérer les fenêtres · Activer ou désactiver le mode picture-in-picture"
+  },
   "openNewTabCommandDescription": {
     "message": "Créer des onglets · Ouvrir un nouvel onglet"
   },
@@ -385,6 +388,9 @@
   },
   "copyTitleAndURLNotificationMessage": {
     "message": "$1 titres et adresses copiés dans le presse-papiers"
+  },
+  "enterPictureInPictureButtonLabel": {
+    "message": "Activer le mode picture-in-picture"
   },
   "bookmarkTabNotificationTitle": {
     "message": "Onglets ajoutés aux favoris"

@@ -43,6 +43,7 @@
     { "command": "minimizeWindow", "key": { "ctrlKey": true, "code": "KeyM" } },
     { "command": "maximizeWindow", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyM" } },
     { "command": "toggleFullScreen", "key": { "code": "KeyF" } },
+    { "command": "togglePictureInPicture", "key": { "altKey": true, "code": "KeyV" } },
     { "command": "openNewTab", "key": { "code": "KeyT" } },
     { "command": "openNewTabRight", "key": { "code": "KeyO" } },
     { "command": "openNewWindow", "key": { "code": "KeyN" } },

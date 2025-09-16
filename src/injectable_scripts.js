@@ -242,3 +242,99 @@ export function cancelAnimationFrames() {
 export function prompt(message, defaultValue) {
   return window.prompt(message, defaultValue)
 }
+
+/**
+ * Turns picture-in-picture mode on or off.
+ *
+ * Shortcuts will attempt to open the most relevant video on the page
+ * into a picture-in-picture window, or will close it if already open.
+ *
+ * IMPORTANT: Entering picture-in-picture mode requires a user gesture.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/Picture-in-Picture_API
+ *
+ * @returns {Promise<void>}
+ */
+export async function togglePictureInPicture() {
+  if (document.pictureInPictureElement) {
+    await document.exitPictureInPicture()
+  } else {
+    const videoElements = Array.from(
+      getAllElements(document)
+    )
+      .filter((element) =>
+        element.localName === 'video' &&
+        element.readyState !== HTMLMediaElement.HAVE_NOTHING &&
+        element.disablePictureInPicture === false &&
+        element.checkVisibility({
+          opacityProperty: true,
+          visibilityProperty: true,
+          contentVisibilityAuto: true,
+        })
+      )
+      .sort((videoElement, otherVideoElement) =>
+        videoElement.paused - otherVideoElement.paused ||
+        videoElement.muted - otherVideoElement.muted
+      )
+
+    if (videoElements.length > 0) {
+      const videoElement = videoElements[0]
+
+      if (navigator.userActivation.isActive) {
+        await videoElement.requestPictureInPicture()
+        videoElement.addEventListener(
+          'leavepictureinpicture',
+          () => {
+            if (!document.hasFocus()) {
+              videoElement.pause()
+            }
+          },
+          {
+            once: true,
+          },
+        )
+      } else {
+        const buttonElement = document.createElement('button')
+        buttonElement.textContent = chrome.i18n.getMessage(
+          'enterPictureInPictureButtonLabel'
+        )
+        buttonElement.style.all = 'revert'
+        buttonElement.style.position = 'fixed'
+        buttonElement.style.zIndex = '2147483647'
+        buttonElement.style.top = '50%'
+        buttonElement.style.left = '50%'
+        buttonElement.addEventListener('click', async () => {
+          await videoElement.requestPictureInPicture()
+          videoElement.addEventListener(
+            'leavepictureinpicture',
+            () => {
+              if (!document.hasFocus()) {
+                videoElement.pause()
+              }
+            },
+            {
+              once: true,
+            },
+          )
+          buttonElement.remove()
+        })
+        buttonElement.addEventListener('focusout', () => {
+          buttonElement.remove()
+        })
+        buttonElement.addEventListener('keydown', (keyboardEvent) => {
+          switch (keyboardEvent.code) {
+            case 'Escape':
+              buttonElement.remove()
+              break
+          }
+        })
+        document.documentElement.append(
+          buttonElement
+        )
+        buttonElement.focus({
+          preventScroll: true,
+        })
+      }
+    }
+  }
+}

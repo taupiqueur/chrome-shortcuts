@@ -103,6 +103,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "minimizeWindow", "key": { "ctrlKey": true, "code": "KeyM" } },
     { "command": "maximizeWindow", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyM" } },
     { "command": "toggleFullScreen", "key": { "code": "KeyF" } },
+    { "command": "togglePictureInPicture", "key": { "altKey": true, "code": "KeyV" } },
     { "command": "openNewTab", "key": { "code": "KeyT" } },
     { "command": "openNewTabRight", "key": { "code": "KeyO" } },
     { "command": "openNewWindow", "key": { "code": "KeyN" } },
@@ -397,6 +398,10 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `minimizeWindow` | Minimize the current window | `Alt+Space` then `N` | `Command+M` | `Control+KeyM`
 `maximizeWindow` | Maximize the current window | `Alt+Space` then `X` | | `Control+Shift+KeyM`
 `toggleFullScreen` | Turn full-screen mode on or off | `F11` | `Globe+F`, `Control+Command+F` | `KeyF`
+`togglePictureInPicture` | Turn picture-in-picture mode on or off | | | `Alt+KeyV`
+
+> [!IMPORTANT]
+> Entering picture-in-picture mode requires a user gesture.
 
 ### Create tabs
 

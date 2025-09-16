@@ -263,6 +263,7 @@ export const zoomReset = execCommand('zoomReset')
 export const minimizeWindow = execCommandAndClosePopup('minimizeWindow')
 export const maximizeWindow = execCommandAndClosePopup('maximizeWindow')
 export const toggleFullScreen = execCommandAndClosePopup('toggleFullScreen')
+export const togglePictureInPicture = execCommandAndClosePopup('togglePictureInPicture')
 
 // Create tabs -----------------------------------------------------------------
 

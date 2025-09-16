@@ -38,6 +38,7 @@ import {
   scrollByPages,
   scrollTo,
   scrollToMax,
+  togglePictureInPicture as togglePictureInPictureInjectableFunction,
   writeTextToClipboard,
 } from './injectable_scripts.js'
 
@@ -1025,6 +1026,29 @@ export async function toggleFullScreen(cx) {
 
   await chrome.windows.update(windowInfo.id, {
     state: windowInfo.state === 'fullscreen' ? 'normal' : 'fullscreen'
+  })
+}
+
+/**
+ * Turns picture-in-picture mode on or off.
+ *
+ * Shortcuts will attempt to open the most relevant video on the page
+ * into a picture-in-picture window, or will close it if already open.
+ *
+ * IMPORTANT: Entering picture-in-picture mode requires a user gesture.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/Picture-in-Picture_API
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function togglePictureInPicture(cx) {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id,
+      allFrames: true,
+    },
+    func: togglePictureInPictureInjectableFunction,
   })
 }
 
