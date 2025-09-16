@@ -89,9 +89,9 @@ export async function writeTextToClipboard(text) {
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
  *
- * @returns {Promise<?string>}
+ * @returns {?string}
  */
-export async function getSelectedText() {
+export function getSelectedText() {
   const selection = window.getSelection()
 
   switch (selection.type) {
