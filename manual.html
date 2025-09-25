@@ -50,6 +50,11 @@
                 </a>
               </li>
               <li>
+                <a href="#appearance_and_custom_themes">
+                  Appearance and custom themes
+                </a>
+              </li>
+              <li>
                 <a href="#in_practice">
                   In practice?
                 </a>
@@ -727,6 +732,120 @@
   &quot;pageBindings&quot;: [
     { &quot;command&quot;: &quot;openPopup&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;Escape&quot; } },
     { &quot;command&quot;: &quot;sendEscapeKey&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Escape&quot; } }
+  ]
+}
+"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </details>
+        </section>
+        <section id="appearance_and_custom_themes">
+          <h3>
+            <a href="#appearance_and_custom_themes">
+              Appearance and custom themes
+            </a>
+          </h3>
+          <p>
+            You can customize the extension’s popup appearance with CSS overrides.
+          </p>
+          <p>
+            To import a theme:
+          </p>
+          <ol>
+            <li>
+              Right-click the Shortcuts toolbar button and select “Options”.
+            </li>
+            <li>
+              Click “Import”, select the file that contains the theme, then click “Open”.
+            </li>
+          </ol>
+          <p>
+            To restore the default theme:
+          </p>
+          <ol>
+            <li>
+              Right-click the Shortcuts toolbar button and select “Options”.
+            </li>
+            <li>
+              Choose “Basic theme”.
+            </li>
+          </ol>
+          <details>
+            <summary>Example configuration</summary>
+            <div class="code-block-container">
+              <pre><code data-lang="json">{
+  <span data-type="string">"popupStyleSheet"</span>: [
+    <span data-type="string">":root {"</span>,
+    <span data-type="string">"--background-color: light-dark(white, black);"</span>,
+    <span data-type="string">"--foreground-color: light-dark(black, white);"</span>,
+    <span data-type="string">"--scrollbar-thumb-color: light-dark(lightgray, dimgray);"</span>,
+    <span data-type="string">"--scrollbar-track-color: light-dark(white, black);"</span>,
+    <span data-type="string">"--text-field-background-color: light-dark(whitesmoke, var(--light-black-color));"</span>,
+    <span data-type="string">"--placeholder-text-color: light-dark(silver, gray);"</span>,
+    <span data-type="string">"--primary-button-text-color: light-dark(white, white);"</span>,
+    <span data-type="string">"--primary-button-background-color: light-dark(royalblue, royalblue);"</span>,
+    <span data-type="string">"--primary-button-active-background-color: light-dark(var(--dark-blue-color), var(--light-blue-color));"</span>,
+    <span data-type="string">"--selected-text-color: light-dark(white, white);"</span>,
+    <span data-type="string">"--selected-text-background-color: light-dark(royalblue, royalblue);"</span>,
+    <span data-type="string">"--control-accent-color: light-dark(royalblue, royalblue);"</span>,
+    <span data-type="string">"--keyboard-focus-indicator-color: light-dark(royalblue, royalblue);"</span>,
+    <span data-type="string">"--label-color: light-dark(black, white);"</span>,
+    <span data-type="string">"--secondary-label-color: light-dark(black, white);"</span>,
+    <span data-type="string">"--tertiary-label-color: light-dark(silver, gray);"</span>,
+    <span data-type="string">"--disabled-control-text-color: light-dark(silver, gray);"</span>,
+    <span data-type="string">"--separator-color: light-dark(lightgray, var(--light-black-color));"</span>,
+    <span data-type="string">"--shadow-color: light-dark(lightgray, black);"</span>,
+    <span data-type="string">"--popover-background-color: light-dark(white, black);"</span>,
+    <span data-type="string">"--popover-text-color: light-dark(black, white);"</span>,
+    <span data-type="string">"--popover-border-color: light-dark(lightgray, lightgray);"</span>,
+    <span data-type="string">"--tag-pill-background-color: light-dark(white, black);"</span>,
+    <span data-type="string">"--tag-pill-text-color: light-dark(royalblue, powderblue);"</span>,
+    <span data-type="string">"--light-black-color: oklch(from black calc(l + 0.3) c h);"</span>,
+    <span data-type="string">"--light-blue-color: oklch(from royalblue calc(l + 0.05) c h);"</span>,
+    <span data-type="string">"--dark-blue-color: oklch(from royalblue calc(l - 0.05) c h);"</span>,
+    <span data-type="string">"}"</span>
+  ]
+}
+</code></pre>
+              <div>
+                <button
+                  aria-label="Copy"
+                  data-copy-feedback="Copied!"
+                  data-action="copyToClipboard"
+                  value="{
+  &quot;popupStyleSheet&quot;: [
+    &quot;:root {&quot;,
+    &quot;--background-color: light-dark(white, black);&quot;,
+    &quot;--foreground-color: light-dark(black, white);&quot;,
+    &quot;--scrollbar-thumb-color: light-dark(lightgray, dimgray);&quot;,
+    &quot;--scrollbar-track-color: light-dark(white, black);&quot;,
+    &quot;--text-field-background-color: light-dark(whitesmoke, var(--light-black-color));&quot;,
+    &quot;--placeholder-text-color: light-dark(silver, gray);&quot;,
+    &quot;--primary-button-text-color: light-dark(white, white);&quot;,
+    &quot;--primary-button-background-color: light-dark(royalblue, royalblue);&quot;,
+    &quot;--primary-button-active-background-color: light-dark(var(--dark-blue-color), var(--light-blue-color));&quot;,
+    &quot;--selected-text-color: light-dark(white, white);&quot;,
+    &quot;--selected-text-background-color: light-dark(royalblue, royalblue);&quot;,
+    &quot;--control-accent-color: light-dark(royalblue, royalblue);&quot;,
+    &quot;--keyboard-focus-indicator-color: light-dark(royalblue, royalblue);&quot;,
+    &quot;--label-color: light-dark(black, white);&quot;,
+    &quot;--secondary-label-color: light-dark(black, white);&quot;,
+    &quot;--tertiary-label-color: light-dark(silver, gray);&quot;,
+    &quot;--disabled-control-text-color: light-dark(silver, gray);&quot;,
+    &quot;--separator-color: light-dark(lightgray, var(--light-black-color));&quot;,
+    &quot;--shadow-color: light-dark(lightgray, black);&quot;,
+    &quot;--popover-background-color: light-dark(white, black);&quot;,
+    &quot;--popover-text-color: light-dark(black, white);&quot;,
+    &quot;--popover-border-color: light-dark(lightgray, lightgray);&quot;,
+    &quot;--tag-pill-background-color: light-dark(white, black);&quot;,
+    &quot;--tag-pill-text-color: light-dark(royalblue, powderblue);&quot;,
+    &quot;--light-black-color: oklch(from black calc(l + 0.3) c h);&quot;,
+    &quot;--light-blue-color: oklch(from royalblue calc(l + 0.05) c h);&quot;,
+    &quot;--dark-blue-color: oklch(from royalblue calc(l - 0.05) c h);&quot;,
+    &quot;}&quot;
   ]
 }
 "
