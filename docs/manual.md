@@ -240,6 +240,62 @@ There, you’ll see a checkbox that allows you to enable “Vim mode”.
 
 </details>
 
+### Appearance and custom themes
+
+You can customize the extension’s popup appearance with CSS overrides.
+
+To import a theme:
+
+1. Right-click the Shortcuts toolbar button and select “Options”.
+2. Click “Import”, select the file that contains the theme, then click “Open”.
+
+To restore the default theme:
+
+1. Right-click the Shortcuts toolbar button and select “Options”.
+2. Choose “Basic theme”.
+
+<details>
+
+<summary>Example configuration</summary>
+
+``` json
+{
+  "popupStyleSheet": [
+    ":root {",
+    "--background-color: light-dark(white, black);",
+    "--foreground-color: light-dark(black, white);",
+    "--scrollbar-thumb-color: light-dark(lightgray, dimgray);",
+    "--scrollbar-track-color: light-dark(white, black);",
+    "--text-field-background-color: light-dark(whitesmoke, var(--light-black-color));",
+    "--placeholder-text-color: light-dark(silver, gray);",
+    "--primary-button-text-color: light-dark(white, white);",
+    "--primary-button-background-color: light-dark(royalblue, royalblue);",
+    "--primary-button-active-background-color: light-dark(var(--dark-blue-color), var(--light-blue-color));",
+    "--selected-text-color: light-dark(white, white);",
+    "--selected-text-background-color: light-dark(royalblue, royalblue);",
+    "--control-accent-color: light-dark(royalblue, royalblue);",
+    "--keyboard-focus-indicator-color: light-dark(royalblue, royalblue);",
+    "--label-color: light-dark(black, white);",
+    "--secondary-label-color: light-dark(black, white);",
+    "--tertiary-label-color: light-dark(silver, gray);",
+    "--disabled-control-text-color: light-dark(silver, gray);",
+    "--separator-color: light-dark(lightgray, var(--light-black-color));",
+    "--shadow-color: light-dark(lightgray, black);",
+    "--popover-background-color: light-dark(white, black);",
+    "--popover-text-color: light-dark(black, white);",
+    "--popover-border-color: light-dark(lightgray, lightgray);",
+    "--tag-pill-background-color: light-dark(white, black);",
+    "--tag-pill-text-color: light-dark(royalblue, powderblue);",
+    "--light-black-color: oklch(from black calc(l + 0.3) c h);",
+    "--light-blue-color: oklch(from royalblue calc(l + 0.05) c h);",
+    "--dark-blue-color: oklch(from royalblue calc(l - 0.05) c h);",
+    "}"
+  ]
+}
+```
+
+</details>
+
 ### In practice?
 
 `Alt+J` and `Alt+K` are the two shortcuts I’ve configured to

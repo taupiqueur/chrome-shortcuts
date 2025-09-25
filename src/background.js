@@ -170,6 +170,7 @@ const suggestionLabels = new Map([
  * @property {KeyboardMapping[]} paletteBindings
  * @property {KeyboardMapping[]} pageBindings
  * @property {KeyboardMapping[]} chromeCommandBindings
+ * @property {string[]} popupStyleSheet
  * @property {string} homePage
  * @property {string} manualPage
  * @property {string} optionsPage
@@ -819,6 +820,7 @@ function onConnect(port) {
         suggestionLabels,
         commandBindings: storageCache.commandBindings.concat(storageCache.chromeCommandBindings),
         paletteBindings: storageCache.paletteBindings,
+        popupStyleSheet: storageCache.popupStyleSheet.join('\n'),
         manualPage: storageCache.manualPage,
         shortcutsPage: storageCache.shortcutsPage,
       })

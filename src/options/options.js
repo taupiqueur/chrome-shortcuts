@@ -6,6 +6,7 @@
 const buttonElements = document.querySelectorAll('button')
 const inputElements = document.querySelectorAll('input')
 const vimModeCheckbox = document.querySelector('input[type="checkbox"][data-action="enableVimMode"]')
+const basicThemeRadioButton = document.querySelector('input[type="radio"][data-action="restoreDefaultTheme"]')
 
 const port = chrome.runtime.connect({
   name: 'options'
@@ -14,7 +15,10 @@ const port = chrome.runtime.connect({
 port.onMessage.addListener((message) => {
   switch (message.type) {
     case 'stateSync':
-      onStateSync(message.vimModeEnabled)
+      onStateSync({
+        vimModeEnabled: message.vimModeEnabled,
+        popupStyleSheetChanged: message.popupStyleSheetChanged,
+      })
       break
 
     case 'keepAlive':
@@ -66,6 +70,10 @@ for (const inputElement of inputElements) {
       })
       break
 
+    case 'restoreDefaultTheme':
+      inputElement.addEventListener('change', restoreDefaultTheme)
+      break
+
     default:
       console.error(
         'Unknown action: "%s"',
@@ -77,11 +85,17 @@ for (const inputElement of inputElements) {
 /**
  * Handles state syncing.
  *
- * @param {boolean} vimModeEnabled
+ * @param {object} properties
+ * @param {boolean} properties.vimModeEnabled
+ * @param {boolean} properties.popupStyleSheetChanged
  * @returns {void}
  */
-function onStateSync(vimModeEnabled) {
+function onStateSync({
+  vimModeEnabled,
+  popupStyleSheetChanged,
+}) {
   vimModeCheckbox.checked = vimModeEnabled
+  basicThemeRadioButton.checked = !popupStyleSheetChanged
 }
 
 /**
@@ -146,6 +160,17 @@ function enableVimMode() {
 function disableVimMode() {
   sendMessage({
     type: 'disableVimMode'
+  })
+}
+
+/**
+ * Restores the default theme.
+ *
+ * @returns {void}
+ */
+function restoreDefaultTheme() {
+  sendMessage({
+    type: 'restoreDefaultTheme'
   })
 }
 

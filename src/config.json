@@ -148,5 +148,7 @@
     { "command": "closeCommandPalette", "key": { "ctrlKey": true, "code": "KeyC" } }
   ],
   "pageBindings": [
+  ],
+  "popupStyleSheet": [
   ]
 }

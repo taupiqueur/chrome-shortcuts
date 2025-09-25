@@ -61,6 +61,7 @@ port.onMessage.addListener((message) => {
     case 'init':
       render({
         commandBindings: message.commandBindings,
+        popupStyleSheet: message.popupStyleSheet,
         isEnabled: message.isEnabled,
       })
       commandPalette.render({
@@ -100,14 +101,27 @@ port.onMessage.addListener((message) => {
 /**
  * Handles the popup rendering.
  *
- * @param {{ commandBindings: KeyboardMapping[], isEnabled: boolean }} options
+ * @typedef {object} RenderOptions
+ * @property {KeyboardMapping[]} commandBindings
+ * @property {string} popupStyleSheet
+ * @property {boolean} isEnabled
+ *
+ * @param {RenderOptions} renderOptions
  * @returns {void}
  */
-function render({ commandBindings, isEnabled }) {
+function render({
+  commandBindings,
+  popupStyleSheet,
+  isEnabled,
+}) {
   const isDisabled = (menuItemElement) => (
     !isEnabled &&
     menuItemElement.matches(SCRIPTING_SELECTOR)
   )
+
+  const stylesheet = new CSSStyleSheet
+  stylesheet.replaceSync(popupStyleSheet)
+  document.adoptedStyleSheets = [stylesheet]
 
   for (const { key, command } of commandBindings) {
     if (menuCommands.has(command)) {

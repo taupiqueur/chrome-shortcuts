@@ -80,14 +80,16 @@ function onDisconnect(port, keepAliveIntervalId) {
  * @returns {Promise<void>}
  */
 async function onOptionsScriptAdded(port) {
-  const { pageBindings } = await chrome.storage.sync.get('pageBindings')
+  const {
+    pageBindings,
+    popupStyleSheet,
+  } = await chrome.storage.sync.get()
 
-  if (pageBindings.length > 0) {
-    port.postMessage({
-      type: 'stateSync',
-      vimModeEnabled: true
-    })
-  }
+  port.postMessage({
+    type: 'stateSync',
+    vimModeEnabled: pageBindings.length > 0,
+    popupStyleSheetChanged: popupStyleSheet.length > 0,
+  })
 }
 
 /**
@@ -119,6 +121,11 @@ async function onMessage(message, port) {
 
     case 'disableVimMode':
       await disableVimMode()
+      await updateOptionsPagesAfterOptionsChange()
+      break
+
+    case 'restoreDefaultTheme':
+      await restoreDefaultTheme()
       await updateOptionsPagesAfterOptionsChange()
       break
 
@@ -173,17 +180,32 @@ async function disableVimMode() {
 }
 
 /**
+ * Restores the default theme.
+ *
+ * @returns {Promise<void>}
+ */
+async function restoreDefaultTheme() {
+  await chrome.storage.sync.set({
+    popupStyleSheet: []
+  })
+}
+
+/**
  * Updates Options pages after option changes.
  *
  * @returns {Promise<void>}
  */
 async function updateOptionsPagesAfterOptionsChange() {
-  const { pageBindings } = await chrome.storage.sync.get('pageBindings')
+  const {
+    pageBindings,
+    popupStyleSheet,
+  } = await chrome.storage.sync.get()
 
   for (const port of activePorts) {
     port.postMessage({
       type: 'stateSync',
-      vimModeEnabled: pageBindings.length > 0
+      vimModeEnabled: pageBindings.length > 0,
+      popupStyleSheetChanged: popupStyleSheet.length > 0,
     })
   }
 }

@@ -14,6 +14,7 @@
  * @property {Map<string, string>} suggestionLabels
  * @property {KeyboardMapping[]} commandBindings
  * @property {KeyboardMapping[]} paletteBindings
+ * @property {string} popupStyleSheet
  * @property {string} manualPage
  * @property {string} shortcutsPage
  */
@@ -135,6 +136,7 @@ async function onPopupScriptAdded(port, cx) {
       type: 'init',
       commandBindings: cx.commandBindings,
       paletteBindings: cx.paletteBindings,
+      popupStyleSheet: cx.popupStyleSheet,
       isEnabled: !isChromeDomain(tabs[0].url)
     })
   }
