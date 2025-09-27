@@ -161,12 +161,6 @@ function render({
       })
     }
   })
-
-  if (!menuElement.contains(document.activeElement)) {
-    menuElement.focus({
-      preventScroll: true
-    })
-  }
 }
 
 /**
