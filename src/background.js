@@ -779,7 +779,6 @@ function onMessage(message, sender) {
         type: 'stateSync',
         pageBindings: storageCache.pageBindings,
       }, {
-        frameId: sender.frameId,
         documentId: sender.documentId,
       })
       break
