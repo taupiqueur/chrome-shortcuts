@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thèmes Shortcuts</title>
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main>
+      <fieldset>
+        <legend>
+          Choisissez un thème
+        </legend>
+        <label>
+          <input type="radio" name="theme" value="basic">
+          <span>Thème de base</span>
+        </label>
+        <label>
+          <input type="radio" name="theme" value="classic">
+          <span>Thème classique</span>
+        </label>
+      </fieldset>
+      <input type="hidden" id="extension-id" value="kblochbjinbdokphljadjabpkbcibenj">
+      <p>
+        Assurez-vous que Shortcuts est installé et activé.
+      </p>
+    </main>
+    <dialog id="theme-sync-error-popover" popover>
+      <pre><code id="theme-sync-error-details"></code></pre>
+    </dialog>
+    <script type="module" src="themes.js"></script>
+  </body>
+</html>

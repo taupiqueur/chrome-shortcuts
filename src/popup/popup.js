@@ -45,6 +45,9 @@ const paletteMenuElement = document.getElementById('palette-menu')
 const menuElement = document.getElementById('menu-commands')
 const menuItemElements = menuElement.getElementsByTagName('menu-item')
 const browserExtensionsNotAllowedPopoverElement = document.getElementById('browser-extensions-not-allowed-popover')
+const themeSyncConfirmationPopover = document.getElementById('theme-sync-confirmation-popover')
+const themeSyncSenderElement = document.getElementById('theme-sync-sender')
+const confirmThemeChangeButton = document.querySelector('button[data-action="confirmThemeChange"]')
 
 const menuCommands = new Map(
   Array.from(menuItemElements, (menuItemElement) => [
@@ -77,6 +80,10 @@ port.onMessage.addListener((message) => {
 
     case 'stateSync':
       onStateSync(message.command)
+      break
+
+    case 'themeSync':
+      onThemeSync(message.popupStyleSheet, message.messageSenderHostname)
       break
 
     case 'suggestionSync':
@@ -154,6 +161,24 @@ function render({
     }
   })
 
+  confirmThemeChangeButton.addEventListener('click', () => {
+    port.postMessage({
+      type: 'themeSync',
+      themeChange: true,
+    })
+    window.close()
+  })
+
+  themeSyncConfirmationPopover.addEventListener('beforetoggle', (toggleEvent) => {
+    if (toggleEvent.newState === 'closed') {
+      port.postMessage({
+        type: 'themeSync',
+        themeChange: false,
+      })
+      window.close()
+    }
+  })
+
   menuElement.addEventListener('keyup', (keyboardEvent) => {
     if (!isModifierKey(keyboardEvent.key)) {
       port.postMessage({
@@ -173,6 +198,23 @@ function onStateSync(commandName) {
   if (menuCommands.has(commandName)) {
     menuCommands.get(commandName).focus()
   }
+}
+
+/**
+ * Handles theme syncing.
+ *
+ * @param {string} popupStyleSheet
+ * @param {string} messageSenderHostname
+ * @returns {void}
+ */
+function onThemeSync(popupStyleSheet, messageSenderHostname) {
+  window.requestAnimationFrame(() => {
+    const stylesheet = new CSSStyleSheet
+    stylesheet.replaceSync(popupStyleSheet)
+    document.adoptedStyleSheets = [stylesheet]
+  })
+  themeSyncSenderElement.textContent = messageSenderHostname
+  themeSyncConfirmationPopover.showPopover()
 }
 
 /**

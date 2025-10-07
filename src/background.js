@@ -171,7 +171,9 @@ const suggestionLabels = new Map([
  * @property {KeyboardMapping[]} pageBindings
  * @property {KeyboardMapping[]} chromeCommandBindings
  * @property {string[]} popupStyleSheet
+ * @property {string[]} externallyConnectableMatches
  * @property {string} homePage
+ * @property {string} themeStorePage
  * @property {string} manualPage
  * @property {string} optionsPage
  * @property {string} shortcutsPage
@@ -197,6 +199,7 @@ async function setLocalizedPages() {
       })
       await chrome.storage.session.set({
         homePage: 'https://taupiqueur.github.io/chrome-shortcuts',
+        themeStorePage: 'https://taupiqueur.github.io/chrome-shortcuts/themes.html',
         manualPage: chrome.runtime.getURL('src/manual/manual.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.html'),
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts,-Activate the extension',
@@ -209,6 +212,7 @@ async function setLocalizedPages() {
       })
       await chrome.storage.session.set({
         homePage: 'https://taupiqueur.github.io/chrome-shortcuts/fr/',
+        themeStorePage: 'https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html',
         manualPage: chrome.runtime.getURL('src/manual/manual.fr.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.fr.html'),
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts,-Activer l’extension',
@@ -221,6 +225,7 @@ async function setLocalizedPages() {
       })
       await chrome.storage.session.set({
         homePage: 'https://taupiqueur.github.io/chrome-shortcuts',
+        themeStorePage: 'https://taupiqueur.github.io/chrome-shortcuts/themes.html',
         manualPage: chrome.runtime.getURL('src/manual/manual.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.html'),
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts',
@@ -374,6 +379,12 @@ function createMenuItems() {
   })
 
   chrome.contextMenus.create({
+    id: 'open_theme_store',
+    title: chrome.i18n.getMessage('openThemeStoreMenuItemTitle'),
+    contexts: ['action']
+  })
+
+  chrome.contextMenus.create({
     id: 'open_support_chat',
     title: chrome.i18n.getMessage('openSupportChatMenuItemTitle'),
     contexts: ['action']
@@ -403,6 +414,10 @@ async function updateMenuItems() {
   await Promise.all([
     chrome.contextMenus.update('open_documentation', {
       title: chrome.i18n.getMessage('openDocumentationMenuItemTitle')
+    }),
+
+    chrome.contextMenus.update('open_theme_store', {
+      title: chrome.i18n.getMessage('openThemeStoreMenuItemTitle')
     }),
 
     chrome.contextMenus.update('open_support_chat', {
@@ -640,6 +655,14 @@ async function onMenuItemClicked(info, tab) {
       })
       break
 
+    case 'open_theme_store':
+      openNewTab({
+        active: true,
+        url: storageCache.themeStorePage,
+        openerTabId: tab.id,
+      })
+      break
+
     case 'open_support_chat':
       openNewTab({
         active: true,
@@ -793,12 +816,101 @@ function onMessage(message, sender) {
  * Opens the extension’s popup.
  *
  * @param {number} windowId
- * @returns {Promise<void>}
+ * @returns {Promise<chrome.runtime.Port>}
  */
 async function openPopup(windowId) {
-  await chrome.action.openPopup({
-    windowId
+  return new Promise((resolve, reject) => {
+    chrome.runtime.onConnect.addListener(
+      function fireAndForget(port) {
+        if (port.name === 'popup') {
+          chrome.runtime.onConnect.removeListener(fireAndForget)
+          resolve(port)
+        }
+      }
+    )
+    chrome.action.openPopup({
+      windowId
+    }).catch(reject)
   })
+}
+
+/**
+ * Sends a `themeSync` request to the popup worker.
+ *
+ * @param {string} popupStyleSheet
+ * @param {string} messageSenderHostname
+ * @param {chrome.runtime.Port} port
+ * @returns {Promise<boolean>}
+ */
+async function sendThemeSyncMessage(popupStyleSheet, messageSenderHostname, port) {
+  return new Promise((resolve) => {
+    port.onMessage.addListener(
+      function fireAndForget(message) {
+        if (message.type === 'themeSync') {
+          port.onMessage.removeListener(fireAndForget)
+          resolve(message.themeChange)
+        }
+      }
+    )
+    port.postMessage({
+      type: 'themeSync',
+      popupStyleSheet,
+      messageSenderHostname,
+    })
+  })
+}
+
+/**
+ * Handles one-time external requests.
+ *
+ * https://developer.chrome.com/docs/extensions/develop/concepts/messaging#external
+ *
+ * @param {object} message
+ * @param {chrome.runtime.MessageSender} sender
+ * @returns {Promise<void>}
+ */
+async function onMessageExternal(message, sender) {
+  switch (message.type) {
+    case 'themeSync': {
+      const {
+        popupStyleSheet,
+      } = message
+      if (
+        storageCache.externallyConnectableMatches
+          .some((matchPattern) =>
+            new URLPattern(matchPattern).test(sender.tab.url)
+          )
+      ) {
+        const [
+          {
+            result: userActivation,
+          }
+        ] = await chrome.scripting.executeScript({
+          target: {
+            tabId: sender.tab.id,
+            documentIds: [sender.documentId],
+          },
+          func: () => {
+            return navigator.userActivation.isActive
+          },
+        })
+        if (userActivation) {
+          const channel = await openPopup(sender.tab.windowId)
+          const themeChange = await sendThemeSyncMessage(
+            popupStyleSheet.join('\n'),
+            new URL(sender.tab.url).hostname,
+            channel,
+          )
+          if (themeChange) {
+            await optionsWorker.saveOptions({
+              popupStyleSheet,
+            })
+          }
+        }
+      }
+      break
+    }
+  }
 }
 
 /**
@@ -949,6 +1061,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 chrome.runtime.onMessage.addListener((message, sender) => {
   allStorageLoaded.then(() => {
     onMessage(message, sender)
+  })
+})
+
+chrome.runtime.onMessageExternal.addListener((message, sender) => {
+  allStorageLoaded.then(() => {
+    onMessageExternal(message, sender)
   })
 })
 

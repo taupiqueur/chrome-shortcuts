@@ -296,6 +296,46 @@ To restore the default theme:
 
 </details>
 
+### Authoring and sharing custom themes
+
+Developers can create and share their own “Theme Store”.
+
+To allow web pages to communicate with the Shortcuts extension:
+
+1. Right-click the Shortcuts toolbar button and select “Options”.
+2. Click “Import”, select the file that contains the list of `"externallyConnectableMatches"` values, then click “Open”.
+
+By default, only `"https://taupiqueur.github.io/chrome-shortcuts/themes.html"`
+and `"https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html"` web pages
+are allowed to communicate with the Shortcuts extension.
+
+To install a theme from one of these web pages:
+
+1. Open [Shortcuts themes] or select “Theme Store” in the extension’s menu.
+2. Choose a theme.
+3. Click “Install”.
+
+[Shortcuts themes]: https://taupiqueur.github.io/chrome-shortcuts/themes.html
+
+<details>
+
+<summary>Example configuration</summary>
+
+``` json
+{
+  "externallyConnectableMatches": [
+    "https://taupiqueur.github.io/chrome-shortcuts/themes.html",
+    "https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html"
+  ]
+}
+```
+
+</details>
+
+See [URL Pattern API] for more information on the match pattern syntax.
+
+[URL Pattern API]: https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API
+
 ### In practice?
 
 `Alt+J` and `Alt+K` are the two shortcuts I’ve configured to

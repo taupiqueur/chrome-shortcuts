@@ -210,4 +210,11 @@ async function updateOptionsPagesAfterOptionsChange() {
   }
 }
 
-export default { getDefaults, onConnect }
+export default {
+  getDefaults,
+  onConnect,
+  async saveOptions(partialOptions) {
+    await saveOptions(partialOptions)
+    await updateOptionsPagesAfterOptionsChange()
+  },
+}

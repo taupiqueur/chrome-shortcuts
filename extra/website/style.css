@@ -122,6 +122,20 @@ figcaption {
   font-style: italic;
 }
 
+legend {
+  background-color: var(--foreground-color);
+  color: var(--background-color);
+  padding: 0.2rem 0.4rem;
+}
+
+input {
+  margin: 0.4rem;
+}
+
+label {
+  display: block;
+}
+
 ul.languages {
   display: flex;
   list-style: none;
@@ -145,4 +159,9 @@ ul.actions li a {
   border-radius: 0.3rem;
   background-color: var(--tag-pill-background-color);
   color: var(--tag-pill-text-color);
+}
+
+pre {
+  text-wrap: wrap;
+  overflow-wrap: break-word;
 }

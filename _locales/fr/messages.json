@@ -416,6 +416,9 @@
   "openDocumentationMenuItemTitle": {
     "message": "Documentation"
   },
+  "openThemeStoreMenuItemTitle": {
+    "message": "Catalogue de thèmes"
+  },
   "openSupportChatMenuItemTitle": {
     "message": "Salon de discussion"
   },

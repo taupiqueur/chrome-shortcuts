@@ -196,6 +196,17 @@
         <button popovertarget="browser-extensions-not-allowed-popover" popovertargetaction="hide">Terminé</button>
       </footer>
     </dialog>
+    <dialog id="theme-sync-confirmation-popover" popover>
+      <main>
+        <h3>Information</h3>
+        <section>
+          <p><span id="theme-sync-sender"></span> souhaite installer un thème.</p>
+        </section>
+      </main>
+      <footer>
+        <button data-action="confirmThemeChange">Installer</button>
+      </footer>
+    </dialog>
     <script src="../lib/scroller.js"></script>
     <script type="module" src="popup.js"></script>
   </body>
