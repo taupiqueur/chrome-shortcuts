@@ -55,6 +55,11 @@
                 </a>
               </li>
               <li>
+                <a href="#authoring_and_sharing_custom_themes">
+                  Création et partage de thèmes personnalisés
+                </a>
+              </li>
+              <li>
                 <a href="#in_practice">
                   En pratique ?
                 </a>
@@ -855,6 +860,80 @@
               </div>
             </div>
           </details>
+        </section>
+        <section id="authoring_and_sharing_custom_themes">
+          <h3>
+            <a href="#authoring_and_sharing_custom_themes">
+              Création et partage de thèmes personnalisés
+            </a>
+          </h3>
+          <p>
+            Les développeurs peuvent créer et partager leur propre « Catalogue de thèmes »—aussi appelé « Theme Store ».
+          </p>
+          <p>
+            Pour permettre aux pages web de communiquer avec l’extension Shortcuts :
+          </p>
+          <ol>
+            <li>
+              Faites un clic droit sur l’icône de l’extension et sélectionnez « Options ».
+            </li>
+            <li>
+              Cliquez sur « Importer », sélectionnez le fichier qui contient la liste des <code data-lang="json"><span data-type="string">"externallyConnectableMatches"</span></code>, puis cliquez sur « Ouvrir ».
+            </li>
+          </ol>
+          <p>
+            Par défaut, seules les pages web
+            <code data-lang="json"><span data-type="string">"https://taupiqueur.github.io/chrome-shortcuts/themes.html"</span></code> et
+            <code data-lang="json"><span data-type="string">"https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html"</span></code>
+            sont autorisées à communiquer avec l’extension Shortcuts.
+          </p>
+          <p>
+            Pour installer un thème depuis l’une de ces pages web :
+          </p>
+          <ol>
+            <li>
+              Ouvrez <a href="https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html" target="_blank">Thèmes Shortcuts</a>
+              ou sélectionnez « Catalogue de thèmes » dans le menu de l’extension.
+            </li>
+            <li>
+              Choisissez un thème.
+            </li>
+            <li>
+              Cliquez sur « Installer ».
+            </li>
+          </ol>
+          <details>
+            <summary>Exemple de configuration</summary>
+            <div class="code-block-container">
+              <pre><code data-lang="json">{
+  <span data-type="string">"externallyConnectableMatches"</span>: [
+    <span data-type="string">"https://taupiqueur.github.io/chrome-shortcuts/themes.html"</span>,
+    <span data-type="string">"https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html"</span>
+  ]
+}
+</code></pre>
+              <div>
+                <button
+                  aria-label="Copier"
+                  data-copy-feedback="Copié"
+                  data-action="copyToClipboard"
+                  value="{
+  &quot;externallyConnectableMatches&quot;: [
+    &quot;https://taupiqueur.github.io/chrome-shortcuts/themes.html&quot;,
+    &quot;https://taupiqueur.github.io/chrome-shortcuts/fr/themes.html&quot;
+  ]
+}
+"
+                >
+                  Copier
+                </button>
+              </div>
+            </div>
+          </details>
+          <p>
+            Pour plus d’information sur la syntaxe des <code data-lang="json"><span data-type="string">"externallyConnectableMatches"</span></code>,
+            consultez l’article <a lang="en" href="https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API" target="_blank">URL Pattern API</a> (en anglais).
+          </p>
         </section>
         <section id="in_practice">
           <h3>
