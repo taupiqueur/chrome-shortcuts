@@ -10,6 +10,10 @@ import classicTheme from './classic_theme.json' with {
   type: 'json'
 }
 
+import theWorldTheme from './the_world_theme.css' with {
+  type: 'css'
+}
+
 const themeRadioButtons = document.querySelectorAll(`
   input[type="radio"][name="theme"]
 `)
@@ -32,6 +36,23 @@ for (const themeRadioButton of themeRadioButtons) {
           showThemeSyncError
         )
         break
+
+      case 'the-world': {
+        const popupStyleSheet = []
+
+        for (const cssRule of theWorldTheme.cssRules) {
+          popupStyleSheet.push(
+            cssRule.cssText
+          )
+        }
+
+        sendThemeSyncMessage(
+          popupStyleSheet
+        ).catch(
+          showThemeSyncError
+        )
+        break
+      }
     }
   })
 }
