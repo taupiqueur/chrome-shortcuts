@@ -52,6 +52,7 @@
     --scrollbar-thumb-color: var(--aqua-gray-3-color);
     --scrollbar-track-color: var(--aqua-gray-6-color);
     --text-field-background-color: var(--aqua-gray-5-color);
+    --text-field-border-color: transparent;
     --placeholder-text-color: #00000040;
     --primary-button-text-color: white;
     --primary-button-background-color: var(--dark-blue-color);
@@ -69,8 +70,8 @@
     --popover-background-color: var(--aqua-gray-6-color);
     --popover-text-color: #000000d9;
     --popover-border-color: var(--aqua-gray-5-color);
-    --tag-pill-background-color: #e8f0fe66;
-    --tag-pill-text-color: #174ea6;
+    --tag-pill-background-color: var(--aqua-blue-color);
+    --tag-pill-text-color: white;
   }
 }
 
@@ -81,6 +82,7 @@
     --scrollbar-thumb-color: var(--dark-gray-2-color);
     --scrollbar-track-color: var(--dark-gray-5-color);
     --text-field-background-color: var(--dark-gray-4-color);
+    --text-field-border-color: transparent;
     --placeholder-text-color: #ffffff40;
     --primary-button-text-color: white;
     --primary-button-background-color: var(--aqua-blue-color);
@@ -98,8 +100,8 @@
     --popover-background-color: var(--dark-gray-5-color);
     --popover-text-color: #ffffffd9;
     --popover-border-color: var(--dark-gray-4-color);
-    --tag-pill-background-color: #2d333b;
-    --tag-pill-text-color: #c5d1de;
+    --tag-pill-background-color: var(--dark-blue-color);
+    --tag-pill-text-color: white;
   }
 }
 
@@ -162,11 +164,12 @@ main {
 }
 
 input {
-  border: none;
   background-color: var(--text-field-background-color);
+  color: var(--foreground-color);
   caret-color: var(--control-accent-color);
   margin: 0.3rem 0.6rem;
   padding: 0.3rem 0.6rem;
+  border: 1px solid var(--text-field-border-color);
   border-radius: 0.3rem;
 }
 
@@ -176,6 +179,7 @@ input::placeholder {
 
 input:focus {
   outline: 3px solid var(--keyboard-focus-indicator-color);
+  outline-offset: -1px;
 }
 
 hr {
@@ -276,7 +280,8 @@ menu-item[disabled] {
   pointer-events: none;
 }
 
-menu-item[disabled]:not(:hover, :focus, :active)::part(button) {
+menu-item[disabled]:not(:hover, :focus, :active)::part(button),
+menu-item[disabled]:not(:hover, :focus, :active)::part(shortcuts) {
   color: var(--disabled-control-text-color);
 }
 
@@ -298,14 +303,11 @@ keyboard-shortcut + keyboard-shortcut::before {
 }
 
 suggestion-item::part(label) {
+  display: inline-block;
   padding: 0.1em 0.2em;
   border-radius: 0.3em;
   background-color: var(--tag-pill-background-color);
   color: var(--tag-pill-text-color);
-}
-
-suggestion-item::part(label)::after {
-  content: " · ";
 }
 
 suggestion-item::part(domain) {
@@ -362,11 +364,11 @@ suggestion-item::part(domain) {
   outline: none;
 }
 
-[popover]:popover-open footer button:active {
+[popover]:popover-open footer button:active:hover {
   background-color: var(--primary-button-active-background-color);
 }
 
-:is(header, main):has(+ :popover-open) {
+:is(header, main):has(~ :popover-open) {
   pointer-events: none;
 }
 
