@@ -1,0 +1,210 @@
+:root {
+  --background-color: light-dark(
+    var(--light-yellow-color),
+    black
+  );
+
+  --foreground-color: light-dark(
+    black,
+    white
+  );
+
+  --background-image: url(
+    "https://raw.githubusercontent.com/taupiqueur/chrome-shortcuts/ca42e18a13218334e71c9bfe38ceba30f3e03bfd/the-world-by-akhts.webp"
+  );
+
+  --background-image-color: light-dark(
+    oklch(
+      from var(--light-black-color) l c h / 0.1
+    ),
+    oklch(
+      from var(--light-yellow-color) l c h / 0.15
+    )
+  );
+
+  --scrollbar-thumb-color: light-dark(
+    var(--dark-yellow-color),
+    var(--dark-yellow-color)
+  );
+
+  --scrollbar-track-color: light-dark(
+    transparent,
+    transparent
+  );
+
+  --text-field-background-color: light-dark(
+    oklch(
+      from whitesmoke calc(l - 0.05) c h / 0.9
+    ),
+    oklch(
+      from var(--light-black-color) calc(l + 0.07) c h / 0.9
+    )
+  );
+
+  --text-field-border-color: light-dark(
+    var(--yellow-color),
+    oklch(
+      from var(--light-black-color) calc(l + 0.1) c h
+    )
+  );
+
+  --placeholder-text-color: light-dark(
+    oklch(
+      from black l c h / 0.25
+    ),
+    oklch(
+      from white l c h / 0.25
+    )
+  );
+
+  --primary-button-text-color: light-dark(
+    white,
+    white
+  );
+
+  --primary-button-background-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
+  --primary-button-active-background-color: light-dark(
+    var(--dark-blue-color),
+    var(--light-blue-color)
+  );
+
+  --selected-text-color: light-dark(
+    var(--light-black-color),
+    var(--light-black-color)
+  );
+
+  --selected-text-background-color: light-dark(
+    var(--yellow-color),
+    oklch(
+      from var(--yellow-color) calc(l - 0.05) calc(c - 0.005) h
+    )
+  );
+
+  --control-accent-color: light-dark(
+    var(--dark-yellow-color),
+    var(--dark-yellow-color)
+  );
+
+  --keyboard-focus-indicator-color: light-dark(
+    var(--dark-yellow-color),
+    var(--dark-yellow-color)
+  );
+
+  --label-color: light-dark(
+    oklch(
+      from var(--light-black-color) l c h / 0.9
+    ),
+    lightgray
+  );
+
+  --secondary-label-color: light-dark(
+    oklch(
+      from black l c h / 0.5
+    ),
+    oklch(
+      from white l c h / 0.5
+    )
+  );
+
+  --tertiary-label-color: light-dark(
+    oklch(
+      from black l c h / 0.5
+    ),
+    oklch(
+      from white l c h / 0.5
+    )
+  );
+
+  --disabled-control-text-color: light-dark(
+    oklch(
+      from black l c h / 0.5
+    ),
+    oklch(
+      from white l c h / 0.5
+    )
+  );
+
+  --separator-color: light-dark(
+    oklch(
+      from black l c h / 0.1
+    ),
+    oklch(
+      from white l c h / 0.1
+    )
+  );
+
+  --shadow-color: light-dark(
+    oklch(
+      from black l c h / 0.35
+    ),
+    oklch(
+      from black l c h / 0.35
+    )
+  );
+
+  --popover-background-color: light-dark(
+    white,
+    black
+  );
+
+  --popover-text-color: light-dark(
+    black,
+    white
+  );
+
+  --popover-border-color: light-dark(
+    lightgray,
+    lightgray
+  );
+
+  --tag-pill-background-color: light-dark(
+    var(--dark-yellow-contrast-color),
+    var(--dark-yellow-color)
+  );
+
+  --tag-pill-text-color: light-dark(
+    black,
+    black
+  );
+
+  --light-black-color: oklch(
+    from black calc(l + 0.3) c h
+  );
+
+  --light-blue-color: oklch(
+    from royalblue calc(l + 0.05) c h
+  );
+
+  --dark-blue-color: oklch(
+    from royalblue calc(l - 0.05) c h
+  );
+
+  --yellow-color: oklch(
+    from #f6d814 l calc(c - 0.05) h
+  );
+
+  --light-yellow-color: oklch(
+    from #f6e68e l calc(c - 0.03) h
+  );
+
+  --dark-yellow-color: oklch(
+    from #efc07b l calc(c - 0.03) h
+  );
+
+  --dark-yellow-contrast-color: oklch(
+    from #efc07b l c h
+  );
+}
+
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2147483648;
+  mask: var(--background-image) center/contain;
+  background-color: var(--background-image-color);
+}
