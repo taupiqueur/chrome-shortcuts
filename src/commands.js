@@ -427,7 +427,8 @@ export async function focusTextInput(cx) {
 export async function focusMediaPlayer(cx) {
   await chrome.scripting.executeScript({
     target: {
-      tabId: cx.tab.id
+      tabId: cx.tab.id,
+      allFrames: true,
     },
     func: cyclePageElements,
     args: ['video, audio']
