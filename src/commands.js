@@ -666,14 +666,14 @@ function getFilenameSuggestion(filename) {
  * @returns {Promise<void>}
  */
 export async function openWebSearchForSelectedText(cx) {
-  const [{ result: text }] = await chrome.scripting.executeScript({
+  const [{ result: selectedText }] = await chrome.scripting.executeScript({
     target: {
       tabId: cx.tab.id
     },
     func: getSelectedText
   })
 
-  if (text === null) {
+  if (selectedText === null) {
     return
   }
 
@@ -681,7 +681,7 @@ export async function openWebSearchForSelectedText(cx) {
   // to determine the tab being created.
   await chrome.search.query({
     disposition: NEW_TAB_DISPOSITION,
-    text
+    text: selectedText,
   })
 
   const [createdTab] = await chrome.tabs.query({
@@ -1642,7 +1642,7 @@ export async function renameTabGroup(cx) {
   if (hasGroup(cx.tab)) {
     const tabGroup = await chrome.tabGroups.get(cx.tab.groupId)
 
-    const [{ result: title }] = await chrome.scripting.executeScript({
+    const [{ result: newName }] = await chrome.scripting.executeScript({
       target: {
         tabId: cx.tab.id
       },
@@ -1651,11 +1651,11 @@ export async function renameTabGroup(cx) {
     })
 
     if (
-      title !== null &&
-      title !== tabGroup.title
+      newName !== null &&
+      newName !== tabGroup.title
     ) {
       await chrome.tabGroups.update(tabGroup.id, {
-        title
+        title: newName,
       })
     }
   }
