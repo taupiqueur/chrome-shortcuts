@@ -471,13 +471,19 @@ export async function copyURL(cx) {
 
   const text = tabs.map(_url).join('\n')
 
-  await chrome.scripting.executeScript({
+  const [{ result: textCopied }] = await chrome.scripting.executeScript({
     target: {
       tabId: cx.tab.id
     },
     func: writeTextToClipboard,
     args: [text]
   })
+
+  if (!textCopied) {
+    throw new Error(
+      'Failed to write text to the system clipboard.'
+    )
+  }
 
   await sendNotification(
     chrome.i18n.getMessage('copyURLNotificationTitle'),
@@ -502,13 +508,19 @@ export async function copyTitle(cx) {
 
   const text = tabs.map(_title).join('\n')
 
-  await chrome.scripting.executeScript({
+  const [{ result: textCopied }] = await chrome.scripting.executeScript({
     target: {
       tabId: cx.tab.id
     },
     func: writeTextToClipboard,
     args: [text]
   })
+
+  if (!textCopied) {
+    throw new Error(
+      'Failed to write text to the system clipboard.'
+    )
+  }
 
   await sendNotification(
     chrome.i18n.getMessage('copyTitleNotificationTitle'),
@@ -533,13 +545,19 @@ export async function copyTitleAndURL(cx) {
 
   const text = tabs.map(({ title, url }) => `[${title}](${url})`).join('\n')
 
-  await chrome.scripting.executeScript({
+  const [{ result: textCopied }] = await chrome.scripting.executeScript({
     target: {
       tabId: cx.tab.id
     },
     func: writeTextToClipboard,
     args: [text]
   })
+
+  if (!textCopied) {
+    throw new Error(
+      'Failed to write text to the system clipboard.'
+    )
+  }
 
   await sendNotification(
     chrome.i18n.getMessage('copyTitleAndURLNotificationTitle'),
@@ -560,6 +578,12 @@ export async function openNewTabsFromClipboard(cx) {
     },
     func: readTextFromClipboard
   })
+
+  if (!clipboardContents) {
+    throw new Error(
+      'Failed to read text from the system clipboard.'
+    )
+  }
 
   const createdTabs = await openNewTabs(
     cx.tab.id,
@@ -673,8 +697,10 @@ export async function openWebSearchForSelectedText(cx) {
     func: getSelectedText
   })
 
-  if (selectedText === null) {
-    return
+  if (!selectedText) {
+    throw new Error(
+      'Failed to get selected text: No text was selected.'
+    )
   }
 
   // Unfortunately, the method doesn’t return a value

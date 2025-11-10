@@ -78,10 +78,11 @@ export async function readTextFromClipboard() {
  * https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
  *
  * @param {string} text
- * @returns {Promise<void>}
+ * @returns {Promise<true>}
  */
 export async function writeTextToClipboard(text) {
   await navigator.clipboard.writeText(text)
+  return true
 }
 
 /**
