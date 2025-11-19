@@ -1,0 +1,60 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1280 800"
+  width="1280"
+  height="800"
+>
+  <defs>
+    <clipPath id="clipPath">
+      <rect
+        x="0"
+        y="0"
+        width="1280"
+        height="676"
+        rx="0"
+        ry="0"
+      />
+    </clipPath>
+  </defs>
+  <rect
+    x="0"
+    y="0"
+    width="1280"
+    height="800"
+    rx="0"
+    ry="0"
+    fill="royalblue"
+  />
+  <image
+    href="screenshot_2025-01-07_19-37-31.png"
+    x="-256"
+    y="10"
+    width="1792"
+    height="1120"
+    clip-path="url(#clipPath)"
+  />
+  <text
+    x="50%"
+    y="91%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="30"
+  >
+    Actions can be performed with keyboard shortcuts or mouse clicks
+  </text>
+  <text
+    x="50%"
+    y="91%"
+    dx="0"
+    dy="1.2em"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="30"
+  >
+    in the extension’s popup.
+  </text>
+</svg>

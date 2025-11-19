@@ -1,0 +1,47 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1280 800"
+  width="1280"
+  height="800"
+>
+  <rect
+    x="0"
+    y="0"
+    width="1280"
+    height="800"
+    rx="0"
+    ry="0"
+    fill="royalblue"
+  />
+  <image
+    href="screenshot_2025-03-26_12-25-43.png"
+    x="0"
+    y="0"
+    width="1280"
+    height="800"
+  />
+  <text
+    x="50%"
+    y="91%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="30"
+  >
+    Shortcuts vous permet d’assigner des actions à des raccourcis
+  </text>
+  <text
+    x="50%"
+    y="91%"
+    dx="0"
+    dy="1.2em"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="30"
+  >
+    dans les options « Raccourcis clavier ».
+  </text>
+</svg>

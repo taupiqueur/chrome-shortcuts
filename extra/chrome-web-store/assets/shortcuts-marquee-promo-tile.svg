@@ -1,0 +1,38 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1400 560"
+  width="1400"
+  height="560"
+>
+  <rect
+    x="0"
+    y="0"
+    width="1400"
+    height="560"
+    rx="0"
+    ry="0"
+    fill="royalblue"
+  />
+  <text
+    x="50%"
+    y="50%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="160"
+  >
+    Shortcuts
+  </text>
+  <text
+    x="50%"
+    y="80%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="60"
+  >
+    Perform common tasks with your keyboard.
+  </text>
+</svg>

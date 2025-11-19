@@ -1,0 +1,27 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 440 280"
+  width="440"
+  height="280"
+>
+  <rect
+    x="0"
+    y="0"
+    width="440"
+    height="280"
+    rx="0"
+    ry="0"
+    fill="royalblue"
+  />
+  <text
+    x="50%"
+    y="50%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="white"
+    font-family="system-ui"
+    font-size="80"
+  >
+    Shortcuts
+  </text>
+</svg>
