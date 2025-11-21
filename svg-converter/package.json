@@ -1,0 +1,11 @@
+{
+  "name": "svg-converter",
+  "version": "0.1.0",
+  "description": "A tool for converting SVG files to raster images.",
+  "author": "Mathieu Ablasou <taupiqueur.kanto@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.56.1"
+  }
+}

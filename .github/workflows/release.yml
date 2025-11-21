@@ -27,11 +27,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install packages
-        run: sudo snap install inkscape
-
       - name: Build release
         run: make release name=chrome-shortcuts version=nightly
+        env:
+          CHROMIUM_EXECUTABLE_PATH: /usr/bin/chromium
 
       - name: Upload artifact
         run: gh release upload nightly releases/chrome-shortcuts-nightly.zip

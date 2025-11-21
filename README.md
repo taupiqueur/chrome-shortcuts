@@ -43,10 +43,10 @@ Download the [Nightly builds].
 
 ### Build from source
 
-Install [curl] and [Inkscape] to get and build the images.
+Install [curl] and [Playwright] to get and build the images.
 
 [curl]: https://curl.se
-[Inkscape]: https://inkscape.org
+[Playwright]: https://playwright.dev
 
 ``` sh
 git clone https://github.com/taupiqueur/chrome-shortcuts.git
