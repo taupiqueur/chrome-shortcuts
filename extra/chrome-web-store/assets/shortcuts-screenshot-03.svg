@@ -42,7 +42,7 @@
     font-family="system-ui"
     font-size="30"
   >
-    Actions can be performed with keyboard shortcuts or mouse clicks
+    Actions are accessible using text input, keyboard shortcuts
   </text>
   <text
     x="50%"
@@ -55,6 +55,6 @@
     font-family="system-ui"
     font-size="30"
   >
-    in the extension’s popup.
+    or mouse clicks in the extension’s popup.
   </text>
 </svg>

@@ -42,7 +42,7 @@
     font-family="system-ui"
     font-size="30"
   >
-    Les actions peuvent être effectuées via le clavier ou la souris
+    Les actions sont accessibles via la saisie de texte, les raccourcis clavier
   </text>
   <text
     x="50%"
@@ -55,6 +55,6 @@
     font-family="system-ui"
     font-size="30"
   >
-    dans le menu de l’extension.
+    ou la souris dans le menu de l’extension.
   </text>
 </svg>
