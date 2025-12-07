@@ -633,6 +633,7 @@ async function onCommand(commandNameWithIndex, tab) {
     recentTabsManager,
     manualPage: storageCache.manualPage,
     shortcutsPage: storageCache.shortcutsPage,
+    themeStorePage: storageCache.themeStorePage,
   })
 }
 
@@ -934,6 +935,7 @@ function onConnect(port) {
         popupStyleSheet: storageCache.popupStyleSheet.join('\n'),
         manualPage: storageCache.manualPage,
         shortcutsPage: storageCache.shortcutsPage,
+        themeStorePage: storageCache.themeStorePage,
       })
       break
 

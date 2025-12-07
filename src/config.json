@@ -3,6 +3,7 @@
     { "command": "openShortcutsManual", "key": { "code": "F1" } },
     { "command": "openShortcutsOptionsPage", "key": { "code": "F2" } },
     { "command": "openShortcutsShortcutsPage", "key": { "code": "F3" } },
+    { "command": "openShortcutsThemeStore", "key": { "code": "F4" } },
     { "command": "openCommandPalette", "key": { "code": "Slash" } },
     { "command": "openCommandPalette", "key": { "ctrlKey": true, "code": "KeyF" } },
     { "command": "closePopup", "key": { "code": "Escape" } },

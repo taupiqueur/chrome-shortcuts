@@ -14,6 +14,7 @@
  * @property {RecentTabsManager} recentTabsManager
  * @property {string} manualPage
  * @property {string} shortcutsPage
+ * @property {string} themeStorePage
  */
 
 import {
@@ -226,6 +227,34 @@ export async function openShortcutsOptionsPage(cx) {
  */
 export async function openShortcutsShortcutsPage(cx) {
   await openChromePage(cx, cx.shortcutsPage)
+}
+
+/**
+ * Opens the Shortcuts “Theme Store” page.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function openShortcutsThemeStore(cx) {
+  const createdTab = await chrome.tabs.create({
+    active: true,
+    url: cx.themeStorePage,
+    openerTabId: cx.tab.id,
+    windowId: cx.tab.windowId,
+  })
+
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: createdTab.id,
+    },
+    func: (extensionId) => {
+      const extensionIdElement = document.getElementById('extension-id')
+      extensionIdElement.value = extensionId
+    },
+    args: [
+      chrome.runtime.id,
+    ],
+  })
 }
 
 // Navigation ------------------------------------------------------------------

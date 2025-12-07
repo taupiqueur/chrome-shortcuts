@@ -17,6 +17,7 @@
  * @property {string} popupStyleSheet
  * @property {string} manualPage
  * @property {string} shortcutsPage
+ * @property {string} themeStorePage
  */
 
 /**
@@ -292,6 +293,7 @@ async function onCommandMessage(message, port, cx) {
       recentTabsManager: cx.recentTabsManager,
       manualPage: cx.manualPage,
       shortcutsPage: cx.shortcutsPage,
+      themeStorePage: cx.themeStorePage,
     })
   }
 }

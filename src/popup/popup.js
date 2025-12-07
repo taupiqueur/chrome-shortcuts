@@ -22,7 +22,7 @@ import SuggestionItem from './components/SuggestionItem.js'
 
 const MIDDLE_MOUSE_BUTTON = 1
 
-const SCRIPTING_SELECTOR = '[data-permissions~="scripting"]'
+const SCRIPTING_SELECTOR = '[data-permissions~="activeTab"][data-permissions~="scripting"]'
 
 const MODIFIER_KEYS = new Set([
   'Control',
