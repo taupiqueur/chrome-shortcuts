@@ -381,7 +381,7 @@ You will find the list of code values and informative symbols.
 > You can click on the keys with code values to show the keys to press
 > (e.g., clicking on `KeyJ` will show “j” on a US keyboard).
 
-### Shortcuts
+### Shortcuts commands
 
 These commands are only available in the extension’s popup.
 
@@ -394,7 +394,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openCommandPalette` | Open the command palette | | | `Slash`, `Control+KeyF`
 `closePopup` | Close the popup window | | | `Escape`, `Control+KeyC`, `KeyQ`
 
-### Command palette
+### Command palette commands
 
 These commands are only available in the command palette.
 
@@ -411,7 +411,7 @@ Command | Description | Windows and Linux key | macOS key | Palette key
 `movePageUp` | Move page up | | | `PageUp`, `Control+KeyU`
 `closeCommandPalette` | Close the command palette | | | `Escape`, `Control+KeyC`
 
-### Web pages
+### Web pages commands
 
 These commands are only available in the context of web pages
 where browser extensions are allowed.
@@ -421,7 +421,7 @@ Command | Description | Windows and Linux key | macOS key | Page key
 `openPopup` | Open the extension’s popup | | | Suggested key: `Escape`
 `sendEscapeKey` | Simulate pressing the `Escape` key | | | Suggested key: `Shift+Escape`
 
-### Navigation
+### Navigation commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -435,7 +435,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `goUp` | Go up in the URL hierarchy | | | `Alt+KeyU`
 `goToRoot` | Go to the root URL | | | `Alt+Shift+KeyU`
 
-### Accessibility
+### Accessibility commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -443,7 +443,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `focusMediaPlayer` | Cycle through media players | | | `KeyV`
 `blurElement` | Blur the active element | | | `Shift+Escape`
 
-### Clipboard
+### Clipboard commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -456,7 +456,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > If Chrome notifications are enabled,
 > Shortcuts will show you a message for copied text.
 
-### Save pages
+### Save pages commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -471,13 +471,13 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > As a result, Chrome will display the message: “Shortcuts started debugging this browser” with a “Cancel” button.
 > You can wait for the operation to complete, or click “Cancel” to close the debugging session and abort the capture.
 
-### Web search
+### Web search commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openWebSearchForSelectedText` | Perform a web search for selected text | | | `Alt+KeyW`
 
-### Scroll
+### Scroll commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -492,7 +492,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `scrollToTop` | Scroll to the top of the page | `Home`, `Control+ArrowUp` | `Home`, `Command+ArrowUp` | `KeyG`
 `scrollToBottom` | Scroll to the bottom of the page | `End`, `Control+ArrowDown` | `End`, `Command+ArrowDown` | `KeyE`
 
-### Zoom
+### Zoom commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -500,7 +500,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `zoomOut` | Zoom out | `Control+Minus` | `Command+Minus` | `Minus`
 `zoomReset` | Reset the zoom factor | `Control+0` | `Command+0` | `Digit0`
 
-### Window state
+### Window state commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -512,7 +512,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > [!IMPORTANT]
 > Entering picture-in-picture mode requires a user gesture.
 
-### Create tabs
+### Create tabs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -521,7 +521,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `openNewWindow` | Open a new window | `Control+N` | `Command+N` | `KeyN`
 `openNewIncognitoWindow` | Open a new window in Incognito mode | `Control+Shift+N` | `Shift+Command+N` | `Shift+KeyN`
 
-### Close tabs
+### Close tabs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -531,7 +531,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `closeWindow` | Close the window that contains the tab | `Control+Shift+W`, `Alt+F4` | `Shift+Command+W` | `Shift+KeyX`
 `restoreTab` | Reopen previously closed tabs | `Control+Shift+T` | `Shift+Command+T` | `KeyU`
 
-### Tab state
+### Tab state commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -542,7 +542,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `toggleMuteTab` | Mute or unmute selected tabs | | | `KeyM`
 `discardTab` | Discard selected tabs | | | `KeyD`
 
-### Organize tabs
+### Organize tabs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -552,7 +552,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `reverseTabOrder` | Reverse the order of selected tabs | | | `Shift+Digit4`
 `groupTabsByDomain` | Group selected tabs by domain | | | `Shift+Digit5`
 
-### Manage tab groups
+### Manage tab groups commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -561,7 +561,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `cycleTabGroupColorForward` | Cycle forward through tab group colors | | | `Alt+KeyA`
 `cycleTabGroupColorBackward` | Cycle backward through tab group colors | | | `Alt+Shift+KeyA`
 
-### Switch tabs
+### Switch tabs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -589,7 +589,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `activateNextWindow` | Activate the next open window | | | `KeyW`
 `activatePreviousWindow` | Activate the previous open window | | | `Shift+KeyW`
 
-### Move tabs
+### Move tabs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -601,7 +601,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `moveTabNewWindow` | Move selected tabs to a new window | | | `ArrowUp`
 `moveTabPreviousWindow` | Move selected tabs to the previous open window | | | `ArrowDown`
 
-### Select tabs
+### Select tabs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -618,7 +618,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > [!TIP]
 > Selecting tabs in group can be used for ungrouped tabs.
 
-### Bookmarks
+### Bookmarks commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -629,7 +629,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > If Chrome notifications are enabled,
 > Shortcuts will show you a message for created bookmarks.
 
-### Reading list
+### Reading list commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
@@ -639,13 +639,13 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 > If Chrome notifications are enabled,
 > Shortcuts will show you a message for pages added to your reading list.
 
-### Folders
+### Folders commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `openDownloadsFolder` | Open the “Downloads” folder | | | `Control+KeyK`
 
-### Chrome URLs
+### Chrome URLs commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
