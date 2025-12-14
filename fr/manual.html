@@ -411,6 +411,7 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"openNewTabsFromClipboard"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyV"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"savePage"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"savePageAsMHTML"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"savePageAsPNG"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"ctrlKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyS"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"openWebSearchForSelectedText"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyW"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"scrollDown"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyJ"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"scrollUp"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyK"</span> } },
@@ -570,6 +571,7 @@
     { &quot;command&quot;: &quot;openNewTabsFromClipboard&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyV&quot; } },
     { &quot;command&quot;: &quot;savePage&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;code&quot;: &quot;KeyS&quot; } },
     { &quot;command&quot;: &quot;savePageAsMHTML&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyS&quot; } },
+    { &quot;command&quot;: &quot;savePageAsPNG&quot;, &quot;key&quot;: { &quot;ctrlKey&quot;: true, &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyS&quot; } },
     { &quot;command&quot;: &quot;openWebSearchForSelectedText&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyW&quot; } },
     { &quot;command&quot;: &quot;scrollDown&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyJ&quot; } },
     { &quot;command&quot;: &quot;scrollUp&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyK&quot; } },
@@ -1537,9 +1539,37 @@
                     <kbd>Ctrl</kbd>+<wbr><kbd>Maj</kbd>+<wbr><kbd class="code">KeyS</kbd>
                   </td>
                 </tr>
+                <tr>
+                  <td data-label="Commande"><code>save<wbr>Page<wbr>As<wbr>PNG</code></td>
+                  <td data-label="Description">Enregistrer la page au format PNG</td>
+                  <td data-label="Raccourci Windows et Linux"></td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci du menu Shortcuts">
+                    <kbd>Ctrl</kbd>+<wbr><kbd>Alt</kbd>+<wbr><kbd class="code">KeyS</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Commande"><code>save<wbr>Page<wbr>As<wbr>JPEG</code></td>
+                  <td data-label="Description">Enregistrer la page au format JPEG</td>
+                  <td data-label="Raccourci Windows et Linux"></td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci du menu Shortcuts"></td>
+                </tr>
+                <tr>
+                  <td data-label="Commande"><code>save<wbr>Page<wbr>As<wbr>WebP</code></td>
+                  <td data-label="Description">Enregistrer la page au format WebP</td>
+                  <td data-label="Raccourci Windows et Linux"></td>
+                  <td data-label="Raccourci macOS"></td>
+                  <td data-label="Raccourci du menu Shortcuts"></td>
+                </tr>
               </tbody>
             </table>
           </div>
+          <p role="note">
+            Remarque : Shortcuts utilise le Chrome DevTools Protocol pour effectuer des captures d’écran de l’ensemble de la page.
+            Lorsque ce protocole est utilisé, Chrome affiche le message : « Shortcuts a démarré le débogage de ce navigateur » avec un bouton « Annuler ».
+            Vous pouvez attendre la fin de l’opération ou cliquer sur « Annuler » pour fermer la session de débogage et interrompre la capture.
+          </p>
         </section>
         <section id="web_search_commands">
           <h3>
