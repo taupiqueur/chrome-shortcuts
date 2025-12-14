@@ -147,6 +147,9 @@ export const openNewTabsFromClipboard = execCommandAndClosePopup('openNewTabsFro
 
 export const savePage = execCommand('savePage')
 export const savePageAsMHTML = execCommand('savePageAsMHTML')
+export const savePageAsPNG = execCommandAndClosePopup('savePageAsPNG')
+export const savePageAsJPEG = execCommandAndClosePopup('savePageAsJPEG')
+export const savePageAsWebP = execCommandAndClosePopup('savePageAsWebP')
 
 // Web search ------------------------------------------------------------------
 

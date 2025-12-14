@@ -78,6 +78,9 @@ export const openNewTabsFromClipboard = message('openNewTabsFromClipboard')
 
 export const savePage = message('savePage')
 export const savePageAsMHTML = message('savePageAsMHTML')
+export const savePageAsPNG = message('savePageAsPNG')
+export const savePageAsJPEG = message('savePageAsJPEG')
+export const savePageAsWebP = message('savePageAsWebP')
 
 // Web search ------------------------------------------------------------------
 

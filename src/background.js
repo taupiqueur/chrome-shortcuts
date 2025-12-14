@@ -177,6 +177,7 @@ const suggestionLabels = new Map([
  * @property {string} manualPage
  * @property {string} optionsPage
  * @property {string} shortcutsPage
+ * @property {string} pageCapturePage
  *
  * @type {StorageCache}
  */
@@ -203,6 +204,7 @@ async function setLocalizedPages() {
         manualPage: chrome.runtime.getURL('src/manual/manual.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.html'),
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts,-Activate the extension',
+        pageCapturePage: chrome.runtime.getURL('src/page_capture/page_capture.html'),
       })
       break
 
@@ -216,6 +218,7 @@ async function setLocalizedPages() {
         manualPage: chrome.runtime.getURL('src/manual/manual.fr.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.fr.html'),
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts,-Activer l’extension',
+        pageCapturePage: chrome.runtime.getURL('src/page_capture/page_capture.fr.html'),
       })
       break
 
@@ -229,6 +232,7 @@ async function setLocalizedPages() {
         manualPage: chrome.runtime.getURL('src/manual/manual.html'),
         optionsPage: chrome.runtime.getURL('src/options/options.html'),
         shortcutsPage: 'chrome://extensions/shortcuts#:~:text=Shortcuts',
+        pageCapturePage: chrome.runtime.getURL('src/page_capture/page_capture.html'),
       })
   }
 }
@@ -634,6 +638,7 @@ async function onCommand(commandNameWithIndex, tab) {
     manualPage: storageCache.manualPage,
     shortcutsPage: storageCache.shortcutsPage,
     themeStorePage: storageCache.themeStorePage,
+    pageCapturePage: storageCache.pageCapturePage,
   })
 }
 
@@ -936,6 +941,7 @@ function onConnect(port) {
         manualPage: storageCache.manualPage,
         shortcutsPage: storageCache.shortcutsPage,
         themeStorePage: storageCache.themeStorePage,
+        pageCapturePage: storageCache.pageCapturePage,
       })
       break
 

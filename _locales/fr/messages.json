@@ -62,6 +62,15 @@
   "savePageAsMHTMLCommandDescription": {
     "message": "Enregistrer des pages · Enregistrer la page au format MHTML"
   },
+  "savePageAsPNGCommandDescription": {
+    "message": "Enregistrer des pages · Enregistrer la page au format PNG"
+  },
+  "savePageAsJPEGCommandDescription": {
+    "message": "Enregistrer des pages · Enregistrer la page au format JPEG"
+  },
+  "savePageAsWebPCommandDescription": {
+    "message": "Enregistrer des pages · Enregistrer la page au format WebP"
+  },
   "openWebSearchForSelectedTextCommandDescription": {
     "message": "Recherche sur le web · Effectuer une recherche de la sélection sur le web"
   },

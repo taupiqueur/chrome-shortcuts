@@ -87,6 +87,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "openNewTabsFromClipboard", "key": { "shiftKey": true, "code": "KeyV" } },
     { "command": "savePage", "key": { "ctrlKey": true, "code": "KeyS" } },
     { "command": "savePageAsMHTML", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyS" } },
+    { "command": "savePageAsPNG", "key": { "ctrlKey": true, "altKey": true, "code": "KeyS" } },
     { "command": "openWebSearchForSelectedText", "key": { "altKey": true, "code": "KeyW" } },
     { "command": "scrollDown", "key": { "code": "KeyJ" } },
     { "command": "scrollUp", "key": { "code": "KeyK" } },
@@ -461,6 +462,14 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
 `savePage` | Save the content of selected tabs | `Control+S` | `Command+S` | `Control+KeyS`
 `savePageAsMHTML` | Save the content of selected tabs as MHTML | | | `Control+Shift+KeyS`
+`savePageAsPNG` | Save the content of selected tabs as PNG | | | `Control+Alt+KeyS`
+`savePageAsJPEG` | Save the content of selected tabs as JPEG | | |
+`savePageAsWebP` | Save the content of selected tabs as WebP | | |
+
+> [!NOTE]
+> Shortcuts uses the Chrome DevTools Protocol to take screenshots of the entire page.
+> As a result, Chrome will display the message: “Shortcuts started debugging this browser” with a “Cancel” button.
+> You can wait for the operation to complete, or click “Cancel” to close the debugging session and abort the capture.
 
 ### Web search
 

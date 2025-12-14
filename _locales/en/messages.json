@@ -62,6 +62,15 @@
   "savePageAsMHTMLCommandDescription": {
     "message": "Save pages · Save the content of selected tabs as MHTML"
   },
+  "savePageAsPNGCommandDescription": {
+    "message": "Save pages · Save the content of selected tabs as PNG"
+  },
+  "savePageAsJPEGCommandDescription": {
+    "message": "Save pages · Save the content of selected tabs as JPEG"
+  },
+  "savePageAsWebPCommandDescription": {
+    "message": "Save pages · Save the content of selected tabs as WebP"
+  },
   "openWebSearchForSelectedTextCommandDescription": {
     "message": "Web search · Perform a web search for selected text"
   },

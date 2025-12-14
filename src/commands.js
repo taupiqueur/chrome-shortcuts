@@ -15,6 +15,7 @@
  * @property {string} manualPage
  * @property {string} shortcutsPage
  * @property {string} themeStorePage
+ * @property {string} pageCapturePage
  */
 
 import {
@@ -51,6 +52,18 @@ const { compare: localeCompare } = new Intl.Collator
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
+
+const CHROME_DOMAINS = [
+  new URLPattern({
+    protocol: 'chrome',
+  }),
+  new URLPattern({
+    protocol: 'chrome-extension',
+  }),
+  new URLPattern({
+    hostname: 'chromewebstore.google.com',
+  }),
+]
 
 /**
  * List of tab group colors.
@@ -681,6 +694,146 @@ export async function savePageAsMHTML(cx) {
         )
     )
   )
+}
+
+/**
+ * Saves the content of selected tabs as PNG.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function savePageAsPNG(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    discarded: false,
+    windowId: cx.tab.windowId,
+  })
+
+  const debuggableTabs = tabs.filter((tab) =>
+    !isChromeDomain(tab.url)
+  )
+
+  if (debuggableTabs.length > 0) {
+    await openChromePage(cx, cx.pageCapturePage)
+
+    for (const tab of debuggableTabs) {
+      const debuggeeTarget = {
+        tabId: tab.id,
+      }
+
+      try {
+        await chrome.debugger.attach(debuggeeTarget, '1.3')
+
+        await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setDefaultBackgroundColorOverride', {
+          color: { r: 0, g: 0, b: 0, a: 0 },
+        })
+
+        const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
+          format: 'png',
+          captureBeyondViewport: true,
+        })
+
+        await chrome.downloads.download({
+          url: `data:image/png;base64,${data}`,
+          filename: getFilenameSuggestion(`${tab.title}.png`)
+        })
+      } finally {
+        await chrome.debugger.detach(debuggeeTarget)
+      }
+    }
+  }
+}
+
+/**
+ * Saves the content of selected tabs as JPEG.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function savePageAsJPEG(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    discarded: false,
+    windowId: cx.tab.windowId,
+  })
+
+  const debuggableTabs = tabs.filter((tab) =>
+    !isChromeDomain(tab.url)
+  )
+
+  if (debuggableTabs.length > 0) {
+    await openChromePage(cx, cx.pageCapturePage)
+
+    for (const tab of debuggableTabs) {
+      const debuggeeTarget = {
+        tabId: tab.id,
+      }
+
+      try {
+        await chrome.debugger.attach(debuggeeTarget, '1.3')
+
+        const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
+          format: 'jpeg',
+          captureBeyondViewport: true,
+        })
+
+        await chrome.downloads.download({
+          url: `data:image/jpeg;base64,${data}`,
+          filename: getFilenameSuggestion(`${tab.title}.jpg`)
+        })
+      } finally {
+        await chrome.debugger.detach(debuggeeTarget)
+      }
+    }
+  }
+}
+
+/**
+ * Saves the content of selected tabs as WebP.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function savePageAsWebP(cx) {
+  const tabs = await chrome.tabs.query({
+    highlighted: true,
+    discarded: false,
+    windowId: cx.tab.windowId,
+  })
+
+  const debuggableTabs = tabs.filter((tab) =>
+    !isChromeDomain(tab.url)
+  )
+
+  if (debuggableTabs.length > 0) {
+    await openChromePage(cx, cx.pageCapturePage)
+
+    for (const tab of debuggableTabs) {
+      const debuggeeTarget = {
+        tabId: tab.id,
+      }
+
+      try {
+        await chrome.debugger.attach(debuggeeTarget, '1.3')
+
+        await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setDefaultBackgroundColorOverride', {
+          color: { r: 0, g: 0, b: 0, a: 0 },
+        })
+
+        const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
+          format: 'webp',
+          captureBeyondViewport: true,
+        })
+
+        await chrome.downloads.download({
+          url: `data:image/webp;base64,${data}`,
+          filename: getFilenameSuggestion(`${tab.title}.webp`)
+        })
+      } finally {
+        await chrome.debugger.detach(debuggeeTarget)
+      }
+    }
+  }
 }
 
 /**
@@ -3279,6 +3432,18 @@ export async function openAboutChromeVersionPage(cx) {
  */
 export async function openWhatsNewPage(cx) {
   await openChromePage(cx, 'chrome://whats-new/')
+}
+
+/**
+ * Determines whether the given URL is a Chrome domain.
+ *
+ * @param {string} url
+ * @returns {boolean}
+ */
+function isChromeDomain(url) {
+  return CHROME_DOMAINS.some((domain) =>
+    domain.test(url)
+  )
 }
 
 /**

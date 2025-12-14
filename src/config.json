@@ -27,6 +27,7 @@
     { "command": "openNewTabsFromClipboard", "key": { "shiftKey": true, "code": "KeyV" } },
     { "command": "savePage", "key": { "ctrlKey": true, "code": "KeyS" } },
     { "command": "savePageAsMHTML", "key": { "ctrlKey": true, "shiftKey": true, "code": "KeyS" } },
+    { "command": "savePageAsPNG", "key": { "ctrlKey": true, "altKey": true, "code": "KeyS" } },
     { "command": "openWebSearchForSelectedText", "key": { "altKey": true, "code": "KeyW" } },
     { "command": "scrollDown", "key": { "code": "KeyJ" } },
     { "command": "scrollUp", "key": { "code": "KeyK" } },

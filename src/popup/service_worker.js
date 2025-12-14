@@ -18,6 +18,7 @@
  * @property {string} manualPage
  * @property {string} shortcutsPage
  * @property {string} themeStorePage
+ * @property {string} pageCapturePage
  */
 
 /**
@@ -294,6 +295,7 @@ async function onCommandMessage(message, port, cx) {
       manualPage: cx.manualPage,
       shortcutsPage: cx.shortcutsPage,
       themeStorePage: cx.themeStorePage,
+      pageCapturePage: cx.pageCapturePage,
     })
   }
 }
