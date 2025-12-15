@@ -487,7 +487,7 @@ async function onInstall() {
  */
 async function onUpdate(previousVersion) {
   if (
-    versionCompare(previousVersion, '0.19.0') < 0
+    versionCompare(previousVersion, '0.20.0') < 0
   ) {
     const defaults = await optionsWorker.getDefaults()
     await chrome.storage.sync.set(defaults)
