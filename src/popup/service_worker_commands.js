@@ -291,7 +291,7 @@ export const togglePinTab = execCommand('togglePinTab')
 export const toggleGroupTab = execCommand('toggleGroupTab')
 export const toggleCollapseTabGroups = execCommand('toggleCollapseTabGroups')
 export const toggleMuteTab = execCommand('toggleMuteTab')
-export const discardTab = execCommand('discardTab')
+export const discardTab = execCommandAndClosePopup('discardTab')
 
 // Organize tabs ---------------------------------------------------------------
 
