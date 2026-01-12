@@ -20,11 +20,9 @@
 
 import {
   chunk,
-  clamp,
   dropWhile,
   getISODateString,
   modulo,
-  range,
   splitWhile,
   takeWhile,
 } from './utils.js'
@@ -50,6 +48,7 @@ const { compare: localeCompare } = new Intl.Collator
 
 // Constants -------------------------------------------------------------------
 
+const { SPLIT_VIEW_ID_NONE } = chrome.tabs
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 const { NEW_TAB: NEW_TAB_DISPOSITION } = chrome.search.Disposition
 
@@ -158,6 +157,12 @@ const _pinned = ({ pinned }) => pinned
  * @returns {number}
  */
 const _groupId = ({ groupId }) => groupId
+
+/**
+ * @param {{ splitViewId: number }} object
+ * @returns {number}
+ */
+const _splitViewId = ({ splitViewId }) => splitViewId
 
 /**
  * @param {{ title: string }} object
@@ -2796,11 +2801,22 @@ export async function moveTabPreviousWindow(cx) {
  * @returns {Promise<void>}
  */
 export async function selectActiveTab(cx) {
+  const tabIndices = new Set([
+    cx.tab.index,
+  ])
+
+  if (cx.tab.splitViewId !== SPLIT_VIEW_ID_NONE) {
+    const tabs = await chrome.tabs.query({
+      splitViewId: cx.tab.splitViewId,
+    })
+    for (const tab of tabs) {
+      tabIndices.add(tab.index)
+    }
+  }
+
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: [
-      cx.tab.index
-    ]
+    tabs: Array.from(tabIndices),
   })
 }
 
@@ -2814,7 +2830,12 @@ async function selectTabDirection(cx, direction) {
   /**
    * @type {number}
    */
-  let focusOffset
+  let focusIndex = 0
+
+  /**
+   * @type {number}
+   */
+  let focusOffset = 0
 
   switch (direction) {
     case Direction.Backward:
@@ -2827,33 +2848,112 @@ async function selectTabDirection(cx, direction) {
   }
 
   const tabs = await chrome.tabs.query({
-    windowId: cx.tab.windowId
+    windowId: cx.tab.windowId,
   })
 
-  const tabCount = tabs.length
+  const tabsByIndex = new Map
 
-  // Causes selection to expand or shrink,
-  // depending on the direction.
-  const [anchorIndex, focusIndex] = tabs[cx.tab.index + 1]?.highlighted
-    ? [0, -1]
-    : [-1, 0]
+  for (const tab of tabs) {
+    tabsByIndex.set(tab.index, tab)
+  }
 
-  const newRange = chunk(tabs, _highlighted)
-    .flatMap(([isHighlighted, tabs]) =>
-      isHighlighted
-        ? [tabs]
-        : []
-    )
-    .flatMap((tabs) =>
-      range(tabs.at(anchorIndex).index, clamp(tabs.at(focusIndex).index + focusOffset, 0, tabCount - 1))
-    )
+  const tabsBySplitViewId = Map.groupBy(tabs, _splitViewId)
+
+  tabsBySplitViewId.delete(SPLIT_VIEW_ID_NONE)
+
+  if (tabsBySplitViewId.has(cx.tab.splitViewId)) {
+    const tabs = tabsBySplitViewId.get(cx.tab.splitViewId)
+    const tabIndex = tabs.at(-1).index + 1
+    if (tabsByIndex.has(tabIndex)) {
+      const tab = tabsByIndex.get(tabIndex)
+      if (tab.highlighted) {
+        focusIndex = -1
+      }
+    }
+  } else {
+    const tabIndex = cx.tab.index + 1
+    if (tabsByIndex.has(tabIndex)) {
+      const tab = tabsByIndex.get(tabIndex)
+      if (tab.highlighted) {
+        focusIndex = -1
+      }
+    }
+  }
+
+  const tabIndices = new Set([
+    cx.tab.index,
+  ])
+
+  const highlightedTabChunks = chunk(tabs, _highlighted)
+
+  for (const [highlighted, tabs] of highlightedTabChunks) {
+    if (!highlighted) {
+      continue
+    }
+
+    const splitViewIds = new Set
+
+    for (const tab of tabs) {
+      tabIndices.add(tab.index)
+      splitViewIds.add(tab.splitViewId)
+    }
+
+    const collapsedRange = splitViewIds.has(SPLIT_VIEW_ID_NONE)
+      ? tabs.length === 1
+      : splitViewIds.size === 1
+
+    const shouldGrowForward =
+      focusIndex === -1 &&
+      direction === Direction.Forward ||
+      focusIndex === 0 &&
+      direction === Direction.Forward &&
+      collapsedRange
+
+    const shouldGrowBackward =
+      focusIndex === 0 &&
+      direction === Direction.Backward ||
+      focusIndex === -1 &&
+      direction === Direction.Backward &&
+      collapsedRange
+
+    const shouldShrinkForward =
+      focusIndex === 0 &&
+      direction === Direction.Forward
+
+    const shouldShrinkBackward =
+      focusIndex === -1 &&
+      direction === Direction.Backward
+
+    if (shouldGrowForward || shouldGrowBackward) {
+      const focusIndex = shouldGrowForward ? -1 : 0
+      const tabIndex = tabs.at(focusIndex).index + focusOffset
+      if (tabsByIndex.has(tabIndex)) {
+        const tab = tabsByIndex.get(tabIndex)
+        if (tabsBySplitViewId.has(tab.splitViewId)) {
+          const tabs = tabsBySplitViewId.get(tab.splitViewId)
+          for (const tab of tabs) {
+            tabIndices.add(tab.index)
+          }
+        } else {
+          tabIndices.add(tab.index)
+        }
+      }
+    } else if (shouldShrinkForward || shouldShrinkBackward) {
+      const tab = tabs.at(focusIndex)
+      if (tabsBySplitViewId.has(tab.splitViewId)) {
+        const tabs = tabsBySplitViewId.get(tab.splitViewId)
+        for (const tab of tabs) {
+          tabIndices.delete(tab.index)
+        }
+      } else {
+        tabIndices.delete(tab.index)
+      }
+    }
+  }
 
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: [
-      cx.tab.index,
-      ...newRange
-    ]
+    tabs: Array.from(tabIndices),
   })
 }
 
@@ -2887,18 +2987,34 @@ export async function selectNextTab(cx) {
 export async function selectRelatedTabs(cx) {
   const tabs = await getOpenTabs(cx.tab.windowId)
 
+  const tabsBySplitViewId = Map.groupBy(tabs, _splitViewId)
+
+  tabsBySplitViewId.delete(SPLIT_VIEW_ID_NONE)
+
+  const tabIndices = new Set([
+    cx.tab.index,
+  ])
+
   const tabsByDomain = Map.groupBy(tabs, _hostname)
 
-  const tabSelection = chunk(tabs.filter(_highlighted), _hostname)
-    .flatMap(([hostname]) =>
-      tabsByDomain.get(hostname)
-    )
+  for (const tabs of tabsByDomain.values()) {
+    if (tabs.some(_highlighted)) {
+      for (const tab of tabs) {
+        if (tabsBySplitViewId.has(tab.splitViewId)) {
+          const tabs = tabsBySplitViewId.get(tab.splitViewId)
+          for (const tab of tabs) {
+            tabIndices.add(tab.index)
+          }
+        } else {
+          tabIndices.add(tab.index)
+        }
+      }
+    }
+  }
 
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: Array.from(
-      getHighlightInfo(cx.tab.id, tabSelection).values()
-    )
+    tabs: Array.from(tabIndices),
   })
 }
 
@@ -2912,21 +3028,26 @@ export async function selectRelatedTabs(cx) {
  */
 export async function selectTabsInGroup(cx) {
   const tabs = await chrome.tabs.query({
-    windowId: cx.tab.windowId
+    windowId: cx.tab.windowId,
   })
+
+  const tabIndices = new Set([
+    cx.tab.index,
+  ])
 
   const tabsByGroup = Map.groupBy(tabs, _weakGroup)
 
-  const tabSelection = chunk(tabs.filter(_highlighted), _weakGroup)
-    .flatMap(([groupId]) =>
-      tabsByGroup.get(groupId)
-    )
+  for (const tabs of tabsByGroup.values()) {
+    if (tabs.some(_highlighted)) {
+      for (const tab of tabs) {
+        tabIndices.add(tab.index)
+      }
+    }
+  }
 
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: Array.from(
-      getHighlightInfo(cx.tab.id, tabSelection).values()
-    )
+    tabs: Array.from(tabIndices),
   })
 }
 
@@ -2938,14 +3059,20 @@ export async function selectTabsInGroup(cx) {
  */
 export async function selectAllTabs(cx) {
   const tabs = await chrome.tabs.query({
-    windowId: cx.tab.windowId
+    windowId: cx.tab.windowId,
   })
+
+  const tabIndices = new Set([
+    cx.tab.index,
+  ])
+
+  for (const tab of tabs) {
+    tabIndices.add(tab.index)
+  }
 
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: Array.from(
-      getHighlightInfo(cx.tab.id, tabs).values()
-    )
+    tabs: Array.from(tabIndices),
   })
 }
 
@@ -2958,16 +3085,25 @@ export async function selectAllTabs(cx) {
  */
 export async function selectRightTabs(cx) {
   const tabs = await chrome.tabs.query({
-    windowId: cx.tab.windowId
+    windowId: cx.tab.windowId,
   })
 
-  const rightTabs = dropWhile(tabs, not(_highlighted))
+  const tabIndices = new Set([
+    cx.tab.index,
+  ])
+
+  const rightTabs = dropWhile(
+    tabs,
+    not(_highlighted),
+  )
+
+  for (const tab of rightTabs) {
+    tabIndices.add(tab.index)
+  }
 
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: Array.from(
-      getHighlightInfo(cx.tab.id, rightTabs).values()
-    )
+    tabs: Array.from(tabIndices),
   })
 }
 
@@ -2982,7 +3118,7 @@ async function moveTabSelectionFaceDirection(cx, direction) {
   /**
    * @type {number}
    */
-  let focusOffset
+  let focusOffset = 0
 
   switch (direction) {
     case Direction.Backward:
@@ -2995,20 +3131,25 @@ async function moveTabSelectionFaceDirection(cx, direction) {
   }
 
   const tabs = await chrome.tabs.query({
-    windowId: cx.tab.windowId
+    highlighted: true,
+    windowId: cx.tab.windowId,
   })
+
+  const tabIndices = new Set
+
+  for (const tab of tabs) {
+    tabIndices.add(tab.index)
+  }
 
   let tabIndex = cx.tab.index
 
-  while (tabs[tabIndex + focusOffset]?.highlighted) {
+  while (tabIndices.has(tabIndex + focusOffset)) {
     tabIndex += focusOffset
   }
 
   await chrome.tabs.highlight({
     windowId: cx.tab.windowId,
-    tabs: Array.from(
-      getHighlightInfo(tabs[tabIndex].id, tabs.filter(_highlighted)).values()
-    )
+    tabs: [tabIndex, ...tabIndices],
   })
 }
 
