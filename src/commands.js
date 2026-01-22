@@ -718,33 +718,37 @@ export async function savePageAsPNG(cx) {
     !isChromeDomain(tab.url)
   )
 
-  if (debuggableTabs.length > 0) {
-    await openChromePage(cx, cx.pageCapturePage)
+  if (debuggableTabs.length === 0) {
+    throw new Error(
+      'Cannot save page as PNG: No debuggable tabs.',
+    )
+  }
 
-    for (const tab of debuggableTabs) {
-      const debuggeeTarget = {
-        tabId: tab.id,
-      }
+  await openChromePage(cx, cx.pageCapturePage)
 
-      try {
-        await chrome.debugger.attach(debuggeeTarget, '1.3')
+  for (const tab of debuggableTabs) {
+    const debuggeeTarget = {
+      tabId: tab.id,
+    }
 
-        await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setDefaultBackgroundColorOverride', {
-          color: { r: 0, g: 0, b: 0, a: 0 },
-        })
+    try {
+      await chrome.debugger.attach(debuggeeTarget, '1.3')
 
-        const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
-          format: 'png',
-          captureBeyondViewport: true,
-        })
+      await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setDefaultBackgroundColorOverride', {
+        color: { r: 0, g: 0, b: 0, a: 0 },
+      })
 
-        await chrome.downloads.download({
-          url: `data:image/png;base64,${data}`,
-          filename: getFilenameSuggestion(`${tab.title}.png`)
-        })
-      } finally {
-        await chrome.debugger.detach(debuggeeTarget)
-      }
+      const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
+        format: 'png',
+        captureBeyondViewport: true,
+      })
+
+      await chrome.downloads.download({
+        url: `data:image/png;base64,${data}`,
+        filename: getFilenameSuggestion(`${tab.title}.png`)
+      })
+    } finally {
+      await chrome.debugger.detach(debuggeeTarget)
     }
   }
 }
@@ -766,29 +770,33 @@ export async function savePageAsJPEG(cx) {
     !isChromeDomain(tab.url)
   )
 
-  if (debuggableTabs.length > 0) {
-    await openChromePage(cx, cx.pageCapturePage)
+  if (debuggableTabs.length === 0) {
+    throw new Error(
+      'Cannot save page as JPEG: No debuggable tabs.',
+    )
+  }
 
-    for (const tab of debuggableTabs) {
-      const debuggeeTarget = {
-        tabId: tab.id,
-      }
+  await openChromePage(cx, cx.pageCapturePage)
 
-      try {
-        await chrome.debugger.attach(debuggeeTarget, '1.3')
+  for (const tab of debuggableTabs) {
+    const debuggeeTarget = {
+      tabId: tab.id,
+    }
 
-        const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
-          format: 'jpeg',
-          captureBeyondViewport: true,
-        })
+    try {
+      await chrome.debugger.attach(debuggeeTarget, '1.3')
 
-        await chrome.downloads.download({
-          url: `data:image/jpeg;base64,${data}`,
-          filename: getFilenameSuggestion(`${tab.title}.jpg`)
-        })
-      } finally {
-        await chrome.debugger.detach(debuggeeTarget)
-      }
+      const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
+        format: 'jpeg',
+        captureBeyondViewport: true,
+      })
+
+      await chrome.downloads.download({
+        url: `data:image/jpeg;base64,${data}`,
+        filename: getFilenameSuggestion(`${tab.title}.jpg`)
+      })
+    } finally {
+      await chrome.debugger.detach(debuggeeTarget)
     }
   }
 }
@@ -810,33 +818,37 @@ export async function savePageAsWebP(cx) {
     !isChromeDomain(tab.url)
   )
 
-  if (debuggableTabs.length > 0) {
-    await openChromePage(cx, cx.pageCapturePage)
+  if (debuggableTabs.length === 0) {
+    throw new Error(
+      'Cannot save page as WebP: No debuggable tabs.',
+    )
+  }
 
-    for (const tab of debuggableTabs) {
-      const debuggeeTarget = {
-        tabId: tab.id,
-      }
+  await openChromePage(cx, cx.pageCapturePage)
 
-      try {
-        await chrome.debugger.attach(debuggeeTarget, '1.3')
+  for (const tab of debuggableTabs) {
+    const debuggeeTarget = {
+      tabId: tab.id,
+    }
 
-        await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setDefaultBackgroundColorOverride', {
-          color: { r: 0, g: 0, b: 0, a: 0 },
-        })
+    try {
+      await chrome.debugger.attach(debuggeeTarget, '1.3')
 
-        const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
-          format: 'webp',
-          captureBeyondViewport: true,
-        })
+      await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setDefaultBackgroundColorOverride', {
+        color: { r: 0, g: 0, b: 0, a: 0 },
+      })
 
-        await chrome.downloads.download({
-          url: `data:image/webp;base64,${data}`,
-          filename: getFilenameSuggestion(`${tab.title}.webp`)
-        })
-      } finally {
-        await chrome.debugger.detach(debuggeeTarget)
-      }
+      const { data } = await chrome.debugger.sendCommand(debuggeeTarget, 'Page.captureScreenshot', {
+        format: 'webp',
+        captureBeyondViewport: true,
+      })
+
+      await chrome.downloads.download({
+        url: `data:image/webp;base64,${data}`,
+        filename: getFilenameSuggestion(`${tab.title}.webp`)
+      })
+    } finally {
+      await chrome.debugger.detach(debuggeeTarget)
     }
   }
 }
@@ -1852,25 +1864,29 @@ export async function collapseTabGroup(cx) {
  * @returns {Promise<void>}
  */
 export async function renameTabGroup(cx) {
-  if (hasGroup(cx.tab)) {
-    const tabGroup = await chrome.tabGroups.get(cx.tab.groupId)
+  if (cx.tab.groupId === TAB_GROUP_ID_NONE) {
+    throw new Error(
+      'Cannot rename tab group: No active group.',
+    )
+  }
 
-    const [{ result: newName }] = await chrome.scripting.executeScript({
-      target: {
-        tabId: cx.tab.id
-      },
-      func: prompt,
-      args: ['Name this group', tabGroup.title]
+  const tabGroup = await chrome.tabGroups.get(cx.tab.groupId)
+
+  const [{ result: newName }] = await chrome.scripting.executeScript({
+    target: {
+      tabId: cx.tab.id,
+    },
+    func: prompt,
+    args: ['Name this group', tabGroup.title],
+  })
+
+  if (
+    newName !== null &&
+    newName !== tabGroup.title
+  ) {
+    await chrome.tabGroups.update(tabGroup.id, {
+      title: newName,
     })
-
-    if (
-      newName !== null &&
-      newName !== tabGroup.title
-    ) {
-      await chrome.tabGroups.update(tabGroup.id, {
-        title: newName,
-      })
-    }
   }
 }
 
@@ -1882,20 +1898,24 @@ export async function renameTabGroup(cx) {
  * @returns {Promise<void>}
  */
 async function cycleTabGroupColor(cx, delta) {
-  if (hasGroup(cx.tab)) {
-    const tabGroup = await chrome.tabGroups.get(cx.tab.groupId)
-
-    const nextColor = TAB_GROUP_COLORS[
-      modulo(
-        TAB_GROUP_COLORS.indexOf(tabGroup.color) + delta,
-        TAB_GROUP_COLORS.length
-      )
-    ]
-
-    await chrome.tabGroups.update(tabGroup.id, {
-      color: nextColor
-    })
+  if (cx.tab.groupId === TAB_GROUP_ID_NONE) {
+    throw new Error(
+      'Cannot cycle tab group color: No active group.',
+    )
   }
+
+  const tabGroup = await chrome.tabGroups.get(cx.tab.groupId)
+
+  const nextColor = TAB_GROUP_COLORS[
+    modulo(
+      TAB_GROUP_COLORS.indexOf(tabGroup.color) + delta,
+      TAB_GROUP_COLORS.length,
+    )
+  ]
+
+  await chrome.tabGroups.update(tabGroup.id, {
+    color: nextColor,
+  })
 }
 
 /**
