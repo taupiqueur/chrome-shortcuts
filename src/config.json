@@ -21,6 +21,7 @@
     { "command": "focusTextInput", "key": { "code": "KeyI" } },
     { "command": "focusMediaPlayer", "key": { "code": "KeyV" } },
     { "command": "blurElement", "key": { "shiftKey": true, "code": "Escape" } },
+    { "command": "toggleAutoDarkMode", "key": { "shiftKey": true, "code": "Backquote" } },
     { "command": "copyURL", "key": { "code": "KeyY" } },
     { "command": "copyTitle", "key": { "altKey": true, "code": "KeyY" } },
     { "command": "copyTitleAndURL", "key": { "shiftKey": true, "code": "KeyY" } },

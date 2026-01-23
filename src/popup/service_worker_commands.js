@@ -135,6 +135,7 @@ export const goToRoot = execCommandWithNavigation('goToRoot')
 export const focusTextInput = execCommand('focusTextInput')
 export const focusMediaPlayer = execCommand('focusMediaPlayer')
 export const blurElement = execCommand('blurElement')
+export const toggleAutoDarkMode = execCommand('toggleAutoDarkMode')
 
 // Clipboard -------------------------------------------------------------------
 

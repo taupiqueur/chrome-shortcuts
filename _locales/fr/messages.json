@@ -44,6 +44,9 @@
   "blurElementCommandDescription": {
     "message": "Accessibilité · Retirer le focus de l’élément actif"
   },
+  "toggleAutoDarkModeCommandDescription": {
+    "message": "Accessibilité · Activer ou désactiver le mode sombre automatique"
+  },
   "copyURLCommandDescription": {
     "message": "Presse-papiers · Copier le lien de la page"
   },

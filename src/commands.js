@@ -499,6 +499,34 @@ export async function blurElement(cx) {
   })
 }
 
+/**
+ * Turns automatic dark mode on or off.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function toggleAutoDarkMode(cx) {
+  if (isChromeDomain(cx.tab.url)) {
+    throw new Error(
+      'Cannot enable automatic dark mode: No debuggable tabs.',
+    )
+  }
+
+  const debuggeeTarget = {
+    tabId: cx.tab.id,
+  }
+
+  try {
+    await chrome.debugger.attach(debuggeeTarget, '1.3')
+
+    await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setAutoDarkModeOverride', {
+      enabled: true,
+    })
+  } catch {
+    await chrome.debugger.detach(debuggeeTarget)
+  }
+}
+
 // Clipboard -------------------------------------------------------------------
 
 /**

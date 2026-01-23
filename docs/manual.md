@@ -81,6 +81,7 @@ in the “Options” page—Right-click the Shortcuts toolbar button and select 
     { "command": "focusTextInput", "key": { "code": "KeyI" } },
     { "command": "focusMediaPlayer", "key": { "code": "KeyV" } },
     { "command": "blurElement", "key": { "shiftKey": true, "code": "Escape" } },
+    { "command": "toggleAutoDarkMode", "key": { "shiftKey": true, "code": "Backquote" } },
     { "command": "copyURL", "key": { "code": "KeyY" } },
     { "command": "copyTitle", "key": { "altKey": true, "code": "KeyY" } },
     { "command": "copyTitleAndURL", "key": { "shiftKey": true, "code": "KeyY" } },
@@ -442,6 +443,7 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `focusTextInput` | Cycle through text fields | | | `KeyI`
 `focusMediaPlayer` | Cycle through media players | | | `KeyV`
 `blurElement` | Blur the active element | | | `Shift+Escape`
+`toggleAutoDarkMode` | Turn automatic dark mode on or off | | | `Shift+Backquote`
 
 ### Clipboard commands
 

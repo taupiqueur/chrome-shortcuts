@@ -404,6 +404,7 @@
     { <span data-type="string">"command"</span>: <span data-type="string">"focusTextInput"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyI"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"focusMediaPlayer"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyV"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"blurElement"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Escape"</span> } },
+    { <span data-type="string">"command"</span>: <span data-type="string">"toggleAutoDarkMode"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"Backquote"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"copyURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"copyTitle"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"altKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
     { <span data-type="string">"command"</span>: <span data-type="string">"copyTitleAndURL"</span>, <span data-type="string">"key"</span>: { <span data-type="string">"shiftKey"</span>: <span data-type="boolean">true</span>, <span data-type="string">"code"</span>: <span data-type="string">"KeyY"</span> } },
@@ -564,6 +565,7 @@
     { &quot;command&quot;: &quot;focusTextInput&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyI&quot; } },
     { &quot;command&quot;: &quot;focusMediaPlayer&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyV&quot; } },
     { &quot;command&quot;: &quot;blurElement&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Escape&quot; } },
+    { &quot;command&quot;: &quot;toggleAutoDarkMode&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;Backquote&quot; } },
     { &quot;command&quot;: &quot;copyURL&quot;, &quot;key&quot;: { &quot;code&quot;: &quot;KeyY&quot; } },
     { &quot;command&quot;: &quot;copyTitle&quot;, &quot;key&quot;: { &quot;altKey&quot;: true, &quot;code&quot;: &quot;KeyY&quot; } },
     { &quot;command&quot;: &quot;copyTitleAndURL&quot;, &quot;key&quot;: { &quot;shiftKey&quot;: true, &quot;code&quot;: &quot;KeyY&quot; } },
@@ -1429,6 +1431,15 @@
                   <td data-label="macOS key"></td>
                   <td data-label="Popup key">
                     <kbd>Shift</kbd>+<wbr><kbd class="code">Escape</kbd>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Command"><code>toggle<wbr>Auto<wbr>Dark<wbr>Mode</code></td>
+                  <td data-label="Description">Turn automatic dark mode on or off</td>
+                  <td data-label="Windows and Linux key"></td>
+                  <td data-label="macOS key"></td>
+                  <td data-label="Popup key">
+                    <kbd>Shift</kbd>+<wbr><kbd class="code">Backquote</kbd>
                   </td>
                 </tr>
               </tbody>

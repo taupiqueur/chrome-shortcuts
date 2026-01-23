@@ -13,7 +13,7 @@ Permission | Justification
 [`"clipboardRead"`] | This permission is used for opening new tabs from the system clipboard. Without this permission, a runtime permission is asked for every new site you use the command.
 [`"clipboardWrite"`] | This permission is used for the “Clipboard” commands. Without this permission, a runtime permission is asked for every new site you use the commands.
 [`"contextMenus"`] | This permission is used to add the “Documentation” and “Support Chat” buttons to the Shortcuts toolbar.
-[`"debugger"`] | This permission is used to save pages as PNG, JPEG or WebP.
+[`"debugger"`] | This permission is used to enable automatic dark mode, and save pages as PNG, JPEG or WebP.
 [`"downloads"`] | This permission is used to save your tabs, open the “Downloads” folder, get and activate download suggestions.
 [`"history"`] | This permission is used to get recently visited page suggestions.
 [`"management"`] | This permission is used to get installed extension suggestions.

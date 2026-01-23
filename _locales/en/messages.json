@@ -44,6 +44,9 @@
   "blurElementCommandDescription": {
     "message": "Accessibility · Blur the active element"
   },
+  "toggleAutoDarkModeCommandDescription": {
+    "message": "Accessibility · Turn automatic dark mode on or off"
+  },
   "copyURLCommandDescription": {
     "message": "Clipboard · Copy URL of selected tabs"
   },

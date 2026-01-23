@@ -66,6 +66,7 @@ export const goToRoot = message('goToRoot')
 export const focusTextInput = message('focusTextInput')
 export const focusMediaPlayer = message('focusMediaPlayer')
 export const blurElement = message('blurElement')
+export const toggleAutoDarkMode = message('toggleAutoDarkMode')
 
 // Clipboard -------------------------------------------------------------------
 
