@@ -508,22 +508,49 @@ export async function blurElement(cx) {
 export async function toggleAutoDarkMode(cx) {
   if (isChromeDomain(cx.tab.url)) {
     throw new Error(
-      'Cannot enable automatic dark mode: No debuggable tabs.',
+      'Cannot enable automatic dark mode: Active tab is not debuggable.',
     )
   }
 
-  const debuggeeTarget = {
-    tabId: cx.tab.id,
+  const tabIds = new Set([
+    cx.tab.id,
+  ])
+
+  if (cx.tab.splitViewId !== SPLIT_VIEW_ID_NONE) {
+    const tabs = await chrome.tabs.query({
+      splitViewId: cx.tab.splitViewId,
+    })
+    for (const tab of tabs) {
+      if (!isChromeDomain(tab.url)) {
+        tabIds.add(tab.id)
+      }
+    }
   }
 
   try {
-    await chrome.debugger.attach(debuggeeTarget, '1.3')
-
-    await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setAutoDarkModeOverride', {
-      enabled: true,
-    })
+    for (const tabId of tabIds) {
+      try {
+        const debuggeeTarget = { tabId }
+        await chrome.debugger.attach(debuggeeTarget, '1.3')
+        await chrome.debugger.sendCommand(debuggeeTarget, 'Emulation.setAutoDarkModeOverride', {
+          enabled: true,
+        })
+      } catch (error) {
+        if (tabId === cx.tab.id) {
+          throw error
+        }
+        console.error(error)
+      }
+    }
   } catch {
-    await chrome.debugger.detach(debuggeeTarget)
+    for (const tabId of tabIds) {
+      try {
+        const debuggeeTarget = { tabId }
+        await chrome.debugger.detach(debuggeeTarget)
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 }
 
