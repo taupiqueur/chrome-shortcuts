@@ -445,6 +445,11 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `blurElement` | Blur the active element | | | `Shift+Escape`
 `toggleAutoDarkMode` | Turn automatic dark mode on or off | | | `Shift+Backquote`
 
+> [!NOTE]
+> Shortcuts uses the Chrome DevTools Protocol to enable automatic dark mode.
+> As a result, Chrome will display the message: “Shortcuts started debugging this browser” with a “Cancel” button.
+> If you prefer Chrome not to show this infobar, you can start Chrome with the `--silent-debugger-extension-api` command-line switch.
+
 ### Clipboard commands
 
 Command | Description | Windows and Linux key | macOS key | Popup key
