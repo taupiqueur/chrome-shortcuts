@@ -22,7 +22,10 @@ import SuggestionItem from './components/SuggestionItem.js'
 
 const MIDDLE_MOUSE_BUTTON = 1
 
-const SCRIPTING_SELECTOR = '[data-permissions~="activeTab"][data-permissions~="scripting"]'
+const RESTRICTED_PERMISSIONS_SELECTOR = `
+  [data-permissions~="activeTab"][data-permissions~="scripting"],
+  [data-permissions~="activeTab"][data-permissions~="debugger"]
+`
 
 const MODIFIER_KEYS = new Set([
   'Control',
@@ -123,7 +126,7 @@ function render({
 }) {
   const isDisabled = (menuItemElement) => (
     !isEnabled &&
-    menuItemElement.matches(SCRIPTING_SELECTOR)
+    menuItemElement.matches(RESTRICTED_PERMISSIONS_SELECTOR)
   )
 
   const stylesheet = new CSSStyleSheet
