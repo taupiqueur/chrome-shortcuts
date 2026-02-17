@@ -126,6 +126,11 @@ export const closeTab = message('closeTab')
 export const closeOtherTabs = message('closeOtherTabs')
 export const closeRightTabs = message('closeRightTabs')
 export const closeWindow = message('closeWindow')
+export const closeInactiveTabsFor15MinutesOrMore = message('closeInactiveTabsFor15MinutesOrMore')
+export const closeInactiveTabsFor1HourOrMore = message('closeInactiveTabsFor1HourOrMore')
+export const closeInactiveTabsFor24HoursOrMore = message('closeInactiveTabsFor24HoursOrMore')
+export const closeInactiveTabsFor7DaysOrMore = message('closeInactiveTabsFor7DaysOrMore')
+export const closeInactiveTabsFor14DaysOrMore = message('closeInactiveTabsFor14DaysOrMore')
 export const restoreTab = message('restoreTab')
 
 // Tab state -------------------------------------------------------------------

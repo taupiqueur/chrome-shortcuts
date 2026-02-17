@@ -1488,6 +1488,134 @@ export async function closeWindow(cx) {
 }
 
 /**
+ * Closes all inactive tabs exceeding the given threshold.
+ *
+ * @param {CommandContext} cx
+ * @param {number} threshold
+ * @returns {Promise<void>}
+ */
+async function closeInactiveTabs(cx, threshold) {
+  const now = Date.now()
+
+  const exceedsThreshold = tab => now - tab.lastAccessed >= threshold
+
+  const tabIds = []
+
+  const groupIds = []
+
+  const tabs = await chrome.tabs.query({
+    active: false,
+    pinned: false,
+    windowId: cx.tab.windowId,
+  })
+
+  const tabsByGroup = Map.groupBy(tabs, _groupId)
+
+  for (const [groupId, tabs] of tabsByGroup) {
+    if (groupId === TAB_GROUP_ID_NONE) {
+      for (const tab of tabs) {
+        if (exceedsThreshold(tab)) {
+          tabIds.push(tab.id)
+        }
+      }
+    } else if (groupId !== cx.tab.groupId) {
+      if (tabs.every(exceedsThreshold)) {
+        groupIds.push(groupId)
+      }
+    }
+  }
+
+  if (
+    tabIds.length > 0 ||
+    groupIds.length > 0
+  ) {
+    const createdWindow = await chrome.windows.create({
+      focused: false,
+      incognito: cx.tab.incognito,
+    })
+
+    const createdTab = createdWindow.tabs[0]
+
+    const moveProperties = {
+      windowId: createdWindow.id,
+      index: -1,
+    }
+
+    for (const groupId of groupIds) {
+      await chrome.tabGroups.move(
+        groupId,
+        moveProperties,
+      )
+    }
+
+    if (tabIds.length > 0) {
+      await chrome.tabs.move(
+        tabIds,
+        moveProperties,
+      )
+    }
+
+    await chrome.tabs.remove(
+      createdTab.id,
+    )
+
+    await chrome.windows.remove(
+      createdWindow.id,
+    )
+  }
+}
+
+/**
+ * Closes all inactive tabs for 15 minutes or more.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function closeInactiveTabsFor15MinutesOrMore(cx) {
+  await closeInactiveTabs(cx, 900_000)
+}
+
+/**
+ * Closes all inactive tabs for 1 hour or more.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function closeInactiveTabsFor1HourOrMore(cx) {
+  await closeInactiveTabs(cx, 3_600_000)
+}
+
+/**
+ * Closes all inactive tabs for 24 hours or more.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function closeInactiveTabsFor24HoursOrMore(cx) {
+  await closeInactiveTabs(cx, 86_400_000)
+}
+
+/**
+ * Closes all inactive tabs for 7 days or more.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function closeInactiveTabsFor7DaysOrMore(cx) {
+  await closeInactiveTabs(cx, 604_800_000)
+}
+
+/**
+ * Closes all inactive tabs for 14 days or more.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function closeInactiveTabsFor14DaysOrMore(cx) {
+  await closeInactiveTabs(cx, 1_209_600_000)
+}
+
+/**
  * Reopens previously closed tabs.
  *
  * @param {CommandContext} cx

@@ -152,6 +152,21 @@
   "closeWindowCommandDescription": {
     "message": "Close tabs · Close the window that contains the tab"
   },
+  "closeInactiveTabsFor15MinutesOrMoreCommandDescription": {
+    "message": "Close tabs · Close all inactive tabs for 15 minutes or more"
+  },
+  "closeInactiveTabsFor1HourOrMoreCommandDescription": {
+    "message": "Close tabs · Close all inactive tabs for 1 hour or more"
+  },
+  "closeInactiveTabsFor24HoursOrMoreCommandDescription": {
+    "message": "Close tabs · Close all inactive tabs for 24 hours or more"
+  },
+  "closeInactiveTabsFor7DaysOrMoreCommandDescription": {
+    "message": "Close tabs · Close all inactive tabs for 7 days or more"
+  },
+  "closeInactiveTabsFor14DaysOrMoreCommandDescription": {
+    "message": "Close tabs · Close all inactive tabs for 14 days or more"
+  },
   "restoreTabCommandDescription": {
     "message": "Close tabs · Reopen previously closed tabs"
   },

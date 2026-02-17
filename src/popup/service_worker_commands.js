@@ -283,6 +283,11 @@ export const closeTab = execCommand('closeTab')
 export const closeOtherTabs = execCommand('closeOtherTabs')
 export const closeRightTabs = execCommand('closeRightTabs')
 export const closeWindow = execCommand('closeWindow')
+export const closeInactiveTabsFor15MinutesOrMore = execCommand('closeInactiveTabsFor15MinutesOrMore')
+export const closeInactiveTabsFor1HourOrMore = execCommand('closeInactiveTabsFor1HourOrMore')
+export const closeInactiveTabsFor24HoursOrMore = execCommand('closeInactiveTabsFor24HoursOrMore')
+export const closeInactiveTabsFor7DaysOrMore = execCommand('closeInactiveTabsFor7DaysOrMore')
+export const closeInactiveTabsFor14DaysOrMore = execCommand('closeInactiveTabsFor14DaysOrMore')
 export const restoreTab = execCommand('restoreTab')
 
 // Tab state -------------------------------------------------------------------

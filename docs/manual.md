@@ -536,6 +536,11 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 `closeOtherTabs` | Close other tabs | | | `Alt+KeyX`
 `closeRightTabs` | Close tabs to the right | | | `Alt+Shift+KeyX`
 `closeWindow` | Close the window that contains the tab | `Control+Shift+W`, `Alt+F4` | `Shift+Command+W` | `Shift+KeyX`
+`closeInactiveTabsFor15MinutesOrMore` | Close all inactive tabs for 15 minutes or more | | |
+`closeInactiveTabsFor1HourOrMore` | Close all inactive tabs for 1 hour or more | | |
+`closeInactiveTabsFor24HoursOrMore` | Close all inactive tabs for 24 hours or more | | |
+`closeInactiveTabsFor7DaysOrMore` | Close all inactive tabs for 7 days or more | | |
+`closeInactiveTabsFor14DaysOrMore` | Close all inactive tabs for 14 days or more | | |
 `restoreTab` | Reopen previously closed tabs | `Control+Shift+T` | `Shift+Command+T` | `KeyU`
 
 ### Tab state commands
