@@ -152,23 +152,23 @@
   "closeWindowCommandDescription": {
     "message": "Fermer les onglets · Fermer la fenêtre"
   },
-  "closeInactiveTabsFor15MinutesOrMoreCommandDescription": {
-    "message": "Fermer les onglets · Fermer tous les onglets inactifs depuis au moins 15 minutes"
-  },
-  "closeInactiveTabsFor1HourOrMoreCommandDescription": {
-    "message": "Fermer les onglets · Fermer tous les onglets inactifs depuis au moins 1 heure"
-  },
-  "closeInactiveTabsFor24HoursOrMoreCommandDescription": {
-    "message": "Fermer les onglets · Fermer tous les onglets inactifs depuis au moins 24 heures"
-  },
-  "closeInactiveTabsFor7DaysOrMoreCommandDescription": {
-    "message": "Fermer les onglets · Fermer tous les onglets inactifs depuis au moins 7 jours"
-  },
-  "closeInactiveTabsFor14DaysOrMoreCommandDescription": {
-    "message": "Fermer les onglets · Fermer tous les onglets inactifs depuis au moins 14 jours"
-  },
   "restoreTabCommandDescription": {
     "message": "Fermer les onglets · Rouvrir l’onglet fermé"
+  },
+  "closeInactiveTabsFor15MinutesOrMoreCommandDescription": {
+    "message": "Fermer tous les onglets inactifs · Fermer tous les onglets inactifs depuis au moins 15 minutes"
+  },
+  "closeInactiveTabsFor1HourOrMoreCommandDescription": {
+    "message": "Fermer tous les onglets inactifs · Fermer tous les onglets inactifs depuis au moins 1 heure"
+  },
+  "closeInactiveTabsFor24HoursOrMoreCommandDescription": {
+    "message": "Fermer tous les onglets inactifs · Fermer tous les onglets inactifs depuis au moins 24 heures"
+  },
+  "closeInactiveTabsFor7DaysOrMoreCommandDescription": {
+    "message": "Fermer tous les onglets inactifs · Fermer tous les onglets inactifs depuis au moins 7 jours"
+  },
+  "closeInactiveTabsFor14DaysOrMoreCommandDescription": {
+    "message": "Fermer tous les onglets inactifs · Fermer tous les onglets inactifs depuis au moins 14 jours"
   },
   "duplicateTabCommandDescription": {
     "message": "Gérer les onglets · Dupliquer l’onglet"

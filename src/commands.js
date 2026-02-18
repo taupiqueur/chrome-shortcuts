@@ -1488,6 +1488,18 @@ export async function closeWindow(cx) {
 }
 
 /**
+ * Reopens previously closed tabs.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function restoreTab(cx) {
+  await chrome.sessions.restore()
+}
+
+// Close all inactive tabs -----------------------------------------------------
+
+/**
  * Closes all inactive tabs exceeding the given threshold.
  *
  * @param {CommandContext} cx
@@ -1613,16 +1625,6 @@ export async function closeInactiveTabsFor7DaysOrMore(cx) {
  */
 export async function closeInactiveTabsFor14DaysOrMore(cx) {
   await closeInactiveTabs(cx, 1_209_600_000)
-}
-
-/**
- * Reopens previously closed tabs.
- *
- * @param {CommandContext} cx
- * @returns {Promise<void>}
- */
-export async function restoreTab(cx) {
-  await chrome.sessions.restore()
 }
 
 // Tab state -------------------------------------------------------------------

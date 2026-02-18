@@ -213,23 +213,23 @@
     "048_closeWindow": {
       "description": "__MSG_closeWindowCommandDescription__"
     },
-    "049_closeInactiveTabsFor15MinutesOrMore": {
+    "049_restoreTab": {
+      "description": "__MSG_restoreTabCommandDescription__"
+    },
+    "050_closeInactiveTabsFor15MinutesOrMore": {
       "description": "__MSG_closeInactiveTabsFor15MinutesOrMoreCommandDescription__"
     },
-    "050_closeInactiveTabsFor1HourOrMore": {
+    "051_closeInactiveTabsFor1HourOrMore": {
       "description": "__MSG_closeInactiveTabsFor1HourOrMoreCommandDescription__"
     },
-    "051_closeInactiveTabsFor24HoursOrMore": {
+    "052_closeInactiveTabsFor24HoursOrMore": {
       "description": "__MSG_closeInactiveTabsFor24HoursOrMoreCommandDescription__"
     },
-    "052_closeInactiveTabsFor7DaysOrMore": {
+    "053_closeInactiveTabsFor7DaysOrMore": {
       "description": "__MSG_closeInactiveTabsFor7DaysOrMoreCommandDescription__"
     },
-    "053_closeInactiveTabsFor14DaysOrMore": {
+    "054_closeInactiveTabsFor14DaysOrMore": {
       "description": "__MSG_closeInactiveTabsFor14DaysOrMoreCommandDescription__"
-    },
-    "054_restoreTab": {
-      "description": "__MSG_restoreTabCommandDescription__"
     },
     "055_duplicateTab": {
       "description": "__MSG_duplicateTabCommandDescription__"
