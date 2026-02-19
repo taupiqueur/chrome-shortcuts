@@ -1500,7 +1500,7 @@ export async function restoreTab(cx) {
 // Close all inactive tabs -----------------------------------------------------
 
 /**
- * Closes all inactive tabs exceeding the given threshold.
+ * Closes all inactive tabs and tab groups exceeding the given threshold.
  *
  * @param {CommandContext} cx
  * @param {number} threshold
@@ -1578,7 +1578,7 @@ async function closeInactiveTabs(cx, threshold) {
 }
 
 /**
- * Closes all inactive tabs for 15 minutes or more.
+ * Closes all tabs and tab groups that are inactive for 15 minutes or more.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -1588,7 +1588,7 @@ export async function closeInactiveTabsFor15MinutesOrMore(cx) {
 }
 
 /**
- * Closes all inactive tabs for 1 hour or more.
+ * Closes all tabs and tab groups that are inactive for 1 hour or more.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -1598,7 +1598,7 @@ export async function closeInactiveTabsFor1HourOrMore(cx) {
 }
 
 /**
- * Closes all inactive tabs for 24 hours or more.
+ * Closes all tabs and tab groups that are inactive for 24 hours or more.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -1608,7 +1608,7 @@ export async function closeInactiveTabsFor24HoursOrMore(cx) {
 }
 
 /**
- * Closes all inactive tabs for 7 days or more.
+ * Closes all tabs and tab groups that are inactive for 7 days or more.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}
@@ -1618,7 +1618,7 @@ export async function closeInactiveTabsFor7DaysOrMore(cx) {
 }
 
 /**
- * Closes all inactive tabs for 14 days or more.
+ * Closes all tabs and tab groups that are inactive for 14 days or more.
  *
  * @param {CommandContext} cx
  * @returns {Promise<void>}

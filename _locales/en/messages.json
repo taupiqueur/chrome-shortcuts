@@ -156,19 +156,19 @@
     "message": "Close tabs · Reopen previously closed tabs"
   },
   "closeInactiveTabsFor15MinutesOrMoreCommandDescription": {
-    "message": "Close all inactive tabs · Close all inactive tabs for 15 minutes or more"
+    "message": "Close all inactive tabs · Close all tabs and tab groups that are inactive for 15 minutes or more"
   },
   "closeInactiveTabsFor1HourOrMoreCommandDescription": {
-    "message": "Close all inactive tabs · Close all inactive tabs for 1 hour or more"
+    "message": "Close all inactive tabs · Close all tabs and tab groups that are inactive for 1 hour or more"
   },
   "closeInactiveTabsFor24HoursOrMoreCommandDescription": {
-    "message": "Close all inactive tabs · Close all inactive tabs for 24 hours or more"
+    "message": "Close all inactive tabs · Close all tabs and tab groups that are inactive for 24 hours or more"
   },
   "closeInactiveTabsFor7DaysOrMoreCommandDescription": {
-    "message": "Close all inactive tabs · Close all inactive tabs for 7 days or more"
+    "message": "Close all inactive tabs · Close all tabs and tab groups that are inactive for 7 days or more"
   },
   "closeInactiveTabsFor14DaysOrMoreCommandDescription": {
-    "message": "Close all inactive tabs · Close all inactive tabs for 14 days or more"
+    "message": "Close all inactive tabs · Close all tabs and tab groups that are inactive for 14 days or more"
   },
   "duplicateTabCommandDescription": {
     "message": "Tab state · Duplicate selected tabs"

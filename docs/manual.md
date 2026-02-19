@@ -542,11 +542,11 @@ Command | Description | Windows and Linux key | macOS key | Popup key
 
 Command | Description | Windows and Linux key | macOS key | Popup key
 --- | --- | --- | --- | ---
-`closeInactiveTabsFor15MinutesOrMore` | Close all inactive tabs for 15 minutes or more | | |
-`closeInactiveTabsFor1HourOrMore` | Close all inactive tabs for 1 hour or more | | |
-`closeInactiveTabsFor24HoursOrMore` | Close all inactive tabs for 24 hours or more | | |
-`closeInactiveTabsFor7DaysOrMore` | Close all inactive tabs for 7 days or more | | |
-`closeInactiveTabsFor14DaysOrMore` | Close all inactive tabs for 14 days or more | | |
+`closeInactiveTabsFor15MinutesOrMore` | Close all tabs and tab groups that are inactive for 15 minutes or more | | |
+`closeInactiveTabsFor1HourOrMore` | Close all tabs and tab groups that are inactive for 1 hour or more | | |
+`closeInactiveTabsFor24HoursOrMore` | Close all tabs and tab groups that are inactive for 24 hours or more | | |
+`closeInactiveTabsFor7DaysOrMore` | Close all tabs and tab groups that are inactive for 7 days or more | | |
+`closeInactiveTabsFor14DaysOrMore` | Close all tabs and tab groups that are inactive for 14 days or more | | |
 
 ### Tab state commands
 
