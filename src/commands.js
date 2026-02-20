@@ -153,6 +153,12 @@ const _highlighted = ({ highlighted }) => highlighted
 const _pinned = ({ pinned }) => pinned
 
 /**
+ * @param {{ audible: boolean }} object
+ * @returns {boolean}
+ */
+const _audible = ({ audible }) => audible
+
+/**
  * @param {{ groupId: number }} object
  * @returns {number}
  */
@@ -1526,11 +1532,17 @@ async function closeInactiveTabs(cx, threshold) {
   for (const [groupId, tabs] of tabsByGroup) {
     if (groupId === TAB_GROUP_ID_NONE) {
       for (const tab of tabs) {
+        if (tab.audible) {
+          continue
+        }
         if (exceedsThreshold(tab)) {
           tabIds.push(tab.id)
         }
       }
     } else if (groupId !== cx.tab.groupId) {
+      if (tabs.some(_audible)) {
+        continue
+      }
       if (tabs.every(exceedsThreshold)) {
         groupIds.push(groupId)
       }
