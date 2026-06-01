@@ -1,0 +1,93 @@
+:root {
+  color-scheme: light dark;
+
+  --background-color: light-dark(
+    white,
+    black
+  );
+
+  --foreground-color: light-dark(
+    black,
+    white
+  );
+
+  --under-page-background-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
+  --primary-button-text-color: light-dark(
+    white,
+    white
+  );
+
+  --primary-button-background-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
+  --primary-button-active-background-color: light-dark(
+    var(--dark-blue-color),
+    var(--light-blue-color)
+  );
+
+  --keyboard-focus-indicator-color: light-dark(
+    var(--light-blue-color),
+    var(--dark-blue-color)
+  );
+
+  --light-blue-color: oklch(
+    from royalblue calc(l + 0.05) c h
+  );
+
+  --dark-blue-color: oklch(
+    from royalblue calc(l - 0.05) c h
+  );
+}
+
+body {
+  min-width: 400px;
+  max-height: 600px;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: system-ui;
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-button-background-color);
+  color: var(--primary-button-text-color);
+}
+
+a.button:active:hover {
+  background-color: var(--primary-button-active-background-color);
+}
+
+a.button:focus-visible {
+  outline: 3px solid var(--keyboard-focus-indicator-color);
+  outline-offset: -1px;
+}
+
+ul.actions {
+  display: flex;
+  flex-direction: row;
+  place-items: safe center;
+  place-content: safe center;
+  list-style: none;
+  margin-block: 1rem;
+  padding-inline-start: 0;
+  gap: 1rem;
+}

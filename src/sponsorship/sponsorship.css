@@ -1,0 +1,340 @@
+:root {
+  color-scheme: light;
+
+  --background-color: light-dark(
+    white,
+    white
+  );
+
+  --foreground-color: light-dark(
+    black,
+    black
+  );
+
+  --under-page-background-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
+  --primary-button-text-color: light-dark(
+    white,
+    white
+  );
+
+  --primary-button-background-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
+  --primary-button-active-background-color: light-dark(
+    var(--dark-blue-color),
+    var(--dark-blue-color)
+  );
+
+  --keyboard-focus-indicator-color: light-dark(
+    var(--light-blue-color),
+    var(--light-blue-color)
+  );
+
+  --link-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
+  --separator-color: light-dark(
+    var(--light-gray-color),
+    var(--light-gray-color)
+  );
+
+  --caption-background-color: light-dark(
+    var(--light-gray-color),
+    var(--light-gray-color)
+  );
+
+  --caption-text-color: light-dark(
+    black,
+    black
+  );
+
+  --light-gray-color: oklch(
+    from lightgray calc(l + 0.05) c h
+  );
+
+  --light-blue-color: oklch(
+    from royalblue calc(l + 0.05) c h
+  );
+
+  --dark-blue-color: oklch(
+    from royalblue calc(l - 0.05) c h
+  );
+}
+
+@keyframes spinner {
+  0.0% {
+    content: "⣾";
+  }
+
+  12.5% {
+    content: "⣽";
+  }
+
+  25.0% {
+    content: "⣻";
+  }
+
+  37.5% {
+    content: "⢿";
+  }
+
+  50.0% {
+    content: "⡿";
+  }
+
+  62.5% {
+    content: "⣟";
+  }
+
+  75.0% {
+    content: "⣯";
+  }
+
+  87.5% {
+    content: "⣷";
+  }
+}
+
+.spinner {
+  font-family: sans-serif;
+}
+
+.spinner::before {
+  content: "";
+  animation: spinner 640ms steps(1) infinite;
+}
+
+.spinner:is([data-paused="true"], [data-paused=""])::before {
+  animation-play-state: paused;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--under-page-background-color);
+  font-family: system-ui;
+  font-size: 18px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+}
+
+main {
+  margin: auto;
+  padding: 0.5rem 1rem;
+  width: 51rem;
+  height: 30rem;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  display: flex;
+  flex-direction: column;
+}
+
+main h2 {
+  font-size: 1.9rem;
+  margin-block: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+section:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+}
+
+section:nth-of-type(n+2):not(:target) {
+  display: none;
+}
+
+body:has(section:target) section:nth-of-type(1):not(:target) {
+  display: none;
+}
+
+main > details > summary {
+  display: none;
+}
+
+ol.table-of-contents {
+  display: flex;
+  flex-direction: row;
+  place-items: safe center;
+  place-content: safe center;
+  gap: 0 3ch;
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+ol.table-of-contents li a {
+  display: block;
+  width: 2ch;
+  height: 2ch;
+  overflow: clip;
+  user-select: none;
+  border-radius: 50%;
+  background-color: var(--under-page-background-color);
+  color: transparent;
+  opacity: 0.1;
+}
+
+ol.table-of-contents li::after {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 0.3rem;
+  translate: 120% -300%;
+  background-color: var(--under-page-background-color);
+  color: transparent;
+  opacity: 0.1;
+}
+
+ol.table-of-contents li:last-of-type::after {
+  opacity: 0;
+}
+
+ol.table-of-contents a:is(:hover, :focus, :active) {
+  scale: 1.25;
+}
+
+ol.table-of-contents a:focus-visible {
+  outline: none;
+}
+
+ol.table-of-contents li:nth-of-type(1) a,
+body:has(section:nth-of-type(2):target) ol.table-of-contents li:nth-of-type(-n+2) a,
+body:has(section:nth-of-type(2):target) ol.table-of-contents li:nth-of-type(-n+1)::after,
+body:has(section:nth-of-type(3):target) ol.table-of-contents li:nth-of-type(-n+3) a,
+body:has(section:nth-of-type(3):target) ol.table-of-contents li:nth-of-type(-n+2)::after {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:not(:hover, :focus, :active) {
+  text-decoration: inherit;
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-button-background-color);
+  color: var(--primary-button-text-color);
+}
+
+a.button:active:hover {
+  background-color: var(--primary-button-active-background-color);
+}
+
+a.button:focus-visible {
+  outline: 3px solid var(--keyboard-focus-indicator-color);
+  outline-offset: -1px;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border: none;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-button-background-color);
+  color: var(--primary-button-text-color);
+}
+
+button:active:hover {
+  background-color: var(--primary-button-active-background-color);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--keyboard-focus-indicator-color);
+  outline-offset: -1px;
+}
+
+legend {
+  background-color: var(--caption-background-color);
+  color: var(--caption-text-color);
+  padding: 0.2rem 0.4rem;
+  display: grid;
+  grid-template: "spinner caption";
+  gap: 0 0.5ch;
+}
+
+legend span.caption {
+  grid-area: caption;
+}
+
+legend span.spinner {
+  grid-area: spinner;
+}
+
+input {
+  margin: 0.4rem;
+}
+
+label {
+  display: block;
+}
+
+ul.actions {
+  display: flex;
+  flex-direction: row;
+  place-items: safe center;
+  place-content: safe center;
+  list-style: none;
+  margin-block: 2rem;
+  padding-inline-start: 0;
+  gap: 1rem;
+}
+
+pre {
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+}
+
+[popover]:popover-open {
+  border: none;
+}
+
+[popover]:popover-open main {
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+}
+
+[popover]:popover-open footer {
+  padding: 0.9rem;
+  border-top: 1px solid var(--separator-color);
+}
+
+[popover]:popover-open footer ul.actions {
+  place-content: flex-end;
+  margin-block: 0;
+}

@@ -28,6 +28,7 @@ export const openShortcutsManual = message('openShortcutsManual')
 export const openShortcutsOptionsPage = message('openShortcutsOptionsPage')
 export const openShortcutsShortcutsPage = message('openShortcutsShortcutsPage')
 export const openShortcutsThemeStore = message('openShortcutsThemeStore')
+export const openShortcutsSponsorshipPage = message('openShortcutsSponsorshipPage')
 
 /**
  * Opens the command palette.

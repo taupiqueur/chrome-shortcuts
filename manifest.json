@@ -29,6 +29,7 @@
   },
   "permissions": [
     "activeTab",
+    "alarms",
     "bookmarks",
     "clipboardRead",
     "clipboardWrite",

@@ -117,6 +117,7 @@ export const openShortcutsManual = execCommandAndClosePopup('openShortcutsManual
 export const openShortcutsOptionsPage = execCommandAndClosePopup('openShortcutsOptionsPage')
 export const openShortcutsShortcutsPage = execCommandAndClosePopup('openShortcutsShortcutsPage')
 export const openShortcutsThemeStore = execCommandAndClosePopup('openShortcutsThemeStore')
+export const openShortcutsSponsorshipPage = execCommandAndClosePopup('openShortcutsSponsorshipPage')
 
 // Navigation ------------------------------------------------------------------
 

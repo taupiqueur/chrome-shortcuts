@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="color-scheme" content="light dark">
+    <title>Page de sponsoring Shortcuts</title>
+    <link rel="stylesheet" href="sponsorship.css">
+  </head>
+  <body>
+    <main>
+      <details open>
+        <summary>
+          Table des matières
+        </summary>
+        <ol class="table-of-contents">
+          <li>
+            <a href="#shortcuts_sponsorship_page" draggable="false">
+              Page de sponsoring Shortcuts
+            </a>
+          </li>
+          <li>
+            <a href="#become_a_sponsor_to_taupiqueur" draggable="false">
+              Devenir sponsor de taupiqueur
+            </a>
+          </li>
+          <li>
+            <a href="#sign_in_with_github_to_verify_your_sponsorship" draggable="false">
+              Se connecter avec GitHub pour vérifier votre sponsoring
+            </a>
+          </li>
+        </ol>
+      </details>
+      <section id="shortcuts_sponsorship_page">
+        <h1>
+          Page de sponsoring Shortcuts
+        </h1>
+        <p>
+          <strong>
+            Devenez sponsor de taupiqueur,
+            puis vérifiez votre statut.
+          </strong>
+        </p>
+        <p>
+          Votre sponsoring est nécessaire pour utiliser Shortcuts.
+        </p>
+        <ul class="actions">
+          <li>
+            <a href="#become_a_sponsor_to_taupiqueur" class="button" draggable="false">
+              Devenir sponsor de taupiqueur
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="become_a_sponsor_to_taupiqueur">
+        <h2>
+          Devenir sponsor de taupiqueur
+        </h2>
+        <p>
+          Devenez sponsor de taupiqueur
+          à l’adresse <a href="https://github.com/sponsors/taupiqueur" target="_blank">https://github<wbr>.com<wbr>/sponsors<wbr>/taupiqueur</a>.
+          Une fois connecté, sélectionnez l’un des paliers disponibles ou choisissez un montant personnalisé.
+          Si vous êtes nouveau sur GitHub, vous devrez créer un compte.
+        </p>
+        <p>
+          Le montant doit être d’au moins 1 $.
+          Les paiements ponctuels sont valables pendant 30 jours.
+        </p>
+        <ul class="actions">
+          <li>
+            <a href="#sign_in_with_github_to_verify_your_sponsorship" class="button" draggable="false">
+              Se connecter avec GitHub pour vérifier votre sponsoring
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="sign_in_with_github_to_verify_your_sponsorship">
+        <h2>
+          Se connecter avec GitHub pour vérifier votre sponsoring
+        </h2>
+        <ol>
+          <li>
+            Accédez à <a id="verification-uri" href="https://github.com/login/device" target="_blank">https://github<wbr>.com<wbr>/login<wbr>/device</a>
+            et sélectionnez le compte que vous souhaitez utiliser.
+          </li>
+          <li>
+            Saisissez votre code à usage unique : <code id="user-code">0000-0000</code>.
+          </li>
+          <li>
+            Cliquez sur « Continuer ».
+            GitHub devrait afficher une page vous demandant d’autoriser l’app taupiqueur
+            à vérifier votre identité GitHub
+            et à connaître les ressources auxquelles vous avez accès.
+          </li>
+          <li>
+            Cliquez sur « Autoriser l’app taupiqueur ».
+            Après ceci, Shortcuts devrait être capable de vérifier votre statut de sponsor.
+          </li>
+        </ol>
+        <fieldset disabled>
+          <legend>
+            <span class="caption">Vérification du sponsoring</span>
+            <span id="spinner" class="spinner" data-paused="true" aria-label="Un indicateur de progression signalant une activité réseau"></span>
+          </legend>
+          <label>
+            <input type="checkbox" id="device-flow-completed-checkbox">
+            <span>
+              Authentification réussie—Vous vous êtes connecté avec succès à l’app taupiqueur.
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" id="sponsor-flow-completed-checkbox">
+            <span>
+              Sponsoring vérifié—Votre statut de sponsor auprès de taupiqueur a été vérifié.
+            </span>
+          </label>
+        </fieldset>
+      </section>
+    </main>
+    <dialog id="sponsor-flow-completed-popover" popover>
+      <main>
+        <h2>
+          Félicitations, tout est prêt !
+        </h2>
+        <p>
+          Vous vous êtes connecté avec succès à l’app taupiqueur
+          et votre statut de sponsor a été vérifié.
+        </p>
+        <p>
+          Vous pouvez désormais utiliser Shortcuts
+          et fermer cette page à tout moment.
+        </p>
+      </main>
+      <footer>
+        <ul class="actions">
+          <li>
+            <a href="https://taupiqueur.github.io/chrome-shortcuts" class="button" draggable="false">
+              Page d’accueil
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </dialog>
+    <dialog id="sponsor-flow-error-popover" popover>
+      <main>
+        <h2>
+          Oups, une erreur s’est produite !
+        </h2>
+        <p>
+          Un problème est survenu lors de la vérification du statut de sponsor.
+        </p>
+        <pre><code id="sponsor-flow-error-details"></code></pre>
+      </main>
+      <footer>
+        <ul class="actions">
+          <li>
+            <button data-action="startSponsorFlow" popovertarget="sponsor-flow-error-popover" popovertargetaction="hide">
+              Relancer la vérification du sponsoring
+            </button>
+          </li>
+        </ul>
+      </footer>
+    </dialog>
+    <script type="module" src="sponsorship.js"></script>
+  </body>
+</html>

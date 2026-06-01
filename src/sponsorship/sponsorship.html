@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="color-scheme" content="light dark">
+    <title>Shortcuts sponsorship page</title>
+    <link rel="stylesheet" href="sponsorship.css">
+  </head>
+  <body>
+    <main>
+      <details open>
+        <summary>
+          Table of contents
+        </summary>
+        <ol class="table-of-contents">
+          <li>
+            <a href="#shortcuts_sponsorship_page" draggable="false">
+              Shortcuts sponsorship page
+            </a>
+          </li>
+          <li>
+            <a href="#become_a_sponsor_to_taupiqueur" draggable="false">
+              Become a sponsor to taupiqueur
+            </a>
+          </li>
+          <li>
+            <a href="#sign_in_with_github_to_verify_your_sponsorship" draggable="false">
+              Sign in with GitHub to verify your sponsorship
+            </a>
+          </li>
+        </ol>
+      </details>
+      <section id="shortcuts_sponsorship_page">
+        <h1>
+          Shortcuts sponsorship page
+        </h1>
+        <p>
+          <strong>
+            Become a sponsor to taupiqueur,
+            then verify your sponsorship.
+          </strong>
+        </p>
+        <p>
+          Your sponsorship is required to use Shortcuts.
+        </p>
+        <ul class="actions">
+          <li>
+            <a href="#become_a_sponsor_to_taupiqueur" class="button" draggable="false">
+              Become a sponsor to taupiqueur
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="become_a_sponsor_to_taupiqueur">
+        <h2>
+          Become a sponsor to taupiqueur
+        </h2>
+        <p>
+          Become a sponsor to taupiqueur
+          at <a href="https://github.com/sponsors/taupiqueur" target="_blank">https://github<wbr>.com<wbr>/sponsors<wbr>/taupiqueur</a>.
+          Once logged in, select one of the available tiers or choose a custom amount.
+          If you are new to GitHub, you will need to create an account.
+        </p>
+        <p>
+          Amount must be at least $1.
+          One-time sponsorships are active for 30 days.
+        </p>
+        <ul class="actions">
+          <li>
+            <a href="#sign_in_with_github_to_verify_your_sponsorship" class="button" draggable="false">
+              Sign in with GitHub to verify your sponsorship
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="sign_in_with_github_to_verify_your_sponsorship">
+        <h2>
+          Sign in with GitHub to verify your sponsorship
+        </h2>
+        <ol>
+          <li>
+            Navigate to <a id="verification-uri" href="https://github.com/login/device" target="_blank">https://github<wbr>.com<wbr>/login<wbr>/device</a>
+            and choose the account you want to be signed in as.
+          </li>
+          <li>
+            Enter your one-time code: <code id="user-code">0000-0000</code>.
+          </li>
+          <li>
+            Click “Continue”.
+            GitHub should display a page that prompts you to authorize taupiqueur’s app
+            to verify your GitHub identity
+            and know which resources you can access.
+          </li>
+          <li>
+            Click “Authorize taupiqueur’s app”.
+            After this, Shortcuts should be able to verify your sponsorship.
+          </li>
+        </ol>
+        <fieldset disabled>
+          <legend>
+            <span class="caption">Sponsorship verification</span>
+            <span id="spinner" class="spinner" data-paused="true" aria-label="A progress spinner indicating network activity"></span>
+          </legend>
+          <label>
+            <input type="checkbox" id="device-flow-completed-checkbox">
+            <span>
+              Authentication successful—You have successfully signed into taupiqueur’s app.
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" id="sponsor-flow-completed-checkbox">
+            <span>
+              Sponsorship verified—Your sponsorship to taupiqueur has been verified.
+            </span>
+          </label>
+        </fieldset>
+      </section>
+    </main>
+    <dialog id="sponsor-flow-completed-popover" popover>
+      <main>
+        <h2>
+          Congratulations, you’re all set!
+        </h2>
+        <p>
+          You have successfully signed into taupiqueur’s app
+          and your sponsorship has been verified.
+        </p>
+        <p>
+          You can now use Shortcuts
+          and close this page at any time.
+        </p>
+      </main>
+      <footer>
+        <ul class="actions">
+          <li>
+            <a href="https://taupiqueur.github.io/chrome-shortcuts" class="button" draggable="false">
+              Homepage
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </dialog>
+    <dialog id="sponsor-flow-error-popover" popover>
+      <main>
+        <h2>
+          Oops, an error occurred!
+        </h2>
+        <p>
+          Something went wrong with the sponsorship verification.
+        </p>
+        <pre><code id="sponsor-flow-error-details"></code></pre>
+      </main>
+      <footer>
+        <ul class="actions">
+          <li>
+            <button data-action="startSponsorFlow" popovertarget="sponsor-flow-error-popover" popovertargetaction="hide">
+              Restart sponsorship verification
+            </button>
+          </li>
+        </ul>
+      </footer>
+    </dialog>
+    <script type="module" src="sponsorship.js"></script>
+  </body>
+</html>

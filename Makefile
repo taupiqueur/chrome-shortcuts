@@ -2,7 +2,7 @@
 name = chrome-shortcuts
 version = $(shell git describe --tags --always)
 
-all: assets/shortcuts-logo@16px.png assets/shortcuts-logo@32px.png assets/shortcuts-logo@48px.png assets/shortcuts-logo@128px.png assets/keyboard_codes_alphanumeric.svg extra/chrome-web-store/assets/shortcuts-screenshot-01.png extra/chrome-web-store/assets/shortcuts-screenshot-02.png extra/chrome-web-store/assets/shortcuts-screenshot-03.png extra/chrome-web-store/assets/shortcuts-small-promo-tile.png extra/chrome-web-store/assets/shortcuts-marquee-promo-tile.png extra/chrome-web-store/assets/shortcuts-screenshot-01.fr.png extra/chrome-web-store/assets/shortcuts-screenshot-02.fr.png extra/chrome-web-store/assets/shortcuts-screenshot-03.fr.png
+all: assets/shortcuts-logo@16px.png assets/shortcuts-logo@32px.png assets/shortcuts-logo@48px.png assets/shortcuts-logo@128px.png assets/disabled-shortcuts-logo@16px.png assets/disabled-shortcuts-logo@32px.png assets/disabled-shortcuts-logo@48px.png assets/disabled-shortcuts-logo@128px.png assets/keyboard_codes_alphanumeric.svg extra/chrome-web-store/assets/shortcuts-screenshot-01.png extra/chrome-web-store/assets/shortcuts-screenshot-02.png extra/chrome-web-store/assets/shortcuts-screenshot-03.png extra/chrome-web-store/assets/shortcuts-small-promo-tile.png extra/chrome-web-store/assets/shortcuts-marquee-promo-tile.png extra/chrome-web-store/assets/shortcuts-screenshot-01.fr.png extra/chrome-web-store/assets/shortcuts-screenshot-02.fr.png extra/chrome-web-store/assets/shortcuts-screenshot-03.fr.png
 
 assets/shortcuts-logo@16px.png: assets/shortcuts-logo.svg svg-converter/node_modules
 	node svg-converter/svg-converter.js $< $@ 16 16
@@ -14,6 +14,18 @@ assets/shortcuts-logo@48px.png: assets/shortcuts-logo.svg svg-converter/node_mod
 	node svg-converter/svg-converter.js $< $@ 48 48
 
 assets/shortcuts-logo@128px.png: assets/shortcuts-logo.svg svg-converter/node_modules
+	node svg-converter/svg-converter.js $< $@ 128 128
+
+assets/disabled-shortcuts-logo@16px.png: assets/disabled-shortcuts-logo.svg svg-converter/node_modules
+	node svg-converter/svg-converter.js $< $@ 16 16
+
+assets/disabled-shortcuts-logo@32px.png: assets/disabled-shortcuts-logo.svg svg-converter/node_modules
+	node svg-converter/svg-converter.js $< $@ 32 32
+
+assets/disabled-shortcuts-logo@48px.png: assets/disabled-shortcuts-logo.svg svg-converter/node_modules
+	node svg-converter/svg-converter.js $< $@ 48 48
+
+assets/disabled-shortcuts-logo@128px.png: assets/disabled-shortcuts-logo.svg svg-converter/node_modules
 	node svg-converter/svg-converter.js $< $@ 128 128
 
 assets/keyboard_codes_alphanumeric.svg:

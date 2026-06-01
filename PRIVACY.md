@@ -9,6 +9,7 @@ Performs common tasks with your keyboard.
 Permission | Justification
 --- | ---
 [`"activeTab"`] | This permission is used in conjunction with the `"scripting"` permission for commands interacting with web pages, and commands requiring some context about the current URL, such as opening Chrome pages, to fill the “New Tab” page slot.
+[`"alarms"`] | This permission is used to schedule sponsorship verification.
 [`"bookmarks"`] | This permission is used to save your tabs and current session as bookmarks, and get bookmark suggestions.
 [`"clipboardRead"`] | This permission is used for opening new tabs from the system clipboard. Without this permission, a runtime permission is asked for every new site you use the command.
 [`"clipboardWrite"`] | This permission is used for the “Clipboard” commands. Without this permission, a runtime permission is asked for every new site you use the commands.
@@ -31,6 +32,7 @@ Permission | Justification
 [`"host_permissions"`] | This permission is used to keep access to the `chrome.scripting` API after reopening the extension’s popup programmatically. In many cases, the `"activeTab"` permission has been revoked due to a web navigation or tab activation. Such permission enables users, e.g., to scroll down after activating the next tab from the extension’s popup.
 
 [`"activeTab"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#activeTab
+[`"alarms"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#alarms
 [`"bookmarks"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#bookmarks
 [`"clipboardRead"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#clipboardRead
 [`"clipboardWrite"`]: https://developer.chrome.com/docs/extensions/reference/permissions-list#clipboardWrite

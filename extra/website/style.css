@@ -145,12 +145,20 @@ ul.languages {
 
 ul.actions {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   list-style: none;
   margin-block: 2rem;
   padding: 0;
   gap: 1rem;
+}
+
+ul.actions li {
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+  gap: 0.5rem;
 }
 
 ul.actions li a {
@@ -159,6 +167,11 @@ ul.actions li a {
   border-radius: 0.3rem;
   background-color: var(--tag-pill-background-color);
   color: var(--tag-pill-text-color);
+}
+
+ul.actions li small {
+  font-size: 0.9em;
+  font-weight: lighter;
 }
 
 pre {

@@ -15,6 +15,7 @@
  * @property {string} manualPage
  * @property {string} shortcutsPage
  * @property {string} themeStorePage
+ * @property {string} sponsorshipPage
  * @property {string} pageCapturePage
  */
 
@@ -279,6 +280,16 @@ export async function openShortcutsThemeStore(cx) {
       chrome.runtime.id,
     ],
   })
+}
+
+/**
+ * Opens the Shortcuts “Sponsorship” page.
+ *
+ * @param {CommandContext} cx
+ * @returns {Promise<void>}
+ */
+export async function openShortcutsSponsorshipPage(cx) {
+  await openChromePage(cx, cx.sponsorshipPage)
 }
 
 // Navigation ------------------------------------------------------------------
