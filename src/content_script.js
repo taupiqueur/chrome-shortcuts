@@ -4,6 +4,8 @@
 //
 // Content scripts: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts
 
+const CONTEXT_INVALIDATED_ERROR = 'Extension context invalidated'
+
 const SCROLLABLE_OVERFLOW_VALUES = new Set([
   'visible',
   'scroll',
@@ -20,6 +22,10 @@ const scroller = new Scroller
 const inputHandler = new InputHandler(
   window
 )
+
+const contextInvalidatedController = new AbortController
+
+const contextInvalidatedSignal = contextInvalidatedController.signal
 
 chrome.runtime.onMessage.addListener((message, sender) => {
   switch (message.type) {
@@ -40,6 +46,36 @@ window.dispatchEvent(
 
 window.addEventListener(
   'scriptinjection',
+  () => {
+    contextInvalidatedController.abort(
+      new Error(
+        CONTEXT_INVALIDATED_ERROR,
+      ),
+    )
+  },
+  {
+    signal: contextInvalidatedSignal,
+  },
+)
+
+document.addEventListener(
+  'visibilitychange',
+  () => {
+    if (!chrome.runtime.id) {
+      contextInvalidatedController.abort(
+        new Error(
+          CONTEXT_INVALIDATED_ERROR,
+        ),
+      )
+    }
+  },
+  {
+    signal: contextInvalidatedSignal,
+  },
+)
+
+contextInvalidatedSignal.addEventListener(
+  'abort',
   () => {
     inputHandler.stop()
   },
