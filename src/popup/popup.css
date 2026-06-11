@@ -3,112 +3,285 @@
 
   --header-height: 2.3rem;
 
+  --background-color: light-dark(
+    var(--aqua-gray-6-color),
+    var(--dark-gray-5-color)
+  );
+
+  --foreground-color: light-dark(
+    black,
+    white
+  );
+
+  --scrollbar-thumb-color: light-dark(
+    var(--aqua-gray-3-color),
+    var(--dark-gray-2-color)
+  );
+
+  --scrollbar-track-color: light-dark(
+    var(--aqua-gray-6-color),
+    var(--dark-gray-5-color)
+  );
+
+  --text-field-background-color: light-dark(
+    var(--aqua-gray-5-color),
+    var(--dark-gray-4-color)
+  );
+
+  --text-field-border-color: light-dark(
+    transparent,
+    transparent
+  );
+
+  --placeholder-text-color: light-dark(
+    #00000040,
+    #ffffff40
+  );
+
+  --primary-button-text-color: light-dark(
+    white,
+    white
+  );
+
+  --primary-button-background-color: light-dark(
+    var(--dark-blue-color),
+    var(--aqua-blue-color)
+  );
+
+  --primary-button-active-background-color: light-dark(
+    var(--aqua-blue-color),
+    var(--dark-blue-color)
+  );
+
+  --selected-text-color: light-dark(
+    white,
+    white
+  );
+
+  --selected-text-background-color: light-dark(
+    var(--aqua-blue-color),
+    var(--dark-blue-color)
+  );
+
+  --control-accent-color: light-dark(
+    var(--aqua-blue-color),
+    var(--dark-blue-color)
+  );
+
+  --keyboard-focus-indicator-color: light-dark(
+    #074cf180,
+    #1c96ff80
+  );
+
+  --label-color: light-dark(
+    #000000d9,
+    #ffffffd9
+  );
+
+  --secondary-label-color: light-dark(
+    #00000080,
+    #ffffff8c
+  );
+
+  --tertiary-label-color: light-dark(
+    #00000042,
+    #ffffff40
+  );
+
+  --disabled-control-text-color: light-dark(
+    #00000040,
+    #ffffff40
+  );
+
+  --separator-color: light-dark(
+    #0000001a,
+    #ffffff1a
+  );
+
+  --shadow-color: light-dark(
+    #00000059,
+    #00000059
+  );
+
+  --popover-background-color: light-dark(
+    var(--aqua-gray-6-color),
+    var(--dark-gray-5-color)
+  );
+
+  --popover-text-color: light-dark(
+    #000000d9,
+    #ffffffd9
+  );
+
+  --popover-border-color: light-dark(
+    var(--aqua-gray-5-color),
+    var(--dark-gray-4-color)
+  );
+
+  --tag-pill-background-color: light-dark(
+    var(--aqua-blue-color),
+    var(--dark-blue-color)
+  );
+
+  --tag-pill-text-color: light-dark(
+    white,
+    white
+  );
+
   /*
    * macOS color palette
    * https://developer.apple.com/design/human-interface-guidelines/foundations/color#specifications
    */
-  --aqua-red-color: #ff3b30;
-  --dark-red-color: #ff453a;
-  --aqua-orange-color: #ff9500;
-  --dark-orange-color: #ff9f0a;
-  --aqua-yellow-color: #ffcc00;
-  --dark-yellow-color: #ffd60a;
-  --aqua-green-color: #28cd41;
-  --dark-green-color: #32d74b;
-  --aqua-mint-color: #00c7be;
-  --dark-mint-color: #66d4cf;
-  --aqua-teal-color: #59adc4;
-  --dark-teal-color: #6ac4dc;
-  --aqua-cyan-color: #55bef0;
-  --dark-cyan-color: #5ac8f5;
-  --aqua-blue-color: #007aff;
-  --dark-blue-color: #0a84ff;
-  --aqua-indigo-color: #5856d6;
-  --dark-indigo-color: #5e5ce6;
-  --aqua-purple-color: #af52de;
-  --dark-purple-color: #bf5af2;
-  --aqua-pink-color: #ff2d55;
-  --dark-pink-color: #ff375f;
-  --aqua-brown-color: #a2845e;
-  --dark-brown-color: #ac8e68;
-  --aqua-gray-color: #8e8e93;
-  --dark-gray-color: #98989d;
-  --aqua-gray-2-color: #aeaeb2;
-  --dark-gray-2-color: #636366;
-  --aqua-gray-3-color: #c7c7cc;
-  --dark-gray-3-color: #48484a;
-  --aqua-gray-4-color: #d1d1d6;
-  --dark-gray-4-color: #3a3a3c;
-  --aqua-gray-5-color: #e5e5ea;
-  --dark-gray-5-color: #2c2c2e;
-  --aqua-gray-6-color: #f2f2f7;
-  --dark-gray-6-color: #1c1c1e;
-}
+  --aqua-red-color: oklch(
+    from #ff3b30 l c h
+  );
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background-color: linear-gradient(90deg, var(--aqua-gray-6-color), var(--aqua-gray-5-color), var(--aqua-gray-6-color));
-    --foreground-color: black;
-    --scrollbar-thumb-color: var(--aqua-gray-3-color);
-    --scrollbar-track-color: var(--aqua-gray-6-color);
-    --text-field-background-color: var(--aqua-gray-5-color);
-    --text-field-border-color: transparent;
-    --placeholder-text-color: #00000040;
-    --primary-button-text-color: white;
-    --primary-button-background-color: var(--dark-blue-color);
-    --primary-button-active-background-color: var(--aqua-blue-color);
-    --selected-text-color: white;
-    --selected-text-background-color: var(--aqua-blue-color);
-    --control-accent-color: var(--aqua-blue-color);
-    --keyboard-focus-indicator-color: #074cf180;
-    --label-color: #000000d9;
-    --secondary-label-color: #00000080;
-    --tertiary-label-color: #00000042;
-    --disabled-control-text-color: #00000040;
-    --separator-color: #0000001a;
-    --shadow-color: #00000059;
-    --popover-background-color: var(--aqua-gray-6-color);
-    --popover-text-color: #000000d9;
-    --popover-border-color: var(--aqua-gray-5-color);
-    --tag-pill-background-color: var(--aqua-blue-color);
-    --tag-pill-text-color: white;
-  }
-}
+  --dark-red-color: oklch(
+    from #ff453a l c h
+  );
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: linear-gradient(90deg, var(--dark-gray-5-color), var(--dark-gray-4-color), var(--dark-gray-5-color));
-    --foreground-color: white;
-    --scrollbar-thumb-color: var(--dark-gray-2-color);
-    --scrollbar-track-color: var(--dark-gray-5-color);
-    --text-field-background-color: var(--dark-gray-4-color);
-    --text-field-border-color: transparent;
-    --placeholder-text-color: #ffffff40;
-    --primary-button-text-color: white;
-    --primary-button-background-color: var(--aqua-blue-color);
-    --primary-button-active-background-color: var(--dark-blue-color);
-    --selected-text-color: white;
-    --selected-text-background-color: var(--dark-blue-color);
-    --control-accent-color: var(--dark-blue-color);
-    --keyboard-focus-indicator-color: #1c96ff80;
-    --label-color: #ffffffd9;
-    --secondary-label-color: #ffffff8c;
-    --tertiary-label-color: #ffffff40;
-    --disabled-control-text-color: #ffffff40;
-    --separator-color: #ffffff1a;
-    --shadow-color: #00000059;
-    --popover-background-color: var(--dark-gray-5-color);
-    --popover-text-color: #ffffffd9;
-    --popover-border-color: var(--dark-gray-4-color);
-    --tag-pill-background-color: var(--dark-blue-color);
-    --tag-pill-text-color: white;
-  }
+  --aqua-orange-color: oklch(
+    from #ff9500 l c h
+  );
+
+  --dark-orange-color: oklch(
+    from #ff9f0a l c h
+  );
+
+  --aqua-yellow-color: oklch(
+    from #ffcc00 l c h
+  );
+
+  --dark-yellow-color: oklch(
+    from #ffd60a l c h
+  );
+
+  --aqua-green-color: oklch(
+    from #28cd41 l c h
+  );
+
+  --dark-green-color: oklch(
+    from #32d74b l c h
+  );
+
+  --aqua-mint-color: oklch(
+    from #00c7be l c h
+  );
+
+  --dark-mint-color: oklch(
+    from #66d4cf l c h
+  );
+
+  --aqua-teal-color: oklch(
+    from #59adc4 l c h
+  );
+
+  --dark-teal-color: oklch(
+    from #6ac4dc l c h
+  );
+
+  --aqua-cyan-color: oklch(
+    from #55bef0 l c h
+  );
+
+  --dark-cyan-color: oklch(
+    from #5ac8f5 l c h
+  );
+
+  --aqua-blue-color: oklch(
+    from #007aff l c h
+  );
+
+  --dark-blue-color: oklch(
+    from #0a84ff l c h
+  );
+
+  --aqua-indigo-color: oklch(
+    from #5856d6 l c h
+  );
+
+  --dark-indigo-color: oklch(
+    from #5e5ce6 l c h
+  );
+
+  --aqua-purple-color: oklch(
+    from #af52de l c h
+  );
+
+  --dark-purple-color: oklch(
+    from #bf5af2 l c h
+  );
+
+  --aqua-pink-color: oklch(
+    from #ff2d55 l c h
+  );
+
+  --dark-pink-color: oklch(
+    from #ff375f l c h
+  );
+
+  --aqua-brown-color: oklch(
+    from #a2845e l c h
+  );
+
+  --dark-brown-color: oklch(
+    from #ac8e68 l c h
+  );
+
+  --aqua-gray-color: oklch(
+    from #8e8e93 l c h
+  );
+
+  --dark-gray-color: oklch(
+    from #98989d l c h
+  );
+
+  --aqua-gray-2-color: oklch(
+    from #aeaeb2 l c h
+  );
+
+  --dark-gray-2-color: oklch(
+    from #636366 l c h
+  );
+
+  --aqua-gray-3-color: oklch(
+    from #c7c7cc l c h
+  );
+
+  --dark-gray-3-color: oklch(
+    from #48484a l c h
+  );
+
+  --aqua-gray-4-color: oklch(
+    from #d1d1d6 l c h
+  );
+
+  --dark-gray-4-color: oklch(
+    from #3a3a3c l c h
+  );
+
+  --aqua-gray-5-color: oklch(
+    from #e5e5ea l c h
+  );
+
+  --dark-gray-5-color: oklch(
+    from #2c2c2e l c h
+  );
+
+  --aqua-gray-6-color: oklch(
+    from #f2f2f7 l c h
+  );
+
+  --dark-gray-6-color: oklch(
+    from #1c1c1e l c h
+  );
 }
 
 @keyframes reveal {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -129,7 +302,7 @@ html {
 body {
   min-width: 300px;
   max-height: 600px;
-  background: var(--background-color);
+  background-color: var(--background-color);
   color: var(--foreground-color);
   font-family: system-ui;
   display: flex;
@@ -373,6 +546,6 @@ suggestion-item::part(domain) {
 }
 
 [popover]:popover-open::backdrop {
-  background: var(--background-color);
+  background-color: var(--background-color);
   opacity: 0.6;
 }
