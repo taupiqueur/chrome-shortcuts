@@ -31,6 +31,21 @@
     var(--dark-blue-color)
   );
 
+  --control-color: light-dark(
+    white,
+    white
+  );
+
+  --control-background-color: light-dark(
+    var(--light-gray-color),
+    var(--light-gray-color)
+  );
+
+  --control-accent-color: light-dark(
+    royalblue,
+    royalblue
+  );
+
   --keyboard-focus-indicator-color: light-dark(
     var(--light-blue-color),
     var(--light-blue-color)
@@ -39,6 +54,33 @@
   --link-color: light-dark(
     royalblue,
     royalblue
+  );
+
+  --grid-color: light-dark(
+    oklch(
+      from whitesmoke l c h / 0.5
+    ),
+    oklch(
+      from whitesmoke l c h / 0.5
+    )
+  );
+
+  --grid-background-color: light-dark(
+    oklch(
+      from royalblue l c h / 0.1
+    ),
+    oklch(
+      from royalblue l c h / 0.1
+    )
+  );
+
+  --grid-border-color: light-dark(
+    oklch(
+      from royalblue l c h / 0.1
+    ),
+    oklch(
+      from royalblue l c h / 0.1
+    )
   );
 
   --separator-color: light-dark(
@@ -167,6 +209,12 @@ body:has(section:target) section:nth-of-type(1):not(:target) {
   display: none;
 }
 
+section:has(input#free-trial-toggle:checked) ul.actions li:has(a.button[href$="#become_a_sponsor_to_taupiqueur"]),
+section:has(input#free-trial-toggle:not(:checked)) ul.actions li:has(button[data-action="startTrial"]) {
+  visibility: hidden;
+  height: 0;
+}
+
 main > details > summary {
   display: none;
 }
@@ -188,9 +236,8 @@ ol.table-of-contents li a {
   overflow: clip;
   user-select: none;
   border-radius: 50%;
-  background-color: var(--under-page-background-color);
+  background-color: var(--control-background-color);
   color: transparent;
-  opacity: 0.1;
 }
 
 ol.table-of-contents li::after {
@@ -199,13 +246,12 @@ ol.table-of-contents li::after {
   width: 1.5rem;
   height: 0.3rem;
   translate: 120% -300%;
-  background-color: var(--under-page-background-color);
+  background-color: var(--control-background-color);
   color: transparent;
-  opacity: 0.1;
 }
 
 ol.table-of-contents li:last-of-type::after {
-  opacity: 0;
+  background-color: transparent;
 }
 
 ol.table-of-contents a:is(:hover, :focus, :active) {
@@ -221,7 +267,7 @@ body:has(section:nth-of-type(2):target) ol.table-of-contents li:nth-of-type(-n+2
 body:has(section:nth-of-type(2):target) ol.table-of-contents li:nth-of-type(-n+1)::after,
 body:has(section:nth-of-type(3):target) ol.table-of-contents li:nth-of-type(-n+3) a,
 body:has(section:nth-of-type(3):target) ol.table-of-contents li:nth-of-type(-n+2)::after {
-  opacity: 1;
+  background-color: var(--control-accent-color);
 }
 
 h1 {
@@ -241,6 +287,8 @@ a:not(:hover, :focus, :active) {
 }
 
 a.button {
+  box-sizing: border-box;
+  text-align: center;
   text-decoration: none;
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -302,6 +350,101 @@ label {
   display: block;
 }
 
+label:has(input[switch]) {
+  display: flex;
+  flex-direction: row;
+  place-items: safe center;
+  place-content: safe center;
+}
+
+input[switch] {
+  appearance: none;
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  background-color: var(--control-background-color);
+  transition: background-color 0.2s;
+}
+
+input[switch]:checked {
+  background-color: var(--control-accent-color);
+}
+
+input[switch]:active:hover {
+  background-color: var(--control-accent-color);
+}
+
+input[switch]:checked:active:hover {
+  background-color: var(--control-background-color);
+}
+
+input[switch]::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--control-color);
+  color: transparent;
+  translate: 20% 20%;
+  transition: translate 0.2s;
+}
+
+input[switch]:checked::after {
+  translate: 130% 20%;
+}
+
+div.grid {
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(
+      to bottom, var(--grid-border-color) 1px
+    ) 0% 0% / 100% 1px no-repeat,
+
+    linear-gradient(
+      to bottom, var(--grid-color) 1px, transparent 1px
+    ) 0% 0% / 4px 4px repeat,
+
+    linear-gradient(
+      to right, var(--grid-color) 1px, transparent 1px
+    ) 0% 0% / 4px 4px repeat,
+
+    var(
+      --grid-background-color
+    );
+}
+
+div.grid ul.actions {
+  flex-direction: column;
+  margin-block: 0;
+  gap: 0;
+}
+
+div.grid ul.actions li {
+  gap: 0.2rem;
+}
+
+div.grid ul.actions li,
+div.grid ul.actions li > * {
+  width: 100%;
+}
+
+div.grid fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+div.grid fieldset legend {
+  display: none;
+}
+
+div.grid label:has(input[switch]) {
+  place-self: flex-end;
+  padding-inline-end: 1ch;
+}
+
 ul.actions {
   display: flex;
   flex-direction: row;
@@ -311,6 +454,23 @@ ul.actions {
   margin-block: 2rem;
   padding-inline-start: 0;
   gap: 1rem;
+}
+
+ul.actions li {
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
+  gap: 0.5rem;
+}
+
+ul.actions li small {
+  font-size: 0.9em;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+  place-items: safe center;
+  place-content: safe center;
 }
 
 pre {

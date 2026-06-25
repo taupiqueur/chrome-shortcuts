@@ -43,13 +43,39 @@
         <p>
           Your sponsorship is required to use Shortcuts.
         </p>
-        <ul class="actions">
-          <li>
-            <a href="#become_a_sponsor_to_taupiqueur" class="button" draggable="false">
-              Become a sponsor to taupiqueur
-            </a>
-          </li>
-        </ul>
+        <div class="grid">
+          <fieldset>
+            <legend>
+              Sponsorship options
+            </legend>
+            <label>
+              <input type="checkbox" id="free-trial-toggle" switch>
+              <span>
+                Free Trial
+              </span>
+            </label>
+          </fieldset>
+          <ul class="actions">
+            <li>
+              <a href="#become_a_sponsor_to_taupiqueur" class="button" draggable="false">
+                Become a sponsor to taupiqueur
+              </a>
+            </li>
+            <li>
+              <button data-action="startTrial">
+                Try 1-hour Free Pro Trial
+              </button>
+              <small>
+                <span>
+                  All features included.
+                </span>
+                <span>
+                  No credit card required.
+                </span>
+              </small>
+            </li>
+          </ul>
+        </div>
       </section>
       <section id="become_a_sponsor_to_taupiqueur">
         <h2>
@@ -155,6 +181,45 @@
           <li>
             <button data-action="startSponsorFlow" popovertarget="sponsor-flow-error-popover" popovertargetaction="hide">
               Restart sponsorship verification
+            </button>
+          </li>
+        </ul>
+      </footer>
+    </dialog>
+    <dialog id="trial-started-popover" popover>
+      <main>
+        <h2>
+          Congratulations, you’re all set!
+        </h2>
+        <p>
+          Your 1-hour Free Pro Trial has been activated.
+        </p>
+      </main>
+      <footer>
+        <ul class="actions">
+          <li>
+            <button popovertarget="trial-started-popover" popovertargetaction="hide">
+              Done
+            </button>
+          </li>
+        </ul>
+      </footer>
+    </dialog>
+    <dialog id="trial-request-error-popover" popover>
+      <main>
+        <h2>
+          Oops, an error occurred!
+        </h2>
+        <p>
+          Something went wrong with the trial request.
+        </p>
+        <pre><code id="trial-request-error-details"></code></pre>
+      </main>
+      <footer>
+        <ul class="actions">
+          <li>
+            <button popovertarget="trial-request-error-popover" popovertargetaction="hide">
+              Done
             </button>
           </li>
         </ul>

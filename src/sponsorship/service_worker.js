@@ -11,13 +11,17 @@
  * @property {Set<string>} maintainerLogins
  * @property {(accessToken: string) => void} onDeviceFlowCompleted
  * @property {() => void} onSponsorFlowCompleted
+ * @property {(onResolved: (value: any) => void, onRejected: (errorDetails: Error) => void) => void} onTrialRequest
  */
 
 /**
- * @typedef {StartSponsorFlowMessage} SponsorFlowMessage
+ * @typedef {StartSponsorFlowMessage | StartTrialMessage} SponsorFlowMessage
  *
  * @typedef {object} StartSponsorFlowMessage
  * @property {"startSponsorFlow"} type
+ *
+ * @typedef {object} StartTrialMessage
+ * @property {"startTrial"} type
  */
 
 /**
@@ -141,6 +145,13 @@ function onMessage(
       )
       break
 
+    case 'startTrial':
+      startTrial(
+        port,
+        cx,
+      )
+      break
+
     default:
       port.postMessage({
         type: 'error',
@@ -219,6 +230,44 @@ async function startSponsorFlow(
   port.postMessage({
     type: 'sponsorFlowCompleted',
   })
+}
+
+/**
+ * Starts the free trial if eligible.
+ *
+ * @param {chrome.runtime.Port} port
+ * @param {SponsorFlowContext} cx
+ * @returns {void}
+ */
+function startTrial(
+  port,
+  cx,
+) {
+  const {
+    promise: promiseWithResolvers,
+    resolve: onResolved,
+    reject: onRejected,
+  } = Promise.withResolvers()
+
+  cx.onTrialRequest(
+    onResolved,
+    onRejected,
+  )
+
+  promiseWithResolvers.then(
+    () => {
+      port.postMessage({
+        type: 'trialStarted',
+      })
+    },
+  ).catch(
+    (errorDetails) => {
+      port.postMessage({
+        type: 'trialRequestError',
+        reason: errorDetails.toString(),
+      })
+    },
+  )
 }
 
 /**

@@ -184,6 +184,7 @@ const suggestionLabels = new Map([
  *
  * @typedef {object} StorageCache
  * @property {boolean} extensionFeaturesEnabled
+ * @property {boolean} trialRequested
  * @property {string} accessToken
  * @property {KeyboardMapping[]} commandBindings
  * @property {KeyboardMapping[]} paletteBindings
@@ -1196,6 +1197,7 @@ function onConnect(port) {
         maintainerLogins: GITHUB_MAINTAINER_LOGINS,
         onDeviceFlowCompleted,
         onSponsorFlowCompleted,
+        onTrialRequest,
       })
       break
 
@@ -1238,6 +1240,7 @@ function onConnectPaywall(port) {
         maintainerLogins: GITHUB_MAINTAINER_LOGINS,
         onDeviceFlowCompleted,
         onSponsorFlowCompleted,
+        onTrialRequest: onTrialRequestPaywall,
       })
       break
 
@@ -1353,6 +1356,65 @@ async function onDeviceFlowCompleted(
  */
 async function onSponsorFlowCompleted() {
   await enableExtensionFeatures()
+}
+
+/**
+ * Handles trial request,
+ * when extension features are enabled.
+ *
+ * Starts the free trial if eligible.
+ *
+ * @param {(value: any) => void} onResolved
+ * @param {(errorDetails: Error) => void} onRejected
+ * @returns {void}
+ */
+function onTrialRequest(
+  onResolved,
+  onRejected,
+) {
+  onRejected(
+    new Error(
+      'Extension features already enabled',
+    ),
+  )
+}
+
+/**
+ * Handles trial request,
+ * when extension features are disabled.
+ *
+ * Starts the free trial if eligible.
+ *
+ * @param {(value: any) => void} onResolved
+ * @param {(errorDetails: Error) => void} onRejected
+ * @returns {void}
+ */
+function onTrialRequestPaywall(
+  onResolved,
+  onRejected,
+) {
+  if (!storageCache.trialRequested) {
+    onResolved(
+      Promise.all([
+        enableExtensionFeatures(),
+
+        chrome.alarms.create('checkSponsorship', {
+          delayInMinutes: CHECK_SPONSORSHIP_ALARM_INITIAL_DELAY,
+          periodInMinutes: CHECK_SPONSORSHIP_ALARM_PERIOD,
+        }),
+
+        chrome.storage.local.set({
+          trialRequested: true,
+        }),
+      ]),
+    )
+  } else {
+    onRejected(
+      new Error(
+        'Trial already requested',
+      ),
+    )
+  }
 }
 
 /**

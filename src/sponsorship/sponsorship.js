@@ -8,7 +8,7 @@
 const SPONSORSHIP_VERIFICATION_ROUTE =
   '#sign_in_with_github_to_verify_your_sponsorship'
 
-const buttonElements = document.querySelectorAll('button')
+const buttonElements = document.querySelectorAll('button[data-action]')
 const userCodeElement = document.getElementById('user-code')
 const verificationURIElement = document.getElementById('verification-uri')
 const spinnerElement = document.getElementById('spinner')
@@ -17,6 +17,9 @@ const sponsorFlowCompletedCheckbox = document.getElementById('sponsor-flow-compl
 const sponsorFlowCompletedPopover = document.getElementById('sponsor-flow-completed-popover')
 const sponsorFlowErrorPopover = document.getElementById('sponsor-flow-error-popover')
 const sponsorFlowErrorDetails = document.getElementById('sponsor-flow-error-details')
+const trialStartedPopover = document.getElementById('trial-started-popover')
+const trialRequestErrorPopover = document.getElementById('trial-request-error-popover')
+const trialRequestErrorDetails = document.getElementById('trial-request-error-details')
 
 const sponsorFlowStartedAbortController = new AbortController
 
@@ -57,6 +60,16 @@ port.onMessage.addListener((message) => {
       )
       break
 
+    case 'trialStarted':
+      showTrialStarted()
+      break
+
+    case 'trialRequestError':
+      showTrialRequestError(
+        message.reason,
+      )
+      break
+
     case 'keepAlive':
       break
 
@@ -77,6 +90,15 @@ for (const buttonElement of buttonElements) {
         'click',
         () => {
           startSponsorFlow()
+        },
+      )
+      break
+
+    case 'startTrial':
+      buttonElement.addEventListener(
+        'click',
+        () => {
+          startTrial()
         },
       )
       break
@@ -152,4 +174,37 @@ function showSponsorFlowError(
 ) {
   sponsorFlowErrorDetails.textContent = errorDetails
   sponsorFlowErrorPopover.showPopover()
+}
+
+/**
+ * Starts the free trial if eligible.
+ *
+ * @returns {void}
+ */
+function startTrial() {
+  port.postMessage({
+    type: 'startTrial',
+  })
+}
+
+/**
+ * Shows “trial started” popover.
+ *
+ * @returns {void}
+ */
+function showTrialStarted() {
+  trialStartedPopover.showPopover()
+}
+
+/**
+ * Shows “trial request error” popover.
+ *
+ * @param {string} errorDetails
+ * @returns {void}
+ */
+function showTrialRequestError(
+  errorDetails,
+) {
+  trialRequestErrorDetails.textContent = errorDetails
+  trialRequestErrorPopover.showPopover()
 }
