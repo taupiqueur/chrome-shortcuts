@@ -1,7 +1,11 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: var(
+    --color-scheme
+  );
 
   --header-height: 2.3rem;
+
+  --color-scheme: light dark;
 
   --background-color: light-dark(
     var(--aqua-gray-6-color),

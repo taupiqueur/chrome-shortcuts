@@ -265,6 +265,7 @@ To restore the default theme:
 {
   "popupStyleSheet": [
     ":root {",
+    "--color-scheme: light dark;",
     "--background-color: light-dark(white, black);",
     "--foreground-color: light-dark(black, white);",
     "--scrollbar-thumb-color: light-dark(lightgray, dimgray);",
